@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://behneg0nnc0bq"]
+
+[ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
+
+[node name="Restaurant" type="Node2D"]
+
+[node name="BGrestaurant" parent="." instance=ExtResource("1_8ks8p")]
+
+[node name="Prototype 1" type="Label" parent="BGrestaurant"]
+offset_top = 576.0
+offset_right = 284.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Prototype 1"

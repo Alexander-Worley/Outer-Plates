@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://c25l7bpom1gm4"]
 
-[ext_resource type="Texture2D" uid="uid://dt840rcr3g2iy" path="res://MainMenu/TitleScreen.jpg" id="1_4vy8l"]
+[ext_resource type="Texture2D" uid="uid://c6c4hrusprn8c" path="res://MainMenu/BG/TEMP Main Menu BG-1.jpg" id="1_kstb7"]
 
 [node name="BGmainMenu" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="BackgroundImage" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(576, 324)
 scale = Vector2(0.396694, 0.28877)
-texture = ExtResource("1_4vy8l")
+texture = ExtResource("1_kstb7")
