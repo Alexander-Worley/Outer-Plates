@@ -14,6 +14,11 @@ config/name="Outer Plates"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Global/global.gd"
+Utils="*res://Global/utils.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"
