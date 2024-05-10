@@ -38,4 +38,5 @@ theme_override_colors/font_pressed_color = Color(0.960784, 0, 0, 1)
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
