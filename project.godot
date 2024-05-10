@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Outer Plates"
+run/main_scene="res://MainMenu/mainMenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Global/global.gd"
+Utils="*res://Global/utils.gd"
 
 [rendering]
 
