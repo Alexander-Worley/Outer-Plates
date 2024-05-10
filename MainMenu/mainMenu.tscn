@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6tgbob7uydx"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://MainMenu/BGmainMenu.tscn" id="1_0v6ry"]
+[ext_resource type="Script" path="res://MainMenu/mainMenu.gd" id="1_ncq7n"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ncq7n")
+
+[node name="BGmainMenu" parent="." instance=ExtResource("1_0v6ry")]
+
+[node name="Prototype 1" type="Label" parent="BGmainMenu"]
+offset_left = 31.0
+offset_top = 278.0
+offset_right = 315.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Prototype 1"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 552.0
+offset_top = 256.0
+offset_right = 823.0
+offset_bottom = 367.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.960784, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 552.0
+offset_top = 448.0
+offset_right = 823.0
+offset_bottom = 559.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.960784, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
