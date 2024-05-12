@@ -7,4 +7,4 @@ extends Node
 # example: const TIME_LIMIT = 300
 # example: var health = 10
 
-var PIXEL_DIMENSION = 32 # Deimension of pixel art assets
+const PIXEL_DIMENSION: int = 32 # Deimension of pixel art assets
