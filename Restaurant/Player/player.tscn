@@ -13,10 +13,14 @@ shape = SubResource("RectangleShape2D_kn0nk")
 [node name="devLabel" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="devLabel"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(32, 64)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 1, 0.74902)
@@ -26,6 +30,10 @@ custom_minimum_size = Vector2(32, 32)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Player"
