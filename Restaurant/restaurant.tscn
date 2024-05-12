@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=5 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Restaurant/Player/player.tscn" id="2_srumu"]
 [ext_resource type="Script" path="res://Restaurant/Player/player.gd" id="3_yi1fw"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Restaurant/Counter/counter.tscn" id="4_jgfwf"]
 
 [node name="Restaurant" type="Node2D"]
 
@@ -17,6 +18,13 @@ theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Prototype 1"
 
-[node name="Player" parent="." instance=ExtResource("2_srumu")]
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("2_srumu")]
 position = Vector2(576, 320)
 script = ExtResource("3_yi1fw")
+
+[node name="Counters" type="Node2D" parent="."]
+
+[node name="Counter" parent="Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(576, 256)
