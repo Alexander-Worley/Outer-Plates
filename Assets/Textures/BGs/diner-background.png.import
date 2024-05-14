@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmnb7400n4mli"
-path="res://.godot/imported/bowl-side-profile.png-a9d65b2698024700780f3f19f80ece22.ctex"
+uid="uid://wbnivqiais7r"
+path="res://.godot/imported/diner-background.png-46da40537d0d3050aa8ad251b171631c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TempForPrototype1Demo/bowl-side-profile.png"
-dest_files=["res://.godot/imported/bowl-side-profile.png-a9d65b2698024700780f3f19f80ece22.ctex"]
+source_file="res://Assets/Textures/BGs/diner-background.png"
+dest_files=["res://.godot/imported/diner-background.png-46da40537d0d3050aa8ad251b171631c.ctex"]
 
 [params]
 

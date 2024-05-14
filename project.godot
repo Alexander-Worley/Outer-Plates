@@ -28,7 +28,6 @@ folder_colors={
 "res://DevScenes/": "teal",
 "res://Global/": "yellow",
 "res://Scenes/": "purple",
-"res://TempForPrototype1Demo/": "red",
 "res://devTools/": "red"
 }
 

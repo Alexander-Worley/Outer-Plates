@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyl1kp4qdrfe2"
-path="res://.godot/imported/dish-side-profile.png-a0aa8f148591ffb95880e7175aaa58cf.ctex"
+uid="uid://cmnb7400n4mli"
+path="res://.godot/imported/bowl-side-profile.png-85a818afb408bc9c37e85bbfcca3ab56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TempForPrototype1Demo/dish-side-profile.png"
-dest_files=["res://.godot/imported/dish-side-profile.png-a0aa8f148591ffb95880e7175aaa58cf.ctex"]
+source_file="res://Assets/Sprites/Holdables/bowl-side-profile.png"
+dest_files=["res://.godot/imported/bowl-side-profile.png-85a818afb408bc9c37e85bbfcca3ab56.ctex"]
 
 [params]
 

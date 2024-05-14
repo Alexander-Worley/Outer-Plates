@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnxr7l784a38t"
-path="res://.godot/imported/dish-top-down.png-f317eeee66604738c3ee1fac7b8816fb.ctex"
+uid="uid://g6sa6xxkg7q4"
+path="res://.godot/imported/chair.png-9bcce7a787f4954767ae741cde614bb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TempForPrototype1Demo/dish-top-down.png"
-dest_files=["res://.godot/imported/dish-top-down.png-f317eeee66604738c3ee1fac7b8816fb.ctex"]
+source_file="res://Assets/Sprites/Environment/chair.png"
+dest_files=["res://.godot/imported/chair.png-9bcce7a787f4954767ae741cde614bb7.ctex"]
 
 [params]
 

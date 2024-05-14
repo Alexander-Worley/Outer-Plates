@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etvg2vjc3pxe"
-path="res://.godot/imported/dish-pile.png-33b07d8d7bc06b506791bd477bb5c215.ctex"
+uid="uid://dnxr7l784a38t"
+path="res://.godot/imported/dish-top-down.png-d00f4cc67739e6bc85f87b52da197b63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TempForPrototype1Demo/dish-pile.png"
-dest_files=["res://.godot/imported/dish-pile.png-33b07d8d7bc06b506791bd477bb5c215.ctex"]
+source_file="res://Assets/Sprites/Holdables/dish-top-down.png"
+dest_files=["res://.godot/imported/dish-top-down.png-d00f4cc67739e6bc85f87b52da197b63.ctex"]
 
 [params]
 
