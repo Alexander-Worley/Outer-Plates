@@ -14,7 +14,7 @@ func pickup_holdable(item: Area2D):
 func place_holdable():
 	if surfacesInRange:
 		var surface: Area2D = surfacesInRange.pick_random()
-		surface.holdableOnSurface = holdableInHand.duplicate()
+		surface.set_holdable_on_surface(holdableInHand)
 		holdableInHand = null
 
 # Given whether the player is moving up, down, left, right, or diagonal,
@@ -59,8 +59,6 @@ func _on_interact_range_area_entered(area):
 		holdablesInRange.append(area)
 	else: if area.is_in_group("Surfaces"):
 		surfacesInRange.append(area)
-	print("Holdables: ", holdablesInRange) # Debug Code
-	print("Surfaces: ", surfacesInRange) # Debug Code
 
 # TODO: Figure out a way to pass in functions as variables to decompose the
 	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
@@ -69,5 +67,3 @@ func _on_interact_range_area_exited(area):
 		holdablesInRange.erase(area)
 	else: if area.is_in_group("Surfaces"):
 		surfacesInRange.erase(area)
-	print("Holdables: ", holdablesInRange) # Debug Code
-	print("Surfaces: ", surfacesInRange) # Debug Code
