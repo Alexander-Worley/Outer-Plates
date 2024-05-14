@@ -23,6 +23,7 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	horizontal *= Global.PIXEL_DIMENSION
 	vertical *= Global.PIXEL_DIMENSION
 	$interact_range.position = Vector2(horizontal, vertical)
+	get_node("AnimatedSprite2D").play("Walk")
 
 func _physics_process(delta):
 	# TODO: Replace "ui" variables with custom gameplay actions
@@ -32,6 +33,7 @@ func _physics_process(delta):
 	if horizontalMovement:
 		velocity.x = horizontalMovement * SPEED
 		set_interact_range_position(horizontalMovement, verticalMovement)
+		get_node("AnimatedSprite2D").flip_h = false if horizontalMovement == 1 else true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if verticalMovement:
@@ -39,6 +41,7 @@ func _physics_process(delta):
 		set_interact_range_position(horizontalMovement, verticalMovement)
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		if !horizontalMovement: get_node("AnimatedSprite2D").stop()
 		
 	move_and_slide()
 
