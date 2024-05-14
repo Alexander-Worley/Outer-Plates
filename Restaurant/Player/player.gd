@@ -43,9 +43,7 @@ func _physics_process(delta):
 func _on_pickup_range_area_entered(area):
 	if area.is_in_group("TestFood"):
 		itemsInRange.append(area)
-		print(itemsInRange) # TODO: Remove line
 
 func _on_pickup_range_area_exited(area):
 	if area.is_in_group("TestFood"):
 		itemsInRange.erase(area)
-		print(itemsInRange) # TODO: Remove line
