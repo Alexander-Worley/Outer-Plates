@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://yag64isjnwu3"]
+
+[ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_3v4wo"]
+[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://TempForPrototype1Demo/diner-background.png" id="2_0qoec"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="3_6e77c"]
+[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="4_p3wgr"]
+[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_7g1q4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
+size = Vector2(20, 442)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wog68"]
+size = Vector2(784, 24)
+
+[node name="Matthew" type="Node2D"]
+
+[node name="BGrestaurant" parent="." instance=ExtResource("1_3v4wo")]
+
+[node name="Diner-background" type="Sprite2D" parent="BGrestaurant"]
+position = Vector2(576, 272)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_0qoec")
+
+[node name="Matthew" type="Label" parent="BGrestaurant"]
+offset_top = 576.0
+offset_right = 284.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Matthew"
+metadata/_edit_use_anchors_ = true
+
+[node name="Instructions" type="Label" parent="BGrestaurant"]
+offset_left = 48.0
+offset_top = 504.0
+offset_right = 1150.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Instructions: 1. \"Arrow keys\" to move.
+                        2. \"Space\" to pickup/place items."
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
+position = Vector2(184, 269)
+shape = SubResource("RectangleShape2D_x5j51")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(784, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
+position = Vector2(184, 269)
+shape = SubResource("RectangleShape2D_x5j51")
+
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(384, -112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
+position = Vector2(192, 160)
+shape = SubResource("RectangleShape2D_wog68")
+
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(384, -112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
+position = Vector2(192, 608)
+shape = SubResource("RectangleShape2D_wog68")
+
+[node name="Tables" type="Node2D" parent="."]
+
+[node name="Table" parent="Tables" instance=ExtResource("3_6e77c")]
+position = Vector2(640, 320)
+
+[node name="Foods" type="Node2D" parent="."]
+
+[node name="TestFood" parent="Foods" instance=ExtResource("4_p3wgr")]
+position = Vector2(640, 312)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("5_7g1q4")]
+position = Vector2(576, 320)
