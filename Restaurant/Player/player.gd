@@ -1,19 +1,19 @@
 extends CharacterBody2D
 
 const SPEED: float = 300.0
-var isCarryingHoldable: bool = false
 var holdableInHand: Area2D = null
 var holdablesInRange: Array = []
 var surfacesInRange: Array = []
 
 func pickup_holdable(item: Area2D):
-	isCarryingHoldable = true
-	holdableInHand = item
+	holdableInHand = item.duplicate()
 	item.queue_free()
 
 func place_holdable():
-	holdableInHand = null
-	isCarryingHoldable = false
+	if surfacesInRange:
+		var surface: Area2D = surfacesInRange.pick_random()
+		surface.holdableOnSurface = holdableInHand.duplicate()
+		holdableInHand = null
 
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
@@ -44,8 +44,8 @@ func _input(event):
 	# TODO: Replace "ui" variables with custom gameplay actions
 	# TODO: Replace "ui_accept with another keystroke
 	if event.is_action_pressed("ui_accept"):
-		if isCarryingHoldable: place_holdable()
-		else: if !holdablesInRange.is_empty():
+		if holdableInHand: place_holdable()
+		else: if holdablesInRange:
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
