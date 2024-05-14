@@ -231,7 +231,6 @@ position = Vector2(512, 240)
 position = Vector2(512, 232)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempForPrototype1Demo/Dish"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4nbr2")
 
 [node name="Sprite2D" type="Sprite2D" parent="TempForPrototype1Demo/Dish"]
@@ -260,7 +259,6 @@ position = Vector2(640, 240)
 position = Vector2(448, 296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempForPrototype1Demo/Dish2"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4nbr2")
 
 [node name="Sprite2D" type="Sprite2D" parent="TempForPrototype1Demo/Dish2"]
