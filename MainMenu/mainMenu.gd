@@ -5,5 +5,6 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 # Changes to the Restaurant Scene
-func _on_play_pressed():
+func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Restaurant/restaurant.tscn")
+	
