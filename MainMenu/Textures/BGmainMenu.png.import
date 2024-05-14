@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2vslko42kst5"
-path="res://.godot/imported/outerplates-start-backround.png-62d335363babd3121ee1aba6d172fdf5.ctex"
+path="res://.godot/imported/BGmainMenu.png-fae6b972d1029634b3f8910d9b54e24a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/BG/outerplates-start-backround.png"
-dest_files=["res://.godot/imported/outerplates-start-backround.png-62d335363babd3121ee1aba6d172fdf5.ctex"]
+source_file="res://MainMenu/Textures/BGmainMenu.png"
+dest_files=["res://.godot/imported/BGmainMenu.png-fae6b972d1029634b3f8910d9b54e24a.ctex"]
 
 [params]
 
