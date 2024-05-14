@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ahdwi2ft7k0"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ahdwi2ft7k0"]
 
+[ext_resource type="Script" path="res://Restaurant/Player/player.gd" id="1_inif3"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_lb2iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]
@@ -8,6 +9,7 @@ size = Vector2(32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_inif3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kn0nk")

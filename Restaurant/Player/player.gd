@@ -10,6 +10,10 @@ func pickup_item(item: Area2D):
 	itemInHand = item
 	item.queue_free()
 
+func place_item():
+	itemInHand = null
+	isCarryingItem = false
+
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
 func set_pickup_range_position(horizontal: float, vertical: float):
@@ -34,3 +38,11 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		
 	move_and_slide()
+
+
+func _on_pickup_range_area_entered(area):
+	pass # Replace with function body.
+
+
+func _on_pickup_range_area_exited(area):
+	pass # Replace with function body.
