@@ -46,12 +46,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="pickup_range" type="Area2D" parent="."]
+[node name="interact_range" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact_range"]
 shape = SubResource("CircleShape2D_5x6jq")
 
-[node name="TestReticle" type="ColorRect" parent="pickup_range/CollisionShape2D"]
+[node name="TestReticle" type="ColorRect" parent="interact_range/CollisionShape2D"]
 custom_minimum_size = Vector2(16, 16)
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,5 +63,5 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="area_entered" from="pickup_range" to="." method="_on_pickup_range_area_entered"]
-[connection signal="area_exited" from="pickup_range" to="." method="_on_pickup_range_area_exited"]
+[connection signal="area_entered" from="interact_range" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="interact_range" to="." method="_on_interact_range_area_exited"]
