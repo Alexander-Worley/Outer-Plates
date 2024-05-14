@@ -39,6 +39,15 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
+func _input(event):
+	# TODO: Replace "ui" variables with custom gameplay actions
+	# TODO: Replace "ui_accept with another keystroke
+	if event.is_action_pressed("ui_accept"):
+		if isCarryingItem: place_item()
+		else: if !itemsInRange.is_empty():
+			# TODO: Replace "pick_random()" with static decisions.
+				# Perhaps the item most inside of "pickup_range"?
+			pickup_item(itemsInRange.pick_random())
 
 func _on_pickup_range_area_entered(area):
 	if area.is_in_group("TestFood"):
