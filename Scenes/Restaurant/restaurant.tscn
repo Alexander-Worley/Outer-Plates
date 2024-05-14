@@ -57,6 +57,76 @@ flip_h = true
 [node name="Table11" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
 position = Vector2(448.334, 384.384)
 
+[node name="Chair23" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(320.334, 272.384)
+scale = Vector2(0.015951, 0.016)
+texture = ExtResource("5_wdfdt")
+
+[node name="Chair24" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(384.334, 272.384)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("5_wdfdt")
+flip_h = true
+
+[node name="Table21" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
+position = Vector2(352.334, 272.384)
+
+[node name="Chair15" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(320, 360)
+scale = Vector2(0.015951, 0.016)
+texture = ExtResource("5_wdfdt")
+flip_h = true
+
+[node name="Table17" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
+position = Vector2(320, 384)
+
+[node name="Chair16" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(320, 408)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("5_wdfdt")
+
+[node name="Chair17" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(832.384, 360.384)
+scale = Vector2(0.015951, 0.016)
+texture = ExtResource("5_wdfdt")
+flip_h = true
+
+[node name="Table18" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
+position = Vector2(832.384, 384.384)
+
+[node name="Chair18" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(832.384, 408.384)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("5_wdfdt")
+
+[node name="Chair19" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(896.384, 328.384)
+scale = Vector2(0.015951, 0.016)
+texture = ExtResource("5_wdfdt")
+flip_h = true
+
+[node name="Table19" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
+position = Vector2(896.384, 352.384)
+
+[node name="Chair20" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(896.384, 376.384)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("5_wdfdt")
+
+[node name="Chair21" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(768.384, 256.384)
+scale = Vector2(0.015951, 0.016)
+texture = ExtResource("5_wdfdt")
+flip_h = true
+
+[node name="Table20" parent="TempForPrototype1Demo" instance=ExtResource("4_jgfwf")]
+position = Vector2(768.384, 280.384)
+
+[node name="Chair22" type="Sprite2D" parent="TempForPrototype1Demo"]
+position = Vector2(768.384, 304.384)
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("5_wdfdt")
+
 [node name="Chair5" type="Sprite2D" parent="TempForPrototype1Demo"]
 position = Vector2(672.334, 384.384)
 scale = Vector2(0.015951, 0.016)
