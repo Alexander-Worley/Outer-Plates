@@ -5,7 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
 size = Vector2(32, 32)
 
-[node name="Counter" type="StaticBody2D"]
+[node name="Counter" type="Area2D" groups=["Surfaces"]]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_tcddw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tcddw")
