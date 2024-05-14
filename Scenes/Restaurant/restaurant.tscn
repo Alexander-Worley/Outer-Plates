@@ -50,7 +50,7 @@ position = Vector2(576, 352)
 [node name="Foods" type="Node2D" parent="."]
 
 [node name="TestFood" parent="Foods" instance=ExtResource("3_d20ud")]
-position = Vector2(640, 320)
+position = Vector2(640, 312)
 
 [node name="Players" type="Node2D" parent="."]
 
