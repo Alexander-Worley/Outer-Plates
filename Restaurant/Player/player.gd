@@ -41,8 +41,9 @@ func _physics_process(delta):
 
 
 func _on_pickup_range_area_entered(area):
-	pass # Replace with function body.
-
+	if area.is_in_group("TestFood"):
+		itemsInRange.append(area)
+		print(itemsInRange) # TODO: Remove line
 
 func _on_pickup_range_area_exited(area):
 	pass # Replace with function body.
