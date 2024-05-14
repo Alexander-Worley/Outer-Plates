@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Restaurant/Player/player.tscn" id="2_srumu"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Restaurant/TestFood/testFood.tscn" id="3_d20ud"]
-[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Restaurant/Counter/counter.tscn" id="4_jgfwf"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Restaurant/Table/table.tscn" id="4_jgfwf"]
 
 [node name="Restaurant" type="Node2D"]
 
@@ -18,40 +18,34 @@ theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Prototype 1"
 
-[node name="Counters" type="Node2D" parent="."]
+[node name="Tables" type="Node2D" parent="."]
 
-[node name="Counter" parent="Counters" instance=ExtResource("4_jgfwf")]
+[node name="Table" parent="Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(640, 320)
+
+[node name="Table2" parent="Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(576, 256)
 
-[node name="Counter2" parent="Counters" instance=ExtResource("4_jgfwf")]
+[node name="Table3" parent="Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(544, 256)
 
-[node name="Counter3" parent="Counters" instance=ExtResource("4_jgfwf")]
+[node name="Table4" parent="Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(512, 256)
 
-[node name="Counter4" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(480, 256)
+[node name="Table5" parent="Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(512, 288)
 
-[node name="Counter5" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(480, 288)
+[node name="Table6" parent="Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(512, 320)
 
-[node name="Counter6" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(480, 320)
-
-[node name="Counter7" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(480, 352)
-
-[node name="Counter8" parent="Counters" instance=ExtResource("4_jgfwf")]
+[node name="Table7" parent="Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(512, 352)
 
-[node name="Counter9" parent="Counters" instance=ExtResource("4_jgfwf")]
+[node name="Table8" parent="Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(544, 352)
 
-[node name="Counter10" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(608, 256)
-
-[node name="Counter11" parent="Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(640, 320)
+[node name="Table9" parent="Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(576, 352)
 
 [node name="Foods" type="Node2D" parent="."]
 
