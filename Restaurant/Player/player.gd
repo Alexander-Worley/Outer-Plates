@@ -5,10 +5,12 @@ var holdableInHand: Area2D = null
 var holdablesInRange: Array = []
 var surfacesInRange: Array = []
 
+# Picks up a holdable
 func pickup_holdable(item: Area2D):
 	holdableInHand = item.duplicate()
 	item.queue_free()
 
+# Places "holdableInHand" on a surface
 func place_holdable():
 	if surfacesInRange:
 		var surface: Area2D = surfacesInRange.pick_random()
@@ -60,6 +62,8 @@ func _on_interact_range_area_entered(area):
 	print("Holdables: ", holdablesInRange) # Debug Code
 	print("Surfaces: ", surfacesInRange) # Debug Code
 
+# TODO: Figure out a way to pass in functions as variables to decompose the
+	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
 func _on_interact_range_area_exited(area):
 	if area.is_in_group("Holdables"):
 		holdablesInRange.erase(area)
