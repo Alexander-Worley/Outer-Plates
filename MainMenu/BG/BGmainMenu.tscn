@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c25l7bpom1gm4"]
 
-[ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Textures/BGmainMenu.png" id="1_ubwqv"]
+[ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Textures/BGs/BGmainMenu.png" id="1_ubwqv"]
 
 [node name="BGmainMenu" type="ParallaxBackground"]
 
