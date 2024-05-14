@@ -1,35 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1tqrv16m7ras"]
+[gd_scene load_steps=4 format=3 uid="uid://b1tqrv16m7ras"]
 
-[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_xb5q2"]
+[ext_resource type="Texture2D" uid="uid://dfg3supyqrt5" path="res://Assets/Spritesheets/slug-food-spritesheet.png" id="1_85a6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5y3i"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg7ae"]
+atlas = ExtResource("1_85a6q")
+region = Rect2(1, 38, 30, 24)
 
 [node name="TestFood" type="Area2D" groups=["Holdables"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m5y3i")
 
-[node name="devLabel" type="Node2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="devLabel"]
-custom_minimum_size = Vector2(24, 24)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0, 0, 0.74902)
-
-[node name="Food" type="Label" parent="devLabel"]
-custom_minimum_size = Vector2(24, 24)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Food"
-label_settings = ExtResource("1_xb5q2")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_jg7ae")
