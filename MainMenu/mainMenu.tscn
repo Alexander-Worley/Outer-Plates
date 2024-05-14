@@ -28,16 +28,6 @@ theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Prototype 1"
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 552.0
-offset_top = 448.0
-offset_right = 823.0
-offset_bottom = 559.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.960784, 0, 0, 1)
-theme_override_font_sizes/font_size = 75
-text = "Quit"
-
 [node name="startButton" type="TextureButton" parent="."]
 offset_left = 432.0
 offset_top = 408.0
@@ -47,5 +37,4 @@ texture_normal = SubResource("AtlasTexture_grw4p")
 texture_pressed = SubResource("AtlasTexture_aumqd")
 stretch_mode = 3
 
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
