@@ -20,6 +20,18 @@ config/icon="res://icon.svg"
 Global="*res://Global/Global.gd"
 Utils="*res://Global/Utils.gd"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "green",
+"res://Builds/": "red",
+"res://DevScenes/": "teal",
+"res://Global/": "yellow",
+"res://Scenes/": "purple",
+"res://TempForPrototype1Demo/": "red",
+"res://devTools/": "red"
+}
+
 [rendering]
 
 renderer/rendering_method="mobile"
