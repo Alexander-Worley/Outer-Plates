@@ -9,11 +9,10 @@ script = ExtResource("1_ncq7n")
 [node name="BGmainMenu" parent="." instance=ExtResource("1_0v6ry")]
 
 [node name="Prototype 1" type="Label" parent="BGmainMenu"]
-offset_left = 31.0
-offset_top = 278.0
-offset_right = 315.0
-offset_bottom = 347.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_top = 576.0
+offset_right = 284.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Prototype 1"
