@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l0ifmtxef2gc"
-path="res://.godot/imported/TEMP Restaurant BG-1.jpg-a514a8a3d798a12f67c18d1b8a109627.ctex"
+uid="uid://b2vslko42kst5"
+path="res://.godot/imported/BGmainMenu.png-97f6e619c6788700b2b754d3f217b34a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BGs/TEMP Restaurant BG-1.jpg"
-dest_files=["res://.godot/imported/TEMP Restaurant BG-1.jpg-a514a8a3d798a12f67c18d1b8a109627.ctex"]
+source_file="res://Assets/Textures/BGs/BGmainMenu.png"
+dest_files=["res://.godot/imported/BGmainMenu.png-97f6e619c6788700b2b754d3f217b34a.ctex"]
 
 [params]
 

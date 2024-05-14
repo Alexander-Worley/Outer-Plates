@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1ahdwi2ft7k0"]
 
-[ext_resource type="Script" path="res://Restaurant/Player/player.gd" id="1_inif3"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_lb2iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]

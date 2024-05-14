@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwv4k3jb73ulm"
-path="res://.godot/imported/startButton.png-94d126ae4e89d0276dd5351f53d7bea6.ctex"
+uid="uid://d0002nqwlgbm1"
+path="res://.godot/imported/TEMP Restaurant BG-2.jpg-81e1d99b30c386fe819137ef29563953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/startButton.png"
-dest_files=["res://.godot/imported/startButton.png-94d126ae4e89d0276dd5351f53d7bea6.ctex"]
+source_file="res://Assets/Textures/BGs/TEMP Restaurant BG-2.jpg"
+dest_files=["res://.godot/imported/TEMP Restaurant BG-2.jpg-81e1d99b30c386fe819137ef29563953.ctex"]
 
 [params]
 
