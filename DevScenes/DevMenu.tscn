@@ -1,3 +1,74 @@
 [gd_scene format=3 uid="uid://c5frv32h4gaga"]
 
 [node name="DevMenu" type="Node2D"]
+
+[node name="BG" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 1, 1, 0.498039)
+
+[node name="Main Restaurant" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 393.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 25
+text = "Main Restaurant"
+
+[node name="Main Menu" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 209.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 25
+text = "Main Menu"
+
+[node name="Prototype 1" type="Button" parent="BG"]
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 660.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 25
+text = "Prototype 1"
+
+[node name="Alexander" type="Button" parent="BG"]
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 201.0
+offset_bottom = 223.0
+theme_override_font_sizes/font_size = 25
+text = "Alexander"
+
+[node name="Andreea" type="Button" parent="BG"]
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 393.0
+offset_bottom = 223.0
+theme_override_font_sizes/font_size = 25
+text = "Andreea"
+
+[node name="Caitlin" type="Button" parent="BG"]
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 585.0
+offset_bottom = 223.0
+theme_override_font_sizes/font_size = 25
+text = "Caitlin"
+
+[node name="Logan" type="Button" parent="BG"]
+offset_left = 640.0
+offset_top = 192.0
+offset_right = 777.0
+offset_bottom = 223.0
+theme_override_font_sizes/font_size = 25
+text = "Logan"
+
+[node name="Matthew" type="Button" parent="BG"]
+offset_left = 832.0
+offset_top = 192.0
+offset_right = 969.0
+offset_bottom = 223.0
+theme_override_font_sizes/font_size = 25
+text = "Matthew"
