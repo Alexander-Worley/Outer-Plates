@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gngvmpqu8q8"
-path="res://.godot/imported/slug-walk-spritesheet.png-a4b28935063fe97769478825e1921111.ctex"
+uid="uid://etvg2vjc3pxe"
+path="res://.godot/imported/dish-pile.png-56c7139b2e355b7fff91ab0b7b7eb3cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spritesheets/slug-walk-spritesheet.png"
-dest_files=["res://.godot/imported/slug-walk-spritesheet.png-a4b28935063fe97769478825e1921111.ctex"]
+source_file="res://Assets/Sprites/Holdables/dish-pile.png"
+dest_files=["res://.godot/imported/dish-pile.png-56c7139b2e355b7fff91ab0b7b7eb3cd.ctex"]
 
 [params]
 

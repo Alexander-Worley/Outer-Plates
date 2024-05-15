@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgi88oy8lx1gl"
-path="res://.godot/imported/cutting-board.png-ac71b9ad49f730afa0a044fdae73de7a.ctex"
+uid="uid://g6sa6xxkg7q4"
+path="res://.godot/imported/chair.png-9bcce7a787f4954767ae741cde614bb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TempForPrototype1Demo/cutting-board.png"
-dest_files=["res://.godot/imported/cutting-board.png-ac71b9ad49f730afa0a044fdae73de7a.ctex"]
+source_file="res://Assets/Sprites/Environment/chair.png"
+dest_files=["res://.godot/imported/chair.png-9bcce7a787f4954767ae741cde614bb7.ctex"]
 
 [params]
 
