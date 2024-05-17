@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1tqrv16m7ras"]
+[gd_scene load_steps=3 format=3 uid="uid://b1tqrv16m7ras"]
 
-[ext_resource type="Texture2D" uid="uid://dfg3supyqrt5" path="res://Assets/Spritesheets/Holdables/slug-food-spritesheet.png" id="1_5iak7"]
+[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Sprites/Holdables/[design]Shotgun_V1.02.png" id="1_m5rvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5y3i"]
 size = Vector2(32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg7ae"]
-atlas = ExtResource("1_5iak7")
-region = Rect2(1, 38, 30, 24)
 
 [node name="TestFood" type="Area2D" groups=["Holdables"]]
 
@@ -15,6 +11,6 @@ region = Rect2(1, 38, 30, 24)
 shape = SubResource("RectangleShape2D_m5y3i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1.19209e-07)
-scale = Vector2(0.8, 0.8)
-texture = SubResource("AtlasTexture_jg7ae")
+position = Vector2(0, -2)
+scale = Vector2(0.338542, 0.505357)
+texture = ExtResource("1_m5rvf")
