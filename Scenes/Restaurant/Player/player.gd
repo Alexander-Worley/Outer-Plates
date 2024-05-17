@@ -30,6 +30,22 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	$interact_range.position = Vector2(horizontal, vertical)
 	get_node("AnimatedSprite2D").play("Walk_Groudon")
 
+func tilt_weapon(horizontal:int, vertical:int):
+	if isHolding:
+		if horizontal == 1 and vertical == 1:
+			$interact_range/holdableInHand.rotation_degrees = 45
+		elif horizontal == 1 and vertical == -1:
+			$interact_range/holdableInHand.rotation_degrees = -45
+		elif horizontal == -1 and vertical == 1:
+			$interact_range/holdableInHand.rotation_degrees = -45
+		elif horizontal == -1 and vertical == -1:
+			$interact_range/holdableInHand.rotation_degrees = 45
+		elif (horizontal == 1 or horizontal == -1) and vertical == 0:
+			$interact_range/holdableInHand.rotation_degrees = 0
+		elif horizontal == 0 and (vertical == 1 or vertical == -1):
+			$interact_range/holdableInHand.rotation_degrees = -90
+
+
 func _physics_process(delta):
 	# TODO: Replace "ui" variables with custom gameplay actions
 	# Gets the input movements and handles the movement/deceleration.
@@ -64,7 +80,7 @@ func _physics_process(delta):
 		
 	if horizontalMovement != 0 or verticalMovement != 0:
 		set_interact_range_position(horizontalMovement, verticalMovement)
-	
+		tilt_weapon(horizontalMovement, verticalMovement)
 	
 	if horizontalMovement <= 1 and horizontalMovement > 0:
 		get_node("AnimatedSprite2D").flip_h = false
@@ -73,6 +89,33 @@ func _physics_process(delta):
 	elif horizontalMovement >= -1 and horizontalMovement < 0:
 		get_node("AnimatedSprite2D").flip_h = true
 		if isHolding:
+			$interact_range/holdableInHand.scale.x = -1
+	
+	if isHolding:
+		if horizontalMovement == 0 and verticalMovement == -1:
+			$interact_range/holdableInHand.scale.x = 1
+		if horizontalMovement == 0 and verticalMovement == 1:
+			$interact_range/holdableInHand.scale.x = -1
+		
+			
+	#Deal with right stick input
+	if horizontalFacing != 0 or verticalFacing != 0:
+		set_interact_range_position(horizontalFacing, verticalFacing)
+		tilt_weapon(horizontalFacing, verticalFacing)
+
+	if horizontalFacing <= 1 and horizontalFacing > 0:
+		get_node("AnimatedSprite2D").flip_h = false
+		if isHolding:
+			$interact_range/holdableInHand.scale.x = 1
+	elif horizontalFacing >= -1 and horizontalFacing < 0:
+		get_node("AnimatedSprite2D").flip_h = true
+		if isHolding:
+			$interact_range/holdableInHand.scale.x = -1
+	
+	if isHolding:
+		if horizontalFacing == 0 and verticalFacing == -1:
+			$interact_range/holdableInHand.scale.x = 1
+		if horizontalFacing == 0 and verticalFacing == 1:
 			$interact_range/holdableInHand.scale.x = -1
 	
 	if horizontalMovement:
@@ -84,21 +127,7 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		if !horizontalMovement: get_node("AnimatedSprite2D").stop()
-		
-	#Deal with right stick input
-	if horizontalFacing != 0 or verticalFacing != 0:
-		set_interact_range_position(horizontalFacing, verticalFacing)
-
-	if horizontalFacing <= 1 and horizontalFacing > 0:
-		get_node("AnimatedSprite2D").flip_h = false
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = 1
-	elif horizontalFacing >= -1 and horizontalFacing < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = -1
 			
-		
 	move_and_slide()
 
 func _input(event):
