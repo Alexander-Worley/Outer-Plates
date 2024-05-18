@@ -10,5 +10,6 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	holdableOnSurface.name = "holdableOnSurface"
 	add_child(holdableOnSurface)
 	$holdableOnSurface.position = CENTER_OF_SURFACE
+	$holdableOnSurface.rotation = 0
 	isHolding = true
 	return true
