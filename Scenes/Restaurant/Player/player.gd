@@ -7,20 +7,23 @@ var surfacesInRange: Array = []
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
+	var holdableParent = holdable.get_parent()
 	var holdableInHand: Area2D = holdable.duplicate()
 	holdableInHand.name = "holdableInHand"
 	$interact_range.add_child(holdableInHand)
 	$interact_range/holdableInHand.position = Vector2(0,0)
+	if holdableParent.is_in_group("Surfaces"):
+		holdableParent.isHolding = false
 	holdable.queue_free()
 	isHolding = true
 
 # Places "holdableInHand" on a surface
 func place_holdable():
-	if surfacesInRange:
-		var surface: Area2D = surfacesInRange.pick_random()
-		surface.set_holdable_on_surface($interact_range/holdableInHand)
-		$interact_range/holdableInHand.queue_free()
-		isHolding = false
+	for surface: Area2D in surfacesInRange:
+		if surface.set_holdable_on_surface($interact_range/holdableInHand):
+			$interact_range/holdableInHand.queue_free()
+			isHolding = false
+			break
 
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
