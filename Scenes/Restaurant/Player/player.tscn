@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1ahdwi2ft7k0"]
+[gd_scene load_steps=11 format=3 uid="uid://d1ahdwi2ft7k0"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
+[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="2_3480m"]
 [ext_resource type="Texture2D" uid="uid://ddx7u50r3k1b3" path="res://Assets/Sprites/Characters/o-r_hs_383_1.png" id="3_1xpsk"]
 [ext_resource type="Texture2D" uid="uid://c6gngvmpqu8q8" path="res://Assets/Spritesheets/Characters/slug-walk-spritesheet.png" id="3_4dysh"]
 [ext_resource type="Texture2D" uid="uid://bpm67pdv7o5im" path="res://Assets/Sprites/Characters/o-r_hs_383_2.png" id="4_ux0l1"]
@@ -54,6 +55,41 @@ shape = SubResource("RectangleShape2D_kn0nk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interact_range"]
 shape = SubResource("CircleShape2D_5x6jq")
+
+[node name="devSprite" type="Node2D" parent="."]
+scale = Vector2(1, 2)
+
+[node name="devTexture" type="ColorRect" parent="devSprite"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 0.74902)
+metadata/_edit_use_anchors_ = true
+
+[node name="devLabel" type="Label" parent="devSprite"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player"
+label_settings = ExtResource("2_3480m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
