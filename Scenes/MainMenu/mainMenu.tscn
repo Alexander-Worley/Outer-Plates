@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/MainMenu/BG/BGmainMenu.tscn" id="1_0v6ry"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/mainMenu.gd" id="1_ncq7n"]
-[ext_resource type="Texture2D" uid="uid://cwv4k3jb73ulm" path="res://Assets/Spritesheets/UI/startButton.png" id="3_slenx"]
+[ext_resource type="Texture2D" uid="uid://cwv4k3jb73ulm" path="res://Assets/UI/startButton.png" id="3_slenx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_grw4p"]
 resource_name = "startButton"
