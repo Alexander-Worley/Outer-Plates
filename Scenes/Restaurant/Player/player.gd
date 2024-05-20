@@ -73,17 +73,14 @@ func _physics_process(delta):
 	# Move interactRange
 	var interactRange_x: float = 0
 	var interactRange_y: float = 0
-	var flipSprite: bool = false
 	# If aiming input, use aiming input
 	if horizontalFacing or verticalFacing:
 		interactRange_x = horizontalFacing
 		interactRange_y = verticalFacing
-		if horizontalFacing == -1: flipSprite = true
 	# If no aiming input, use movement input
 	elif horizontalMovement or verticalMovement:
 		interactRange_x = horizontalMovement
 		interactRange_y = verticalMovement
-		if horizontalMovement == -1: flipSprite = true
 	# Move interactRange if any input
 	if interactRange_x or interactRange_y:
 		set_interact_range_position(interactRange_x, interactRange_y)
@@ -92,8 +89,8 @@ func _physics_process(delta):
 			tilt_weapon(interactRange_x, interactRange_y)
 	
 	# Flip Player sprite if facing left
-	if interactRange_x:
-		get_node("AnimatedSprite2D").flip_h = flipSprite
+	var flipSprite: bool = true if (horizontalFacing == -1 or horizontalMovement == -1) else false
+	get_node("AnimatedSprite2D").flip_h = flipSprite
 	
 	# Flip holdableInHand sprite if needed
 	if isHolding and interactRange_x:
