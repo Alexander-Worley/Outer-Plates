@@ -120,18 +120,18 @@ func _input(event):
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
 
-# TODO: Figure out a way to pass in functions as variables to decompose the
-	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
+# Handles inRange lists
 func _on_interact_range_area_entered(area):
-	if area.is_in_group("Holdables"):
-		holdablesInRange.append(area)
-	else: if area.is_in_group("Surfaces"):
-		surfacesInRange.append(area)
-
-# TODO: Figure out a way to pass in functions as variables to decompose the
-	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
+	check_interact_range(area, "append")
 func _on_interact_range_area_exited(area):
+	check_interact_range(area, "erase")
+func check_interact_range(area, operation):
 	if area.is_in_group("Holdables"):
-		holdablesInRange.erase(area)
-	else: if area.is_in_group("Surfaces"):
-		surfacesInRange.erase(area)
+		update_in_range(holdablesInRange, area, operation)
+	elif area.is_in_group("Surfaces"):
+		update_in_range(surfacesInRange, area, operation)
+func update_in_range(listToUpdate, areaToUpdate, operation):
+	if operation == "append":
+		listToUpdate.append(areaToUpdate)
+	elif operation == "erase":
+		listToUpdate.erase(areaToUpdate)
