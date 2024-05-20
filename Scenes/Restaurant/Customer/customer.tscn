@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://df7g7vvs80ot1"]
+
+[ext_resource type="Texture2D" uid="uid://ddx7u50r3k1b3" path="res://Assets/Sprites/Characters/o-r_hs_383_1.png" id="1_87x4q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1il2"]
+radius = 25.02
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2esj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_87x4q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Customer" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v1il2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -12)
+scale = Vector2(1, 0.953125)
+sprite_frames = SubResource("SpriteFrames_e2esj")
