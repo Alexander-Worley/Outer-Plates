@@ -19,14 +19,16 @@ script = ExtResource("1_ncq7n")
 
 [node name="BGmainMenu" parent="." instance=ExtResource("1_0v6ry")]
 
-[node name="Prototype 1" type="Label" parent="BGmainMenu"]
-offset_top = 576.0
-offset_right = 284.0
-offset_bottom = 648.0
+[node name="Prototype 2" type="Label" parent="BGmainMenu"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 292.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
-text = "Prototype 1"
+text = "Prototype 2"
+metadata/_edit_use_anchors_ = true
 
 [node name="startButton" type="TextureButton" parent="."]
 offset_left = 432.0
