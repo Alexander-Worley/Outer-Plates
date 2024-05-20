@@ -43,6 +43,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CookingTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
