@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="2_3480m"]
 [ext_resource type="Texture2D" uid="uid://ddx7u50r3k1b3" path="res://Assets/Sprites/Characters/o-r_hs_383_1.png" id="3_1xpsk"]
-[ext_resource type="Texture2D" uid="uid://c6gngvmpqu8q8" path="res://Assets/Spritesheets/Characters/slug-walk-spritesheet.png" id="3_4dysh"]
+[ext_resource type="Texture2D" uid="uid://c6gngvmpqu8q8" path="res://Assets/Spritesheets/Characters/slug-spritesheet.png" id="3_4dysh"]
 [ext_resource type="Texture2D" uid="uid://bpm67pdv7o5im" path="res://Assets/Sprites/Characters/o-r_hs_383_2.png" id="4_ux0l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]

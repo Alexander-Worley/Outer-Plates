@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etvg2vjc3pxe"
-path="res://.godot/imported/dish-pile.png-56c7139b2e355b7fff91ab0b7b7eb3cd.ctex"
+uid="uid://b2vslko42kst5"
+path="res://.godot/imported/start-screen-background.png-21c8eea9f284066c442674941d4ad079.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Holdables/dish-pile.png"
-dest_files=["res://.godot/imported/dish-pile.png-56c7139b2e355b7fff91ab0b7b7eb3cd.ctex"]
+source_file="res://Assets/Textures/BGs/start-screen-background.png"
+dest_files=["res://.godot/imported/start-screen-background.png-21c8eea9f284066c442674941d4ad079.ctex"]
 
 [params]
 

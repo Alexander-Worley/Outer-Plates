@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gngvmpqu8q8"
-path="res://.godot/imported/slug-walk-spritesheet.png-9db1829773433de916f6d1e507a85afe.ctex"
+uid="uid://chnfcldivwl0w"
+path="res://.godot/imported/mop-spritesheet.png-bf523e3dda7ce5f4874a738048b2748c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Spritesheets/Characters/slug-walk-spritesheet.png"
-dest_files=["res://.godot/imported/slug-walk-spritesheet.png-9db1829773433de916f6d1e507a85afe.ctex"]
+source_file="res://Assets/Spritesheets/Holdables/mop-spritesheet.png"
+dest_files=["res://.godot/imported/mop-spritesheet.png-bf523e3dda7ce5f4874a738048b2748c.ctex"]
 
 [params]
 

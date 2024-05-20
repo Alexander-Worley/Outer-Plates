@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_kqqf8"]
-[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="2_rngiv"]
+[ext_resource type="Texture2D" uid="uid://bu6tn7cysqhjy" path="res://Assets/Textures/BGs/planet-1-dining-no-space-background.png" id="2_udwln"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="3_gejkp"]
 [ext_resource type="PackedScene" uid="uid://7srpt4k3diod" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_5qwdc"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_gr4b5"]
@@ -21,8 +21,8 @@ size = Vector2(784, 24)
 
 [node name="Diner-background" type="Sprite2D" parent="BGrestaurant"]
 position = Vector2(576, 272)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_rngiv")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_udwln")
 
 [node name="Alexander" type="Label" parent="BGrestaurant"]
 offset_left = 8.0

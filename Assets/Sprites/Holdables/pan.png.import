@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgi88oy8lx1gl"
-path="res://.godot/imported/cutting-board.png-76110c6db987f598959fabf47f787039.ctex"
+uid="uid://dipmyoc0j3ijx"
+path="res://.godot/imported/pan.png-c35814c3d8ea37be5ac1889ff9f94ab6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Environment/cutting-board.png"
-dest_files=["res://.godot/imported/cutting-board.png-76110c6db987f598959fabf47f787039.ctex"]
+source_file="res://Assets/Sprites/Holdables/pan.png"
+dest_files=["res://.godot/imported/pan.png-c35814c3d8ea37be5ac1889ff9f94ab6.ctex"]
 
 [params]
 
