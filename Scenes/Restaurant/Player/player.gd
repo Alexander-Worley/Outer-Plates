@@ -39,20 +39,14 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	interactRange.position = Vector2(horizontal, vertical)
 	get_node("AnimatedSprite2D").play("Walk_Groudon")
 
-func tilt_weapon(horizontal:int, vertical:int):
-	if isHolding:
-		if horizontal == 1 and vertical == 1:
-			holdableInHand.rotation_degrees = 45
-		elif horizontal == 1 and vertical == -1:
-			holdableInHand.rotation_degrees = -45
-		elif horizontal == -1 and vertical == 1:
-			holdableInHand.rotation_degrees = -45
-		elif horizontal == -1 and vertical == -1:
-			holdableInHand.rotation_degrees = 45
-		elif (horizontal == 1 or horizontal == -1) and vertical == 0:
-			holdableInHand.rotation_degrees = 0
-		elif horizontal == 0 and (vertical == 1 or vertical == -1):
-			holdableInHand.rotation_degrees = -90
+func tilt_weapon(horizontal: int, vertical: int):
+	if !isHolding: return
+	const DIAGONAL_ANGLE = 45
+	var rotationDegrees = DIAGONAL_ANGLE * horizontal * vertical
+	# if aiming up or down
+	if !horizontal and vertical:
+		rotationDegrees = -2 * DIAGONAL_ANGLE
+	holdableInHand.rotation_degrees = rotationDegrees
 
 
 func _physics_process(delta):
