@@ -39,7 +39,7 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	interactRange.position = Vector2(horizontal, vertical)
 	get_node("AnimatedSprite2D").play("Walk_Groudon")
 
-func tilt_weapon(horizontal: int, vertical: int):
+func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
 	const DIAGONAL_ANGLE = 45
 	var rotationDegrees = DIAGONAL_ANGLE * horizontal * vertical
