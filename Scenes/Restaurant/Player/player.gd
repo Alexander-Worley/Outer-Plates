@@ -82,7 +82,8 @@ func _physics_process(delta):
 		
 	if horizontalMovement != 0 or verticalMovement != 0:
 		set_interact_range_position(horizontalMovement, verticalMovement)
-		tilt_weapon(horizontalMovement, verticalMovement)
+		if isHolding and holdableInHand.is_in_group("Weapons"):
+			tilt_weapon(horizontalMovement, verticalMovement)
 	
 	if horizontalMovement <= 1 and horizontalMovement > 0:
 		get_node("AnimatedSprite2D").flip_h = false
@@ -103,7 +104,8 @@ func _physics_process(delta):
 	#Deal with right stick input
 	if horizontalFacing != 0 or verticalFacing != 0:
 		set_interact_range_position(horizontalFacing, verticalFacing)
-		tilt_weapon(horizontalFacing, verticalFacing)
+		if isHolding and holdableInHand.is_in_group("Weapons"):
+			tilt_weapon(horizontalFacing, verticalFacing)
 
 	if horizontalFacing <= 1 and horizontalFacing > 0:
 		get_node("AnimatedSprite2D").flip_h = false
