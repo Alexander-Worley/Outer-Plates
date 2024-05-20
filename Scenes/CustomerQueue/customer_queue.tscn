@@ -6,13 +6,14 @@
 size = Vector2(200, 35)
 
 [node name="CustomerQueue" type="Area2D"]
-position = Vector2(1, -2)
+position = Vector2(14, 4)
 script = ExtResource("1_44v8a")
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(90, 7.5)
+position = Vector2(100, 18)
 shape = SubResource("RectangleShape2D_75rhw")
 
-[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
