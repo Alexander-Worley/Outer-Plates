@@ -18,6 +18,8 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.isHolding = false
+	if holdableInHand.is_in_group("ForStove"):
+		holdableInHand.doneness = holdable.doneness
 	holdable.queue_free()
 	isHolding = true
 

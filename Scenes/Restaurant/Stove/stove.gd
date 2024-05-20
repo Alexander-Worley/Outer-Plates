@@ -15,13 +15,14 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	holdableOnSurface.position = CENTER_OF_SURFACE
 	holdableOnSurface.rotation = 0
 	isHolding = true
-	begin_cooking()
+	if holdableOnSurface.is_in_group("ForStove"):
+		holdableOnSurface.doneness = holdableInHand.doneness
+		begin_cooking()
 	return true
 
 # Begin cooking
 func begin_cooking():
-	if isCooking: return
-	print("Cooking started for: ", holdableOnSurface.name)
+	if isCooking or holdableOnSurface.isBurnt(): return
 	cookingTimer.start()
 	isCooking = true
 	# Cook asynchronously
@@ -33,9 +34,9 @@ func stop_cooking():
 	if !isCooking: return
 	cookingTimer.stop()
 	isCooking = false
-	print("Cooking stopped for: ", holdableOnSurface.name)
 
 # Finished cooking timer
 func _on_cookingTimer_timeout():
 	stop_cooking()
-	print("Cooking completed for: ", holdableOnSurface.name)
+	holdableOnSurface.increase_doneness()
+	begin_cooking()

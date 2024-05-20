@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=10 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_kqqf8"]
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="2_rngiv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7srpt4k3diod" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_5qwdc"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="4_gr4b5"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_2orcc"]
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestFood/testFoodForStove.tscn" id="6_v0jkc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
 size = Vector2(20, 442)
@@ -66,13 +67,19 @@ shape = SubResource("RectangleShape2D_wog68")
 [node name="Table" parent="Surfaces" instance=ExtResource("3_gejkp")]
 position = Vector2(640, 320)
 
+[node name="Table2" parent="Surfaces" instance=ExtResource("3_gejkp")]
+position = Vector2(544, 288)
+
 [node name="Stove" parent="Surfaces" instance=ExtResource("4_5qwdc")]
-position = Vector2(544, 320)
+position = Vector2(512, 288)
 
 [node name="Holdables" type="Node2D" parent="."]
 
 [node name="TestFood" parent="Holdables" instance=ExtResource("4_gr4b5")]
 position = Vector2(640, 312)
+
+[node name="TestFoodForStove" parent="Holdables" instance=ExtResource("6_v0jkc")]
+position = Vector2(544, 280)
 
 [node name="Players" type="Node2D" parent="."]
 

@@ -1,16 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtdmt8ydsnyci"]
+[gd_scene load_steps=5 format=3 uid="uid://dtdmt8ydsnyci"]
 
-[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Sprites/Holdables/[design]Shotgun_V1.02.png" id="1_t8kl6"]
+[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_a7x1e"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestFood/testFoodForStove.gd" id="1_ktuhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70iey"]
 size = Vector2(32, 32)
 
+[sub_resource type="GDScript" id="GDScript_e1ayh"]
+script/source = "# Temporary file that changes devSprite of TestFoodForStove
+
+extends Node2D
+
+const TEMP_COLORS = {
+	0: \"b23638bf\",
+	1: \"#d1503ebf\",
+	2: \"#e1835dbf\",
+	3: \"d8a481bf\",
+	4: \"000000bf\"
+}
+
+const TEMP_LABLES = {
+	0: \"Raw Food\",
+	1: \"Rare Food\",
+	2: \"Medium Food\",
+	3: \"Well-Done Food\",
+	4: \"Burnt Food\"
+}
+
+func TEMP_dev_sprite_update(doneness: int):
+	if doneness in TEMP_COLORS:
+		$devTexture.color = TEMP_COLORS[doneness]
+	if doneness in TEMP_LABLES:
+		$devLabel.text = TEMP_LABLES[doneness]
+"
+
 [node name="TestFoodForStove" type="Area2D" groups=["ForStove", "Holdables"]]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_ktuhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_70iey")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
-scale = Vector2(0.338542, 0.505357)
-texture = ExtResource("1_t8kl6")
+[node name="devSprite" type="Node2D" parent="."]
+script = SubResource("GDScript_e1ayh")
+
+[node name="devTexture" type="ColorRect" parent="devSprite"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.698039, 0.211765, 0.219608, 0.74902)
+metadata/_edit_use_anchors_ = true
+
+[node name="devLabel" type="Label" parent="devSprite"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Raw Food"
+label_settings = ExtResource("1_a7x1e")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
