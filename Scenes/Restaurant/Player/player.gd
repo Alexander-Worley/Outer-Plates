@@ -4,24 +4,30 @@ const SPEED: float = 120.0
 var isHolding: bool = false
 var holdablesInRange: Array = []
 var surfacesInRange: Array = []
+var holdableInHand: Area2D = null
+@onready var interactRange: Area2D = $interactRange
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
-	var holdableInHand: Area2D = holdable.duplicate()
-	holdableInHand.name = "holdableInHand"
-	$interact_range.add_child(holdableInHand)
-	$interact_range/holdableInHand.position = Vector2(0,0)
+	holdableInHand = holdable.duplicate()
+	interactRange.add_child(holdableInHand)
+	holdableInHand.position = Vector2(0,0)
+	# Interupt cooking if needed
+	if holdableParent.is_in_group("CookingStation"):
+		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.isHolding = false
+	if holdableInHand.is_in_group("ForStove"):
+		holdableInHand.doneness = holdable.doneness
 	holdable.queue_free()
 	isHolding = true
 
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
-		if surface.set_holdable_on_surface($interact_range/holdableInHand):
-			$interact_range/holdableInHand.queue_free()
+		if surface.set_holdable_on_surface(holdableInHand):
+			holdableInHand.queue_free()
 			isHolding = false
 			break
 
@@ -30,97 +36,72 @@ func place_holdable():
 func set_interact_range_position(horizontal: float, vertical: float):
 	horizontal *= Global.PIXEL_DIMENSION
 	vertical *= Global.PIXEL_DIMENSION
-	$interact_range.position = Vector2(horizontal, vertical)
+	interactRange.position = Vector2(horizontal, vertical)
 	get_node("AnimatedSprite2D").play("Walk_Groudon")
 
-func tilt_weapon(horizontal:int, vertical:int):
-	if isHolding:
-		if horizontal == 1 and vertical == 1:
-			$interact_range/holdableInHand.rotation_degrees = 45
-		elif horizontal == 1 and vertical == -1:
-			$interact_range/holdableInHand.rotation_degrees = -45
-		elif horizontal == -1 and vertical == 1:
-			$interact_range/holdableInHand.rotation_degrees = -45
-		elif horizontal == -1 and vertical == -1:
-			$interact_range/holdableInHand.rotation_degrees = 45
-		elif (horizontal == 1 or horizontal == -1) and vertical == 0:
-			$interact_range/holdableInHand.rotation_degrees = 0
-		elif horizontal == 0 and (vertical == 1 or vertical == -1):
-			$interact_range/holdableInHand.rotation_degrees = -90
+func tilt_weapon(horizontal: float, vertical: float):
+	if !isHolding: return
+	const DIAGONAL_ANGLE = 45
+	var rotationDegrees = DIAGONAL_ANGLE * horizontal * vertical
+	# if aiming up or down
+	if !horizontal and vertical:
+		rotationDegrees = -2 * DIAGONAL_ANGLE
+	holdableInHand.rotation_degrees = rotationDegrees
 
 
 func _physics_process(delta):
-	# TODO: Replace "ui" variables with custom gameplay actions
-	# Gets the input movements and handles the movement/deceleration.
+	# Fetch movement input
 	var horizontalMovement: float = Input.get_axis("left", "right")
 	var verticalMovement: float = Input.get_axis("up", "down")
 	
-	# Fetch rightstick movements
+	# Fetch aiming input
 	var horizontalFacing: float = Input.get_axis("face_left", "face_right")
 	var verticalFacing: float = Input.get_axis("face_up", "face_down")
 	
-	# Sanitize leftstick input	
-	if horizontalMovement > 0:
-		horizontalMovement = 1
-	elif horizontalMovement < 0:
-		horizontalMovement = -1
+	# Sanitize movement input
+	if horizontalMovement > 0: horizontalMovement = 1
+	elif horizontalMovement < 0: horizontalMovement = -1
+	if verticalMovement > 0: verticalMovement = 1
+	elif verticalMovement < 0: verticalMovement = -1
 	
-	if verticalMovement > 0:
-		verticalMovement = 1
-	elif verticalMovement < 0:
-		verticalMovement = -1
+	# Sanitize aiming input
+	if horizontalFacing > 0: horizontalFacing = 1
+	elif horizontalFacing < 0: horizontalFacing = -1
+	if verticalFacing > 0: verticalFacing = 1
+	elif verticalFacing < 0: verticalFacing = -1
 	
-	# Sanitize rightstick input	
-	if horizontalFacing > 0:
-		horizontalFacing = 1
-	elif horizontalFacing < 0:
-		horizontalFacing = -1
+	# Move interactRange
+	var interactRange_x: float = 0
+	var interactRange_y: float = 0
+	var flipSprite: bool = false
+	# If aiming input, use aiming input
+	if horizontalFacing or verticalFacing:
+		interactRange_x = horizontalFacing
+		interactRange_y = verticalFacing
+		if horizontalFacing == -1: flipSprite = true
+	# If no aiming input, use movement input
+	elif horizontalMovement or verticalMovement:
+		interactRange_x = horizontalMovement
+		interactRange_y = verticalMovement
+		if horizontalMovement == -1: flipSprite = true
+	# Move interactRange if any input
+	if interactRange_x or interactRange_y:
+		set_interact_range_position(interactRange_x, interactRange_y)
+		# Rotate any Weapon being held
+		if isHolding and holdableInHand.is_in_group("Weapons"):
+			tilt_weapon(interactRange_x, interactRange_y)
 	
-	if verticalFacing > 0:
-		verticalFacing = 1
-	elif verticalFacing < 0:
-		verticalFacing = -1
-		
-	if horizontalMovement != 0 or verticalMovement != 0:
-		set_interact_range_position(horizontalMovement, verticalMovement)
-		tilt_weapon(horizontalMovement, verticalMovement)
+	# Flip Player sprite if facing left
+	if interactRange_x:
+		get_node("AnimatedSprite2D").flip_h = flipSprite
 	
-	if horizontalMovement <= 1 and horizontalMovement > 0:
-		get_node("AnimatedSprite2D").flip_h = false
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = 1
-	elif horizontalMovement >= -1 and horizontalMovement < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = -1
+	# Flip holdableInHand sprite if needed
+	if isHolding and interactRange_x:
+		holdableInHand.scale.x = interactRange_x
+	elif isHolding and interactRange_y:
+		holdableInHand.scale.x = -interactRange_y
 	
-	if isHolding:
-		if horizontalMovement == 0 and verticalMovement == -1:
-			$interact_range/holdableInHand.scale.x = 1
-		if horizontalMovement == 0 and verticalMovement == 1:
-			$interact_range/holdableInHand.scale.x = -1
-		
-			
-	#Deal with right stick input
-	if horizontalFacing != 0 or verticalFacing != 0:
-		set_interact_range_position(horizontalFacing, verticalFacing)
-		tilt_weapon(horizontalFacing, verticalFacing)
-
-	if horizontalFacing <= 1 and horizontalFacing > 0:
-		get_node("AnimatedSprite2D").flip_h = false
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = 1
-	elif horizontalFacing >= -1 and horizontalFacing < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-		if isHolding:
-			$interact_range/holdableInHand.scale.x = -1
-	
-	if isHolding:
-		if horizontalFacing == 0 and verticalFacing == -1:
-			$interact_range/holdableInHand.scale.x = 1
-		if horizontalFacing == 0 and verticalFacing == 1:
-			$interact_range/holdableInHand.scale.x = -1
-	
+	# Player movement
 	if horizontalMovement:
 		velocity.x = horizontalMovement * SPEED
 	else:
@@ -129,8 +110,9 @@ func _physics_process(delta):
 		velocity.y = verticalMovement * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		# if no movement at all
 		if !horizontalMovement: get_node("AnimatedSprite2D").stop()
-			
+	
 	move_and_slide()
 
 func _input(event):
