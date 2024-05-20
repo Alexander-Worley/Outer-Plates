@@ -50,78 +50,58 @@ func tilt_weapon(horizontal: float, vertical: float):
 
 
 func _physics_process(delta):
-	# Gets the input movements and handles the movement/deceleration.
+	# Fetch movement input
 	var horizontalMovement: float = Input.get_axis("left", "right")
 	var verticalMovement: float = Input.get_axis("up", "down")
 	
-	# Fetch rightstick movements
+	# Fetch aiming input
 	var horizontalFacing: float = Input.get_axis("face_left", "face_right")
 	var verticalFacing: float = Input.get_axis("face_up", "face_down")
 	
-	# Sanitize leftstick input	
-	if horizontalMovement > 0:
-		horizontalMovement = 1
-	elif horizontalMovement < 0:
-		horizontalMovement = -1
+	# Sanitize movement input
+	if horizontalMovement > 0: horizontalMovement = 1
+	elif horizontalMovement < 0: horizontalMovement = -1
+	if verticalMovement > 0: verticalMovement = 1
+	elif verticalMovement < 0: verticalMovement = -1
 	
-	if verticalMovement > 0:
-		verticalMovement = 1
-	elif verticalMovement < 0:
-		verticalMovement = -1
+	# Sanitize aiming input
+	if horizontalFacing > 0: horizontalFacing = 1
+	elif horizontalFacing < 0: horizontalFacing = -1
+	if verticalFacing > 0: verticalFacing = 1
+	elif verticalFacing < 0: verticalFacing = -1
 	
-	# Sanitize rightstick input	
-	if horizontalFacing > 0:
-		horizontalFacing = 1
-	elif horizontalFacing < 0:
-		horizontalFacing = -1
-	
-	if verticalFacing > 0:
-		verticalFacing = 1
-	elif verticalFacing < 0:
-		verticalFacing = -1
-		
-	if horizontalMovement != 0 or verticalMovement != 0:
-		set_interact_range_position(horizontalMovement, verticalMovement)
+	# Move interactRange
+	var interactRange_x: float = 0
+	var interactRange_y: float = 0
+	var flipSprite: bool = false
+	# If aiming input, use aiming input
+	if horizontalFacing or verticalFacing:
+		interactRange_x = horizontalFacing
+		interactRange_y = verticalFacing
+		if horizontalFacing == -1: flipSprite = true
+	# If no aiming input, use movement input
+	elif horizontalMovement or verticalMovement:
+		interactRange_x = horizontalMovement
+		interactRange_y = verticalMovement
+		if horizontalMovement == -1: flipSprite = true
+	# Move interactRange if any input
+	if interactRange_x or interactRange_y:
+		set_interact_range_position(interactRange_x, interactRange_y)
+		# Rotate any Weapon being held
 		if isHolding and holdableInHand.is_in_group("Weapons"):
-			tilt_weapon(horizontalMovement, verticalMovement)
+			tilt_weapon(interactRange_x, interactRange_y)
 	
-	if horizontalMovement <= 1 and horizontalMovement > 0:
-		get_node("AnimatedSprite2D").flip_h = false
-		if isHolding:
-			holdableInHand.scale.x = 1
-	elif horizontalMovement >= -1 and horizontalMovement < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-		if isHolding:
-			holdableInHand.scale.x = -1
+	# Flip Player sprite if facing left
+	if interactRange_x:
+		get_node("AnimatedSprite2D").flip_h = flipSprite
 	
-	if isHolding:
-		if horizontalMovement == 0 and verticalMovement == -1:
-			holdableInHand.scale.x = 1
-		if horizontalMovement == 0 and verticalMovement == 1:
-			holdableInHand.scale.x = -1
-		
-			
-	#Deal with right stick input
-	if horizontalFacing != 0 or verticalFacing != 0:
-		set_interact_range_position(horizontalFacing, verticalFacing)
-		if isHolding and holdableInHand.is_in_group("Weapons"):
-			tilt_weapon(horizontalFacing, verticalFacing)
-
-	if horizontalFacing <= 1 and horizontalFacing > 0:
-		get_node("AnimatedSprite2D").flip_h = false
-		if isHolding:
-			holdableInHand.scale.x = 1
-	elif horizontalFacing >= -1 and horizontalFacing < 0:
-		get_node("AnimatedSprite2D").flip_h = true
-		if isHolding:
-			holdableInHand.scale.x = -1
+	# Flip holdableInHand sprite if needed
+	if isHolding and interactRange_x:
+		holdableInHand.scale.x = interactRange_x
+	elif isHolding and interactRange_y:
+		holdableInHand.scale.x = -interactRange_y
 	
-	if isHolding:
-		if horizontalFacing == 0 and verticalFacing == -1:
-			holdableInHand.scale.x = 1
-		if horizontalFacing == 0 and verticalFacing == 1:
-			holdableInHand.scale.x = -1
-	
+	# Player movement
 	if horizontalMovement:
 		velocity.x = horizontalMovement * SPEED
 	else:
@@ -130,8 +110,9 @@ func _physics_process(delta):
 		velocity.y = verticalMovement * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		# if no movement at all
 		if !horizontalMovement: get_node("AnimatedSprite2D").stop()
-			
+	
 	move_and_slide()
 
 func _input(event):
