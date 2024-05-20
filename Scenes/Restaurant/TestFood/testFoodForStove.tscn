@@ -35,13 +35,14 @@ func TEMP_dev_sprite_update(doneness: int):
 "
 
 [node name="TestFoodForStove" type="Area2D" groups=["ForStove", "Holdables"]]
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_ktuhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_70iey")
 
 [node name="devSprite" type="Node2D" parent="."]
+scale = Vector2(0.8, 0.8)
 script = SubResource("GDScript_e1ayh")
 
 [node name="devTexture" type="ColorRect" parent="devSprite"]
