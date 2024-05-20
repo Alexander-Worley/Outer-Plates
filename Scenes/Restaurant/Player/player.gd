@@ -50,7 +50,6 @@ func tilt_weapon(horizontal: int, vertical: int):
 
 
 func _physics_process(delta):
-	# TODO: Replace "ui" variables with custom gameplay actions
 	# Gets the input movements and handles the movement/deceleration.
 	var horizontalMovement: float = Input.get_axis("left", "right")
 	var verticalMovement: float = Input.get_axis("up", "down")
