@@ -24,9 +24,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_7tfps")
 
 [node name="Prototype 2" type="Label" parent="BGrestaurant"]
-offset_top = 576.0
-offset_right = 284.0
-offset_bottom = 648.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 292.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
@@ -34,15 +35,15 @@ text = "Prototype 2"
 metadata/_edit_use_anchors_ = true
 
 [node name="Instructions" type="Label" parent="BGrestaurant"]
-offset_left = 48.0
+offset_left = 8.0
 offset_top = 504.0
-offset_right = 1150.0
-offset_bottom = 645.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
-text = "Instructions: 1. \"Arrow keys\" to move.
-                        2. \"Space\" to pickup/place items."
+text = "Instructions: \"WASD\" to move, \"E\" to pickup/
+place items, & (optional) \"Arrow keys\" to aim."
 
 [node name="Boundaries" type="Node2D" parent="."]
 
