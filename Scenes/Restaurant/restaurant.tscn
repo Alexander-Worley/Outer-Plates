@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=10 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="1_7tfps"]
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="3_d20ud"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="4_jgfwf"]
+[ext_resource type="PackedScene" uid="uid://7srpt4k3diod" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_x3u6a"]
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestFood/testFoodForStove.tscn" id="6_uutht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh3bp"]
 size = Vector2(20, 442)
@@ -71,15 +73,24 @@ position = Vector2(384, -112)
 position = Vector2(192, 608)
 shape = SubResource("RectangleShape2D_mixcl")
 
-[node name="Tables" type="Node2D" parent="."]
+[node name="Surfaces" type="Node2D" parent="."]
 
-[node name="Table" parent="Tables" instance=ExtResource("4_jgfwf")]
+[node name="Table" parent="Surfaces" instance=ExtResource("4_jgfwf")]
 position = Vector2(640, 320)
 
-[node name="Foods" type="Node2D" parent="."]
+[node name="Table2" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(544, 288)
 
-[node name="TestFood" parent="Foods" instance=ExtResource("3_d20ud")]
+[node name="Stove" parent="Surfaces" instance=ExtResource("4_x3u6a")]
+position = Vector2(512, 320)
+
+[node name="Holdables" type="Node2D" parent="."]
+
+[node name="TestFood" parent="Holdables" instance=ExtResource("3_d20ud")]
 position = Vector2(640, 312)
+
+[node name="TestFoodForStove" parent="Holdables" instance=ExtResource("6_uutht")]
+position = Vector2(544, 280)
 
 [node name="Players" type="Node2D" parent="."]
 

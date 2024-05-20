@@ -71,7 +71,7 @@ position = Vector2(640, 320)
 position = Vector2(544, 288)
 
 [node name="Stove" parent="Surfaces" instance=ExtResource("4_5qwdc")]
-position = Vector2(512, 288)
+position = Vector2(512, 320)
 
 [node name="Holdables" type="Node2D" parent="."]
 
