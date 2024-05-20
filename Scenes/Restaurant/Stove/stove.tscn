@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
 size = Vector2(32, 32)
 
-[node name="Stove" type="Area2D" groups=["Surfaces"]]
+[node name="Stove" type="Area2D" groups=["CookingStation", "Surfaces"]]
 script = ExtResource("1_il2kw")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -42,3 +42,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

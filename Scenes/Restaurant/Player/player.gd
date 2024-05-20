@@ -4,14 +4,18 @@ const SPEED: float = 120.0
 var isHolding: bool = false
 var holdablesInRange: Array = []
 var surfacesInRange: Array = []
+var holdableInHand: Area2D = null
+@onready var interactRange: Area2D = $interactRange
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
-	var holdableInHand: Area2D = holdable.duplicate()
-	holdableInHand.name = "holdableInHand"
-	$interact_range.add_child(holdableInHand)
-	$interact_range/holdableInHand.position = Vector2(0,0)
+	holdableInHand = holdable.duplicate()
+	interactRange.add_child(holdableInHand)
+	holdableInHand.position = Vector2(0,0)
+	# Interupt cooking if needed
+	if holdableParent.is_in_group("CookingStation"):
+		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.isHolding = false
 	holdable.queue_free()
@@ -20,8 +24,8 @@ func pickup_holdable(holdable: Area2D):
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
-		if surface.set_holdable_on_surface($interact_range/holdableInHand):
-			$interact_range/holdableInHand.queue_free()
+		if surface.set_holdable_on_surface(holdableInHand):
+			holdableInHand.queue_free()
 			isHolding = false
 			break
 
@@ -30,23 +34,23 @@ func place_holdable():
 func set_interact_range_position(horizontal: float, vertical: float):
 	horizontal *= Global.PIXEL_DIMENSION
 	vertical *= Global.PIXEL_DIMENSION
-	$interact_range.position = Vector2(horizontal, vertical)
+	interactRange.position = Vector2(horizontal, vertical)
 	get_node("AnimatedSprite2D").play("Walk_Groudon")
 
 func tilt_weapon(horizontal:int, vertical:int):
 	if isHolding:
 		if horizontal == 1 and vertical == 1:
-			$interact_range/holdableInHand.rotation_degrees = 45
+			holdableInHand.rotation_degrees = 45
 		elif horizontal == 1 and vertical == -1:
-			$interact_range/holdableInHand.rotation_degrees = -45
+			holdableInHand.rotation_degrees = -45
 		elif horizontal == -1 and vertical == 1:
-			$interact_range/holdableInHand.rotation_degrees = -45
+			holdableInHand.rotation_degrees = -45
 		elif horizontal == -1 and vertical == -1:
-			$interact_range/holdableInHand.rotation_degrees = 45
+			holdableInHand.rotation_degrees = 45
 		elif (horizontal == 1 or horizontal == -1) and vertical == 0:
-			$interact_range/holdableInHand.rotation_degrees = 0
+			holdableInHand.rotation_degrees = 0
 		elif horizontal == 0 and (vertical == 1 or vertical == -1):
-			$interact_range/holdableInHand.rotation_degrees = -90
+			holdableInHand.rotation_degrees = -90
 
 
 func _physics_process(delta):
@@ -88,17 +92,17 @@ func _physics_process(delta):
 	if horizontalMovement <= 1 and horizontalMovement > 0:
 		get_node("AnimatedSprite2D").flip_h = false
 		if isHolding:
-			$interact_range/holdableInHand.scale.x = 1
+			holdableInHand.scale.x = 1
 	elif horizontalMovement >= -1 and horizontalMovement < 0:
 		get_node("AnimatedSprite2D").flip_h = true
 		if isHolding:
-			$interact_range/holdableInHand.scale.x = -1
+			holdableInHand.scale.x = -1
 	
 	if isHolding:
 		if horizontalMovement == 0 and verticalMovement == -1:
-			$interact_range/holdableInHand.scale.x = 1
+			holdableInHand.scale.x = 1
 		if horizontalMovement == 0 and verticalMovement == 1:
-			$interact_range/holdableInHand.scale.x = -1
+			holdableInHand.scale.x = -1
 		
 			
 	#Deal with right stick input
@@ -109,17 +113,17 @@ func _physics_process(delta):
 	if horizontalFacing <= 1 and horizontalFacing > 0:
 		get_node("AnimatedSprite2D").flip_h = false
 		if isHolding:
-			$interact_range/holdableInHand.scale.x = 1
+			holdableInHand.scale.x = 1
 	elif horizontalFacing >= -1 and horizontalFacing < 0:
 		get_node("AnimatedSprite2D").flip_h = true
 		if isHolding:
-			$interact_range/holdableInHand.scale.x = -1
+			holdableInHand.scale.x = -1
 	
 	if isHolding:
 		if horizontalFacing == 0 and verticalFacing == -1:
-			$interact_range/holdableInHand.scale.x = 1
+			holdableInHand.scale.x = 1
 		if horizontalFacing == 0 and verticalFacing == 1:
-			$interact_range/holdableInHand.scale.x = -1
+			holdableInHand.scale.x = -1
 	
 	if horizontalMovement:
 		velocity.x = horizontalMovement * SPEED

@@ -51,9 +51,9 @@ script = ExtResource("1_inif3")
 scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_kn0nk")
 
-[node name="interact_range" type="Area2D" parent="."]
+[node name="interactRange" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interact_range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
 shape = SubResource("CircleShape2D_5x6jq")
 
 [node name="devSprite" type="Node2D" parent="."]
@@ -97,5 +97,5 @@ scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_msfce")
 animation = &"Walk_Groudon"
 
-[connection signal="area_entered" from="interact_range" to="." method="_on_interact_range_area_entered"]
-[connection signal="area_exited" from="interact_range" to="." method="_on_interact_range_area_exited"]
+[connection signal="area_entered" from="interactRange" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="interactRange" to="." method="_on_interact_range_area_exited"]
