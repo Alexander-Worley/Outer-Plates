@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_my8l5"]
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="2_u7325"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="3_q7uel"]
-[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="4_ixkjg"]
+[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_ixkjg"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_wcnvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
