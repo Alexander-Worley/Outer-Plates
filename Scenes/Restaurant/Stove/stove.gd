@@ -1,9 +1,5 @@
-# TODO: Consolidate code that is duplicated among Surfaces such as Table, Stove, etc.
-extends Area2D
+extends "res://Scenes/Restaurant/PlainSurfaces/plainSurface.gd"
 
-const CENTER_OF_SURFACE = Vector2(0,-8)
-var isHolding: bool = false
-var holdableOnSurface: Area2D = null
 var isCooking: bool = false
 @onready var cookingTimer = $CookingTimer
 

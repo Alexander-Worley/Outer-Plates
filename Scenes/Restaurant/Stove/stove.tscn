@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://7srpt4k3diod"]
+[gd_scene load_steps=4 format=3 uid="uid://ede2frngbs0e"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Stove/stove.gd" id="1_il2kw"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="2_a4tpp"]
@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
 size = Vector2(32, 32)
 
-[node name="Stove" type="Area2D" groups=["CookingStation", "Surfaces"]]
+[node name="Stove2" type="Area2D" groups=["CookingStation", "Surfaces"]]
 script = ExtResource("1_il2kw")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
