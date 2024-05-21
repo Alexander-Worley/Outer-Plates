@@ -63,10 +63,14 @@ shape = SubResource("RectangleShape2D_wog68")
 [node name="PlainSurface" parent="Surfaces" instance=ExtResource("3_gejkp")]
 position = Vector2(640, 320)
 direction = null
+width = null
+height = null
 
 [node name="PlainSurface2" parent="Surfaces" instance=ExtResource("3_gejkp")]
 position = Vector2(512, 320)
 direction = null
+width = null
+height = null
 texture = ExtResource("4_0w7w7")
 
 [node name="Players" type="Node2D" parent="."]

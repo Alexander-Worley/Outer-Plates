@@ -5,11 +5,19 @@ var centerOfSurface = Vector2.ZERO
 var isHolding: bool = false
 var holdableOnSurface: Area2D = null
 @export_enum("Up", "Right", "Down", "Left") var direction: int = 0
+@export var width: int = 1
+@export var height: int = 1
 @export var texture: Texture2D = null
 
 func _ready():
+	# Set Texture
 	if texture: $Surface.texture = texture
+	# Set Collision
+	var collision: CollisionShape2D = get_node("CollisionShape2D")
+	if collision: collision.scale = Vector2(width, height)
+	# Set Rotation
 	$Surface.rotation_degrees = 90 * direction
+	# Set centerOfSurface based on Rotation
 	match direction:
 		0:
 			centerOfSurface = Vector2(0,-8)
@@ -19,6 +27,7 @@ func _ready():
 			centerOfSurface = Vector2(0,8)
 		3:
 			centerOfSurface = Vector2(-8,0)
+	# Set starting holdableOnSurface if needed
 	var originalHoldable: Array[Node] = find_children("*", "Area2D", false)
 	if originalHoldable:
 		holdableOnSurface = originalHoldable[0]
