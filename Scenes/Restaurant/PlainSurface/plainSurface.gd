@@ -19,6 +19,6 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	isHolding = true
 	return true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Update sprite in the editor interface
 	if Engine.is_editor_hint() and texture: $Sprite2D.texture = texture

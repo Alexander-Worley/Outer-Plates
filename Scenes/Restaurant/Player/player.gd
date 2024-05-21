@@ -5,7 +5,18 @@ var isHolding: bool = false
 var holdablesInRange: Array = []
 var surfacesInRange: Array = []
 var holdableInHand: Area2D = null
+var sprites = {
+	1: ["P1_Back", "P1_Forward"],
+	2: ["P2_Back", "P2_Forward"],
+	3: ["P3_Back", "P3_Forward"],
+	4: ["P4_Back", "P4_Forward"]
+}
+@export_range (1, 4) var playerNum: int = 1
 @onready var interactRange: Area2D = $interactRange
+
+func _ready():
+	# TODO: The line below is temporary until proper animations are added
+	get_node("AnimatedSprite2D").play(sprites[playerNum][1])
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
@@ -34,10 +45,18 @@ func place_holdable():
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
 func set_interact_range_position(horizontal: float, vertical: float):
-	horizontal *= Global.PIXEL_DIMENSION
-	vertical *= Global.PIXEL_DIMENSION
+	const DISTANCE = Global.PIXEL_DIMENSION / 4.0 * 3.0
+	horizontal *= DISTANCE
+	vertical *= DISTANCE
 	interactRange.position = Vector2(horizontal, vertical)
-	get_node("AnimatedSprite2D").play("Walk")
+
+func animate_player(horizontal: float, vertical: float):
+	if horizontal:
+		# Flip Player sprite if facing opposite direction of the spirte's default direction
+		get_node("AnimatedSprite2D").flip_h = true if horizontal == 1 else false
+	if vertical:
+		var direction = (vertical + 1) / 2
+		get_node("AnimatedSprite2D").play(sprites[playerNum][direction])
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
@@ -88,9 +107,8 @@ func _physics_process(delta):
 		if isHolding and holdableInHand.is_in_group("Weapons"):
 			tilt_weapon(interactRange_x, interactRange_y)
 	
-	# Flip Player sprite if facing left
-	var flipSprite: bool = true if (horizontalFacing == -1 or horizontalMovement == -1) else false
-	get_node("AnimatedSprite2D").flip_h = flipSprite
+	# Animates the Player
+	animate_player(interactRange_x, interactRange_y)
 	
 	# Flip holdableInHand sprite if needed
 	if isHolding and interactRange_x:
