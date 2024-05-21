@@ -45,7 +45,7 @@ func place_holdable():
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
 func set_interact_range_position(horizontal: float, vertical: float):
-	const DISTANCE = Global.PIXEL_DIMENSION / 4.0 * 3.0
+	const DISTANCE = Global.PIXEL_DIMENSION / 2.0
 	horizontal *= DISTANCE
 	vertical *= DISTANCE
 	interactRange.position = Vector2(horizontal, vertical)
