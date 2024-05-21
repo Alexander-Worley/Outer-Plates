@@ -1,3 +1,4 @@
+@tool
 extends Area2D
 
 const CENTER_OF_SURFACE = Vector2(0,-8)
@@ -17,3 +18,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	holdableOnSurface.rotation = 0
 	isHolding = true
 	return true
+
+func _physics_process(delta):
+	# Update sprite in the editor interface
+	if Engine.is_editor_hint() and texture: $Sprite2D.texture = texture

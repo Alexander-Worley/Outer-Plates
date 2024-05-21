@@ -1,4 +1,4 @@
-extends "res://Scenes/Restaurant/PlainSurfaces/plainSurface.gd"
+extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 var isCooking: bool = false
 @onready var cookingTimer = $CookingTimer
