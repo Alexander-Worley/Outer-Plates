@@ -41,24 +41,21 @@ position = Vector2(184, 269)
 shape = SubResource("RectangleShape2D_x5j51")
 
 [node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(784, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
-position = Vector2(184, 269)
+position = Vector2(968, 272)
 shape = SubResource("RectangleShape2D_x5j51")
 
 [node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
-position = Vector2(192, 160)
+position = Vector2(576, 48)
 shape = SubResource("RectangleShape2D_wog68")
 
 [node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
-position = Vector2(192, 608)
+position = Vector2(576, 496)
 shape = SubResource("RectangleShape2D_wog68")
 
 [node name="Surfaces" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=12 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="1_7tfps"]
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="3_d20ud"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="4_jgfwf"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_x3u6a"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="5_rtq4x"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="6_0lq2q"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestItems/testFoodForStove.tscn" id="6_uutht"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh3bp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn11v"]
 size = Vector2(20, 442)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mixcl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5hu"]
 size = Vector2(784, 24)
 
 [node name="Restaurant" type="Node2D"]
@@ -52,28 +53,25 @@ place items, & (optional) \"Arrow keys\" to aim."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
 position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_vh3bp")
+shape = SubResource("RectangleShape2D_kn11v")
 
 [node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(784, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
-position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_vh3bp")
+position = Vector2(968, 272)
+shape = SubResource("RectangleShape2D_kn11v")
 
 [node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
-position = Vector2(192, 160)
-shape = SubResource("RectangleShape2D_mixcl")
+position = Vector2(576, 48)
+shape = SubResource("RectangleShape2D_nd5hu")
 
 [node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
-position = Vector2(192, 608)
-shape = SubResource("RectangleShape2D_mixcl")
+position = Vector2(576, 496)
+shape = SubResource("RectangleShape2D_nd5hu")
 
 [node name="Surfaces" type="Node2D" parent="."]
 
@@ -83,10 +81,11 @@ position = Vector2(640, 320)
 [node name="TestFood" parent="Surfaces/Table" instance=ExtResource("3_d20ud")]
 position = Vector2(0, -8)
 
-[node name="Table2" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+[node name="Counter" parent="Surfaces" instance=ExtResource("4_jgfwf")]
 position = Vector2(544, 288)
+texture = ExtResource("5_rtq4x")
 
-[node name="TestFoodForStove" parent="Surfaces/Table2" instance=ExtResource("6_uutht")]
+[node name="TestFoodForStove" parent="Surfaces/Counter" instance=ExtResource("6_uutht")]
 position = Vector2(0, -8)
 
 [node name="Table3" parent="Surfaces" instance=ExtResource("4_jgfwf")]
