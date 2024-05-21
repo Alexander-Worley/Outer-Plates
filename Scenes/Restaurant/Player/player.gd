@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED: float = 120.0
 var isHolding: bool = false
-var holdablesInRange: Array = []
-var surfacesInRange: Array = []
+var holdablesInRange: Array[Area2D] = []
+var surfacesInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 var sprites = {
 	1: ["P1_Back", "P1_Forward"],
@@ -66,7 +66,6 @@ func tilt_weapon(horizontal: float, vertical: float):
 	if !horizontal and vertical:
 		rotationDegrees = -2 * DIAGONAL_ANGLE
 	holdableInHand.rotation_degrees = rotationDegrees
-
 
 func _physics_process(delta):
 	# Fetch movement input

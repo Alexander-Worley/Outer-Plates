@@ -84,12 +84,15 @@ sprite_frames = SubResource("SpriteFrames_ssv2u")
 animation = &"Off"
 
 [node name="Pan" type="Sprite2D" parent="Surface/StoveTop"]
+position = Vector2(0, -8)
 texture = ExtResource("5_v1gc7")
 
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
+visible = false
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
-frame_progress = 0.196402
+frame_progress = 0.205126
 
 [node name="CookingTimer" type="Timer" parent="."]
 wait_time = 5.0
