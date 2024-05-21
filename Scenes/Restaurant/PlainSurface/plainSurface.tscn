@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp61fgcs6ia11"]
+[gd_scene load_steps=4 format=3 uid="uid://btugtq4bxfaeh"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/PlainSurfaces/plainSurface.gd" id="1_sm40r"]
-[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_bn8cd"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/PlainSurface/plainSurface.gd" id="1_yt7qm"]
+[ext_resource type="Texture2D" uid="uid://dn4wbfsub024w" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_kkcge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
 size = Vector2(32, 32)
 
-[node name="Counter" type="Area2D" groups=["Surfaces"]]
-script = ExtResource("1_sm40r")
+[node name="PlainSurface" type="Area2D" groups=["Surfaces"]]
+script = ExtResource("1_yt7qm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -18,4 +18,4 @@ shape = SubResource("RectangleShape2D_tcddw")
 shape = SubResource("RectangleShape2D_tcddw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bn8cd")
+texture = ExtResource("2_kkcge")

@@ -1,9 +1,12 @@
-# TODO: Consolidate code that is duplicated among Surfaces such as Table, Stove, etc.
 extends Area2D
 
 const CENTER_OF_SURFACE = Vector2(0,-8)
 var isHolding: bool = false
 var holdableOnSurface: Area2D = null
+@export var texture: Texture2D = null
+
+func _ready():
+	if texture: $Sprite2D.texture = texture
 
 # Given a holdable, set it on the surface
 func set_holdable_on_surface(holdableInHand: Area2D):

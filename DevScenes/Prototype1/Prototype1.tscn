@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="1_h6128"]
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="2_61b67"]
-[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurfaces/Table/table.tscn" id="3_m47k8"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_m47k8"]
 [ext_resource type="Texture2D" uid="uid://dgi88oy8lx1gl" path="res://Assets/Interactables/CookingStations/cutting-board-square.png" id="4_lb271"]
 [ext_resource type="Texture2D" uid="uid://etvg2vjc3pxe" path="res://Assets/Interactables/HoldableSpawnPoints/dish-pile.png" id="5_dn6j5"]
 [ext_resource type="Texture2D" uid="uid://cyl1kp4qdrfe2" path="res://Assets/Holdables/Food/dish-side-profile.png" id="6_orlip"]
