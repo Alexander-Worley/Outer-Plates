@@ -2,8 +2,8 @@
 extends Area2D
 
 var centerOfSurface = Vector2.ZERO
-var isHolding: bool = false
-var holdableOnSurface: Area2D = null
+var holdablesOnSurface: Array[Area2D] = []
+var maxHoldables: int = 1
 @export_category("Developer Tools :0")
 @export_enum("Up", "Right", "Down", "Left") var direction: int = 0
 @export var width: int = 1
@@ -11,6 +11,8 @@ var holdableOnSurface: Area2D = null
 @export var texture: Texture2D = null
 
 func _ready():
+	# Set maxHoldables
+	maxHoldables = width * height
 	# Set Texture
 	if texture: $Surface.texture = texture
 	# Set Collision
@@ -28,22 +30,29 @@ func _ready():
 			centerOfSurface = Vector2(0,8)
 		3:
 			centerOfSurface = Vector2(-8,0)
-	# Set starting holdableOnSurface if needed
+	# Set starting holdablesOnSurface[0] if needed
 	var originalHoldable: Array[Node] = find_children("*", "Area2D", false)
 	if originalHoldable:
-		holdableOnSurface = originalHoldable[0]
-		holdableOnSurface.position = centerOfSurface
-		isHolding = true
+		holdablesOnSurface.append(originalHoldable[0])
+		holdablesOnSurface[0].position = centerOfSurface
 
 # Given a holdable, set it on the surface
+# Return true if successful and false if not successful
+# This wrapper function is necessary because interactable surfaces (like Stoves) have additional functions
+func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
+	return set_holdable_on_surface(holdableInHand)
 func set_holdable_on_surface(holdableInHand: Area2D):
-	if isHolding: return false
-	holdableOnSurface = holdableInHand.duplicate()
-	add_child(holdableOnSurface)
-	holdableOnSurface.position = centerOfSurface
-	holdableOnSurface.rotation = 0
-	isHolding = true
+	if holdablesOnSurface.size() >= maxHoldables: return false
+	var newHoldable: Area2D = holdableInHand.duplicate()
+	holdablesOnSurface.append(newHoldable)
+	add_child(newHoldable)
+	newHoldable.position = centerOfSurface
+	newHoldable.rotation = 0
 	return true
+
+# Given a holdable, remove it from the surface
+func remove_holdable_from_surface(holdable):
+	holdablesOnSurface.erase(holdable)
 
 func _physics_process(_delta):
 	# Update sprite in the editor interface

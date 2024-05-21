@@ -5,21 +5,18 @@ var isCooking: bool = false
 @onready var cookingTimer = $CookingTimer
 
 # Given a holdable, set it on the surface
-func set_holdable_on_surface(holdableInHand: Area2D):
-	if isHolding: return false
-	holdableOnSurface = holdableInHand.duplicate()
-	add_child(holdableOnSurface)
-	holdableOnSurface.position = centerOfSurface
-	holdableOnSurface.rotation = 0
-	isHolding = true
-	if holdableOnSurface.is_in_group("ForStove"):
-		holdableOnSurface.doneness = holdableInHand.doneness
-		begin_cooking()
+# Return true if successful and false if not successful
+func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
+	if !set_holdable_on_surface(holdableInHand): return false
+	for holdable: Area2D in holdablesOnSurface:
+		if holdable.is_in_group("ForStove"):
+			holdable.doneness = holdableInHand.doneness
+			begin_cooking()
 	return true
 
 # Begin cooking
 func begin_cooking():
-	if isCooking or holdableOnSurface.isBurnt(): return
+	if isCooking or holdablesOnSurface[0].isBurnt(): return
 	cookingTimer.start()
 	isCooking = true
 	# Cook asynchronously
@@ -35,7 +32,7 @@ func stop_cooking():
 # Finished cooking timer
 func _on_cookingTimer_timeout():
 	stop_cooking()
-	holdableOnSurface.increase_doneness()
+	holdablesOnSurface[0].increase_doneness()
 	begin_cooking()
 
 func _physics_process(_delta):
