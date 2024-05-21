@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://cuek2wfflpv5k"]
+
+[ext_resource type="Texture2D" uid="uid://dkc77mm2etev4" path="res://Assets/Environment/Ambiance/lava-lamp-spritesheet.png" id="1_6avh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef7lx"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxyo6"]
+atlas = ExtResource("1_6avh4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nhg3"]
+atlas = ExtResource("1_6avh4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0exmk"]
+atlas = ExtResource("1_6avh4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hucok"]
+atlas = ExtResource("1_6avh4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lsgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxyo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nhg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0exmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hucok")
+}],
+"loop": true,
+"name": &"Animation",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_to42l"]
+script/source = "extends AnimatedSprite2D
+
+const NUM_FRAMES: int = 4
+@onready var animationTimer = $AnimationTimer
+
+func _ready():
+	animationTimer.start()
+	animationTimer.connect(\"timeout\", Callable(self, \"_on_animationTimer_timeout\"))
+
+func _on_animationTimer_timeout():
+	frame = randi() % NUM_FRAMES
+"
+
+[node name="LavaLamp" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ef7lx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_5lsgv")
+animation = &"Animation"
+frame_progress = 0.416373
+script = SubResource("GDScript_to42l")
+
+[node name="AnimationTimer" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 0.25
