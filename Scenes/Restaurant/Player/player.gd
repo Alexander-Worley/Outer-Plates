@@ -37,7 +37,7 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	horizontal *= Global.PIXEL_DIMENSION
 	vertical *= Global.PIXEL_DIMENSION
 	interactRange.position = Vector2(horizontal, vertical)
-	get_node("AnimatedSprite2D").play("Walk_Groudon")
+	get_node("AnimatedSprite2D").play("Walk")
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return

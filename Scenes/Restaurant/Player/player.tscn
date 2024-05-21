@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1ahdwi2ft7k0"]
+[gd_scene load_steps=8 format=3 uid="uid://d1ahdwi2ft7k0"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="2_3480m"]
 [ext_resource type="Texture2D" uid="uid://ddx7u50r3k1b3" path="res://Assets/Characters/Player/TEMP-Player-1.png" id="3_1xpsk"]
-[ext_resource type="Texture2D" uid="uid://c6gngvmpqu8q8" path="res://Assets/Characters/Customers/slug-spritesheet.png" id="3_4dysh"]
 [ext_resource type="Texture2D" uid="uid://bpm67pdv7o5im" path="res://Assets/Characters/Player/TEMP-Player-2.png" id="4_ux0l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]
@@ -11,27 +10,8 @@ size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqmtd"]
-atlas = ExtResource("3_4dysh")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snmbr"]
-atlas = ExtResource("3_4dysh")
-region = Rect2(64, 0, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_msfce"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqmtd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_snmbr")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_1xpsk")
@@ -40,7 +20,7 @@ animations = [{
 "texture": ExtResource("4_ux0l1")
 }],
 "loop": true,
-"name": &"Walk_Groudon",
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -95,7 +75,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(0, -16)
 scale = Vector2(0.5, 1)
 sprite_frames = SubResource("SpriteFrames_msfce")
-animation = &"Walk_Groudon"
+animation = &"Walk"
 
 [connection signal="area_entered" from="interactRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="interactRange" to="." method="_on_interact_range_area_exited"]
