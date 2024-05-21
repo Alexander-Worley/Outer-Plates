@@ -1,0 +1,43 @@
+@tool
+extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
+
+var isCooking: bool = false
+@onready var cookingTimer = $CookingTimer
+
+# Given a holdable, set it on the surface
+func set_holdable_on_surface(holdableInHand: Area2D):
+	if isHolding: return false
+	holdableOnSurface = holdableInHand.duplicate()
+	add_child(holdableOnSurface)
+	holdableOnSurface.position = centerOfSurface
+	holdableOnSurface.rotation = 0
+	isHolding = true
+	if holdableOnSurface.is_in_group("ForStove"):
+		holdableOnSurface.doneness = holdableInHand.doneness
+		begin_cooking()
+	return true
+
+# Begin cooking
+func begin_cooking():
+	if isCooking or holdableOnSurface.isBurnt(): return
+	cookingTimer.start()
+	isCooking = true
+	# Cook asynchronously
+	if not cookingTimer.is_connected("timeout", Callable(self, "_on_cookingTimer_timeout")):
+		cookingTimer.connect("timeout", Callable(self, "_on_cookingTimer_timeout"))
+
+# Stop cooking
+func stop_cooking():
+	if !isCooking: return
+	cookingTimer.stop()
+	isCooking = false
+
+# Finished cooking timer
+func _on_cookingTimer_timeout():
+	stop_cooking()
+	holdableOnSurface.increase_doneness()
+	begin_cooking()
+
+func _physics_process(_delta):
+	# Update sprite in the editor interface
+	if Engine.is_editor_hint(): _ready()

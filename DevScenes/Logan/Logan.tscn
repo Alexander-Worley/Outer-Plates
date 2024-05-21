@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_tkrl2"]
-[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="2_y3qw4"]
-[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="3_3tdtl"]
-[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="4_wden4"]
+[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="2_y3qw4"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
+[ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
@@ -67,8 +67,8 @@ position = Vector2(640, 320)
 
 [node name="Foods" type="Node2D" parent="."]
 
-[node name="TestFood" parent="Foods" instance=ExtResource("4_wden4")]
-position = Vector2(640, 315)
+[node name="TestWeapon" parent="Foods" instance=ExtResource("4_3jxto")]
+position = Vector2(640, 312)
 
 [node name="Players" type="Node2D" parent="."]
 

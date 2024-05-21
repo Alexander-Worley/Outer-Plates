@@ -1,87 +1,267 @@
-[gd_scene load_steps=8 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=15 format=3 uid="uid://behneg0nnc0bq"]
 
-[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/Textures/BGs/diner-background.png" id="1_7tfps"]
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_8ks8p"]
+[ext_resource type="Texture2D" uid="uid://bu6tn7cysqhjy" path="res://Assets/BGs/planet-1-dining-no-space-background.png" id="2_6veqw"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
-[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestFood/testFood.tscn" id="3_d20ud"]
-[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/Table/table.tscn" id="4_jgfwf"]
+[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="3_d20ud"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="4_jgfwf"]
+[ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="4_uo0mj"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_x3u6a"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="5_rtq4x"]
+[ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="6_0lq2q"]
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestItems/testFoodForStove.tscn" id="6_uutht"]
+[ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/table-oval.png" id="7_4r5b2"]
+[ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh3bp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn11v"]
 size = Vector2(20, 442)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mixcl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5hu"]
 size = Vector2(784, 24)
 
 [node name="Restaurant" type="Node2D"]
 
-[node name="BGrestaurant" parent="." instance=ExtResource("1_8ks8p")]
+[node name="Environment" type="Node2D" parent="."]
 
-[node name="Diner-background" type="Sprite2D" parent="BGrestaurant"]
+[node name="BGrestaurant" parent="Environment" instance=ExtResource("1_8ks8p")]
+
+[node name="Diner-background" type="Sprite2D" parent="Environment/BGrestaurant"]
 position = Vector2(576, 272)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_7tfps")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_6veqw")
 
-[node name="Prototype 2" type="Label" parent="BGrestaurant"]
-offset_top = 576.0
-offset_right = 284.0
-offset_bottom = 648.0
+[node name="Prototype 2" type="Label" parent="Environment/BGrestaurant"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 292.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Prototype 2"
 metadata/_edit_use_anchors_ = true
 
-[node name="Instructions" type="Label" parent="BGrestaurant"]
-offset_left = 48.0
+[node name="Instructions" type="Label" parent="Environment/BGrestaurant"]
+offset_left = 8.0
 offset_top = 504.0
-offset_right = 1150.0
-offset_bottom = 645.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
-text = "Instructions: 1. \"Arrow keys\" to move.
-                        2. \"Space\" to pickup/place items."
+text = "Instructions: \"WASD\" to move, \"E\" to pickup/
+place items, & (optional) \"Arrow keys\" to aim."
+
+[node name="Ambiance" type="Node2D" parent="Environment"]
+
+[node name="LavaLamp" parent="Environment/Ambiance" instance=ExtResource("10_f2two")]
+position = Vector2(320, 176)
+
+[node name="LavaLamp2" parent="Environment/Ambiance" instance=ExtResource("10_f2two")]
+position = Vector2(768, 176)
+
+[node name="LavaLamp3" parent="Environment/Ambiance" instance=ExtResource("10_f2two")]
+position = Vector2(912, 224)
+
+[node name="Chair" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(304, 432)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair2" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(432, 432)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair3" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(608, 400)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair4" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(608, 304)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair5" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(752, 272)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair6" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(880, 240)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair9" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(848, 368)
+texture = ExtResource("4_uo0mj")
+
+[node name="Chair7" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(880, 336)
+texture = ExtResource("4_uo0mj")
+flip_h = true
+
+[node name="Chair8" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(848, 464)
+texture = ExtResource("4_uo0mj")
+flip_h = true
+
+[node name="Chair10" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(784, 400)
+texture = ExtResource("4_uo0mj")
+flip_h = true
+
+[node name="Chair11" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(528, 432)
+texture = ExtResource("4_uo0mj")
+flip_h = true
+
+[node name="Chair12" type="Sprite2D" parent="Environment/Ambiance"]
+position = Vector2(400, 432)
+texture = ExtResource("4_uo0mj")
+flip_h = true
 
 [node name="Boundaries" type="Node2D" parent="."]
 
 [node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(184, 272)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
-position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_vh3bp")
+shape = SubResource("RectangleShape2D_kn11v")
 
 [node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(784, 0)
+position = Vector2(968, 272)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
-position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_vh3bp")
+shape = SubResource("RectangleShape2D_kn11v")
 
 [node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
+position = Vector2(576, 144)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
-position = Vector2(192, 160)
-shape = SubResource("RectangleShape2D_mixcl")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/TopBoundary"]
+visible = false
+polygon = PackedVector2Array(-8, 8, -112, 8, -208, 16, -288, 32, -312, 40, -336, 48, -384, 72, -384, -16, 384, -16, 384, 88, 352, 72, 328, 64, 304, 56, 280, 48, 256, 40, 208, 32, 168, 24, 112, 16, 32, 8)
 
 [node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
+position = Vector2(576, 496)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
-position = Vector2(192, 608)
-shape = SubResource("RectangleShape2D_mixcl")
+shape = SubResource("RectangleShape2D_nd5hu")
 
-[node name="Tables" type="Node2D" parent="."]
+[node name="Surfaces" type="Node2D" parent="."]
 
-[node name="Table" parent="Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(640, 320)
+[node name="Tables" type="Node2D" parent="Surfaces"]
 
-[node name="Foods" type="Node2D" parent="."]
+[node name="Table" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(640, 304)
 
-[node name="TestFood" parent="Foods" instance=ExtResource("3_d20ud")]
-position = Vector2(640, 312)
+[node name="TestFood" parent="Surfaces/Tables/Table" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Table2" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(640, 400)
+
+[node name="Table3" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(752, 304)
+
+[node name="TestFood" parent="Surfaces/Tables/Table3" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Table4" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(752, 400)
+
+[node name="Table5" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(352, 432)
+width = 2
+texture = ExtResource("7_4r5b2")
+
+[node name="Table6" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(480, 432)
+width = 2
+texture = ExtResource("7_4r5b2")
+
+[node name="Table7" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(848, 416)
+direction = 1
+height = 2
+texture = ExtResource("7_4r5b2")
+
+[node name="Table8" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(880, 288)
+direction = 1
+height = 2
+texture = ExtResource("7_4r5b2")
+
+[node name="Counters" type="Node2D" parent="Surfaces"]
+
+[node name="Counter" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(448, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFoodForStove" parent="Surfaces/Counters/Counter" instance=ExtResource("6_uutht")]
+position = Vector2(0, -8)
+
+[node name="Counter2" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(608, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestWeapon" parent="Surfaces/Counters/Counter2" instance=ExtResource("6_0lq2q")]
+position = Vector2(0, -8)
+
+[node name="Counter3" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(512, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFood" parent="Surfaces/Counters/Counter3" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Counter4" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(544, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFood" parent="Surfaces/Counters/Counter4" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Counter5" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(576, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFood" parent="Surfaces/Counters/Counter5" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(416, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFoodForStove" parent="Surfaces/Counters/Counter6" instance=ExtResource("6_uutht")]
+position = Vector2(0, -8)
+
+[node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
+position = Vector2(384, 216)
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFoodForStove" parent="Surfaces/Counters/Counter7" instance=ExtResource("6_uutht")]
+position = Vector2(0, -8)
+
+[node name="Stoves" type="Node2D" parent="Surfaces"]
+
+[node name="Stove" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(384, 320)
+texture = ExtResource("5_rtq4x")
+
+[node name="Stove2" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(640, 216)
+
+[node name="Stove3" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(352, 216)
+
+[node name="Stove4" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(320, 216)
+
+[node name="Stove5" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(288, 248)
+direction = 3
+
+[node name="Stove6" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
+position = Vector2(288, 280)
+direction = 3
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("2_srumu")]
-position = Vector2(576, 320)
+position = Vector2(448, 320)

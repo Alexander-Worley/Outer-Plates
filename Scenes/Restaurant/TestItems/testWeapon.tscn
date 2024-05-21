@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://r0sqnmyx2q5r"]
+
+[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Holdables/Weapons/TEMP-Weapon-1.png" id="1_m5rvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5omhy"]
+size = Vector2(32, 32)
+
+[node name="TestWeapon" type="Area2D" groups=["Holdables", "Weapons"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_5omhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.252604, 0.440179)
+texture = ExtResource("1_m5rvf")
