@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=7 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_kqqf8"]
 [ext_resource type="Texture2D" uid="uid://bu6tn7cysqhjy" path="res://Assets/BGs/planet-1-dining-no-space-background.png" id="2_udwln"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_gejkp"]
-[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="4_0w7w7"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_2orcc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
@@ -62,16 +61,9 @@ shape = SubResource("RectangleShape2D_wog68")
 
 [node name="PlainSurface" parent="Surfaces" instance=ExtResource("3_gejkp")]
 position = Vector2(640, 320)
-direction = null
-width = null
-height = null
 
 [node name="PlainSurface2" parent="Surfaces" instance=ExtResource("3_gejkp")]
 position = Vector2(512, 320)
-direction = null
-width = null
-height = null
-texture = ExtResource("4_0w7w7")
 
 [node name="Players" type="Node2D" parent="."]
 

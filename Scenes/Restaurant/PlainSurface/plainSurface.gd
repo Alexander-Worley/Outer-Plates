@@ -4,6 +4,7 @@ extends Area2D
 var centerOfSurface = Vector2.ZERO
 var isHolding: bool = false
 var holdableOnSurface: Area2D = null
+@export_category("Developer Tools :0")
 @export_enum("Up", "Right", "Down", "Left") var direction: int = 0
 @export var width: int = 1
 @export var height: int = 1
