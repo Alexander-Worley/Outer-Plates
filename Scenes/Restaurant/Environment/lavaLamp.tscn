@@ -65,7 +65,7 @@ position = Vector2(0, -40)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5lsgv")
 animation = &"LavaLamp"
-frame_progress = 0.41598
+frame_progress = 0.784298
 script = SubResource("GDScript_to42l")
 
 [node name="AnimationTimer" type="Timer" parent="AnimatedSprite2D"]

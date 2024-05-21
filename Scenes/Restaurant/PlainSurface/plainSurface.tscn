@@ -17,5 +17,5 @@ shape = SubResource("RectangleShape2D_tcddw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tcddw")
 
-[node name="PlainSurface" type="Sprite2D" parent="."]
+[node name="Surface" type="Sprite2D" parent="."]
 texture = ExtResource("2_kkcge")

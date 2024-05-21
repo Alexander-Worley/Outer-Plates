@@ -1,3 +1,4 @@
+@tool
 extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 var isCooking: bool = false
@@ -8,7 +9,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	if isHolding: return false
 	holdableOnSurface = holdableInHand.duplicate()
 	add_child(holdableOnSurface)
-	holdableOnSurface.position = CENTER_OF_SURFACE
+	holdableOnSurface.position = centerOfSurface
 	holdableOnSurface.rotation = 0
 	isHolding = true
 	if holdableOnSurface.is_in_group("ForStove"):
@@ -36,3 +37,7 @@ func _on_cookingTimer_timeout():
 	stop_cooking()
 	holdableOnSurface.increase_doneness()
 	begin_cooking()
+
+func _physics_process(_delta):
+	# Update sprite in the editor interface
+	if Engine.is_editor_hint(): _ready()

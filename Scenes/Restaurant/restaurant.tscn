@@ -94,21 +94,51 @@ position = Vector2(640, 320)
 [node name="TestFood" parent="Surfaces/Table" instance=ExtResource("3_d20ud")]
 position = Vector2(0, -8)
 
-[node name="Counter" parent="Surfaces" instance=ExtResource("4_jgfwf")]
-position = Vector2(544, 288)
-texture = ExtResource("5_rtq4x")
-
-[node name="TestFoodForStove" parent="Surfaces/Counter" instance=ExtResource("6_uutht")]
-position = Vector2(0, -8)
-
-[node name="Table3" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+[node name="Table2" parent="Surfaces" instance=ExtResource("4_jgfwf")]
 position = Vector2(640, 352)
 
-[node name="TestWeapon" parent="Surfaces/Table3" instance=ExtResource("6_0lq2q")]
+[node name="TestWeapon" parent="Surfaces/Table2" instance=ExtResource("6_0lq2q")]
 position = Vector2(0, -8)
 
 [node name="Stove" parent="Surfaces" instance=ExtResource("4_x3u6a")]
 position = Vector2(512, 320)
+texture = ExtResource("5_rtq4x")
+
+[node name="Stove2" parent="Surfaces" instance=ExtResource("4_x3u6a")]
+position = Vector2(688, 216)
+direction = 1
+
+[node name="Counter" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(544, 288)
+
+[node name="TestFoodForStove" parent="Surfaces/Counter" instance=ExtResource("6_uutht")]
+position = Vector2(0, -8)
+
+[node name="Counter2" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(624, 208)
+texture = ExtResource("5_rtq4x")
+
+[node name="Counter3" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(512, 216)
+
+[node name="TestFood" parent="Surfaces/Counter3" instance=ExtResource("3_d20ud")]
+position = Vector2(0, -8)
+
+[node name="Counter4" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(480, 248)
+direction = 3
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFood" parent="Surfaces/Counter4" instance=ExtResource("3_d20ud")]
+position = Vector2(-8, 0)
+
+[node name="Counter5" parent="Surfaces" instance=ExtResource("4_jgfwf")]
+position = Vector2(480, 280)
+direction = 3
+texture = ExtResource("5_rtq4x")
+
+[node name="TestFood" parent="Surfaces/Counter5" instance=ExtResource("3_d20ud")]
+position = Vector2(-8, 0)
 
 [node name="Players" type="Node2D" parent="."]
 

@@ -76,17 +76,17 @@ shape = SubResource("RectangleShape2D_br5vu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_br5vu")
 
-[node name="PlainSurface" type="Sprite2D" parent="."]
+[node name="Surface" type="Sprite2D" parent="."]
 texture = ExtResource("2_8c1y3")
 
-[node name="StoveTop" type="AnimatedSprite2D" parent="PlainSurface"]
+[node name="StoveTop" type="AnimatedSprite2D" parent="Surface"]
 sprite_frames = SubResource("SpriteFrames_ssv2u")
 animation = &"Off"
 
-[node name="Pan" type="Sprite2D" parent="PlainSurface/StoveTop"]
+[node name="Pan" type="Sprite2D" parent="Surface/StoveTop"]
 texture = ExtResource("5_v1gc7")
 
-[node name="Smoke" type="AnimatedSprite2D" parent="PlainSurface/StoveTop/Pan"]
+[node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
 sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
 frame_progress = 0.196402
