@@ -2,10 +2,21 @@ extends CharacterBody2D
 
 const SPEED: float = 120.0
 var isHolding: bool = false
-var holdablesInRange: Array = []
-var surfacesInRange: Array = []
+var holdablesInRange: Array[Area2D] = []
+var surfacesInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
+var sprites = {
+	1: ["P1_Back", "P1_Forward"],
+	2: ["P2_Back", "P2_Forward"],
+	3: ["P3_Back", "P3_Forward"],
+	4: ["P4_Back", "P4_Forward"]
+}
+@export_range (1, 4) var playerNum: int = 1
 @onready var interactRange: Area2D = $interactRange
+
+func _ready():
+	# TODO: The line below is temporary until proper animations are added
+	get_node("AnimatedSprite2D").play(sprites[playerNum][1])
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
@@ -34,10 +45,18 @@ func place_holdable():
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range
 func set_interact_range_position(horizontal: float, vertical: float):
-	horizontal *= Global.PIXEL_DIMENSION
-	vertical *= Global.PIXEL_DIMENSION
+	const DISTANCE = Global.PIXEL_DIMENSION / 4.0 * 3.0
+	horizontal *= DISTANCE
+	vertical *= DISTANCE
 	interactRange.position = Vector2(horizontal, vertical)
-	get_node("AnimatedSprite2D").play("Walk_Groudon")
+
+func animate_player(horizontal: float, vertical: float):
+	if horizontal:
+		# Flip Player sprite if facing opposite direction of the spirte's default direction
+		get_node("AnimatedSprite2D").flip_h = true if horizontal == 1 else false
+	if vertical:
+		var direction = (vertical + 1) / 2
+		get_node("AnimatedSprite2D").play(sprites[playerNum][direction])
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
@@ -47,7 +66,6 @@ func tilt_weapon(horizontal: float, vertical: float):
 	if !horizontal and vertical:
 		rotationDegrees = -2 * DIAGONAL_ANGLE
 	holdableInHand.rotation_degrees = rotationDegrees
-
 
 func _physics_process(delta):
 	# Fetch movement input
@@ -88,9 +106,8 @@ func _physics_process(delta):
 		if isHolding and holdableInHand.is_in_group("Weapons"):
 			tilt_weapon(interactRange_x, interactRange_y)
 	
-	# Flip Player sprite if facing left
-	var flipSprite: bool = true if (horizontalFacing == -1 or horizontalMovement == -1) else false
-	get_node("AnimatedSprite2D").flip_h = flipSprite
+	# Animates the Player
+	animate_player(interactRange_x, interactRange_y)
 	
 	# Flip holdableInHand sprite if needed
 	if isHolding and interactRange_x:
@@ -120,18 +137,18 @@ func _input(event):
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
 
-# TODO: Figure out a way to pass in functions as variables to decompose the
-	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
+# Handles inRange lists
 func _on_interact_range_area_entered(area):
-	if area.is_in_group("Holdables"):
-		holdablesInRange.append(area)
-	else: if area.is_in_group("Surfaces"):
-		surfacesInRange.append(area)
-
-# TODO: Figure out a way to pass in functions as variables to decompose the
-	# functions "_on_interact_range_area_entered" and "_on_interact_range_area_exited"
+	check_interact_range(area, "append")
 func _on_interact_range_area_exited(area):
+	check_interact_range(area, "erase")
+func check_interact_range(area, operation):
 	if area.is_in_group("Holdables"):
-		holdablesInRange.erase(area)
-	else: if area.is_in_group("Surfaces"):
-		surfacesInRange.erase(area)
+		update_in_range(holdablesInRange, area, operation)
+	elif area.is_in_group("Surfaces"):
+		update_in_range(surfacesInRange, area, operation)
+func update_in_range(listToUpdate, areaToUpdate, operation):
+	if operation == "append":
+		listToUpdate.append(areaToUpdate)
+	elif operation == "erase":
+		listToUpdate.erase(areaToUpdate)
