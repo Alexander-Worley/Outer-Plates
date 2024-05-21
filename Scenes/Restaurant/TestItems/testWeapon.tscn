@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://r0sqnmyx2q5r"]
 
-[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Sprites/Holdables/[design]Shotgun_V1.02.png" id="1_m5rvf"]
+[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Holdables/Weapons/TEMP-Weapon-1.png" id="1_m5rvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5omhy"]
 size = Vector2(32, 32)

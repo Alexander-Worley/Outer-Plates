@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1tqrv16m7ras"]
 
-[ext_resource type="Texture2D" uid="uid://dfg3supyqrt5" path="res://Assets/Spritesheets/Holdables/slug-food-spritesheet.png" id="1_1jic4"]
+[ext_resource type="Texture2D" uid="uid://dfg3supyqrt5" path="res://Assets/Holdables/Food/slug-food-spritesheet.png" id="1_1jic4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5y3i"]
 size = Vector2(32, 32)
