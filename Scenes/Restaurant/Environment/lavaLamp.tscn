@@ -37,7 +37,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hucok")
 }],
 "loop": true,
-"name": &"Animation",
+"name": &"LavaLamp",
 "speed": 5.0
 }]
 
@@ -64,8 +64,8 @@ shape = SubResource("RectangleShape2D_ef7lx")
 position = Vector2(0, -40)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5lsgv")
-animation = &"Animation"
-frame_progress = 0.416373
+animation = &"LavaLamp"
+frame_progress = 0.41598
 script = SubResource("GDScript_to42l")
 
 [node name="AnimationTimer" type="Timer" parent="AnimatedSprite2D"]

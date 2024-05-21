@@ -7,7 +7,7 @@ var holdableOnSurface: Area2D = null
 @export var texture: Texture2D = null
 
 func _ready():
-	if texture: $Sprite2D.texture = texture
+	if texture: $PlainSurface.texture = texture
 
 # Given a holdable, set it on the surface
 func set_holdable_on_surface(holdableInHand: Area2D):
@@ -21,4 +21,4 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 
 func _physics_process(_delta):
 	# Update sprite in the editor interface
-	if Engine.is_editor_hint() and texture: $Sprite2D.texture = texture
+	if Engine.is_editor_hint() and texture: $PlainSurface.texture = texture
