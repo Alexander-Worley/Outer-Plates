@@ -1,12 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c25l7bpom1gm4"]
+[gd_scene load_steps=4 format=3 uid="uid://c25l7bpom1gm4"]
 
 [ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Assets/BGs/start-screen-background.png" id="1_ubwqv"]
+[ext_resource type="Texture2D" uid="uid://bxqrrr2jelsf5" path="res://Assets/UI/outer-plates-logo.png" id="2_gov2g"]
+
+[sub_resource type="GDScript" id="GDScript_0evc1"]
+script/source = "extends ParallaxBackground
+
+const SCROLL_SPEED: int = 100
+
+func _process(delta):
+	scroll_offset.x -= SCROLL_SPEED * delta
+"
 
 [node name="BGmainMenu" type="ParallaxBackground"]
+script = SubResource("GDScript_0evc1")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1728, 2.08165e-12)
 
 [node name="BackgroundImage" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(576, 324)
-scale = Vector2(1.8, 1.8)
+position = Vector2(864, 324)
+scale = Vector2(2.7, 1.8)
 texture = ExtResource("1_ubwqv")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(576, 212)
+scale = Vector2(3, 3)
+texture = ExtResource("2_gov2g")
