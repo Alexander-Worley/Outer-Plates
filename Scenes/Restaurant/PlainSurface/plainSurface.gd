@@ -1,7 +1,7 @@
 @tool
 extends Area2D
 
-# A 2D Array: [Vector2][bool]
+# A 2D Array: Array[Vector2][bool]
 # Vector2 contains a surfaceCenter
 # bool contains whether said surfaceCenter is occupied
 var centersOfSurface: Array = []
@@ -13,32 +13,17 @@ var holdablesOnSurface: Array[Area2D] = []
 @export var texture: Texture2D = null
 
 func _ready():
-	# Set maxHoldables
-	var maxHoldables: int = width * height
-	# Set Texture
 	if texture: $Surface.texture = texture
-	# Set Collision
-	var collision: CollisionShape2D = get_node("CollisionShape2D")
+	var collision: StaticBody2D = get_node("StaticBody2D")
 	if collision: collision.scale = Vector2(width, height)
-	# Set Rotation
 	$Surface.rotation_degrees = 90 * direction
-	# Set centersOfSurface
-	set_surface_points()
-	# Initialize holdablesOnSurface
-	for i: int in maxHoldables:
-		holdablesOnSurface.append(null)
-	# Set starting holdablesOnSurface[0] if needed
-	var originalHoldables: Array[Node] = find_children("*", "Area2D", false)
-	for i: int in originalHoldables.size():
-		# If this errors, you spawned too many holdables on one surface!
-		originalHoldables[i].position = centersOfSurface[i][0]
-		centersOfSurface[i][1] = true
-		holdablesOnSurface[i] = originalHoldables[i]
+	initialize_surface_points()
+	initialize_holdables_on_surface()
 
-func set_surface_points():
+# Initializes centersOfSurface[Vector2][bool=false]
+func initialize_surface_points():
 	var w_offset = (width - 1) * (Global.PIXEL_DIMENSION / 2.0)
 	var h_offset = (height - 1) * (Global.PIXEL_DIMENSION / 2.0)
-	# Set every point
 	for w in width:
 		for h in height:
 			var newX = w * Global.PIXEL_DIMENSION - w_offset
@@ -55,6 +40,19 @@ func set_surface_points():
 				3:
 					newPoint.x -= Global.PIXEL_DIMENSION / 4.0
 			centersOfSurface.append([newPoint, false])
+
+# Initializes holdablesOnSurface[Area2D]
+func initialize_holdables_on_surface():
+	var maxHoldables: int = width * height
+	for i: int in maxHoldables:
+		holdablesOnSurface.append(null)
+	# Set starting holdablesOnSurface[0] if needed
+	var originalHoldables: Array[Node] = find_children("*", "Area2D", false)
+	for i: int in originalHoldables.size():
+		# If this errors, you spawned too many holdables on one surface!
+		originalHoldables[i].position = centersOfSurface[i][0]
+		centersOfSurface[i][1] = true
+		holdablesOnSurface[i] = originalHoldables[i]
 
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful
