@@ -1,7 +1,10 @@
 @tool
 extends Area2D
 
-var centerOfSurface = Vector2.ZERO
+# A 2D Array: [Vector2][bool]
+# Vector2 contains a surfaceCenter
+# bool contains whether said surfaceCenter is occupied
+var centersOfSurface: Array[Vector2]= []
 var holdablesOnSurface: Array[Area2D] = []
 var maxHoldables: int = 1
 @export_category("Developer Tools :0")
@@ -20,21 +23,32 @@ func _ready():
 	if collision: collision.scale = Vector2(width, height)
 	# Set Rotation
 	$Surface.rotation_degrees = 90 * direction
-	# Set centerOfSurface based on Rotation
-	match direction:
-		0:
-			centerOfSurface = Vector2(0,-8)
-		1:
-			centerOfSurface = Vector2(8,0)
-		2:
-			centerOfSurface = Vector2(0,8)
-		3:
-			centerOfSurface = Vector2(-8,0)
+	# Set centersOfSurface
+	set_surface_points()
 	# Set starting holdablesOnSurface[0] if needed
-	var originalHoldable: Array[Node] = find_children("*", "Area2D", false)
-	if originalHoldable:
-		holdablesOnSurface.append(originalHoldable[0])
-		holdablesOnSurface[0].position = centerOfSurface
+	var originalHoldables: Array[Node] = find_children("*", "Area2D", false)
+	for i: int in originalHoldables.size():
+		# If this errors, you have too many holdables on one surface!
+		originalHoldables[i].position = centersOfSurface[i]
+		holdablesOnSurface.append(originalHoldables[i])
+
+func set_surface_points():
+	var w_offset = (width - 1) * 16
+	var h_offset = (height - 1) * 16
+	for w in width:
+		for h in height:
+			var newPoint = Vector2(w * 32 - w_offset, h * 32 - h_offset)
+			# Adjust for surface rotation
+			match direction:
+				0:
+					newPoint.y -= 8
+				1:
+					newPoint.x += 8
+				2:
+					newPoint.y += 8
+				3:
+					newPoint.x -= 8
+			centersOfSurface.append(newPoint)
 
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful
@@ -46,7 +60,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	var newHoldable: Area2D = holdableInHand.duplicate()
 	holdablesOnSurface.append(newHoldable)
 	add_child(newHoldable)
-	newHoldable.position = centerOfSurface
+	newHoldable.position = centersOfSurface[holdablesOnSurface.size() - 1]
 	newHoldable.rotation = 0
 	return true
 

@@ -170,10 +170,22 @@ position = Vector2(352, 432)
 width = 2
 texture = ExtResource("7_4r5b2")
 
+[node name="TestFood" parent="Surfaces/Tables/Table5" instance=ExtResource("3_d20ud")]
+position = Vector2(-16, -8)
+
+[node name="TestWeapon" parent="Surfaces/Tables/Table5" instance=ExtResource("6_0lq2q")]
+position = Vector2(16, -8)
+
 [node name="Table6" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(480, 432)
 width = 2
 texture = ExtResource("7_4r5b2")
+
+[node name="TestFood" parent="Surfaces/Tables/Table6" instance=ExtResource("3_d20ud")]
+position = Vector2(-16, -8)
+
+[node name="TestFood2" parent="Surfaces/Tables/Table6" instance=ExtResource("3_d20ud")]
+position = Vector2(16, -8)
 
 [node name="Table7" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(848, 416)
@@ -190,7 +202,7 @@ texture = ExtResource("7_4r5b2")
 [node name="Counters" type="Node2D" parent="Surfaces"]
 
 [node name="Counter" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(448, 216)
+position = Vector2(416, 216)
 texture = ExtResource("5_rtq4x")
 
 [node name="TestFoodForStove" parent="Surfaces/Counters/Counter" instance=ExtResource("6_uutht")]
@@ -225,23 +237,26 @@ texture = ExtResource("5_rtq4x")
 position = Vector2(0, -8)
 
 [node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(416, 216)
+position = Vector2(288, 280)
+direction = 3
 texture = ExtResource("5_rtq4x")
 
 [node name="TestFoodForStove" parent="Surfaces/Counters/Counter6" instance=ExtResource("6_uutht")]
-position = Vector2(0, -8)
+position = Vector2(-8, 0)
 
 [node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(384, 216)
+position = Vector2(288, 248)
+direction = 3
 texture = ExtResource("5_rtq4x")
 
 [node name="TestFoodForStove" parent="Surfaces/Counters/Counter7" instance=ExtResource("6_uutht")]
-position = Vector2(0, -8)
+position = Vector2(-8, 0)
 
 [node name="Stoves" type="Node2D" parent="Surfaces"]
 
 [node name="Stove" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
-position = Vector2(384, 320)
+position = Vector2(288, 344)
+direction = 3
 texture = ExtResource("5_rtq4x")
 
 [node name="Stove2" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
@@ -254,11 +269,10 @@ position = Vector2(352, 216)
 position = Vector2(320, 216)
 
 [node name="Stove5" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
-position = Vector2(288, 248)
-direction = 3
+position = Vector2(384, 216)
 
 [node name="Stove6" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
-position = Vector2(288, 280)
+position = Vector2(288, 312)
 direction = 3
 
 [node name="Players" type="Node2D" parent="."]
