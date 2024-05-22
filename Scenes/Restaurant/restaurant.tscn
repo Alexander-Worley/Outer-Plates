@@ -193,6 +193,12 @@ direction = 1
 height = 2
 texture = ExtResource("7_4r5b2")
 
+[node name="TestFood" parent="Surfaces/Tables/Table7" instance=ExtResource("3_d20ud")]
+position = Vector2(8, -16)
+
+[node name="TestWeapon" parent="Surfaces/Tables/Table7" instance=ExtResource("6_0lq2q")]
+position = Vector2(8, 16)
+
 [node name="Table8" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(880, 288)
 direction = 1
