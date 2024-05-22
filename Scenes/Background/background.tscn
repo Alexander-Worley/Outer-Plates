@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c25l7bpom1gm4"]
+
+[ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Assets/BGs/mainMenuBG.png" id="1_2gtax"]
+[ext_resource type="Script" path="res://Scenes/Background/background.gd" id="1_sqvij"]
+[ext_resource type="Texture2D" uid="uid://bu6tn7cysqhjy" path="res://Assets/BGs/greenPlanetDiner.png" id="3_caqmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t4l2"]
+size = Vector2(10, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rgr5"]
+size = Vector2(10, 312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxe0j"]
+size = Vector2(704, 4)
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_sqvij")
+
+[node name="BG" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 2.08165e-12)
+
+[node name="BackgroundTexture" type="Sprite2D" parent="BG"]
+position = Vector2(576, 288)
+scale = Vector2(1.8, 1.6)
+texture = ExtResource("1_2gtax")
+
+[node name="DinerTexture" type="Sprite2D" parent="."]
+position = Vector2(384, 288)
+scale = Vector2(1.1, 1.42222)
+texture = ExtResource("3_caqmj")
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
+visible = false
+position = Vector2(29, 376)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
+visible = false
+shape = SubResource("RectangleShape2D_5t4l2")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
+visible = false
+position = Vector2(739, 388)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
+visible = false
+shape = SubResource("RectangleShape2D_4rgr5")
+
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
+visible = false
+position = Vector2(384, 144)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundaries/TopBoundary"]
+visible = false
+polygon = PackedVector2Array(0, 0, 72, 8, 120, 16, 176, 24, 208, 32, 240, 40, 280, 56, 296, 64, 320, 72, 328, 80, 352, 88, 352, -8, -352, -8, -352, 72, -328, 56, -312, 48, -296, 40, -272, 32, -256, 24, -224, 16, -184, 8, -120, 0)
+
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
+visible = false
+position = Vector2(384, 542)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
+visible = false
+shape = SubResource("RectangleShape2D_qxe0j")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://desf53nln1wu"]
 
-[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="1_h6128"]
+[ext_resource type="Texture2D" uid="uid://b1rnxw3m74xsc" path="res://Assets/BGs/greenPlanetBG.png" id="1_b4tie"]
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="2_61b67"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_m47k8"]
 [ext_resource type="Texture2D" uid="uid://dgi88oy8lx1gl" path="res://Assets/Interactables/CookingStations/cutting-board-square.png" id="4_lb271"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyl1kp4qdrfe2" path="res://Assets/Holdables/Food/dish-side-profile.png" id="6_orlip"]
 [ext_resource type="Texture2D" uid="uid://dnxr7l784a38t" path="res://Assets/Holdables/Food/dish-top-down.png" id="7_y6q3j"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="8_odbj5"]
-[ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="9_4yv7r"]
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="9_4yv7r"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="10_p6rjf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrass"]
@@ -26,8 +26,8 @@ size = Vector2(784, 24)
 
 [node name="Diner-background" type="Sprite2D" parent="TempForPrototype1Demo"]
 position = Vector2(576, 272)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_h6128")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_b4tie")
 
 [node name="Chair" type="Sprite2D" parent="TempForPrototype1Demo"]
 position = Vector2(544, 384)
@@ -309,9 +309,9 @@ theme_override_font_sizes/font_size = 50
 text = "Instructions: 1. \"Arrow keys\" to move.
                         2. \"Space\" to pickup/place items."
 
-[node name="BGrestaurant" parent="." instance=ExtResource("9_4yv7r")]
+[node name="Background" parent="." instance=ExtResource("9_4yv7r")]
 
-[node name="Prototype 1" type="Label" parent="BGrestaurant"]
+[node name="Prototype 1" type="Label" parent="Background"]
 offset_top = 576.0
 offset_right = 284.0
 offset_bottom = 648.0

@@ -1,27 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=5 format=3 uid="uid://cgfsbwimetswc"]
 
-[ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_tkrl2"]
-[ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="2_y3qw4"]
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_tkrl2"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
-size = Vector2(20, 442)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wog68"]
-size = Vector2(784, 24)
-
 [node name="Logan" type="Node2D"]
 
-[node name="BGrestaurant" parent="." instance=ExtResource("1_tkrl2")]
+[node name="Background" parent="." instance=ExtResource("1_tkrl2")]
 
-[node name="Diner-background" type="Sprite2D" parent="BGrestaurant"]
-position = Vector2(576, 272)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_y3qw4")
-
-[node name="Logan" type="Label" parent="BGrestaurant"]
+[node name="Logan" type="Label" parent="Background"]
 offset_top = 576.0
 offset_right = 284.0
 offset_bottom = 648.0
@@ -30,35 +18,6 @@ theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Logan"
 metadata/_edit_use_anchors_ = true
-
-[node name="Boundaries" type="Node2D" parent="."]
-
-[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary"]
-position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_x5j51")
-
-[node name="RightBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(784, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary"]
-position = Vector2(184, 269)
-shape = SubResource("RectangleShape2D_x5j51")
-
-[node name="TopBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary"]
-position = Vector2(192, 160)
-shape = SubResource("RectangleShape2D_wog68")
-
-[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(384, -112)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary"]
-position = Vector2(192, 608)
-shape = SubResource("RectangleShape2D_wog68")
 
 [node name="Tables" type="Node2D" parent="."]
 
