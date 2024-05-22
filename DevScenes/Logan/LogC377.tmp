@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=9 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_tkrl2"]
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="2_y3qw4"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasmagun.gd" id="7_1xdqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
 size = Vector2(20, 442)
@@ -67,9 +66,6 @@ shape = SubResource("RectangleShape2D_wog68")
 [node name="Table" parent="Tables" instance=ExtResource("3_3tdtl")]
 position = Vector2(640, 320)
 
-[node name="Table2" parent="Tables" instance=ExtResource("3_3tdtl")]
-position = Vector2(641, 266)
-
 [node name="Foods" type="Node2D" parent="."]
 
 [node name="Players" type="Node2D" parent="."]
@@ -80,15 +76,8 @@ position = Vector2(552, 330)
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Shotgun" parent="Weapons" instance=ExtResource("4_3jxto")]
-position = Vector2(641, 260)
+position = Vector2(491, 279)
 script = ExtResource("6_6n5da")
 
 [node name="Muzzle" type="Marker2D" parent="Weapons/Shotgun"]
-position = Vector2(-6, 1)
-
-[node name="Plasmagun" parent="Weapons" instance=ExtResource("4_3jxto")]
-position = Vector2(642, 314)
-script = ExtResource("7_1xdqx")
-
-[node name="Muzzle" type="Marker2D" parent="Weapons/Plasmagun"]
 position = Vector2(-6, 1)

@@ -136,6 +136,9 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
+	if event.is_action_pressed("interact"):
+		if isHolding && holdableInHand.is_in_group("Weapons"):
+			holdableInHand.shoot()
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
