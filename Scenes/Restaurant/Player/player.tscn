@@ -116,6 +116,7 @@ scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_kn0nk")
 
 [node name="interactRange" type="Area2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
 shape = SubResource("CircleShape2D_5x6jq")
