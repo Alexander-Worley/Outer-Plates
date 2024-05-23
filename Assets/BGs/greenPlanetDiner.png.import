@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2vslko42kst5"
-path="res://.godot/imported/start-screen-background.png-feb6f7934b93943facfb8cb63eb6bb36.ctex"
+uid="uid://bu6tn7cysqhjy"
+path="res://.godot/imported/greenPlanetDiner.png-42bd9ee909285bc4a20a29c076663e3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BGs/start-screen-background.png"
-dest_files=["res://.godot/imported/start-screen-background.png-feb6f7934b93943facfb8cb63eb6bb36.ctex"]
+source_file="res://Assets/BGs/greenPlanetDiner.png"
+dest_files=["res://.godot/imported/greenPlanetDiner.png-42bd9ee909285bc4a20a29c076663e3e.ctex"]
 
 [params]
 

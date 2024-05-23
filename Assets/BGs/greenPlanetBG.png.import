@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcjpwjtnr8ki3"
-path="res://.godot/imported/planet-2-dining-no-space-background.png-112955562db345f6879a67affaeaea07.ctex"
+uid="uid://b1rnxw3m74xsc"
+path="res://.godot/imported/greenPlanetBG.png-eb2583656aa99f6517a0499aac1eb91a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BGs/planet-2-dining-no-space-background.png"
-dest_files=["res://.godot/imported/planet-2-dining-no-space-background.png-112955562db345f6879a67affaeaea07.ctex"]
+source_file="res://Assets/BGs/greenPlanetBG.png"
+dest_files=["res://.godot/imported/greenPlanetBG.png-eb2583656aa99f6517a0499aac1eb91a.ctex"]
 
 [params]
 
