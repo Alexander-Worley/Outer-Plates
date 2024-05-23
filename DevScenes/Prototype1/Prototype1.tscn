@@ -310,6 +310,7 @@ text = "Instructions: 1. \"Arrow keys\" to move.
                         2. \"Space\" to pickup/place items."
 
 [node name="Background" parent="." instance=ExtResource("9_4yv7r")]
+Planet = "Green Planet"
 
 [node name="Prototype 1" type="Label" parent="Background"]
 offset_top = 576.0

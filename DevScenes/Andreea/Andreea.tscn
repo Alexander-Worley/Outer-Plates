@@ -8,6 +8,7 @@
 [node name="Andreea" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_my8l5")]
+Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
 offset_top = 576.0

@@ -8,6 +8,7 @@
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_tkrl2")]
+Planet = "Green Planet"
 
 [node name="Logan" type="Label" parent="Background"]
 offset_top = 576.0
