@@ -5,7 +5,7 @@ const SCROLL_SPEED: int = 100
 const LOGO_AMPLITUDE: float = 20.0
 const LOGO_FREQUENCY: float = 2.0
 const LOGO_DEFAULT_POSITION = Vector2(384, 160)
-var time: float = 0
+var time: float = 300
 const BG_TEXTURES = {
 	"Main Menu": preload("res://Assets/BGs/mainMenuBG.png"),
 	"Green Planet": preload("res://Assets/BGs/greenPlanetBG.png"),
@@ -31,16 +31,21 @@ func _ready():
 	backgroundTexture.texture = BG_TEXTURES[Planet]
 	logo.texture = LOGO_SPRITES[Planet]
 	dinerTexture.texture = DINER_TEXTURES[Planet]
+	# If on Main Menu
 	if !Engine.is_editor_hint() and Planet == "Main Menu":
-		print(Planet)
+		$RotateLeft.queue_free()
 		$FlyLeft.queue_free()
 		$FlyRight.queue_free()
 
 func _process(delta):
 	scroll_offset.x -= SCROLL_SPEED * delta
+	time += delta * LOGO_FREQUENCY
 	if logo.texture:
-		time += delta * LOGO_FREQUENCY
 		logo.position = LOGO_DEFAULT_POSITION + Vector2(0, sin(time) * LOGO_AMPLITUDE)
+	if Planet != "Main Menu":
+		var sprites = $RotateLeft.get_children()
+		for sprite in sprites:
+			sprite.rotation = -time
 
 func _physics_process(_delta):
 	# Update textures in the editor interface
