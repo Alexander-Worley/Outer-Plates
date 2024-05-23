@@ -51,8 +51,9 @@ func initialize_holdables_on_surface():
 	for i: int in originalHoldables.size():
 		# If this errors, you spawned too many holdables on one surface!
 		originalHoldables[i].position = centersOfSurface[i][0]
-		centersOfSurface[i][1] = true
+		originalHoldables[i].rotation = 0
 		holdablesOnSurface[i] = originalHoldables[i]
+		centersOfSurface[i][1] = true
 
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful

@@ -7,7 +7,7 @@
 [node name="Alexander" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-40992, 0)
+scroll_offset = Vector2(-41209.2, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Background"]
