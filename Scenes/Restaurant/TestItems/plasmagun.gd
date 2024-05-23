@@ -1,6 +1,7 @@
 extends Area2D
 
 var Plasma = preload("res://Scenes/Restaurant/TestItems/plasma.tscn")
+var ammo: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +15,15 @@ func _input(event):
 	pass
 
 func shoot():
+	if ammo == 0:
+		return
 	var b = Plasma.instantiate()
 	b.start($Muzzle.global_position, $Muzzle.global_rotation)
 	get_tree().root.add_child(b)
+	ammo = ammo - 1
+	#var ammoCount = get_parent().get_node("ammoCount")
+	var ammoCount = get_node("ammoCount")
+	
+	ammoCount.text = str(ammo)
+	
+	

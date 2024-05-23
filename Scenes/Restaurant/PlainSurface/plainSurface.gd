@@ -40,6 +40,11 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	if isHolding: return false
 	holdableOnSurface = holdableInHand.duplicate()
 	add_child(holdableOnSurface)
+	
+	#copy ammo count
+	if holdableOnSurface.is_in_group("Weapons"):
+		holdableOnSurface.ammo = holdableInHand.ammo
+	
 	holdableOnSurface.position = centerOfSurface
 	holdableOnSurface.rotation = 0
 	isHolding = true

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=10 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_tkrl2"]
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="2_y3qw4"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
-[ext_resource type="Script" path="res://DevScenes/Logan/ammoCount.gd" id="3_12l78"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
@@ -93,12 +92,3 @@ script = ExtResource("7_1xdqx")
 
 [node name="Muzzle" type="Marker2D" parent="Weapons/Plasmagun"]
 position = Vector2(-6, 1)
-
-[node name="ammoCount" type="Label" parent="Weapons"]
-unique_name_in_owner = true
-offset_left = 155.0
-offset_top = 596.0
-offset_right = 376.0
-offset_bottom = 644.0
-text = "hi"
-script = ExtResource("3_12l78")

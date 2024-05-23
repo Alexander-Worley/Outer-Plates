@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 800
+var speed = 700
 
 func start(_position, _direction):
 	rotation = _direction

@@ -22,6 +22,7 @@ func _ready():
 func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
 	holdableInHand = holdable.duplicate()
+	
 	interactRange.add_child(holdableInHand)
 	holdableInHand.position = Vector2(0,0)
 	# Interupt cooking if needed
@@ -31,6 +32,10 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.isHolding = false
 	if holdableInHand.is_in_group("ForStove"):
 		holdableInHand.doneness = holdable.doneness
+		#copy ammo if needed
+	if holdableInHand.is_in_group("Weapons"):
+		holdableInHand.ammo = holdable.ammo
+		#get_node("/root/Logan/BGrestaurant/ammoCount").text = str(holdable.ammo)
 	holdable.queue_free()
 	isHolding = true
 
