@@ -31,6 +31,10 @@ func _ready():
 	backgroundTexture.texture = BG_TEXTURES[Planet]
 	logo.texture = LOGO_SPRITES[Planet]
 	dinerTexture.texture = DINER_TEXTURES[Planet]
+	if !Engine.is_editor_hint() and Planet == "Main Menu":
+		print(Planet)
+		$FlyLeft.queue_free()
+		$FlyRight.queue_free()
 
 func _process(delta):
 	scroll_offset.x -= SCROLL_SPEED * delta

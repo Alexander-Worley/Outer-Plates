@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c25l7bpom1gm4"]
+[gd_scene load_steps=9 format=3 uid="uid://c25l7bpom1gm4"]
 
 [ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Assets/BGs/mainMenuBG.png" id="1_2gtax"]
 [ext_resource type="Script" path="res://Scenes/Background/background.gd" id="1_sqvij"]
 [ext_resource type="Texture2D" uid="uid://bxqrrr2jelsf5" path="res://Assets/UI/outer-plates-logo.png" id="3_o71y2"]
+[ext_resource type="Texture2D" uid="uid://c3kbuyj3uucdi" path="res://Assets/Environment/Ambiance/ship-1.png" id="3_sb0hm"]
+[ext_resource type="Texture2D" uid="uid://cbcxfo8nf0jha" path="res://Assets/Environment/Ambiance/ship-2.png" id="4_rfdc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t4l2"]
 size = Vector2(10, 336)
@@ -14,7 +16,7 @@ size = Vector2(10, 312)
 size = Vector2(704, 4)
 
 [node name="Background" type="ParallaxBackground"]
-scroll_offset = Vector2(-37096.5, 0)
+scroll_offset = Vector2(-372419, 0)
 script = ExtResource("1_sqvij")
 
 [node name="BG" type="ParallaxLayer" parent="."]
@@ -25,8 +27,84 @@ position = Vector2(576, 288)
 scale = Vector2(1.8, 1.6)
 texture = ExtResource("1_2gtax")
 
+[node name="FlyLeft" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1.5, 1)
+motion_mirroring = Vector2(1152, 2.08165e-12)
+
+[node name="ShipType1-1" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(168, 128)
+rotation = -1.5708
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType1-2" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(704, 392)
+rotation = -1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType1-3" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(88, 440)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType2-1" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(672, 40)
+rotation = -1.5708
+texture = ExtResource("4_rfdc0")
+
+[node name="ShipType2-2" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(880, 520)
+rotation = -1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_rfdc0")
+
+[node name="ShipType2-3" type="Sprite2D" parent="FlyLeft"]
+position = Vector2(904, 128)
+rotation = -1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_rfdc0")
+
+[node name="FlyRight" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(-1.5, 1)
+motion_mirroring = Vector2(1152, 2.08165e-12)
+
+[node name="ShipType1-1" type="Sprite2D" parent="FlyRight"]
+position = Vector2(224, 144)
+rotation = 1.5708
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType1-2" type="Sprite2D" parent="FlyRight"]
+position = Vector2(344, 48)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType1-3" type="Sprite2D" parent="FlyRight"]
+position = Vector2(752, 184)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_sb0hm")
+
+[node name="ShipType2-1" type="Sprite2D" parent="FlyRight"]
+position = Vector2(256, 328)
+rotation = 1.5708
+texture = ExtResource("4_rfdc0")
+
+[node name="ShipType2-2" type="Sprite2D" parent="FlyRight"]
+position = Vector2(464, 496)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_rfdc0")
+
+[node name="ShipType2-3" type="Sprite2D" parent="FlyRight"]
+position = Vector2(912, 288)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_rfdc0")
+
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(384, 160)
+position = Vector2(384, 177.776)
 scale = Vector2(3, 3)
 texture = ExtResource("3_o71y2")
 
@@ -35,6 +113,7 @@ position = Vector2(384, 288)
 scale = Vector2(1.1, 1.42222)
 
 [node name="Boundaries" type="Node2D" parent="."]
+visible = false
 
 [node name="LeftBoundary" type="StaticBody2D" parent="Boundaries"]
 visible = false

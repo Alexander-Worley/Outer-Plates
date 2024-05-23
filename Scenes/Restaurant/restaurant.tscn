@@ -17,7 +17,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-201443, 0)
+scroll_offset = Vector2(-385341, 0)
 Planet = "Green Planet"
 
 [node name="Prototype 2" type="Label" parent="Environment/Background"]
@@ -74,6 +74,10 @@ texture = ExtResource("4_uo0mj")
 position = Vector2(592, 368)
 texture = ExtResource("4_uo0mj")
 
+[node name="Chair13" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
+position = Vector2(400, 240)
+texture = ExtResource("4_uo0mj")
+
 [node name="Chair5" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
 position = Vector2(624, 208)
 texture = ExtResource("4_uo0mj")
@@ -117,6 +121,9 @@ flip_h = true
 
 [node name="Table" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(624, 368)
+
+[node name="Table9" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
+position = Vector2(432, 240)
 
 [node name="Table2" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(432, 432)
@@ -275,4 +282,5 @@ direction = 3
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("2_srumu")]
-position = Vector2(448, 320)
+position = Vector2(400, 328)
+playerNum = 3
