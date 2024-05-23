@@ -35,7 +35,8 @@ func pickup_holdable(holdable: Area2D):
 		#copy ammo if needed
 	if holdableInHand.is_in_group("Weapons"):
 		holdableInHand.ammo = holdable.ammo
-		#get_node("/root/Logan/BGrestaurant/ammoCount").text = str(holdable.ammo)
+		var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
+		ammoCount.text = str(holdableInHand.ammo)
 	holdable.queue_free()
 	isHolding = true
 

@@ -96,9 +96,9 @@ position = Vector2(-6, 1)
 
 [node name="ammoCount" type="Label" parent="Weapons"]
 unique_name_in_owner = true
-offset_left = 155.0
-offset_top = 596.0
-offset_right = 376.0
-offset_bottom = 644.0
+offset_left = 194.0
+offset_top = 490.0
+offset_right = 415.0
+offset_bottom = 538.0
 text = "hi"
 script = ExtResource("3_12l78")
