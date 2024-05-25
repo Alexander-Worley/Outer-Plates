@@ -67,7 +67,6 @@ position = Vector2(0, -8)
 texture = ExtResource("5_v1gc7")
 
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
-visible = false
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gva8m")

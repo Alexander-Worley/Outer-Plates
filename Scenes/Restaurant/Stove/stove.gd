@@ -10,6 +10,16 @@ var isCooking: bool = false
 @onready var stoveTop = $Surface/StoveTop
 @onready var smoke = $Surface/StoveTop/Pan/Smoke
 
+func _ready():
+	initialize()
+	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
+	if isCooking:
+		smoke.show()
+		get_node("Surface/StoveTop/Pan/Smoke").play()
+	else:
+		smoke.hide()
+		get_node("Surface/StoveTop/Pan/Smoke").stop()
+
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
@@ -46,7 +56,3 @@ func _on_cookingTimer_timeout():
 	stop_cooking()
 	holdablesOnSurface[0].increase_doneness()
 	begin_cooking()
-
-func _physics_process(_delta):
-	# Update sprite in the editor interface
-	if Engine.is_editor_hint(): _ready()
