@@ -105,6 +105,10 @@ face_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_3="Customer"
+
 [rendering]
 
 renderer/rendering_method="mobile"

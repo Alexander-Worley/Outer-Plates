@@ -21,7 +21,7 @@ func _process(delta):
 
 
 func get_open_spot():
-	# You want a ternary, don't you? Do it then. You won't.
+	# You want a ternary, don't you? Do it then. Optimize this for me. You won't.
 	if first_spot_free >= MAX_QUEUE_SIZE:
 		return NO_SPOT_FREE
 	return first_spot_free
