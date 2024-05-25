@@ -70,17 +70,6 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 			centersOfSurface[i][1] = true # Center is now occupied
 			add_child(newHoldable)
 			return true
-	if isHolding: return false
-	holdableOnSurface = holdableInHand.duplicate()
-	add_child(holdableOnSurface)
-	
-	#copy ammo count
-	if holdableOnSurface.is_in_group("Weapons"):
-		holdableOnSurface.ammo = holdableInHand.ammo
-	
-	holdableOnSurface.position = centerOfSurface
-	holdableOnSurface.rotation = 0
-	isHolding = true
 	return true
 
 # Given a holdable, remove it from the surface
