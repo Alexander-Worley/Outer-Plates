@@ -6,9 +6,6 @@ extends Node2D
 var active_areas = []
 var can_interact = true
 
-func _ready():
-	print("the Interaction Manager is operational")
-
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)
 	

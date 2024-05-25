@@ -107,8 +107,13 @@ animations = [{
 "speed": 5.0
 }]
 
+<<<<<<< HEAD
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 5
+=======
+[node name="Player" type="CharacterBody2D"]
+z_index = 2
+>>>>>>> 93b09e7772dcce31a58648a93595c92208f48676
 script = ExtResource("1_inif3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

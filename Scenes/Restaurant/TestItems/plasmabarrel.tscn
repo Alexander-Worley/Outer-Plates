@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://clrcijp5vdyvy"]
+
+[ext_resource type="Texture2D" uid="uid://daa7ip2r3ainx" path="res://Assets/Interactables/External/Barrel Sprite.png" id="1_ecr0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuusy"]
+
+[node name="Plasmabarrel" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_ecr0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vuusy")
