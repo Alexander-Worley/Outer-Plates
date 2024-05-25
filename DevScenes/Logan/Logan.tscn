@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasmagun.gd" id="7_1xdqx"]
-[ext_resource type="PackedScene" uid="uid://bgtkebv0ppyg5" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
+[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
 
 [sub_resource type="GDScript" id="GDScript_665cp"]
 script/source = "extends Label
@@ -25,7 +25,7 @@ func _process(delta):
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_tkrl2")]
-scroll_offset = Vector2(-489511, 0)
+scroll_offset = Vector2(-489679, 0)
 Planet = "Green Planet"
 
 [node name="Logan" type="Label" parent="Background"]
