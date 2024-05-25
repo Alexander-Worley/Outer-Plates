@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://nae0qaa3rbhf"]
+
+[ext_resource type="Script" path="res://Scenes/CustomerQueue/customer_queue.gd" id="1_44v8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75rhw"]
+size = Vector2(200, 35)
+
+[node name="CustomerQueue" type="Area2D"]
+position = Vector2(22, 14)
+script = ExtResource("1_44v8a")
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(99, 18)
+shape = SubResource("RectangleShape2D_75rhw")
+
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
