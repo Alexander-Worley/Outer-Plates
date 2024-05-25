@@ -1,33 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://ede2frngbs0e"]
+[gd_scene load_steps=12 format=3 uid="uid://ede2frngbs0e"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Stove/stove.gd" id="1_il2kw"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_8c1y3"]
 [ext_resource type="Texture2D" uid="uid://lkhdgm05a8t0" path="res://Assets/Interactables/CookingStations/stove-square-off.png" id="3_2s8pw"]
-[ext_resource type="Texture2D" uid="uid://d1evhagj15175" path="res://Assets/Interactables/CookingStations/stove-square-on.png" id="4_j13rg"]
 [ext_resource type="Texture2D" uid="uid://dipmyoc0j3ijx" path="res://Assets/Environment/Effects/pan.png" id="5_v1gc7"]
 [ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="6_h2776"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
 size = Vector2(32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ssv2u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_2s8pw")
-}],
-"loop": true,
-"name": &"Off",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_j13rg")
-}],
-"loop": true,
-"name": &"On",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h3rb"]
 atlas = ExtResource("6_h2776")
@@ -79,9 +59,8 @@ shape = SubResource("RectangleShape2D_br5vu")
 [node name="Surface" type="Sprite2D" parent="."]
 texture = ExtResource("2_8c1y3")
 
-[node name="StoveTop" type="AnimatedSprite2D" parent="Surface"]
-sprite_frames = SubResource("SpriteFrames_ssv2u")
-animation = &"Off"
+[node name="StoveTop" type="Sprite2D" parent="Surface"]
+texture = ExtResource("3_2s8pw")
 
 [node name="Pan" type="Sprite2D" parent="Surface/StoveTop"]
 position = Vector2(0, -8)
@@ -89,10 +68,10 @@ texture = ExtResource("5_v1gc7")
 
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
 visible = false
+z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
-frame_progress = 0.205126
 
 [node name="CookingTimer" type="Timer" parent="."]
 wait_time = 5.0
