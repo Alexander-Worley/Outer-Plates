@@ -30,7 +30,7 @@ func pickup_holdable(holdable: Area2D):
 	if holdableParent.is_in_group("CookingStation"):
 		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
-		holdableParent.isHolding = false
+		holdableParent.remove_holdable_from_surface(holdable)
 	if holdableInHand.is_in_group("ForStove"):
 		holdableInHand.doneness = holdable.doneness
 		#copy ammo if needed
@@ -44,7 +44,7 @@ func pickup_holdable(holdable: Area2D):
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
-		if surface.set_holdable_on_surface(holdableInHand):
+		if surface.set_holdable_on_surface_wrapper(holdableInHand):
 			holdableInHand.queue_free()
 			isHolding = false
 			break
