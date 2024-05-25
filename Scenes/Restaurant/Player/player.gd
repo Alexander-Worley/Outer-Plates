@@ -149,7 +149,7 @@ func _input(event):
 			if not ammoDepotsInRange:
 				holdableInHand.shoot()
 			else:
-				holdableInHand.ammo = 15
+				holdableInHand.ammo = 10
 				holdableInHand.updateAmmoCounter()
 
 # Handles inRange lists

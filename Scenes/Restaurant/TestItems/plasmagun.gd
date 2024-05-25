@@ -1,7 +1,7 @@
 extends Area2D
 
 var Plasma = preload("res://Scenes/Restaurant/TestItems/plasma.tscn")
-var ammo: int = 15
+var ammo: int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
