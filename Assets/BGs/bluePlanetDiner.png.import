@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwjtin5ybxwyg"
-path="res://.godot/imported/planet-2-background.png-a165e38b77e646e5f8c195bdf7368fe3.ctex"
+uid="uid://bcjpwjtnr8ki3"
+path="res://.godot/imported/bluePlanetDiner.png-3b59bc6e8ff914877bf8c1c3b6dd646f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BGs/planet-2-background.png"
-dest_files=["res://.godot/imported/planet-2-background.png-a165e38b77e646e5f8c195bdf7368fe3.ctex"]
+source_file="res://Assets/BGs/bluePlanetDiner.png"
+dest_files=["res://.godot/imported/bluePlanetDiner.png-3b59bc6e8ff914877bf8c1c3b6dd646f.ctex"]
 
 [params]
 
