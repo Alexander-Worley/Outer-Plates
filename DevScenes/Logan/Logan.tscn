@@ -1,19 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=12 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://b233dqvocmp88" path="res://Scenes/Restaurant/BG/BGrestaurant.tscn" id="1_tkrl2"]
 [ext_resource type="Texture2D" uid="uid://wbnivqiais7r" path="res://Assets/BGs/diner-background.png" id="2_y3qw4"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
-[ext_resource type="Script" path="res://DevScenes/Logan/ammoCount.gd" id="3_12l78"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasmagun.gd" id="7_1xdqx"]
+[ext_resource type="PackedScene" uid="uid://b3gtea36k8hb6" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5j51"]
 size = Vector2(20, 442)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wog68"]
 size = Vector2(784, 24)
+
+[sub_resource type="GDScript" id="GDScript_665cp"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(self.get_path())
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="Logan" type="Node2D"]
 
@@ -101,4 +115,7 @@ offset_top = 490.0
 offset_right = 415.0
 offset_bottom = 538.0
 text = "hi"
-script = ExtResource("3_12l78")
+script = SubResource("GDScript_665cp")
+
+[node name="ammoDepot" parent="Weapons" instance=ExtResource("8_u3tbm")]
+position = Vector2(640, 366)
