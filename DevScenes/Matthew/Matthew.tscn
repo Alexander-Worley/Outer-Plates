@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://yag64isjnwu3"]
+[gd_scene load_steps=6 format=3 uid="uid://yag64isjnwu3"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_3v4wo"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_6e77c"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_p3wgr"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_7g1q4"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/Customer/customer.tscn" id="5_u4385"]
 
 [node name="Matthew" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_3v4wo")]
+scroll_offset = Vector2(-746274, 0)
 Planet = "Green Planet"
 
 [node name="Matthew" type="Label" parent="Background"]
@@ -45,3 +47,8 @@ position = Vector2(640, 312)
 
 [node name="Player" parent="Players" instance=ExtResource("5_7g1q4")]
 position = Vector2(576, 320)
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource("5_u4385")]
+position = Vector2(289, 340)
