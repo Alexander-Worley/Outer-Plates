@@ -13,6 +13,9 @@ var holdablesOnSurface: Array[Area2D] = []
 @export var texture: Texture2D = null
 
 func _ready():
+	initialize()
+
+func initialize():
 	if texture: $Surface.texture = texture
 	var collision: StaticBody2D = get_node("StaticBody2D")
 	if collision: collision.scale = Vector2(width, height)
@@ -81,4 +84,4 @@ func remove_holdable_from_surface(holdable: Area2D):
 
 func _physics_process(_delta):
 	# Update sprite in the editor interface
-	if Engine.is_editor_hint(): _ready()
+	if Engine.is_editor_hint(): initialize()
