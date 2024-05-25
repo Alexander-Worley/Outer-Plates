@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://6a8dbjv2vpyd"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasma.gd" id="1_j7r8i"]
+[ext_resource type="Texture2D" uid="uid://bfutiobssayes" path="res://Assets/Projectiles/greenballsrevised.png" id="2_dv1qh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcvf8"]
+size = Vector2(1, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh5g0"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(0, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usen7"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(27, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lh65"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(54, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp2cx"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(81, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb125"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(108, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqgxe"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(135, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5j12"]
+atlas = ExtResource("2_dv1qh")
+region = Rect2(162, 0, 27, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tndak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh5g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usen7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lh65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp2cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb125")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqgxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5j12")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Laser" type="CharacterBody2D"]
+script = ExtResource("1_j7r8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dcvf8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tndak")
+autoplay = "default"

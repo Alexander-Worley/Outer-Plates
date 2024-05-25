@@ -73,6 +73,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 			centersOfSurface[i][1] = true # Center is now occupied
 			add_child(newHoldable)
 			return true
+	return true
 
 # Given a holdable, remove it from the surface
 func remove_holdable_from_surface(holdable: Area2D):

@@ -4,6 +4,7 @@ const SPEED: float = 120.0
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
+var ammoDepotsInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 var sprites = {
 	1: ["P1_Back", "P1_Forward"],
@@ -22,6 +23,7 @@ func _ready():
 func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
 	holdableInHand = holdable.duplicate()
+	
 	interactRange.add_child(holdableInHand)
 	holdableInHand.position = Vector2(0,0)
 	# Interupt cooking if needed
@@ -31,6 +33,11 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.remove_holdable_from_surface(holdable)
 	if holdableInHand.is_in_group("ForStove"):
 		holdableInHand.doneness = holdable.doneness
+		#copy ammo if needed
+	if holdableInHand.is_in_group("Weapons"):
+		holdableInHand.ammo = holdable.ammo
+		var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
+		ammoCount.text = str(holdableInHand.ammo)
 	holdable.queue_free()
 	isHolding = true
 
@@ -136,6 +143,14 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
+	if event.is_action_pressed("interact"):
+		if isHolding && holdableInHand.is_in_group("Weapons"):
+			print(ammoDepotsInRange)
+			if not ammoDepotsInRange:
+				holdableInHand.shoot()
+			else:
+				holdableInHand.ammo = 10
+				holdableInHand.updateAmmoCounter()
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
@@ -147,6 +162,8 @@ func check_interact_range(area, operation):
 		update_in_range(holdablesInRange, area, operation)
 	elif area.is_in_group("Surfaces"):
 		update_in_range(surfacesInRange, area, operation)
+	elif area.is_in_group("ammoDepots"):
+		update_in_range(ammoDepotsInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
 	if operation == "append":
 		listToUpdate.append(areaToUpdate)

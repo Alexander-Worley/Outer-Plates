@@ -1,13 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=9 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_tkrl2"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="4_3jxto"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasmagun.gd" id="7_1xdqx"]
+[ext_resource type="PackedScene" uid="uid://bgtkebv0ppyg5" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
+
+[sub_resource type="GDScript" id="GDScript_665cp"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(self.get_path())
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_tkrl2")]
+scroll_offset = Vector2(-489511, 0)
 Planet = "Green Planet"
 
 [node name="Logan" type="Label" parent="Background"]
@@ -25,12 +43,40 @@ metadata/_edit_use_anchors_ = true
 [node name="Table" parent="Tables" instance=ExtResource("3_3tdtl")]
 position = Vector2(640, 320)
 
-[node name="Foods" type="Node2D" parent="."]
+[node name="Table2" parent="Tables" instance=ExtResource("3_3tdtl")]
+position = Vector2(641, 266)
 
-[node name="TestWeapon" parent="Foods" instance=ExtResource("4_3jxto")]
-position = Vector2(640, 312)
+[node name="Foods" type="Node2D" parent="."]
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("5_sp0jg")]
-position = Vector2(576, 320)
+position = Vector2(552, 330)
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Shotgun" parent="Weapons" instance=ExtResource("4_3jxto")]
+position = Vector2(641, 260)
+script = ExtResource("6_6n5da")
+
+[node name="Muzzle" type="Marker2D" parent="Weapons/Shotgun"]
+position = Vector2(-6, 1)
+
+[node name="Plasmagun" parent="Weapons" instance=ExtResource("4_3jxto")]
+position = Vector2(642, 314)
+script = ExtResource("7_1xdqx")
+
+[node name="Muzzle" type="Marker2D" parent="Weapons/Plasmagun"]
+position = Vector2(-6, 1)
+
+[node name="ammoCount" type="Label" parent="Weapons"]
+unique_name_in_owner = true
+offset_left = 194.0
+offset_top = 490.0
+offset_right = 415.0
+offset_bottom = 538.0
+text = "hi"
+script = SubResource("GDScript_665cp")
+
+[node name="ammoDepot" parent="Weapons" instance=ExtResource("8_u3tbm")]
+position = Vector2(640, 366)
