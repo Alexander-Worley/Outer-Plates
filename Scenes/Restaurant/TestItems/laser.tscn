@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyq6cms1lv6n8"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/laser.gd" id="1_tq3d2"]
+[ext_resource type="Texture2D" uid="uid://bh7ha7jb3fvo5" path="res://Assets/Projectiles/laserRed.png" id="2_84rif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcvf8"]
+size = Vector2(1, 2)
+
+[node name="Laser" type="CharacterBody2D"]
+script = ExtResource("1_tq3d2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_84rif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dcvf8")

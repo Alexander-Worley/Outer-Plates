@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://tl1k83qfbilg" path="res://Assets/Characters/Player/player-spritesheet.png" id="2_yefjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]
-size = Vector2(32, 32)
+size = Vector2(21.3333, 21.3333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
 
@@ -108,13 +108,16 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 script = ExtResource("1_inif3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.9, 0.9)
+position = Vector2(-3.57628e-07, 8)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_kn0nk")
 
 [node name="interactRange" type="Area2D" parent="."]
+position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
 shape = SubResource("CircleShape2D_5x6jq")
