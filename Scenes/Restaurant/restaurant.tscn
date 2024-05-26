@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=15 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_t7iru"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="4_uo0mj"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="4_x3u6a"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="5_rtq4x"]
+[ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_ajke4"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestItems/testFoodForStove.tscn" id="6_uutht"]
 [ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="7_4r5b2"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
@@ -19,7 +20,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-1.05282e+06, 0)
+scroll_offset = Vector2(-1.05521e+06, 0)
 Planet = "Green Planet"
 
 [node name="Day 1" type="Label" parent="Environment/Background"]
@@ -147,15 +148,13 @@ texture = ExtResource("7_4r5b2")
 
 [node name="Table7" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(688, 416)
-direction = 1
 height = 2
-texture = ExtResource("7_4r5b2")
+texture = ExtResource("6_ajke4")
 
 [node name="Table8" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
 position = Vector2(528, 256)
-direction = 1
 height = 2
-texture = ExtResource("7_4r5b2")
+texture = ExtResource("6_ajke4")
 
 [node name="Counters" type="Node2D" parent="Surfaces"]
 
