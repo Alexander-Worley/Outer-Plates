@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r10rl"]
 size = Vector2(16, 32)
 
-[node name="TrashCan" type="Area2D"]
+[node name="TrashCan" type="Area2D" groups=["Surfaces", "TrashCan"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
