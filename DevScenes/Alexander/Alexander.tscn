@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=14 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
@@ -12,13 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="8_c7tx8"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_kjlkh"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="10_tc5h4"]
+[ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/trashCan.tscn" id="13_ssd7v"]
 
 [node name="Alexander" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-908422, 0)
+scroll_offset = Vector2(-1.30218e+06, 0)
 Planet = "Green Planet"
 
 [node name="Prototype 2" type="Label" parent="Environment/Background"]
@@ -244,16 +245,6 @@ position = Vector2(304, 368)
 direction = 1
 texture = ExtResource("6_8fd4r")
 
-[node name="Counter12" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 240)
-direction = 1
-texture = ExtResource("6_8fd4r")
-
-[node name="Counter13" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 272)
-direction = 1
-texture = ExtResource("6_8fd4r")
-
 [node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
 position = Vector2(208, 208)
 texture = ExtResource("6_8fd4r")
@@ -277,6 +268,11 @@ position = Vector2(176, 208)
 [node name="Stove6" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
 position = Vector2(112, 240)
 direction = 3
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="TrashCan" parent="Interactables" instance=ExtResource("13_ssd7v")]
+position = Vector2(304, 208)
 
 [node name="Players" type="Node2D" parent="."]
 

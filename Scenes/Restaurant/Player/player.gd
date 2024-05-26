@@ -46,7 +46,11 @@ func pickup_holdable(holdable: Area2D):
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
-		if surface.set_holdable_on_surface_wrapper(holdableInHand):
+		if surface.is_in_group("TrashCan"):
+			holdableInHand.queue_free()
+			isHolding = false
+			break
+		elif surface.set_holdable_on_surface_wrapper(holdableInHand):
 			holdableInHand.queue_free()
 			isHolding = false
 			break
