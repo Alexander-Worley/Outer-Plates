@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci4ebcdwu4rl5"]
+
+[ext_resource type="Script" path="res://Scenes/PauseMenu/pauseMenu.gd" id="1_rs14q"]
+[ext_resource type="Texture2D" uid="uid://yquwkfkjv63h" path="res://Assets/UI/InputLayouts/Keyboard/keyboard-layout.png" id="2_1o3ht"]
+[ext_resource type="Texture2D" uid="uid://bkmkbv5jikymo" path="res://Assets/UI/InputLayouts/NintendoSwitch/NS-black.png" id="3_qgv3g"]
+
+[node name="PauseMenu" type="Node2D"]
+process_mode = 3
+visible = false
+z_index = 10
+script = ExtResource("1_rs14q")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 736.0
+offset_bottom = 544.0
+color = Color(1, 1, 1, 0.74902)
+
+[node name="Keyboard" type="Sprite2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(352, 112)
+scale = Vector2(0.811189, 0.811189)
+texture = ExtResource("2_1o3ht")
+
+[node name="Controller" type="Sprite2D" parent="Background"]
+unique_name_in_owner = true
+position = Vector2(352, 368)
+scale = Vector2(0.655682, 0.655682)
+texture = ExtResource("3_qgv3g")
+
+[node name="KeyboardControls" type="RichTextLabel" parent="Background"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 8.0
+offset_right = 624.0
+offset_bottom = 176.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]Keyboard Controls:[/b]
+[color=#f8d615][b]Esc:[/b] Open/Close this Pause Menu[/color]
+[color=#1db63a][b]W, A, S, D:[/b] Move[/color]
+[color=#5eb1e7][b]E, Space Bar:[/b] Pick Up or Put Down Objects[/color]
+[color=#ac97d8][b]Q, Shift:[/b] Interact[/color]
+[color=#f67f00][b]Arrow Keys:[/b] Aim (optional)[/color]"
+
+[node name="LayoutChangerTimer" type="Timer" parent="."]
+wait_time = 3.0
