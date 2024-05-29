@@ -28,6 +28,7 @@ const DINER_TEXTURES = {
 @onready var logo = $Logo
 
 func _ready():
+	scroll_offset.x = 0
 	backgroundTexture.texture = BG_TEXTURES[Planet]
 	logo.texture = LOGO_SPRITES[Planet]
 	dinerTexture.texture = DINER_TEXTURES[Planet]
