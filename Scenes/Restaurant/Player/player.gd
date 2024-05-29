@@ -6,18 +6,27 @@ var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
+# All of the player sprites divided up by player number.
+# If the player is moving up, the first array is selected.
+# If the player is moving down, the second array is selected.
+	# For the two arrays above: the horizontal movement decides index.
+	# If the player is not moving horizontally, the first index is selected.
+	# If the player is moving horizontally, the second index is selected.
+# If the player is only moving horizontally, the third value is selected.
+# This is less than ideal, I know, but I'm forgoing redoing this due to time crunch.
 var sprites = {
-	1: ["P1_Back", "P1_Forward"],
-	2: ["P2_Back", "P2_Forward"],
-	3: ["P3_Back", "P3_Forward"],
-	4: ["P4_Back", "P4_Forward"]
+	1: [["P1_Back", "P1_B_Diagonal"], ["P1_Front", "P1_F_Diagonal"], "P1_Side"],
+	2: [["P2_Back", "P2_B_Diagonal"], ["P2_Front", "P2_F_Diagonal"], "P2_Side"],
+	3: [["P3_Back", "P3_B_Diagonal"], ["P3_Front", "P3_F_Diagonal"], "P3_Side"],
+	4: [["P4_Back", "P4_B_Diagonal"], ["P4_Front", "P4_F_Diagonal"], "P4_Side"],
 }
 @export_range (1, 4) var playerNum: int = 1
 @onready var interactRange: Area2D = $interactRange
+@onready var playerSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
-	# TODO: The line below is temporary until proper animations are added
-	get_node("AnimatedSprite2D").play(sprites[playerNum][1])
+	# Set front sprite as starting sprite
+	playerSprite.animation = sprites[playerNum][1][0]
 
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
@@ -63,13 +72,18 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	vertical *= DISTANCE
 	interactRange.position = Vector2(horizontal, vertical)
 
+# Animates the player
 func animate_player(horizontal: float, vertical: float):
 	if horizontal:
 		# Flip Player sprite if facing opposite direction of the spirte's default direction
-		get_node("AnimatedSprite2D").flip_h = true if horizontal == 1 else false
+		playerSprite.flip_h = true if horizontal == 1 else false
+		if !vertical:
+			# If moving sideways, set Side Sprite
+			playerSprite.play(sprites[playerNum][2])
 	if vertical:
-		var direction = (vertical + 1) / 2
-		get_node("AnimatedSprite2D").play(sprites[playerNum][direction])
+		var verticalDirection = (vertical + 1) / 2 # 0 if up, 1 if down
+		var horizontalDirection = abs(horizontal) # 0 if only vertical, 1 if horizontal
+		playerSprite.play(sprites[playerNum][verticalDirection][horizontalDirection])
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
@@ -138,7 +152,7 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		# if no movement at all
-		if !horizontalMovement: get_node("AnimatedSprite2D").stop()
+		if !horizontalMovement: playerSprite.stop()
 	
 	move_and_slide()
 

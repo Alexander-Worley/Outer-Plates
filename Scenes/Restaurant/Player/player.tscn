@@ -411,7 +411,7 @@ shape = SubResource("CircleShape2D_5x6jq")
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_msfce")
-animation = &"P4_Front"
+animation = &"P1_Front"
 
 [connection signal="area_entered" from="interactRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="interactRange" to="." method="_on_interact_range_area_exited"]
