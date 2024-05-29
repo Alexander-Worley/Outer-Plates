@@ -49,7 +49,8 @@ func pickup_holdable(holdable: Area2D):
 		#holdableInHand.ammo = holdable.ammo
 		#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
 		#ammoCount.text = str(holdableInHand.ammo)
-	holdable.queue_free()
+	# Do not delete original holdable if it is coming from a PlateRack
+	if !holdableParent.is_in_group("PlateRack"): holdable.queue_free()
 	isHolding = true
 
 # Places "holdableInHand" on a surface

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=16 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="8_c7tx8"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_kjlkh"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="10_tc5h4"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="12_5p3b3"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/trashCan.tscn" id="13_ssd7v"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="14_5k5kf"]
 
@@ -20,7 +21,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.11111, 0)
+scroll_offset = Vector2(-0.909091, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -245,13 +246,6 @@ position = Vector2(304, 368)
 direction = 1
 texture = ExtResource("6_8fd4r")
 
-[node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(208, 208)
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFoodForStove" parent="Surfaces/Counters/Counter7" instance=ExtResource("7_twrhn")]
-position = Vector2(0, -8)
-
 [node name="Stoves" type="Node2D" parent="Surfaces"]
 
 [node name="Stove" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
@@ -268,6 +262,10 @@ position = Vector2(176, 208)
 [node name="Stove6" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
 position = Vector2(112, 240)
 direction = 3
+
+[node name="PlateRack" parent="Surfaces" instance=ExtResource("12_5p3b3")]
+position = Vector2(208, 208)
+direction = 1
 
 [node name="Interactables" type="Node2D" parent="."]
 
