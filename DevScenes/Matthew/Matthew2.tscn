@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3obw6rerecq8"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_mpqwr"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_ijpwe"]
+[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="3_4dtbo"]
+[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_svm2s"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/Customer/customer.tscn" id="5_gu0ng"]
+
+[node name="Matthew" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_mpqwr")]
+scroll_offset = Vector2(-782379, 0)
+Planet = "Green Planet"
+
+[node name="Matthew" type="Label" parent="Background"]
+offset_top = 576.0
+offset_right = 284.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Matthew"
+metadata/_edit_use_anchors_ = true
+
+[node name="Instructions" type="Label" parent="Background"]
+offset_left = 48.0
+offset_top = 504.0
+offset_right = 1150.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Instructions: 1. \"Arrow keys\" to move.
+                        2. \"Space\" to pickup/place items."
+
+[node name="Tables" type="Node2D" parent="."]
+
+[node name="Table" parent="Tables" instance=ExtResource("2_ijpwe")]
+position = Vector2(640, 320)
+
+[node name="Table2" parent="Tables" instance=ExtResource("2_ijpwe")]
+position = Vector2(482, 353)
+
+[node name="Table3" parent="Tables" instance=ExtResource("2_ijpwe")]
+position = Vector2(482, 321)
+
+[node name="Table4" parent="Tables" instance=ExtResource("2_ijpwe")]
+position = Vector2(481, 286)
+
+[node name="Foods" type="Node2D" parent="."]
+
+[node name="TestFood" parent="Foods" instance=ExtResource("3_4dtbo")]
+position = Vector2(639, 307)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("4_svm2s")]
+position = Vector2(576, 320)
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource("5_gu0ng")]
+position = Vector2(289, 340)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://df7g7vvs80ot1"]
+[gd_scene load_steps=9 format=3 uid="uid://df7g7vvs80ot1"]
 
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Customer/customer.gd" id="1_h7uo1"]
@@ -29,6 +29,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xt713"]
 radius = 68.7677
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghqxd"]
+
 [node name="Customer" type="CharacterBody2D"]
 script = ExtResource("1_h7uo1")
 
@@ -44,6 +46,9 @@ script = ExtResource("3_1v3wn")
 position = Vector2(4, -6)
 rotation = -1.55509
 shape = SubResource("CircleShape2D_xt713")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ghqxd")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

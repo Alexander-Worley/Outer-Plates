@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgfsbwimetswc"]
+[gd_scene load_steps=10 format=3 uid="uid://cgfsbwimetswc"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_tkrl2"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_3tdtl"]
@@ -80,3 +80,6 @@ script = SubResource("GDScript_665cp")
 
 [node name="ammoDepot" parent="Weapons" instance=ExtResource("8_u3tbm")]
 position = Vector2(640, 366)
+
+[node name="Customer" parent="." instance=ExtResource("8_gcmsn")]
+position = Vector2(260, 300)
