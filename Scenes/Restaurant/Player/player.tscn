@@ -211,7 +211,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_11nqc")
 }],
 "loop": true,
-"name": &"P1_Forward",
+"name": &"P1_Front",
 "speed": 5.0
 }, {
 "frames": [{
@@ -266,7 +266,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cp7gw")
 }],
 "loop": true,
-"name": &"P2_Forward",
+"name": &"P2_Front",
 "speed": 5.0
 }, {
 "frames": [{
@@ -321,7 +321,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_m1bup")
 }],
 "loop": true,
-"name": &"P3_Forward",
+"name": &"P3_Front",
 "speed": 5.0
 }, {
 "frames": [{
@@ -376,7 +376,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5hp0k")
 }],
 "loop": true,
-"name": &"P4_Forward",
+"name": &"P4_Front",
 "speed": 5.0
 }, {
 "frames": [{
@@ -411,7 +411,7 @@ shape = SubResource("CircleShape2D_5x6jq")
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_msfce")
-animation = &"P1_Forward"
+animation = &"P4_Front"
 
 [connection signal="area_entered" from="interactRange" to="." method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="interactRange" to="." method="_on_interact_range_area_exited"]
