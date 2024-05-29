@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
 
+
 [node name="Restaurant" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]

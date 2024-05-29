@@ -1,6 +1,6 @@
 extends Node2D
 
-
+# When doing multiplayer, we'll have to use player codes to do this.
 @onready var player = get_tree().get_first_node_in_group("player")
 
 var active_areas = []
