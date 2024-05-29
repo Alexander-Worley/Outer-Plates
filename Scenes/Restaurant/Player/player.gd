@@ -41,16 +41,17 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
-	if holdableInHand.is_in_group("ForStove"):
+	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene
 	# AW - May 25, 2024 - TODO: Fix this
-	if holdableInHand.is_in_group("Weapons"):
-		holdableInHand.ammo = holdable.ammo
-		var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
-		ammoCount.text = str(holdableInHand.ammo)
-	holdable.queue_free()
+	#if holdableInHand.is_in_group("Weapons"):
+		#holdableInHand.ammo = holdable.ammo
+		#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
+		#ammoCount.text = str(holdableInHand.ammo)
+	# Do not delete original holdable if it is coming from a PlateRack
+	if !holdableParent.is_in_group("PlateRack"): holdable.queue_free()
 	isHolding = true
 
 # Places "holdableInHand" on a surface
