@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct4bob2krtxcc"]
+
+[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="1_l677c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f43v"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65iqj"]
+atlas = ExtResource("1_l677c")
+region = Rect2(0, 1, 32, 30)
+
+[node name="PlateRack" type="Area2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_7f43v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7f43v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_65iqj")
