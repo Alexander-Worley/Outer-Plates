@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=16 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_t7iru"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/trashCan.tscn" id="11_l1h7v"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="13_755di"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="13_ybtij"]
 
 [node name="Restaurant" type="Node2D"]
@@ -20,17 +21,17 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.81818, 0)
 Planet = "Green Planet"
 
-[node name="Day 1" type="Label" parent="Environment/Background"]
+[node name="MVP" type="Label" parent="Environment/Background"]
 offset_left = 8.0
-offset_right = 152.0
+offset_right = 62.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 25
-text = "Day 1"
+text = "MVP"
 
 [node name="Instructions" type="Label" parent="Environment/Background"]
 offset_left = 8.0
@@ -245,13 +246,6 @@ position = Vector2(304, 368)
 direction = 1
 texture = ExtResource("5_rtq4x")
 
-[node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
-position = Vector2(208, 208)
-texture = ExtResource("5_rtq4x")
-
-[node name="TestFoodForStove" parent="Surfaces/Counters/Counter7" instance=ExtResource("6_uutht")]
-position = Vector2(0, -8)
-
 [node name="Stoves" type="Node2D" parent="Surfaces"]
 
 [node name="Stove" parent="Surfaces/Stoves" instance=ExtResource("4_x3u6a")]
@@ -273,6 +267,9 @@ direction = 3
 
 [node name="TrashCan" parent="Interactables" instance=ExtResource("11_l1h7v")]
 position = Vector2(304, 208)
+
+[node name="PlateRack" parent="Interactables" instance=ExtResource("13_755di")]
+position = Vector2(208, 208)
 
 [node name="Players" type="Node2D" parent="."]
 
