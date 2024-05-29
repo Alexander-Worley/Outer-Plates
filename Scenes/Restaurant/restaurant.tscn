@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/trashCan.tscn" id="11_l1h7v"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="13_ybtij"]
 
+
 [node name="Restaurant" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]

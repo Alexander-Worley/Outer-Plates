@@ -1,6 +1,6 @@
 @tool
 extends Area2D
-
+#class_name PlainSurface
 # A 2D Array: Array[Vector2][bool]
 # Vector2 contains a surfaceCenter
 # bool contains whether said surfaceCenter is occupied
@@ -52,6 +52,8 @@ func initialize_holdables_on_surface():
 	# Set starting holdablesOnSurface[0] if needed
 	var originalHoldables: Array[Node] = find_children("*", "Area2D", false)
 	for i: int in originalHoldables.size():
+		if originalHoldables[0].has_method("is_interaction_area"):
+			continue
 		# If this errors, you spawned too many holdables on one surface!
 		originalHoldables[i].position = centersOfSurface[i][0]
 		originalHoldables[i].rotation = 0
