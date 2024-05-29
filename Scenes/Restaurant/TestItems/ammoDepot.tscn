@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3gtea36k8hb6"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/PlainSurface/plainSurface.gd" id="1_u4k5f"]
-[ext_resource type="Texture2D" uid="uid://daa7ip2r3ainx" path="res://Assets/Interactables/External/Barrel Sprite.png" id="2_d5sql"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/ammoDepot.gd" id="1_4h32w"]
+[ext_resource type="Texture2D" uid="uid://daa7ip2r3ainx" path="res://Assets/Interactables/External/barrel.png" id="2_d5sql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
 size = Vector2(32, 32)
 
 [node name="ammoDepot" type="Area2D" groups=["ammoDepots"]]
-script = ExtResource("1_u4k5f")
+script = ExtResource("1_4h32w")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

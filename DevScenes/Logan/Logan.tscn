@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_sp0jg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/shotgun.gd" id="6_6n5da"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasmagun.gd" id="7_1xdqx"]
-[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
+[ext_resource type="PackedScene" uid="uid://dyvh4dg0jpgib" path="res://Scenes/Restaurant/NPCs/pirate.tscn" id="8_mgb07"]
+[ext_resource type="PackedScene" uid="uid://b3gtea36k8hb6" path="res://Scenes/Restaurant/TestItems/ammoDepot.tscn" id="8_u3tbm"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="8_yblt2"]
+[ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox2.tscn" id="10_bcvyk"]
 
 [sub_resource type="GDScript" id="GDScript_665cp"]
 script/source = "extends Label
@@ -14,7 +17,7 @@ script/source = "extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(self.get_path())
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +28,7 @@ func _process(delta):
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_tkrl2")]
-scroll_offset = Vector2(-489679, 0)
+scroll_offset = Vector2(-1.00345e+06, 0)
 Planet = "Green Planet"
 
 [node name="Logan" type="Label" parent="Background"]
@@ -71,11 +74,10 @@ position = Vector2(-6, 1)
 
 [node name="ammoCount" type="Label" parent="Weapons"]
 unique_name_in_owner = true
-offset_left = 194.0
-offset_top = 490.0
-offset_right = 415.0
-offset_bottom = 538.0
-text = "hi"
+offset_left = 47.0
+offset_top = 489.0
+offset_right = 268.0
+offset_bottom = 537.0
 script = SubResource("GDScript_665cp")
 
 [node name="ammoDepot" parent="Weapons" instance=ExtResource("8_u3tbm")]

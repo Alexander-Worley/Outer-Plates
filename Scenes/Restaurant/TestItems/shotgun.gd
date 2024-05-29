@@ -1,7 +1,9 @@
 extends Area2D
 
 var Laser = preload("res://Scenes/Restaurant/TestItems/laser.tscn")
-var ammo: int = 10
+
+var maxAmmo = 20
+var ammo: int = maxAmmo
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

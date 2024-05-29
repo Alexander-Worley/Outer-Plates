@@ -4,6 +4,7 @@ const SPEED: float = 120.0
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
+var jukeboxInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 # All of the player sprites divided up by player number.
@@ -164,17 +165,24 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
-	# Commented out this as it causes crashes in Main Restaurant Scene
-	# AW - May 25, 2024 - TODO: Fix this
-	#if event.is_action_pressed("interact"):
-		#if isHolding && holdableInHand.is_in_group("Weapons"):
-			#print(ammoDepotsInRange)
-			#if not ammoDepotsInRange:
-				#holdableInHand.shoot()
-			#else:
-				#holdableInHand.ammo = 10
-				#holdableInHand.updateAmmoCounter()
+	if event.is_action_pressed("interact"):
+		if jukeboxInRange and not isHolding:
+			jukeboxInRange[0].playMusic()
+		if isHolding && holdableInHand.is_in_group("Weapons"):
+			if not ammoDepotsInRange:
+				holdableInHand.shoot()
+			else:
+				if ammoDepotsInRange[0].ammoCount > 0:
+					var ammoNeeded
+					if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
+						ammoNeeded = ammoDepotsInRange[0].ammoCount
+					else: 
+						ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
 
+					holdableInHand.ammo += ammoNeeded
+					ammoDepotsInRange[0].ammoCount -= ammoNeeded
+					holdableInHand.updateAmmoCounter()
+	
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
 	check_interact_range(area, "append")
@@ -187,6 +195,8 @@ func check_interact_range(area, operation):
 		update_in_range(surfacesInRange, area, operation)
 	elif area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
+	elif area.is_in_group("Jukebox"):
+		update_in_range(jukeboxInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
 	if operation == "append":
 		listToUpdate.append(areaToUpdate)

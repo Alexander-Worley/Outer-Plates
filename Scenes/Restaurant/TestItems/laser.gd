@@ -13,7 +13,7 @@ func _physics_process(delta):
 		queue_free()
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit()
+			collision.get_collider().hit("laser")
 
 func _on_VisibilityNotifier2D_screen_exited():
 	# Deletes the bullet when it exits the screen.
