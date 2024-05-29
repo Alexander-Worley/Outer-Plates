@@ -46,7 +46,11 @@ func pickup_holdable(holdable: Area2D):
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
-		if surface.set_holdable_on_surface_wrapper(holdableInHand):
+		if surface.is_in_group("TrashCan"):
+			holdableInHand.queue_free()
+			isHolding = false
+			break
+		elif surface.set_holdable_on_surface_wrapper(holdableInHand):
 			holdableInHand.queue_free()
 			isHolding = false
 			break
@@ -145,14 +149,16 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
-	if event.is_action_pressed("interact"):
-		if isHolding && holdableInHand.is_in_group("Weapons"):
-			print(ammoDepotsInRange)
-			if not ammoDepotsInRange:
-				holdableInHand.shoot()
-			else:
-				holdableInHand.ammo = 10
-				holdableInHand.updateAmmoCounter()
+	# Commented out this as it causes crashes in Main Restaurant Scene
+	# AW - May 25, 2024 - TODO: Fix this
+	#if event.is_action_pressed("interact"):
+		#if isHolding && holdableInHand.is_in_group("Weapons"):
+			#print(ammoDepotsInRange)
+			#if not ammoDepotsInRange:
+				#holdableInHand.shoot()
+			#else:
+				#holdableInHand.ammo = 10
+				#holdableInHand.updateAmmoCounter()
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
