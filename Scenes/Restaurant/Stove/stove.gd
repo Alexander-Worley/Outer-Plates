@@ -25,7 +25,7 @@ func _ready():
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 	if !set_holdable_on_surface(holdableInHand): return false
 	for holdable: Area2D in holdablesOnSurface:
-		if holdable.is_in_group("ForStove"):
+		if holdable.is_in_group("Cookable"):
 			holdable.doneness = holdableInHand.doneness
 			begin_cooking()
 	return true

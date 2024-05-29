@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="5_106gf"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="6_8fd4r"]
 [ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_cg0ue"]
-[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestItems/testFoodForStove.tscn" id="7_twrhn"]
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="7_twrhn"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="8_c7tx8"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_kjlkh"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="10_tc5h4"]
@@ -20,7 +20,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.0787, 0)
+scroll_offset = Vector2(-1.11111, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]

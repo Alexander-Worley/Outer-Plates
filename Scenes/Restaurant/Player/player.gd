@@ -40,7 +40,7 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
-	if holdableInHand.is_in_group("ForStove"):
+	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene

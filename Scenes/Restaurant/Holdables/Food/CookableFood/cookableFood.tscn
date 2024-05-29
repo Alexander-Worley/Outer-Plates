@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtdmt8ydsnyci"]
 
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_a7x1e"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/testFoodForStove.gd" id="1_ktuhh"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.gd" id="1_ktuhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70iey"]
 size = Vector2(32, 32)
@@ -34,7 +34,7 @@ func TEMP_dev_sprite_update(doneness: int):
 		$devLabel.text = TEMP_LABLES[doneness]
 "
 
-[node name="TestFoodForStove" type="Area2D" groups=["ForStove", "Holdables"]]
+[node name="CookableFood" type="Area2D" groups=["Cookable", "Holdables"]]
 script = ExtResource("1_ktuhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
