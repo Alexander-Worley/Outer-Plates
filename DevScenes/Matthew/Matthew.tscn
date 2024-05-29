@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_6e77c"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_p3wgr"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_7g1q4"]
-[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/Customer/customer.tscn" id="5_u4385"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="5_u4385"]
+
 
 [node name="Matthew" type="Node2D"]
 

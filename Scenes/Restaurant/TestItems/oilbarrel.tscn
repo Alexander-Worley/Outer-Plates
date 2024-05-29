@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfqcp63swhvjq"]
 
-[ext_resource type="Texture2D" uid="uid://daa7ip2r3ainx" path="res://Assets/Interactables/External/Barrel Sprite.png" id="1_psq3s"]
+[ext_resource type="Texture2D" uid="uid://daa7ip2r3ainx" path="res://Assets/Interactables/External/barrel.png" id="1_psq3s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26w1k"]
 

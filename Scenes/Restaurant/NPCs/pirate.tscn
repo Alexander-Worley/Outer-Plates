@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyvh4dg0jpgib"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_sbph8"]
+[ext_resource type="Texture2D" uid="uid://byoe616mk35j8" path="res://Assets/Characters/Enemies/testpirate-alive.png" id="2_eiy6t"]
+[ext_resource type="Texture2D" uid="uid://b038ki761yum8" path="res://Assets/Characters/Enemies/testpirate-dead.png" id="3_gk2bh"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/HitLabel.gd" id="4_joejb"]
+[ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_rcfyf"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_5uoxo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7teyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eiy6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gk2bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuq1p"]
+
+[node name="Customer" type="CharacterBody2D"]
+script = ExtResource("1_sbph8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.17233e-07, -1.19209e-07)
+scale = Vector2(0.103627, 0.100503)
+sprite_frames = SubResource("SpriteFrames_7teyf")
+frame_progress = 0.0123209
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uuq1p")
+
+[node name="HitLabel" type="Label" parent="."]
+offset_left = -76.0
+offset_top = -34.0
+offset_right = -50.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_rcfyf")
+script = ExtResource("4_joejb")
+
+[node name="Timer" type="Timer" parent="HitLabel"]
+script = ExtResource("5_5uoxo")
