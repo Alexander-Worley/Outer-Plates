@@ -90,6 +90,7 @@ script = ExtResource("6_hdr2x")
 wait_time = 0.1
 
 [node name="ProgressBar" type="ProgressBar" parent="CookingBarControl"]
+z_index = 101
 layout_mode = 0
 offset_left = 17.0
 offset_top = 22.0
