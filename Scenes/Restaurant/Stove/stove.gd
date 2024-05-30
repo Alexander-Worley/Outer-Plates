@@ -9,23 +9,20 @@ var isCooking: bool = false
 @onready var cookingTimer = $CookingTimer
 @onready var cookingBar = $CookingBarControl
 @onready var stoveTop = $Surface/StoveTop
-@onready var smoke = $Surface/StoveTop/Pan/Smoke
-
-@onready var donenessIndex
+@onready var smoke = %Smoke
+@onready var donenessIndex = 0
 
 func _ready():
 	initialize()
 	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	if isCooking:
 		smoke.show()
-		get_node("Surface/StoveTop/Pan/Smoke").play()
+		smoke.play()
 	else:
 		smoke.hide()
-		get_node("Surface/StoveTop/Pan/Smoke").stop()
+		smoke.stop()
 		
-func _process(delta):
-	pass
-	
+
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
@@ -47,7 +44,7 @@ func begin_cooking():
 	donenessIndex = holdablesOnSurface[0].get_doneness()
 	cookingBar.startMoving(donenessIndex)
 	
-	get_node("Surface/StoveTop/Pan/Smoke").play()
+	smoke.play()
 	# Cook asynchronously
 	if not cookingTimer.is_connected("timeout", Callable(self, "_on_cookingTimer_timeout")):
 		cookingTimer.connect("timeout", Callable(self, "_on_cookingTimer_timeout"))
@@ -60,11 +57,8 @@ func stop_cooking():
 	isCooking = false
 	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	smoke.hide()
-	get_node("Surface/StoveTop/Pan/Smoke").stop()
-	
-	#food is burnt
-	if donenessIndex == 3:
-		reset_progress_bar()
+	smoke.stop()
+	reset_progress_bar()
 
 # Finished cooking timer
 func _on_cookingTimer_timeout():
@@ -74,7 +68,7 @@ func _on_cookingTimer_timeout():
 	begin_cooking()
 	
 	#update CookingBar color
-	cookingBar.set_modulate(cookingBar.colorArr[donenessIndex])
+	cookingBar.set_modulate(cookingBar.COLORS[donenessIndex])
 
 func reset_progress_bar():
 	cookingBar.resetBar()
