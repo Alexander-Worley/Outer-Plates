@@ -87,7 +87,7 @@ offset_bottom = -21.0
 script = ExtResource("6_hdr2x")
 
 [node name="CookingBarTimer" type="Timer" parent="CookingBarControl"]
-wait_time = 0.1
+wait_time = 0.11
 
 [node name="ProgressBar" type="ProgressBar" parent="CookingBarControl"]
 layout_mode = 0

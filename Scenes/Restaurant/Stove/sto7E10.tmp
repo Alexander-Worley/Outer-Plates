@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ede2frngbs0e"]
+[gd_scene load_steps=16 format=3 uid="uid://ede2frngbs0e"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Stove/stove.gd" id="1_il2kw"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_8c1y3"]
@@ -46,6 +46,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_ffs85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bexr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrga4"]
+
 [node name="Stove" type="Area2D" groups=["CookingStation", "Surfaces"]]
 script = ExtResource("1_il2kw")
 
@@ -75,7 +81,6 @@ sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
 
 [node name="CookingBarControl" type="Control" parent="."]
-visible = false
 modulate = Color(0, 0, 1, 1)
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 3
@@ -86,21 +91,20 @@ offset_right = 26.0
 offset_bottom = -21.0
 script = ExtResource("6_hdr2x")
 
-[node name="CookingBarTimer" type="Timer" parent="CookingBarControl"]
-wait_time = 0.1
-
-[node name="ProgressBar" type="ProgressBar" parent="CookingBarControl"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 22.0
-offset_right = 49.0
-offset_bottom = 34.0
+[node name="CookingBar" type="ProgressBar" parent="CookingBarControl"]
+offset_left = 1.0
+offset_right = 2.0
+offset_bottom = 40.0
+theme = SubResource("Theme_ffs85")
+theme_override_styles/background = SubResource("StyleBoxFlat_1bexr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vrga4")
 show_percentage = false
+
+[node name="CookingBarTimer" type="Timer" parent="CookingBarControl"]
 
 [node name="CookingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 3.0
-autostart = true
+one_shot = true
 
-[connection signal="timeout" from="CookingBarControl/CookingBarTimer" to="CookingBarControl" method="_on_cooking_bar_timer_timeout"]
 [connection signal="timeout" from="CookingTimer" to="." method="_on_cooking_timer_timeout"]

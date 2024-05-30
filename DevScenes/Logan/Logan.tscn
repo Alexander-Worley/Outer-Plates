@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=13 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_kl7jo"]
@@ -10,14 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="8_gpd82"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="9_edn42"]
 [ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="11_au6up"]
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/TestItems/testFoodForStove.tscn" id="12_fxna3"]
 
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-0.833333, 0)
 Planet = "Green Planet"
 
-[node name="Matthew" type="Label" parent="Background"]
+[node name="Logan" type="Label" parent="Background"]
 offset_top = 576.0
 offset_right = 284.0
 offset_bottom = 648.0
@@ -26,17 +28,6 @@ theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 50
 text = "Matthew"
 metadata/_edit_use_anchors_ = true
-
-[node name="Instructions" type="Label" parent="Background"]
-offset_left = 48.0
-offset_top = 504.0
-offset_right = 1150.0
-offset_bottom = 645.0
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
-theme_override_font_sizes/font_size = 50
-text = "Instructions: 1. \"Arrow keys\" to move.
-                        2. \"Space\" to pickup/place items."
 
 [node name="Tables" type="Node2D" parent="."]
 
@@ -86,3 +77,9 @@ position = Vector2(482, 348)
 [node name="ammoCount" type="Label" parent="Weapons"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Stove" parent="." instance=ExtResource("11_au6up")]
+position = Vector2(571, 218)
+
+[node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
+position = Vector2(483, 280)
