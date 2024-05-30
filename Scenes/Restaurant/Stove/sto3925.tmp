@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://ede2frngbs0e"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/Stove/stove.gd" id="1_il2kw"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_8c1y3"]
+[ext_resource type="Texture2D" uid="uid://lkhdgm05a8t0" path="res://Assets/Interactables/CookingStations/stove-square-off.png" id="3_2s8pw"]
+[ext_resource type="Texture2D" uid="uid://dipmyoc0j3ijx" path="res://Assets/Environment/Effects/pan.png" id="5_v1gc7"]
+[ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="6_h2776"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Stove/CookingBar.gd" id="6_wf7gf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h3rb"]
+atlas = ExtResource("6_h2776")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcem4"]
+atlas = ExtResource("6_h2776")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjflx"]
+atlas = ExtResource("6_h2776")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_442ks"]
+atlas = ExtResource("6_h2776")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gva8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h3rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcem4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjflx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_442ks")
+}],
+"loop": true,
+"name": &"Smoke",
+"speed": 5.0
+}]
+
+[node name="Stove" type="Area2D" groups=["CookingStation", "Surfaces"]]
+script = ExtResource("1_il2kw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_br5vu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_br5vu")
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture = ExtResource("2_8c1y3")
+
+[node name="StoveTop" type="Sprite2D" parent="Surface"]
+texture = ExtResource("3_2s8pw")
+
+[node name="Pan" type="Sprite2D" parent="Surface/StoveTop"]
+position = Vector2(0, -8)
+texture = ExtResource("5_v1gc7")
+
+[node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
+visible = false
+z_index = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_gva8m")
+animation = &"Smoke"
+
+[node name="CookingTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CookingBar" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = -32.0
+offset_right = -18.0
+offset_bottom = -22.0
+color = Color(0, 0.728, 0.84, 1)
+script = ExtResource("6_wf7gf")

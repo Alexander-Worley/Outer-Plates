@@ -23,6 +23,9 @@ func increase_doneness():
 	if isBurnt(): return
 	doneness += 1
 	update_sprite()
+	
+func get_doneness():
+	return doneness
 
 # Change sprite
 func update_sprite():

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://1yhk4y28a236"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/Plasmagun.gd" id="1_vtvib"]
+[ext_resource type="Texture2D" uid="uid://6wj11acoq2ok" path="res://Assets/Holdables/Weapons/TEMP-Weapon-1.png" id="2_1q6wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5omhy"]
+size = Vector2(32, 32)
+
+[node name="Plasmagun" type="Area2D" groups=["Holdables", "Weapons"]]
+script = ExtResource("1_vtvib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_5omhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.252604, 0.440179)
+texture = ExtResource("2_1q6wk")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-2, 0)
