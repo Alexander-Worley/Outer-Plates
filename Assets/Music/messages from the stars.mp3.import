@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnonlu3a2hnma"
+path="res://.godot/imported/messages from the stars.mp3-754d980fb910b2add7981b611a4aff8f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/messages from the stars.mp3"
+dest_files=["res://.godot/imported/messages from the stars.mp3-754d980fb910b2add7981b611a4aff8f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
