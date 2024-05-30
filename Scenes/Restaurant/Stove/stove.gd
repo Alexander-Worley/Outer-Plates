@@ -11,8 +11,7 @@ var isCooking: bool = false
 @onready var stoveTop = $Surface/StoveTop
 @onready var smoke = $Surface/StoveTop/Pan/Smoke
 
-@onready var donenessIndex = 0
-#@onready var progressValue = 0
+@onready var donenessIndex
 
 func _ready():
 	initialize()
@@ -45,7 +44,8 @@ func begin_cooking():
 	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	smoke.show()
 
-	cookingBar.startMoving()
+	donenessIndex = holdablesOnSurface[0].get_doneness()
+	cookingBar.startMoving(donenessIndex)
 	
 	get_node("Surface/StoveTop/Pan/Smoke").play()
 	# Cook asynchronously
@@ -70,7 +70,7 @@ func stop_cooking():
 func _on_cookingTimer_timeout():
 	stop_cooking()
 	holdablesOnSurface[0].increase_doneness()
-	donenessIndex += 1
+	donenessIndex = holdablesOnSurface[0].get_doneness()
 	begin_cooking()
 	
 	#update CookingBar color

@@ -7,15 +7,18 @@ var well:Color = Color("#8B0000")
 var burnt:Color = Color("#2b2d2f")
 	
 var colorArr = [raw, rare, med_rare, well, burnt]
+var valueArr = [0, 25, 50, 75, 100]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-func startMoving():
+func startMoving(doneness):
 	self.visible = true
-	self.set_modulate(raw)
+	self.set_modulate(colorArr[doneness])
+	$ProgressBar.value = valueArr[doneness]
+	
 	$CookingBarTimer.start()
 
 
