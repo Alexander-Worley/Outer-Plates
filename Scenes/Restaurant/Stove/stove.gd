@@ -63,7 +63,7 @@ func stop_cooking():
 	get_node("Surface/StoveTop/Pan/Smoke").stop()
 	
 	#food is burnt
-	if donenessIndex == 3:
+	if donenessIndex >= 3:
 		reset_progress_bar()
 
 # Finished cooking timer

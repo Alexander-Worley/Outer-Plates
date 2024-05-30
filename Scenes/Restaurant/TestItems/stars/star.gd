@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 500
+var speed = 400
 
 func start(_position, _direction):
 	rotation = _direction
@@ -13,7 +13,7 @@ func _physics_process(delta):
 		queue_free()
 		velocity = velocity.bounce(collision.get_normal())
 		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit("laser")
+			collision.get_collider().hit("star")
 
 func _on_VisibilityNotifier2D_screen_exited():
 	# Deletes the bullet when it exits the screen.
