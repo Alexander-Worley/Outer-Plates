@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6a8dbjv2vpyd"]
+[gd_scene load_steps=12 format=3 uid="uid://bhyhtc3qb28sf"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/plasma.gd" id="1_j7r8i"]
 [ext_resource type="Texture2D" uid="uid://bfutiobssayes" path="res://Assets/Projectiles/greenballsrevised.png" id="2_dv1qh"]
