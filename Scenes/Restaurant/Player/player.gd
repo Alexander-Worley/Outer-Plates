@@ -42,6 +42,7 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.reset_progress_bar()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
+	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
 	#copy ammo if needed
@@ -183,7 +184,7 @@ func _input(event):
 					holdableInHand.ammo += ammoNeeded
 					ammoDepotsInRange[0].ammoCount -= ammoNeeded
 					holdableInHand.updateAmmoCounter()
-	
+
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
 	check_interact_range(area, "append")
