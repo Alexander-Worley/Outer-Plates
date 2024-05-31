@@ -39,7 +39,6 @@ func pickup_holdable(holdable: Area2D):
 	# Interupt cooking if needed
 	if holdableParent.is_in_group("CookingStation"):
 		holdableParent.stop_cooking()
-		holdableParent.reset_progress_bar()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
 	# Transfer "doneness" if needed

@@ -23,7 +23,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.38889, 0)
+scroll_offset = Vector2(-1.11111, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -243,6 +243,9 @@ position = Vector2(304, 400)
 direction = 1
 texture = ExtResource("6_8fd4r")
 
+[node name="TestCuttableFood" parent="Surfaces/Counters/Counter11" instance=ExtResource("11_bcrec")]
+position = Vector2(8, 0)
+
 [node name="Counter14" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
 position = Vector2(304, 368)
 direction = 1
@@ -285,4 +288,5 @@ playerNum = 3
 [node name="PauseMenu" parent="." instance=ExtResource("14_5k5kf")]
 
 [node name="CuttingBoard" parent="." instance=ExtResource("16_u03j0")]
-position = Vector2(208, 272)
+position = Vector2(336, 432)
+direction = 2

@@ -26,36 +26,31 @@ func begin_cutting():
 	cuttingBar.startMoving()
 	
 	smoke.play()
-	# Cook asynchronously
+	# Cut asynchronously
 	if not cuttingTimer.is_connected("timeout", Callable(self, "_on_cuttingTimer_timeout")):
 		cuttingTimer.connect("timeout", Callable(self, "_on_cuttingTimer_timeout"))
 
 # Stop cutting
 # The name of this function must remain "stop_cooking()" for code consolidation in player.gd
 func stop_cooking():
-	print("Entered stop_cooking")
-	if !isCutting: return
+	pause_cutting()
 	print("Cutting has stopped")
-	cuttingTimer.paused = true
+	cuttingTimer.stop()
+	cuttingTimer.start()
 	cuttingBar.resetBar()
-	isCutting = false
-	smoke.hide()
-	smoke.stop()
 
 func pause_cutting():
 	print("Paused cutting")
 	cuttingTimer.paused = true
-	cuttingBar.pauseBar()
 	isCutting = false
 	smoke.hide()
 	smoke.stop()
+	cuttingBar.pauseBar()
 
 # Finished cutting timer
 func _on_cuttingTimer_timeout():
 	print("Cutting has finished")
 	stop_cooking()
-	cuttingTimer.stop()
-	cuttingBar.resetBar()
 	holdablesOnSurface[0].set_isCut(true)
 	begin_cutting()
 
