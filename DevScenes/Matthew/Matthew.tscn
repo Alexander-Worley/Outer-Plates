@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_6e77c"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_p3wgr"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_7g1q4"]
-[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="5_u4385"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="6_rjo0c"]
 [ext_resource type="PackedScene" uid="uid://c1ni5cnvcbqc8" path="res://Scenes/Restaurant/Tablez/table_manager.tscn" id="6_sv765"]
+[ext_resource type="PackedScene" uid="uid://cnla1d0kfej4p" path="res://Scenes/Restaurant/Customer/customer.tscn" id="7_eooxk"]
 
 [node name="Matthew" type="Node2D"]
 
@@ -61,10 +61,10 @@ position = Vector2(574, 323)
 
 [node name="Customers" type="Node2D" parent="."]
 
-[node name="Customer" parent="Customers" instance=ExtResource("5_u4385")]
-position = Vector2(289, 340)
-
 [node name="TableManager" parent="." instance=ExtResource("6_sv765")]
 
 [node name="Table" parent="TableManager" instance=ExtResource("6_rjo0c")]
 position = Vector2(122, 231)
+
+[node name="Customer" parent="." instance=ExtResource("7_eooxk")]
+position = Vector2(254, 259)
