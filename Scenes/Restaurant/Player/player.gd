@@ -90,6 +90,8 @@ func animate_player(horizontal: float, vertical: float):
 		var verticalDirection = (vertical + 1) / 2 # 0 if up, 1 if down
 		var horizontalDirection = abs(horizontal) # 0 if only vertical, 1 if horizontal
 		playerSprite.play(sprites[playerNum][verticalDirection][horizontalDirection])
+		# Move holdableInHand sprite above or below the player as needed
+		if holdableInHand: holdableInHand.z_index = 1 if verticalDirection else 0
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
