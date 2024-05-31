@@ -8,11 +8,11 @@ const COLOR = Color("#00ff00")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	progressBar.max_value = timeToCut
+	progressBar.value = 0
 
 func startMoving():
 	self.visible = true
 	self.set_modulate(COLOR)
-	progressBar.value = 0
 	cuttingBarTimer.paused = false
 	cuttingBarTimer.start()
 
@@ -23,6 +23,7 @@ func pauseBar():
 	cuttingBarTimer.paused = true
 
 func resetBar():
+	cuttingBarTimer.paused = true
 	cuttingBarTimer.stop()
 	progressBar.value = 0
 	self.visible = false
