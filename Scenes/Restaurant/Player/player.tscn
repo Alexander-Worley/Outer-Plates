@@ -1,7 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://d1ahdwi2ft7k0"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
-[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="2_iiitu"]
 [ext_resource type="Texture2D" uid="uid://tl1k83qfbilg" path="res://Assets/Characters/Player/player-spritesheet.png" id="2_yefjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0nk"]
@@ -9,6 +8,8 @@ size = Vector2(21.3333, 21.3333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c8pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjlov"]
 atlas = ExtResource("2_yefjo")
@@ -409,31 +410,10 @@ position = Vector2(0, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
 shape = SubResource("CircleShape2D_5x6jq")
 
-[node name="devSprite" type="Node2D" parent="interactRange/CollisionShape2D"]
+[node name="holdablePosition" type="Area2D" parent="."]
 
-[node name="devTexture" type="ColorRect" parent="interactRange/CollisionShape2D/devSprite"]
-custom_minimum_size = Vector2(32, 32)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.647059, 0, 0.74902)
-metadata/_edit_use_anchors_ = true
-
-[node name="devLabel" type="Label" parent="interactRange/CollisionShape2D/devSprite"]
-custom_minimum_size = Vector2(32, 32)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "???"
-label_settings = ExtResource("2_iiitu")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holdablePosition"]
+shape = SubResource("CircleShape2D_2c8pm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

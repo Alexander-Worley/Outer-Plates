@@ -23,6 +23,7 @@ var sprites = {
 }
 @export_range (1, 4) var playerNum: int = 1
 @onready var interactRange: Area2D = $interactRange
+@onready var holdablePosition: Area2D = $holdablePosition
 @onready var playerSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
@@ -34,8 +35,8 @@ func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
 	holdableInHand = holdable.duplicate()
 	
-	interactRange.add_child(holdableInHand)
-	holdableInHand.position = Vector2(0,0)
+	holdablePosition.add_child(holdableInHand)
+	set_holdable_position()
 	# Interupt cooking if needed
 	if holdableParent.is_in_group("CookingStation"):
 		holdableParent.stop_cooking()
@@ -58,6 +59,15 @@ func pickup_holdable(holdable: Area2D):
 	if !holdableParent.is_in_group("PlateRack"): holdable.queue_free()
 	isHolding = true
 
+# Set holdableInHand's position and z-index
+func set_holdable_position():
+	holdableInHand.position = Vector2(0,0)
+	for i in 2:
+		if playerSprite.animation == sprites[playerNum][0][i]:
+			holdableInHand.z_index = 0
+			return
+	holdableInHand.z_index = 1
+
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
@@ -71,12 +81,14 @@ func place_holdable():
 			break
 
 # Given whether the player is moving up, down, left, right, or diagonal,
-# set the position of their pickup range
+# set the position of their pickup range and any holdables in their hand
 func set_interact_range_position(horizontal: float, vertical: float):
-	const DISTANCE = Global.PIXEL_DIMENSION / 4.0 * 3.0
-	horizontal *= DISTANCE
-	vertical *= DISTANCE
+	horizontal *= Global.PIXEL_DIMENSION
+	vertical *= Global.PIXEL_DIMENSION
 	interactRange.position = Vector2(horizontal, vertical)
+	horizontal /= 4
+	vertical /= 4
+	holdablePosition.position = Vector2(horizontal, vertical)
 
 # Animates the player
 func animate_player(horizontal: float, vertical: float):
