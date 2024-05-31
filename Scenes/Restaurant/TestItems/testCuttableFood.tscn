@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfvltjcitd8q2"]
+[gd_scene load_steps=5 format=3 uid="uid://cfvltjcitd8q2"]
 
-[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_d5hol"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/testCuttableFood.gd" id="1_8b0ry"]
+[ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="1_ahh8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no58j"]
 size = Vector2(32, 32)
@@ -33,7 +34,8 @@ func TEMP_dev_sprite_update(doneness: int):
 		$devLabel.text = TEMP_LABLES[doneness]
 "
 
-[node name="TestChoppableFood" type="Area2D"]
+[node name="TestCuttableFood" type="Area2D" groups=["Cuttable", "Holdables"]]
+script = ExtResource("1_8b0ry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.8, 0.8)
@@ -61,7 +63,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Chop This"
-label_settings = ExtResource("1_d5hol")
+label_settings = ExtResource("1_ahh8b")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

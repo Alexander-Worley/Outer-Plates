@@ -168,6 +168,7 @@ func _input(event):
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
 	if event.is_action_pressed("interact"):
+		check_for_cutting_board()
 		if jukeboxInRange and not isHolding:
 			jukeboxInRange[0].playMusic()
 		if isHolding && holdableInHand.is_in_group("Weapons"):
@@ -184,6 +185,12 @@ func _input(event):
 					holdableInHand.ammo += ammoNeeded
 					ammoDepotsInRange[0].ammoCount -= ammoNeeded
 					holdableInHand.updateAmmoCounter()
+
+# Check if any available sufraces are cutting boards
+func check_for_cutting_board():
+	for surface in surfacesInRange:
+		if surface.is_in_group("CuttingBoard"): surface.begin_cutting()
+		break
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):

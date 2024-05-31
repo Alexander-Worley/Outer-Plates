@@ -21,7 +21,6 @@ func _ready():
 	else:
 		smoke.hide()
 		smoke.stop()
-		
 
 # Given a holdable, set it on the surface
 # Return true if successful and false if not successful
@@ -29,7 +28,6 @@ func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 	if !set_holdable_on_surface(holdableInHand): return false
 	for holdable: Area2D in holdablesOnSurface:
 		if holdable.is_in_group("Cookable"):
-			holdable.doneness = holdableInHand.doneness
 			begin_cooking()
 	return true
 
@@ -48,7 +46,6 @@ func begin_cooking():
 	# Cook asynchronously
 	if not cookingTimer.is_connected("timeout", Callable(self, "_on_cookingTimer_timeout")):
 		cookingTimer.connect("timeout", Callable(self, "_on_cookingTimer_timeout"))
-	
 
 # Stop cooking
 func stop_cooking():
@@ -58,7 +55,7 @@ func stop_cooking():
 	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	smoke.hide()
 	smoke.stop()
-	reset_progress_bar()
+	cookingBar.resetBar()
 
 # Finished cooking timer
 func _on_cookingTimer_timeout():
@@ -69,6 +66,3 @@ func _on_cookingTimer_timeout():
 	
 	#update CookingBar color
 	cookingBar.set_modulate(cookingBar.COLORS[donenessIndex])
-
-func reset_progress_bar():
-	cookingBar.resetBar()
