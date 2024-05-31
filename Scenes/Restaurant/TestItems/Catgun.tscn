@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgc3musmo8bkh"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/Catgun.gd" id="1_xkv1i"]
+[ext_resource type="Texture2D" uid="uid://bx05v6wpm4j6c" path="res://Assets/Holdables/Weapons/cat.png" id="2_khdh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5omhy"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4iie"]
+atlas = ExtResource("2_khdh2")
+region = Rect2(0, 0, 203, 293)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpwne"]
+atlas = ExtResource("2_khdh2")
+region = Rect2(203, 0, 203, 293)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1m3wx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4iie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpwne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4iie")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Catgun" type="Area2D" groups=["Holdables", "Weapons"]]
+script = ExtResource("1_xkv1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_5omhy")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-2, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_1m3wx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

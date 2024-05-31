@@ -22,6 +22,8 @@ func hit(type):
 		hit_points -= 5
 	elif type == "plasma":
 		hit_points -= 10
+	elif type == "star":
+		hit_points -= 1
 	if hit_points <= 0:
 		die()
 		

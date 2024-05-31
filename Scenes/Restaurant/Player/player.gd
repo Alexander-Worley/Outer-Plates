@@ -171,6 +171,7 @@ func _input(event):
 			jukeboxInRange[0].playMusic()
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			if not ammoDepotsInRange:
+				
 				holdableInHand.shoot()
 			else:
 				if ammoDepotsInRange[0].ammoCount > 0:

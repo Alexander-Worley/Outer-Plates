@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=15 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_kl7jo"]
@@ -14,10 +14,44 @@
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="12_fxna3"]
 [ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="13_oncru"]
 
+[sub_resource type="GDScript" id="GDScript_bt8yt"]
+script/source = "extends Area2D
+
+var Plasma = preload(\"res://Scenes/Restaurant/TestItems/stars/Redstar.tscn\")
+
+var maxAmmo = 10
+var ammo: int = maxAmmo
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _input(event):
+	pass
+
+func shoot():
+	if ammo == 0:
+		return
+	var b = Plasma.instantiate()
+	b.start($Muzzle.global_position, $Muzzle.global_rotation)
+	get_tree().root.add_child(b)
+	ammo = ammo - 1
+	updateAmmoCounter()
+
+	
+func updateAmmoCounter():
+	var ammoCount = get_node(\"/root/Logan/Weapons/ammoCount\")
+	ammoCount.text = str(ammo)
+"
+
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-0.833333, 0)
+scroll_offset = Vector2(-4.1356, 0)
 Planet = "Green Planet"
 
 [node name="Logan" type="Label" parent="Background"]
@@ -82,11 +116,12 @@ position = Vector2(482, 348)
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="Catgun" parent="Weapons" instance=ExtResource("13_oncru")]
+position = Vector2(481, 385)
+script = SubResource("GDScript_bt8yt")
+
 [node name="Stove" parent="." instance=ExtResource("11_au6up")]
 position = Vector2(571, 218)
 
 [node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
 position = Vector2(483, 280)
-
-[node name="Catgun" parent="." instance=ExtResource("13_oncru")]
-position = Vector2(482, 382)
