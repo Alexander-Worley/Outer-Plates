@@ -15,10 +15,8 @@ func _ready():
 
 # Begin cutting
 func begin_cutting():
-	print("Entered begin_cutting")
 	# If already cutting or there is nothing valid to cut, return
 	if isCutting or !holdablesOnSurface[0] or !holdablesOnSurface[0].is_in_group("Cuttable") or holdablesOnSurface[0].isCut: return
-	print("Cutting has begun")
 	cuttingTimer.paused = false
 	isCutting = true
 	smoke.show()
@@ -34,13 +32,11 @@ func begin_cutting():
 # The name of this function must remain "stop_cooking()" for code consolidation in player.gd
 func stop_cooking():
 	pause_cutting()
-	print("Cutting has stopped")
 	cuttingTimer.stop()
 	cuttingTimer.start()
 	cuttingBar.resetBar()
 
 func pause_cutting():
-	print("Paused cutting")
 	cuttingTimer.paused = true
 	isCutting = false
 	smoke.hide()
@@ -49,7 +45,6 @@ func pause_cutting():
 
 # Finished cutting timer
 func _on_cuttingTimer_timeout():
-	print("Cutting has finished")
 	stop_cooking()
 	holdablesOnSurface[0].set_isCut(true)
 	begin_cutting()
