@@ -24,7 +24,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.11111, 0)
+scroll_offset = Vector2(-1.11912, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -283,4 +283,4 @@ playerNum = 3
 [node name="PauseMenu" parent="." instance=ExtResource("14_5k5kf")]
 
 [node name="Jukebox" parent="." instance=ExtResource("18_f1xhx")]
-position = Vector2(352, 200)
+position = Vector2(304, 144)
