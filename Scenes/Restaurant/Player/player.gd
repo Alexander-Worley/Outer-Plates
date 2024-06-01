@@ -47,7 +47,7 @@ func pickup_holdable(holdable: Area2D):
 	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
-	# Transfer "isCut" if needed
+	# Transfer cuttable properties if needed
 	if holdableInHand.is_in_group("Cuttable"):
 		holdableInHand.isCut = holdable.isCut
 		holdableInHand.isOnPlate = holdable.isOnPlate

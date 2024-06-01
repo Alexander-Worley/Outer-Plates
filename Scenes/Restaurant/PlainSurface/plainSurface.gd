@@ -76,8 +76,9 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 		newHoldable.isOnPlate = holdableInHand.isOnPlate
 		newHoldable.isEaten = holdableInHand.isEaten
 	for i: int in centersOfSurface.size():
-		if holdablesOnSurface[i] and holdablesOnSurface[i].is_in_group("Plate"):
-			plate_food(newHoldable, i)
+		if holdablesOnSurface[i]:
+			if holdablesOnSurface[i].is_in_group("Plate"): plate_food(newHoldable, i)
+			elif holdablesOnSurface[i].is_in_group("Cuttable") and food_plate(newHoldable, i): return true
 		if !centersOfSurface[i][1]: # If center has no holdable
 			newHoldable.position = centersOfSurface[i][0]
 			newHoldable.rotation = 0
@@ -87,12 +88,20 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 			return true
 	return false
 
+# When food is in hands and plate is on surface
 func plate_food(food: Area2D, index: int):
 	if food.is_in_group("Cuttable") and food.isCut:
 		food.set_isOnPlate(true)
 		holdablesOnSurface[index].queue_free()
 		holdablesOnSurface[index] = null
 		centersOfSurface[index][1] = false
+
+# When food is on surface and plate is in hands
+func food_plate(plate: Area2D, index: int):
+	if plate.is_in_group("Plate") and holdablesOnSurface[index].isCut:
+		holdablesOnSurface[index].set_isOnPlate(true)
+		return true
+	return false
 
 # Given a holdable, remove it from the surface
 func remove_holdable_from_surface(holdable: Area2D):
