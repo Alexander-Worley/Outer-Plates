@@ -185,6 +185,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if verticalMovement:
 		velocity.y = verticalMovement * SPEED
+		# If both directions, adjust speed
+		if horizontalMovement: velocity = velocity / 4 * 3
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		# if no movement at all
