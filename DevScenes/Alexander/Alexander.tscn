@@ -23,7 +23,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.11111, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -183,22 +183,6 @@ texture = ExtResource("6_8fd4r")
 [node name="TestFood" parent="Surfaces/Counters/Counter3" instance=ExtResource("8_c7tx8")]
 position = Vector2(0, 8)
 
-[node name="Counter16" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 368)
-direction = 3
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFood" parent="Surfaces/Counters/Counter16" instance=ExtResource("8_c7tx8")]
-position = Vector2(-8, 0)
-
-[node name="Counter17" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 400)
-direction = 3
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFood" parent="Surfaces/Counters/Counter17" instance=ExtResource("8_c7tx8")]
-position = Vector2(-8, 0)
-
 [node name="Counter4" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
 position = Vector2(176, 432)
 direction = 2
@@ -208,13 +192,18 @@ texture = ExtResource("6_8fd4r")
 position = Vector2(0, 8)
 
 [node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 304)
-direction = 3
+position = Vector2(304, 400)
+direction = 1
+texture = ExtResource("6_8fd4r")
+
+[node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(304, 368)
+direction = 1
 texture = ExtResource("6_8fd4r")
 
 [node name="Counter15" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 336)
-direction = 3
+position = Vector2(272, 432)
+direction = 2
 texture = ExtResource("6_8fd4r")
 
 [node name="Counter8" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
@@ -233,26 +222,21 @@ texture = ExtResource("6_8fd4r")
 [node name="TestWeapon" parent="Surfaces/Counters/Counter9" instance=ExtResource("9_kjlkh")]
 position = Vector2(0, 8)
 
-[node name="Counter10" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(272, 432)
-direction = 2
-texture = ExtResource("6_8fd4r")
-
 [node name="Counter11" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 400)
-direction = 1
+position = Vector2(112, 304)
+direction = 3
 texture = ExtResource("6_8fd4r")
 
 [node name="TestCuttableFood" parent="Surfaces/Counters/Counter11" instance=ExtResource("11_bcrec")]
-position = Vector2(8, 0)
+position = Vector2(-8, 0)
 
 [node name="Counter14" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 368)
-direction = 1
+position = Vector2(112, 336)
+direction = 3
 texture = ExtResource("6_8fd4r")
 
 [node name="TestCuttableFood" parent="Surfaces/Counters/Counter14" instance=ExtResource("11_bcrec")]
-position = Vector2(8, 0)
+position = Vector2(-8, 0)
 
 [node name="Stoves" type="Node2D" parent="Surfaces"]
 
@@ -271,6 +255,16 @@ position = Vector2(176, 208)
 position = Vector2(112, 240)
 direction = 3
 
+[node name="CuttingBoards" type="Node2D" parent="Surfaces"]
+
+[node name="CuttingBoard" parent="Surfaces/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(112, 400)
+direction = 3
+
+[node name="CuttingBoard2" parent="Surfaces/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(112, 368)
+direction = 3
+
 [node name="Interactables" type="Node2D" parent="."]
 
 [node name="TrashCan" parent="Interactables" instance=ExtResource("13_ssd7v")]
@@ -286,7 +280,3 @@ position = Vector2(400, 328)
 playerNum = 3
 
 [node name="PauseMenu" parent="." instance=ExtResource("14_5k5kf")]
-
-[node name="CuttingBoard" parent="." instance=ExtResource("16_u03j0")]
-position = Vector2(336, 432)
-direction = 2

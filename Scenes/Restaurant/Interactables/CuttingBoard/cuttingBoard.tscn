@@ -65,7 +65,7 @@ texture = ExtResource("2_u87ad")
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/CuttingBoard"]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 2
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gfasp")
 animation = &"Smoke"

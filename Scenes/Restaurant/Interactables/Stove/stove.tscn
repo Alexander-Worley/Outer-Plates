@@ -70,7 +70,7 @@ texture = ExtResource("5_v1gc7")
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 2
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
