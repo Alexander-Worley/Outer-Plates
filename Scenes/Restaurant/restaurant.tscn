@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=21 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_t7iru"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
@@ -15,9 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
 [ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.tscn" id="11_cab0x"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="11_l1h7v"]
-[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="13_755di"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="13_755di"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="13_dcagd"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="13_ybtij"]
+[ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="15_5jryl"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="16_bsx6g"]
 
 [node name="Restaurant" type="Node2D"]
@@ -25,7 +26,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.833333, 0)
 Planet = "Green Planet"
 
 [node name="MVP" type="Label" parent="Environment/Background"]
@@ -256,6 +257,14 @@ direction = 3
 
 [node name="Interactables" type="Node2D" parent="."]
 
+[node name="SpawnBoxes" type="Node2D" parent="Interactables"]
+
+[node name="PlateRack" parent="Interactables/SpawnBoxes" instance=ExtResource("13_755di")]
+position = Vector2(208, 208)
+
+[node name="CuttableRack" parent="Interactables/SpawnBoxes" instance=ExtResource("15_5jryl")]
+position = Vector2(240, 272)
+
 [node name="CuttingBoards" type="Node2D" parent="Interactables"]
 
 [node name="CuttingBoard" parent="Interactables/CuttingBoards" instance=ExtResource("13_dcagd")]
@@ -268,9 +277,6 @@ direction = 3
 
 [node name="TrashCan" parent="Interactables" instance=ExtResource("11_l1h7v")]
 position = Vector2(304, 208)
-
-[node name="PlateRack" parent="Interactables" instance=ExtResource("13_755di")]
-position = Vector2(208, 208)
 
 [node name="Jukebox" parent="Interactables" instance=ExtResource("16_bsx6g")]
 position = Vector2(304, 144)
