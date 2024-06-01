@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsb8wh7ixg1cd"
-path="res://.godot/imported/lava-lamp-spritesheet.png-8220cc31d506ca3d0f2aa30ae6bc97dc.ctex"
+uid="uid://0y0156rq72n2"
+path="res://.godot/imported/lava-lamp-spritesheet (2).png-ce88b09decd230d19e3d5285bae6adca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Ambiance/lava-lamp-spritesheet.png"
-dest_files=["res://.godot/imported/lava-lamp-spritesheet.png-8220cc31d506ca3d0f2aa30ae6bc97dc.ctex"]
+source_file="res://Assets/Environment/Ambiance/lava-lamp-spritesheet (2).png"
+dest_files=["res://.godot/imported/lava-lamp-spritesheet (2).png-ce88b09decd230d19e3d5285bae6adca.ctex"]
 
 [params]
 
