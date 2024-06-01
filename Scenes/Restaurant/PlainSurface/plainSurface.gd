@@ -67,6 +67,12 @@ func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 	return set_holdable_on_surface(holdableInHand)
 func set_holdable_on_surface(holdableInHand: Area2D):
 	var newHoldable: Area2D = holdableInHand.duplicate()
+	# Transfer "doneness" if needed
+	if holdableInHand.is_in_group("Cookable"):
+		newHoldable.doneness = holdableInHand.doneness
+	# Transfer "isCut" if needed
+	if holdableInHand.is_in_group("Cuttable"):
+		newHoldable.isCut = holdableInHand.isCut
 	for i: int in centersOfSurface.size():
 		if !centersOfSurface[i][1]: # If center has no holdable
 			newHoldable.position = centersOfSurface[i][0]

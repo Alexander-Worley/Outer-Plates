@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://ede2frngbs0e"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/Stove/stove.gd" id="1_il2kw"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/Stove/stove.gd" id="1_il2kw"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_8c1y3"]
 [ext_resource type="Texture2D" uid="uid://lkhdgm05a8t0" path="res://Assets/Interactables/CookingStations/stove-square-off.png" id="3_2s8pw"]
 [ext_resource type="Texture2D" uid="uid://dipmyoc0j3ijx" path="res://Assets/Environment/Effects/pan.png" id="5_v1gc7"]
 [ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="6_h2776"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/Stove/CookingBarControl.gd" id="6_hdr2x"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/Stove/CookingBarControl.gd" id="6_hdr2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
 size = Vector2(32, 32)
@@ -68,8 +68,9 @@ position = Vector2(0, -8)
 texture = ExtResource("5_v1gc7")
 
 [node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
+unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 2
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gva8m")
 animation = &"Smoke"
@@ -90,6 +91,7 @@ script = ExtResource("6_hdr2x")
 wait_time = 0.1
 
 [node name="ProgressBar" type="ProgressBar" parent="CookingBarControl"]
+z_index = 101
 layout_mode = 0
 offset_left = 17.0
 offset_top = 22.0

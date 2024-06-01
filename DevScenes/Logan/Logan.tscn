@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c1ni5cnvcbqc8" path="res://Scenes/Restaurant/Tablez/table_manager.tscn" id="6_pge5k"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_tykoo"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="8_gpd82"]
-[ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="9_edn42"]
-[ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
-[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="11_au6up"]
+[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="9_edn42"]
+[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_au6up"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="12_fxna3"]
 [ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="13_oncru"]
 
