@@ -90,6 +90,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 func plate_food(food: Area2D, index: int):
 	if food.is_in_group("Cuttable") and food.isCut:
 		food.set_isOnPlate(true)
+		holdablesOnSurface[index].queue_free()
 		holdablesOnSurface[index] = null
 		centersOfSurface[index][1] = false
 
