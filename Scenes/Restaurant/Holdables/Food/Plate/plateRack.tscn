@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_7f43v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7f43v")
 
-[node name="Plate" parent="." groups=["Holdables"] instance=ExtResource("1_ihhyy")]
+[node name="Plate" parent="." instance=ExtResource("1_ihhyy")]
 position = Vector2(0, -8)
 
 [node name="Surface" type="Sprite2D" parent="."]

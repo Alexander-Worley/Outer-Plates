@@ -50,6 +50,8 @@ func pickup_holdable(holdable: Area2D):
 	# Transfer "isCut" if needed
 	if holdableInHand.is_in_group("Cuttable"):
 		holdableInHand.isCut = holdable.isCut
+		holdableInHand.isOnPlate = holdable.isOnPlate
+		holdableInHand.isEaten = holdable.isEaten
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene
 	# AW - May 25, 2024 - TODO: Fix this

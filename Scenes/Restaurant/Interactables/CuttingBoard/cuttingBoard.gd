@@ -46,7 +46,7 @@ func stop_cooking():
 	cuttingTimer.stop()
 	cuttingTimer.start()
 	cuttingBar.resetBar()
-	currentPlayer.set_is_animation_lock(false)
+	if currentPlayer: currentPlayer.set_is_animation_lock(false)
 	currentPlayer = null
 
 func pause_cutting():
