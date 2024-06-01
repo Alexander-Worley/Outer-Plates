@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://oi2debxs4xwk"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.gd" id="1_f6x4d"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="1_yi7lp"]
+[ext_resource type="Texture2D" uid="uid://dgi88oy8lx1gl" path="res://Assets/Interactables/CookingStations/cutting-board-square.png" id="2_u87ad"]
+[ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="4_8c1qg"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/CuttingBoard/CookingBarControl.gd" id="4_kxejd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_araop"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h3rb"]
+atlas = ExtResource("4_8c1qg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcem4"]
+atlas = ExtResource("4_8c1qg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjflx"]
+atlas = ExtResource("4_8c1qg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_442ks"]
+atlas = ExtResource("4_8c1qg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfasp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h3rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcem4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjflx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_442ks")
+}],
+"loop": true,
+"name": &"Smoke",
+"speed": 5.0
+}]
+
+[node name="CuttingBoard" type="Area2D" groups=["CookingStation", "CuttingBoard", "Surfaces"]]
+script = ExtResource("1_f6x4d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_araop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_araop")
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture = ExtResource("1_yi7lp")
+
+[node name="CuttingBoard" type="Sprite2D" parent="Surface"]
+texture = ExtResource("2_u87ad")
+
+[node name="Smoke" type="AnimatedSprite2D" parent="Surface/CuttingBoard"]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_gfasp")
+animation = &"Smoke"
+
+[node name="CuttingBarControl" type="Control" parent="."]
+visible = false
+modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(10, 20)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -33.0
+offset_top = -61.0
+offset_right = 26.0
+offset_bottom = -21.0
+script = ExtResource("4_kxejd")
+
+[node name="CuttingBarTimer" type="Timer" parent="CuttingBarControl"]
+wait_time = 0.1
+
+[node name="ProgressBar" type="ProgressBar" parent="CuttingBarControl"]
+z_index = 101
+layout_mode = 0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 49.0
+offset_bottom = 34.0
+show_percentage = false
+
+[node name="CuttingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="CuttingBarControl/CuttingBarTimer" to="CuttingBarControl" method="_on_cutting_bar_timer_timeout"]
