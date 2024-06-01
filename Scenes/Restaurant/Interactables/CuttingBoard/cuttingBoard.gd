@@ -13,6 +13,9 @@ func _ready():
 	cuttingTimer.start()
 	cuttingTimer.paused = true
 
+func begin_interaction():
+	return begin_cutting()
+
 # Begin cutting
 func begin_cutting():
 	# If already cutting or there is nothing valid to cut, return
