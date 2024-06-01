@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED: float = 120.0
 # If true, the Player will not stop their animation
 var isAnimationLock: bool = false
+# If true, the Player will not be able to interact
+var isInteractLock: bool = false
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
@@ -101,6 +103,10 @@ func set_interact_range_position(horizontal: float, vertical: float):
 # Set isAnimationLock
 func set_is_animation_lock(isLock: bool):
 	isAnimationLock = isLock
+
+# Set isInteractLock
+func set_is_interact_lock(isLock: bool):
+	isInteractLock = isLock
 
 # Play current Player Sprite Animation
 func play_animation():
@@ -201,7 +207,7 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(self): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
