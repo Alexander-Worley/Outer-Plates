@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=19 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
@@ -17,13 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="13_ssd7v"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="14_5k5kf"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="16_u03j0"]
+[ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="18_f1xhx"]
 
 [node name="Alexander" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-1.38889, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -255,23 +256,26 @@ position = Vector2(176, 208)
 position = Vector2(112, 240)
 direction = 3
 
-[node name="CuttingBoards" type="Node2D" parent="Surfaces"]
+[node name="Interactables" type="Node2D" parent="."]
 
-[node name="CuttingBoard" parent="Surfaces/CuttingBoards" instance=ExtResource("16_u03j0")]
+[node name="CuttingBoards" type="Node2D" parent="Interactables"]
+
+[node name="CuttingBoard" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
 position = Vector2(112, 400)
 direction = 3
 
-[node name="CuttingBoard2" parent="Surfaces/CuttingBoards" instance=ExtResource("16_u03j0")]
+[node name="CuttingBoard2" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
 position = Vector2(112, 368)
 direction = 3
-
-[node name="Interactables" type="Node2D" parent="."]
 
 [node name="TrashCan" parent="Interactables" instance=ExtResource("13_ssd7v")]
 position = Vector2(304, 208)
 
 [node name="PlateRack" parent="Interactables" instance=ExtResource("12_5p3b3")]
 position = Vector2(208, 208)
+
+[node name="Jukebox" parent="Interactables" instance=ExtResource("18_f1xhx")]
+position = Vector2(304, 144)
 
 [node name="Players" type="Node2D" parent="."]
 

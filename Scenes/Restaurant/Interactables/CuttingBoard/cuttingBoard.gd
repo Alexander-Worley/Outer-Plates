@@ -13,10 +13,13 @@ func _ready():
 	cuttingTimer.start()
 	cuttingTimer.paused = true
 
+func begin_interaction():
+	return begin_cutting()
+
 # Begin cutting
 func begin_cutting():
 	# If already cutting or there is nothing valid to cut, return
-	if isCutting or !holdablesOnSurface[0] or !holdablesOnSurface[0].is_in_group("Cuttable") or holdablesOnSurface[0].isCut: return
+	if isCutting or !holdablesOnSurface[0] or !holdablesOnSurface[0].is_in_group("Cuttable") or holdablesOnSurface[0].isCut: return false
 	cuttingTimer.paused = false
 	isCutting = true
 	smoke.show()
@@ -27,6 +30,7 @@ func begin_cutting():
 	# Cut asynchronously
 	if not cuttingTimer.is_connected("timeout", Callable(self, "_on_cuttingTimer_timeout")):
 		cuttingTimer.connect("timeout", Callable(self, "_on_cuttingTimer_timeout"))
+	return true
 
 # Stop cutting
 # The name of this function must remain "stop_cooking()" for code consolidation in player.gd

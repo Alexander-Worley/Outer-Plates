@@ -4,7 +4,7 @@ const SPEED: float = 120.0
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
-var jukeboxInRange: Array[Area2D] = []
+var interactablesInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 # All of the player sprites divided up by player number.
@@ -184,30 +184,22 @@ func _input(event):
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
 	if event.is_action_pressed("interact"):
-		check_for_cutting_board()
-		if jukeboxInRange and not isHolding:
-			jukeboxInRange[0].playMusic()
+		for interactable in interactablesInRange:
+			if !isHolding and interactable.begin_interaction(): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
-			if not ammoDepotsInRange:
-				
-				holdableInHand.shoot()
-			else:
-				if ammoDepotsInRange[0].ammoCount > 0:
-					var ammoNeeded
-					if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
-						ammoNeeded = ammoDepotsInRange[0].ammoCount
-					else: 
-						ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+			weapon_logic()
 
-					holdableInHand.ammo += ammoNeeded
-					ammoDepotsInRange[0].ammoCount -= ammoNeeded
-					holdableInHand.updateAmmoCounter()
-
-# Check if any available sufraces are cutting boards
-func check_for_cutting_board():
-	for surface in surfacesInRange:
-		if surface.is_in_group("CuttingBoard"): surface.begin_cutting()
-		break
+func weapon_logic():
+	if not ammoDepotsInRange:holdableInHand.shoot()
+	elif ammoDepotsInRange[0].ammoCount > 0:
+		var ammoNeeded
+		if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
+			ammoNeeded = ammoDepotsInRange[0].ammoCount
+		else: 
+			ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+		holdableInHand.ammo += ammoNeeded
+		ammoDepotsInRange[0].ammoCount -= ammoNeeded
+		holdableInHand.updateAmmoCounter()
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
@@ -217,12 +209,12 @@ func _on_interact_range_area_exited(area):
 func check_interact_range(area, operation):
 	if area.is_in_group("Holdables"):
 		update_in_range(holdablesInRange, area, operation)
-	elif area.is_in_group("Surfaces"):
+	if area.is_in_group("Surfaces"):
 		update_in_range(surfacesInRange, area, operation)
-	elif area.is_in_group("ammoDepots"):
+	if area.is_in_group("Interactable"):
+		update_in_range(interactablesInRange, area, operation)
+	if area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
-	elif area.is_in_group("Jukebox"):
-		update_in_range(jukeboxInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
 	if operation == "append":
 		listToUpdate.append(areaToUpdate)
