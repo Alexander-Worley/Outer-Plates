@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch4giiesrmblg"]
+[gd_scene load_steps=9 format=3 uid="uid://ch4giiesrmblg"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_my8l5"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_q7uel"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_ixkjg"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_wcnvx"]
-
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="6_d155i"]
+[ext_resource type="Texture2D" uid="uid://ogr8t5lqaf8t" path="res://Assets/Interactables/PlainSurfaces/corner-square-counter.png" id="7_odn3b"]
+[ext_resource type="Texture2D" uid="uid://b80prp3vl4ogb" path="res://Assets/Interactables/PlainSurfaces/left-right-square-counter.png" id="8_qw8p7"]
+[ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="9_k5763"]
 
 [node name="Andreea" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_my8l5")]
+scroll_offset = Vector2(-3.9634, 0)
 Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
@@ -45,3 +49,28 @@ position = Vector2(640, 312)
 
 [node name="Player" parent="Players" instance=ExtResource("5_wcnvx")]
 position = Vector2(576, 320)
+
+[node name="Counters" type="Node2D" parent="."]
+
+[node name="Counter1" parent="Counters" instance=ExtResource("3_q7uel")]
+position = Vector2(308, 325)
+texture = ExtResource("6_d155i")
+
+[node name="Counter2" parent="Counters" instance=ExtResource("3_q7uel")]
+position = Vector2(276, 325)
+texture = ExtResource("7_odn3b")
+
+[node name="Counter3" parent="Counters" instance=ExtResource("3_q7uel")]
+position = Vector2(340, 325)
+texture = ExtResource("6_d155i")
+
+[node name="Counter4" parent="Counters" instance=ExtResource("3_q7uel")]
+position = Vector2(276, 293)
+texture = ExtResource("8_qw8p7")
+
+[node name="Counter5" parent="Counters" instance=ExtResource("3_q7uel")]
+position = Vector2(372, 325)
+texture = ExtResource("6_d155i")
+
+[node name="LavaLamp" parent="." instance=ExtResource("9_k5763")]
+position = Vector2(203, 192)

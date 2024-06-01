@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=20 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_t7iru"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="5_rtq4x"]
 [ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_ajke4"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="6_uutht"]
-[ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="7_4r5b2"]
+[ext_resource type="Texture2D" uid="uid://hpf0xrwul11c" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="7_4r5b2"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
+[ext_resource type="Texture2D" uid="uid://b80prp3vl4ogb" path="res://Assets/Interactables/PlainSurfaces/left-right-square-counter.png" id="10_dpk6j"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
 [ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/TestItems/testCuttableFood.tscn" id="11_cab0x"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="11_l1h7v"]
@@ -24,7 +25,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-1.38889, 0)
+scroll_offset = Vector2(-6.641, 0)
 Planet = "Green Planet"
 
 [node name="MVP" type="Label" parent="Environment/Background"]
@@ -178,50 +179,47 @@ position = Vector2(0, -8)
 
 [node name="Counter3" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(144, 432)
-direction = 2
 texture = ExtResource("5_rtq4x")
 
 [node name="TestFood" parent="Surfaces/Counters/Counter3" instance=ExtResource("3_d20ud")]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 
 [node name="Counter4" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(176, 432)
-direction = 2
 texture = ExtResource("5_rtq4x")
 
 [node name="TestFood" parent="Surfaces/Counters/Counter4" instance=ExtResource("3_d20ud")]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 
 [node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(304, 400)
+rotation = -1.5708
 direction = 1
-texture = ExtResource("5_rtq4x")
+texture = ExtResource("10_dpk6j")
 
 [node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(304, 368)
+rotation = -1.5708
 direction = 1
-texture = ExtResource("5_rtq4x")
+texture = ExtResource("10_dpk6j")
 
 [node name="Counter15" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(272, 432)
-direction = 2
 texture = ExtResource("5_rtq4x")
 
 [node name="Counter8" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(208, 432)
-direction = 2
 texture = ExtResource("5_rtq4x")
 
 [node name="TestWeapon" parent="Surfaces/Counters/Counter8" instance=ExtResource("9_3ncmo")]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 
 [node name="Counter9" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(240, 432)
-direction = 2
 texture = ExtResource("5_rtq4x")
 
 [node name="TestWeapon" parent="Surfaces/Counters/Counter9" instance=ExtResource("9_3ncmo")]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 
 [node name="Counter11" parent="Surfaces/Counters" instance=ExtResource("4_jgfwf")]
 position = Vector2(112, 304)
