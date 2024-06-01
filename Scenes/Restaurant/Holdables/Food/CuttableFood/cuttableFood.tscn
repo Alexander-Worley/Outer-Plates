@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfvltjcitd8q2"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.gd" id="1_8b0ry"]
+[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="2_h13l3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no58j"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_485ww"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51e26"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyvug"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48vix"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tk50"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_485ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51e26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyvug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48vix")
+}],
+"loop": true,
+"name": &"CuttableFood",
+"speed": 5.0
+}]
+
+[node name="CuttableFood" type="Area2D" groups=["Cuttable", "Holdables"]]
+script = ExtResource("1_8b0ry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_no58j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7tk50")
+animation = &"CuttableFood"

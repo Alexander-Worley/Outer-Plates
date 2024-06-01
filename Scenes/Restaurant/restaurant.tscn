@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="7_4r5b2"]
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
-[ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/TestItems/testCuttableFood.tscn" id="11_cab0x"]
+[ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.tscn" id="11_cab0x"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="11_l1h7v"]
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="13_755di"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="13_dcagd"]
