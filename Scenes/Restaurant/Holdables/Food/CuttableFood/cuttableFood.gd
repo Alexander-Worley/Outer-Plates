@@ -1,20 +1,10 @@
-extends Area2D
+extends "res://Scenes/Restaurant/Holdables/Food/food.gd"
 
-# True after being cut at a cuttingBoard
-var isCut: bool = false
-@onready var sprite = $AnimatedSprite2D
-
-# Set the isCut bool of this holdable
-func set_isCut(newCut: bool):
-	isCut = newCut
-	update_sprite()
-
-# Change sprite
-func update_sprite():
-	$devSprite/devLabel.text = "DONE"
-	# TODO: Remove the TEMP function call below when sprites are added
-	#$devSprite.TEMP_dev_sprite_update(doneness)
-	""" # TODO: Uncomment this when sprites are added
-	if doneness in sprites:
-		sprite.texture = sprites[doneness]
-	"""
+# Returns whether this food is ready to be served or not
+func isReady():
+	if isCut:
+		if isOnPlate:
+			if doneness == 0: # This food should not be cooked
+				if !isEaten:
+					return true
+	return false
