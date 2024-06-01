@@ -5,7 +5,6 @@ var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
 var interactablesInRange: Array[Area2D] = []
-var jukeboxInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 # All of the player sprites divided up by player number.
@@ -186,9 +185,7 @@ func _input(event):
 			pickup_holdable(holdablesInRange.pick_random())
 	if event.is_action_pressed("interact"):
 		for interactable in interactablesInRange:
-			if interactable.begin_interaction(): break
-		if jukeboxInRange and not isHolding:
-			jukeboxInRange[0].playMusic()
+			if !isHolding and interactable.begin_interaction(): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			if not ammoDepotsInRange:
 				
@@ -219,8 +216,6 @@ func check_interact_range(area, operation):
 		update_in_range(interactablesInRange, area, operation)
 	if area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
-	if area.is_in_group("Jukebox"):
-		update_in_range(jukeboxInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
 	if operation == "append":
 		listToUpdate.append(areaToUpdate)

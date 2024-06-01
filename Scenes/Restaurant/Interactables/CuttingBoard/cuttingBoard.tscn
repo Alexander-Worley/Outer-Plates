@@ -45,7 +45,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CuttingBoard" type="Area2D" groups=["CookingStation", "CuttingBoard", "Interactable", "Surfaces"]]
+[node name="CuttingBoard" type="Area2D" groups=["CookingStation", "Interactable", "Surfaces"]]
 script = ExtResource("1_f6x4d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
