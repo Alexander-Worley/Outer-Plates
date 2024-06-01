@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://vaou4s2m0p7b"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/stars/star.gd" id="1_ttg4t"]
+[ext_resource type="Texture2D" uid="uid://2asy24n4y4mb" path="res://Assets/Projectiles/starPowerSpaced.png" id="2_nscrc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rpeev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pmho"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(0, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t41k"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(27, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxuas"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(54, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlg0o"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(81, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvple"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(108, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygxy5"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(135, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y00yu"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(162, 186, 27, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjxsp"]
+atlas = ExtResource("2_nscrc")
+region = Rect2(189, 186, 27, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lni5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pmho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t41k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxuas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlg0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvple")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygxy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y00yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjxsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Redstar" type="CharacterBody2D"]
+script = ExtResource("1_ttg4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rpeev")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_lni5y")
+autoplay = "default"

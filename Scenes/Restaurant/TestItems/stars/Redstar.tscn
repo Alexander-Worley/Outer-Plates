@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0eda3j8gpdbk"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/stars/star.gd" id="1_lvk85"]
+[ext_resource type="Texture2D" uid="uid://2asy24n4y4mb" path="res://Assets/Projectiles/starPowerSpaced.png" id="2_sjacn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rpeev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g4un"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(0, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uftb"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(27, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_300hv"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(54, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cgma"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(81, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hecj8"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(108, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3fy"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(135, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov7vd"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(162, 0, 27, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yict3"]
+atlas = ExtResource("2_sjacn")
+region = Rect2(189, 0, 27, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lni5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g4un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uftb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_300hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cgma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hecj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb3fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov7vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yict3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Star" type="CharacterBody2D"]
+script = ExtResource("1_lvk85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rpeev")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -1)
+sprite_frames = SubResource("SpriteFrames_lni5y")
+autoplay = "default"

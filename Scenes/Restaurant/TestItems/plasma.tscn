@@ -63,7 +63,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Laser2" type="CharacterBody2D"]
+[node name="Laser3" type="CharacterBody2D"]
 script = ExtResource("1_j7r8i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
