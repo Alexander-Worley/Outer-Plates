@@ -187,20 +187,19 @@ func _input(event):
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
-			if not ammoDepotsInRange:
-				
-				holdableInHand.shoot()
-			else:
-				if ammoDepotsInRange[0].ammoCount > 0:
-					var ammoNeeded
-					if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
-						ammoNeeded = ammoDepotsInRange[0].ammoCount
-					else: 
-						ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+			weapon_logic()
 
-					holdableInHand.ammo += ammoNeeded
-					ammoDepotsInRange[0].ammoCount -= ammoNeeded
-					holdableInHand.updateAmmoCounter()
+func weapon_logic():
+	if not ammoDepotsInRange:holdableInHand.shoot()
+	elif ammoDepotsInRange[0].ammoCount > 0:
+		var ammoNeeded
+		if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
+			ammoNeeded = ammoDepotsInRange[0].ammoCount
+		else: 
+			ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+		holdableInHand.ammo += ammoNeeded
+		ammoDepotsInRange[0].ammoCount -= ammoNeeded
+		holdableInHand.updateAmmoCounter()
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
