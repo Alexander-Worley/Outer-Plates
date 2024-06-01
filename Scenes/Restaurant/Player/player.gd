@@ -75,6 +75,10 @@ func set_holdable_position():
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
+		if surface.is_in_group("PlateRack"):
+			if holdableInHand.is_in_group("Cuttable") and holdableInHand.isCut and !holdableInHand.isOnPlate:
+				holdableInHand.set_isOnPlate(true)
+				break
 		if surface.is_in_group("TrashCan"):
 			holdableInHand.queue_free()
 			isHolding = false

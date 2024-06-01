@@ -90,7 +90,7 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 
 # When food is in hands and plate is on surface
 func plate_food(food: Area2D, index: int):
-	if food.is_in_group("Cuttable") and food.isCut:
+	if food.is_in_group("Cuttable") and food.isCut and !food.isOnPlate:
 		food.set_isOnPlate(true)
 		holdablesOnSurface[index].queue_free()
 		holdablesOnSurface[index] = null
@@ -98,7 +98,7 @@ func plate_food(food: Area2D, index: int):
 
 # When food is on surface and plate is in hands
 func food_plate(plate: Area2D, index: int):
-	if plate.is_in_group("Plate") and holdablesOnSurface[index].isCut:
+	if plate.is_in_group("Plate") and holdablesOnSurface[index].isCut and !holdablesOnSurface[index].isOnPlate:
 		holdablesOnSurface[index].set_isOnPlate(true)
 		return true
 	return false
