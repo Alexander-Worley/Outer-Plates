@@ -206,8 +206,7 @@ func _input(event):
 # Check if any available sufraces are cutting boards
 func check_for_cutting_board():
 	for surface in surfacesInRange:
-		if surface.is_in_group("CuttingBoard"): surface.begin_cutting()
-		break
+		if surface.is_in_group("CuttingBoard") and surface.begin_cutting(): break
 
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
