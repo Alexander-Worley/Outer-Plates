@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvdmgcuv7anep"]
+
+[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="1_n1wj4"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_qklt4"]
+[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="3_8n671"]
+
+[sub_resource type="GDScript" id="GDScript_rffdy"]
+script/source = "extends \"res://Scenes/Restaurant/PlainSurface/plainSurface.gd\"
+
+# Function override
+func remove_holdable_from_surface(_holdable: Area2D):
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii5qe"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52dhw"]
+atlas = ExtResource("3_8n671")
+region = Rect2(165, 35, 22, 25)
+
+[node name="CookableRack" type="Area2D" groups=["SpawnBox", "Surfaces"]]
+script = SubResource("GDScript_rffdy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ii5qe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ii5qe")
+
+[node name="CookableFood" parent="." instance=ExtResource("1_n1wj4")]
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture = ExtResource("2_qklt4")
+
+[node name="CookableBox" type="Sprite2D" parent="Surface"]
+position = Vector2(0, -8)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_52dhw")

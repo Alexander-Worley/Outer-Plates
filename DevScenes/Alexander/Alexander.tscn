@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=18 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_cg0ue"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="7_twrhn"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="10_tc5h4"]
+[ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="11_ckt1f"]
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="12_5p3b3"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="13_ssd7v"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="14_5k5kf"]
@@ -220,6 +221,9 @@ position = Vector2(144, 208)
 
 [node name="CuttableRack" parent="Interactables/SpawnBoxes" instance=ExtResource("19_pla8y")]
 position = Vector2(176, 208)
+
+[node name="CookableRack" parent="Interactables/SpawnBoxes" instance=ExtResource("11_ckt1f")]
+position = Vector2(240, 208)
 
 [node name="CuttingBoards" type="Node2D" parent="Interactables"]
 
