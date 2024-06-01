@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_gejkp"]
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="3_rqnal"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_2orcc"]
-[ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="5_106gf"]
+[ext_resource type="Texture2D" uid="uid://hpf0xrwul11c" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="5_106gf"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="6_8fd4r"]
 [ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_cg0ue"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="7_twrhn"]
