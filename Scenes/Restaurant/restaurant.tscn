@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_3ncmo"]
 [ext_resource type="Texture2D" uid="uid://b80prp3vl4ogb" path="res://Assets/Interactables/PlainSurfaces/left-right-square-counter.png" id="10_dpk6j"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
-[ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/TestItems/testCuttableFood.tscn" id="11_cab0x"]
+[ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.tscn" id="11_cab0x"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="11_l1h7v"]
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="13_755di"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="13_dcagd"]
@@ -25,7 +25,7 @@
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-6.641, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="MVP" type="Label" parent="Environment/Background"]

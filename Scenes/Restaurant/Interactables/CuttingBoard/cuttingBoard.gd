@@ -2,6 +2,7 @@
 extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 var isCutting: bool = false
+var currentPlayer: CharacterBody2D = null
 @onready var cuttingTimer = $CuttingTimer
 @onready var cuttingBar = $CuttingBarControl
 @onready var smoke = %Smoke
@@ -13,13 +14,19 @@ func _ready():
 	cuttingTimer.start()
 	cuttingTimer.paused = true
 
-func begin_interaction():
-	return begin_cutting()
+func begin_interaction(player: CharacterBody2D):
+	currentPlayer = player
+	if begin_cutting():
+		currentPlayer.set_is_animation_lock(true)
+		return true
+	currentPlayer = null
+	return false
 
 # Begin cutting
 func begin_cutting():
 	# If already cutting or there is nothing valid to cut, return
 	if isCutting or !holdablesOnSurface[0] or !holdablesOnSurface[0].is_in_group("Cuttable") or holdablesOnSurface[0].isCut: return false
+	currentPlayer.play_animation()
 	cuttingTimer.paused = false
 	isCutting = true
 	smoke.show()
@@ -39,6 +46,8 @@ func stop_cooking():
 	cuttingTimer.stop()
 	cuttingTimer.start()
 	cuttingBar.resetBar()
+	currentPlayer.set_is_animation_lock(false)
+	currentPlayer = null
 
 func pause_cutting():
 	cuttingTimer.paused = true
@@ -56,4 +65,5 @@ func _on_cuttingTimer_timeout():
 func _input(event):
 	# This will need to be updated in the multiplayer update. As of now, any movement from anyone will stop cutting
 	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down") or event.is_action_pressed("face_left") or event.is_action_pressed("face_right") or event.is_action_pressed("face_up") or event.is_action_pressed("face_down"):
+		if currentPlayer: currentPlayer.set_is_animation_lock(false)
 		pause_cutting()

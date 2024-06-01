@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 const SPEED: float = 120.0
+# If true, the Player will not stop their animation
+var isAnimationLock: bool = false
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
@@ -90,6 +92,14 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	vertical /= 4
 	holdablePosition.position = Vector2(horizontal, vertical)
 
+# Set isAnimationLock
+func set_is_animation_lock(isLock: bool):
+	isAnimationLock = isLock
+
+# Play current Player Sprite Animation
+func play_animation():
+	playerSprite.play()
+
 # Animates the player
 func animate_player(horizontal: float, vertical: float):
 	if horizontal:
@@ -172,7 +182,7 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		# if no movement at all
-		if !horizontalMovement: playerSprite.stop()
+		if !horizontalMovement and !isAnimationLock: playerSprite.stop()
 	
 	move_and_slide()
 
@@ -185,7 +195,7 @@ func _input(event):
 			pickup_holdable(holdablesInRange.pick_random())
 	if event.is_action_pressed("interact"):
 		for interactable in interactablesInRange:
-			if !isHolding and interactable.begin_interaction(): break
+			if !isHolding and interactable.begin_interaction(self): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			weapon_logic()
 
