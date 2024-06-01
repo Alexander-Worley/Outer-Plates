@@ -1,26 +1,37 @@
 extends Area2D
 
-const MAX_COOKING_LEVEL: int = 4
-# 0: Raw, 1: Rare, 2: Medium, 3: Well-Done, 4: Burnt
+const MAX_COOKING_LEVEL: int = 2
+# 0: Raw, 1: Cooked, 2: Burnt
 var doneness: int = 0
-""" # TODO: Uncomment this when sprites are added
-var sprites = {
-	0: preload("res://???.png"),
-	1: preload("res://???.png"),
-	2: preload("res://???.png"),
-	3: preload("res://???.png"),
-	4: preload("res://???.png")
-}
-@onready var sprite = $Sprite
-"""
+# True after being cut at a cuttingBoard
+var isCut: bool = false
+# True if plated
+var isOnPlate: bool = false
+# True if eaten by a customer
+var isEaten: bool = false
 
-# Returns whether the food is burnt or not
-func isBurnt():
-	return doneness >= MAX_COOKING_LEVEL
+# Set the isCut bool of this holdable
+func set_isCut(newCut: bool):
+	isCut = newCut
+	update_sprite()
+
+# Set the isOnPlate bool of this holdable
+func set_isOnPlate(newOnPlate: bool):
+	isOnPlate = newOnPlate
+	update_sprite()
+
+# Set the isEaten bool of this holdable
+func set_isEaten(newEaten: bool):
+	isEaten = newEaten
+	update_sprite()
+
+# Returns whether the food can be cooked or not
+func isCookable():
+	return (isCut and !isOnPlate and doneness < 2)
 
 # Increases doneness by 1
 func increase_doneness():
-	if isBurnt(): return
+	if doneness >= MAX_COOKING_LEVEL: return
 	doneness += 1
 	update_sprite()
 	
@@ -29,9 +40,8 @@ func get_doneness():
 
 # Change sprite
 func update_sprite():
-	# TODO: Remove the TEMP function call below when sprites are added
-	$devSprite.TEMP_dev_sprite_update(doneness)
-	""" # TODO: Uncomment this when sprites are added
-	if doneness in sprites:
-		sprite.texture = sprites[doneness]
-	"""
+	var sprite = get_node("AnimatedSprite2D")
+	if !isCut: sprite.set_frame(0) # If not cut
+	elif !isOnPlate: sprite.set_frame(1 + doneness) # If cut and not plated
+	elif !isEaten: sprite.set_frame(4 + doneness) # If plated and not eaten
+	else: sprite.set_frame(7) # If eaten

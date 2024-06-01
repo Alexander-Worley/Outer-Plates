@@ -33,7 +33,7 @@ func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 
 # Begin cooking
 func begin_cooking():
-	if isCooking or holdablesOnSurface[0].isBurnt(): return
+	if isCooking or !holdablesOnSurface[0].isCookable(): return
 	cookingTimer.start()
 	isCooking = true
 	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]

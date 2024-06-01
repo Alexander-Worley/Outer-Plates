@@ -100,8 +100,13 @@ func plate_food(food: Area2D, index: int):
 func food_plate(plate: Area2D, index: int):
 	if plate.is_in_group("Plate") and holdablesOnSurface[index].isCut and !holdablesOnSurface[index].isOnPlate:
 		holdablesOnSurface[index].set_isOnPlate(true)
+		if self.is_in_group("CookingStation"): self.stop_cooking()
 		return true
 	return false
+
+# Name reservation function
+func stop_cooking():
+	pass
 
 # Given a holdable, remove it from the surface
 func remove_holdable_from_surface(holdable: Area2D):

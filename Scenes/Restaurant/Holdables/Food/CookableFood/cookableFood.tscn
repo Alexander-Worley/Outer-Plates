@@ -70,7 +70,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CookableFood" type="Area2D" groups=["Cookable", "Holdables"]]
+[node name="CookableFood" type="Area2D" groups=["Cookable", "Cuttable", "Holdables"]]
 script = ExtResource("1_ktuhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
