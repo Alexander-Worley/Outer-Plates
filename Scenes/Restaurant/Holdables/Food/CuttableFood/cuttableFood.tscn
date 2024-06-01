@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfvltjcitd8q2"]
+[gd_scene load_steps=13 format=3 uid="uid://cfvltjcitd8q2"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.gd" id="1_8b0ry"]
 [ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="2_h13l3"]
@@ -6,19 +6,35 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no58j"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_485ww"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh5vu"]
 atlas = ExtResource("2_h13l3")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_51e26"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxb5j"]
 atlas = ExtResource("2_h13l3")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyvug"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwxjl"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y53pq"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_231kk"]
 atlas = ExtResource("2_h13l3")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_48vix"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1c0p"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsm4y"]
+atlas = ExtResource("2_h13l3")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luovm"]
 atlas = ExtResource("2_h13l3")
 region = Rect2(128, 32, 32, 32)
 
@@ -26,23 +42,35 @@ region = Rect2(128, 32, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_485ww")
+"texture": SubResource("AtlasTexture_uh5vu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_51e26")
+"texture": SubResource("AtlasTexture_lxb5j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyvug")
+"texture": SubResource("AtlasTexture_mwxjl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_48vix")
+"texture": SubResource("AtlasTexture_y53pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_231kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1c0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsm4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luovm")
 }],
 "loop": true,
 "name": &"CuttableFood",
 "speed": 5.0
 }]
 
-[node name="CuttableFood" type="Area2D" groups=["Cuttable", "Holdables"]]
+[node name="CuttableFood" type="Area2D" groups=["Cookable", "Cuttable", "Holdables"]]
 script = ExtResource("1_8b0ry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
