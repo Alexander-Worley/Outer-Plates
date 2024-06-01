@@ -4,7 +4,7 @@ var playing = false
 
 var songArr = ["res://Assets/Music/space flute.mp3", "res://Assets/Music/messages from the stars.mp3", "res://Assets/Music/rhinestone eyes.mp3", "res://Assets/Music/symphony of a forgotten sprite.mp3"]
 
-func begin_interaction():
+func begin_interaction(_player: CharacterBody2D):
 	return playMusic()
 
 # Called when the node enters the scene tree for the first time.
