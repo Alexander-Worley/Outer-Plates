@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lak7jl612g1"
-path="res://.godot/imported/XB-green.png-12d2e7f57ddb513b98c7c69757edb0e0.ctex"
+uid="uid://bfyd0ak5niwhf"
+path="res://.godot/imported/controllers-pause-screen.png-55894c2b4e2a1878f7915bb0b273a2d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/InputLayouts/Xbox/XB-green.png"
-dest_files=["res://.godot/imported/XB-green.png-12d2e7f57ddb513b98c7c69757edb0e0.ctex"]
+source_file="res://Assets/UI/controllers-pause-screen.png"
+dest_files=["res://.godot/imported/controllers-pause-screen.png-55894c2b4e2a1878f7915bb0b273a2d4.ctex"]
 
 [params]
 
