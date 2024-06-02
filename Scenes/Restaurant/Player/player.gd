@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 const SPEED: float = 120.0
+# If true, the Player will not stop their animation
+var isAnimationLock: bool = false
+# If true, the Player will not be able to interact
+var isInteractLock: bool = false
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
@@ -42,12 +46,14 @@ func pickup_holdable(holdable: Area2D):
 		holdableParent.stop_cooking()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
+	# Transfer cuttable properties if needed
+	if holdableInHand.is_in_group("Cuttable"):
+		holdableInHand.isCut = holdable.isCut
+		holdableInHand.isOnPlate = holdable.isOnPlate
+		holdableInHand.isEaten = holdable.isEaten
 	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
-	# Transfer "isCut" if needed
-	if holdableInHand.is_in_group("Cuttable"):
-		holdableInHand.isCut = holdable.isCut
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene
 	# AW - May 25, 2024 - TODO: Fix this
@@ -56,7 +62,7 @@ func pickup_holdable(holdable: Area2D):
 		#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
 		#ammoCount.text = str(holdableInHand.ammo)
 	# Do not delete original holdable if it is coming from a PlateRack
-	if !holdableParent.is_in_group("PlateRack"): holdable.queue_free()
+	if !holdableParent.is_in_group("SpawnBox"): holdable.queue_free()
 	isHolding = true
 
 # Set holdableInHand's position and z-index
@@ -71,6 +77,10 @@ func set_holdable_position():
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
+		if surface.is_in_group("PlateRack"):
+			if holdableInHand.is_in_group("Cuttable") and holdableInHand.isCut and !holdableInHand.isOnPlate:
+				holdableInHand.set_isOnPlate(true)
+				break
 		if surface.is_in_group("TrashCan"):
 			holdableInHand.queue_free()
 			isHolding = false
@@ -89,6 +99,18 @@ func set_interact_range_position(horizontal: float, vertical: float):
 	horizontal /= 4
 	vertical /= 4
 	holdablePosition.position = Vector2(horizontal, vertical)
+
+# Set isAnimationLock
+func set_is_animation_lock(isLock: bool):
+	isAnimationLock = isLock
+
+# Set isInteractLock
+func set_is_interact_lock(isLock: bool):
+	isInteractLock = isLock
+
+# Play current Player Sprite Animation
+func play_animation():
+	playerSprite.play()
 
 # Animates the player
 func animate_player(horizontal: float, vertical: float):
@@ -169,10 +191,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if verticalMovement:
 		velocity.y = verticalMovement * SPEED
+		# If both directions, adjust speed
+		if horizontalMovement: velocity = velocity / 4 * 3
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		# if no movement at all
-		if !horizontalMovement: playerSprite.stop()
+		if !horizontalMovement and !isAnimationLock: playerSprite.stop()
 	
 	move_and_slide()
 
@@ -183,9 +207,9 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
-			if !isHolding and interactable.begin_interaction(): break
+			if !isHolding and interactable.begin_interaction(self): break
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			weapon_logic()
 

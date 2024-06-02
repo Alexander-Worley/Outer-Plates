@@ -9,7 +9,7 @@ size = Vector2(32, 32)
 atlas = ExtResource("1_rphms")
 region = Rect2(33, 1, 30, 30)
 
-[node name="Plate" type="Area2D"]
+[node name="Plate" type="Area2D" groups=["Holdables", "Plate"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.8, 0.8)
