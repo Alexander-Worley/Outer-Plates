@@ -8,21 +8,24 @@ const LOGO_DEFAULT_POSITION = Vector2(384, 160)
 var time: float = 300
 const BG_TEXTURES = {
 	"Main Menu": preload("res://Assets/BGs/mainMenuBG.png"),
+	"Level Select": preload("res://Assets/BGs/mainMenuBG.png"),
 	"Green Planet": preload("res://Assets/BGs/greenPlanetBG.png"),
 	"Blue Planet": preload("res://Assets/BGs/bluePlanetBG.png")
 }
 const LOGO_SPRITES = {
+	"Level Select": null,
 	"Main Menu": preload("res://Assets/UI/outer-plates-planet-logo.png"),
 	"Green Planet": null,
 	"Blue Planet": null
 }
 const DINER_TEXTURES = {
 	"Main Menu": null,
+	"Level Select": null,
 	"Green Planet": preload("res://Assets/BGs/greenPlanetDiner.png"),
 	"Blue Planet": preload("res://Assets/BGs/bluePlanetDiner.png")
 }
 @export_category("Developer Tools :0")
-@export_enum("Main Menu", "Green Planet", "Blue Planet") var Planet = "Main Menu"
+@export_enum("Main Menu", "Level Select", "Green Planet", "Blue Planet") var Planet = "Main Menu"
 @onready var backgroundTexture = $BG/BackgroundTexture
 @onready var dinerTexture = $DinerTexture
 @onready var logo = $Logo
@@ -37,13 +40,17 @@ func _ready():
 		$RotateLeft.queue_free()
 		$FlyLeft.queue_free()
 		$FlyRight.queue_free()
+	if !Engine.is_editor_hint() and Planet == "Level Select":
+		$RotateLeft.queue_free()
+		$FlyLeft.queue_free()
+		$FlyRight.queue_free()
 
 func _process(delta):
 	scroll_offset.x -= SCROLL_SPEED * delta
 	time += delta * LOGO_FREQUENCY
 	if logo.texture:
 		logo.position = LOGO_DEFAULT_POSITION + Vector2(0, sin(time) * LOGO_AMPLITUDE)
-	if Planet != "Main Menu":
+	if Planet != "Main Menu" and Planet != "Level Select":
 		var sprites = $RotateLeft.get_children()
 		for sprite in sprites:
 			sprite.rotation = -time
