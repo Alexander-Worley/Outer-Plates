@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b2vslko42kst5" path="res://Assets/BGs/mainMenuBG.png" id="1_2gtax"]
 [ext_resource type="Script" path="res://Scenes/Background/background.gd" id="1_sqvij"]
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="3_i7whd"]
-[ext_resource type="Texture2D" uid="uid://bxqrrr2jelsf5" path="res://Assets/UI/outer-plates-logo.png" id="3_o71y2"]
+[ext_resource type="Texture2D" uid="uid://bwohg3y2p83yc" path="res://Assets/UI/outer-plates-logo.png" id="3_o71y2"]
 [ext_resource type="Texture2D" uid="uid://c3kbuyj3uucdi" path="res://Assets/Environment/Ambiance/ship-1.png" id="3_sb0hm"]
 [ext_resource type="Texture2D" uid="uid://cbcxfo8nf0jha" path="res://Assets/Environment/Ambiance/ship-2.png" id="4_rfdc0"]
 
@@ -21,7 +21,7 @@ size = Vector2(10, 312)
 size = Vector2(704, 4)
 
 [node name="Background" type="ParallaxBackground"]
-scroll_offset = Vector2(-527956, 0)
+scroll_offset = Vector2(-3.3482, 0)
 script = ExtResource("1_sqvij")
 
 [node name="BG" type="ParallaxLayer" parent="."]
@@ -118,8 +118,8 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_rfdc0")
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(384, 179.538)
-scale = Vector2(3, 3)
+position = Vector2(384, 140.907)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_o71y2")
 
 [node name="DinerTexture" type="Sprite2D" parent="."]

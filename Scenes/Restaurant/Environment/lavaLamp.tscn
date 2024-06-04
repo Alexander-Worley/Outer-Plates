@@ -1,40 +1,40 @@
 [gd_scene load_steps=9 format=3 uid="uid://cuek2wfflpv5k"]
 
-[ext_resource type="Texture2D" uid="uid://dkc77mm2etev4" path="res://Assets/Environment/Ambiance/lava-lamp-spritesheet.png" id="1_6avh4"]
+[ext_resource type="Texture2D" uid="uid://dsb8wh7ixg1cd" path="res://Assets/Environment/Ambiance/lava-lamp-spritesheet.png" id="1_6avh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef7lx"]
 size = Vector2(16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxyo6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xy34"]
 atlas = ExtResource("1_6avh4")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nhg3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_53j44"]
 atlas = ExtResource("1_6avh4")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(96, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0exmk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_35vlj"]
 atlas = ExtResource("1_6avh4")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(192, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hucok"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2es0"]
 atlas = ExtResource("1_6avh4")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lsgv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kxyo6")
+"texture": SubResource("AtlasTexture_2xy34")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7nhg3")
+"texture": SubResource("AtlasTexture_53j44")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0exmk")
+"texture": SubResource("AtlasTexture_35vlj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hucok")
+"texture": SubResource("AtlasTexture_m2es0")
 }],
 "loop": true,
 "name": &"LavaLamp",
@@ -58,14 +58,14 @@ func _on_animationTimer_timeout():
 [node name="LavaLamp" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_ef7lx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -40)
-scale = Vector2(3, 3)
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_5lsgv")
 animation = &"LavaLamp"
-frame_progress = 0.784298
+frame_progress = 0.369461
 script = SubResource("GDScript_to42l")
 
 [node name="AnimationTimer" type="Timer" parent="AnimatedSprite2D"]

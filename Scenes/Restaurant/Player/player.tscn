@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d1ahdwi2ft7k0"]
+[gd_scene load_steps=47 format=3 uid="uid://d1ahdwi2ft7k0"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Player/player.gd" id="1_inif3"]
 [ext_resource type="Texture2D" uid="uid://tl1k83qfbilg" path="res://Assets/Characters/Player/player-spritesheet.png" id="2_yefjo"]
@@ -7,6 +7,9 @@
 size = Vector2(21.3333, 21.3333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c8pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjlov"]
 atlas = ExtResource("2_yefjo")
@@ -406,6 +409,11 @@ position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactRange"]
 shape = SubResource("CircleShape2D_5x6jq")
+
+[node name="holdablePosition" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holdablePosition"]
+shape = SubResource("CircleShape2D_2c8pm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

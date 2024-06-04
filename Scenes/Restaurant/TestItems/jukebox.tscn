@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/jukebox.gd" id="1_35l6p"]
 [ext_resource type="Texture2D" uid="uid://dd1ffodefikrs" path="res://Assets/Interactables/External/jukebox-spritesheet.png" id="2_uf763"]
+[ext_resource type="AudioStream" uid="uid://cnonlu3a2hnma" path="res://Assets/Music/messages from the stars.mp3" id="3_7u6am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
-size = Vector2(27, 35.25)
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34j1d"]
 atlas = ExtResource("2_uf763")
@@ -45,16 +46,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h00bf"]
 size = Vector2(18, 23.3333)
 
-[node name="Jukebox" type="Area2D" groups=["Jukebox"]]
+[node name="Jukebox" type="Area2D" groups=["Interactable"]]
 script = ExtResource("1_35l6p")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 13.75)
+shape = SubResource("RectangleShape2D_tcddw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tcddw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
 scale = Vector2(0.978, 1)
 sprite_frames = SubResource("SpriteFrames_i50tv")
 

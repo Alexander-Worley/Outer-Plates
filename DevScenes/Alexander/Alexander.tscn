@@ -1,27 +1,30 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq4rjomlqw06p"]
+[gd_scene load_steps=19 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_gejkp"]
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="3_rqnal"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_2orcc"]
-[ext_resource type="Texture2D" uid="uid://cuawvf5dcoirc" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="5_106gf"]
+[ext_resource type="Texture2D" uid="uid://hpf0xrwul11c" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="5_106gf"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="6_8fd4r"]
 [ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_cg0ue"]
-[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="7_twrhn"]
-[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="8_c7tx8"]
-[ext_resource type="PackedScene" uid="uid://r0sqnmyx2q5r" path="res://Scenes/Restaurant/TestItems/testWeapon.tscn" id="9_kjlkh"]
-[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="10_tc5h4"]
-[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/Plate/plateRack.tscn" id="12_5p3b3"]
-[ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/trashCan.tscn" id="13_ssd7v"]
+[ext_resource type="Texture2D" uid="uid://ogr8t5lqaf8t" path="res://Assets/Interactables/PlainSurfaces/corner-square-counter.png" id="8_nnadb"]
+[ext_resource type="Texture2D" uid="uid://b80prp3vl4ogb" path="res://Assets/Interactables/PlainSurfaces/left-right-square-counter.png" id="9_najlw"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="10_tc5h4"]
+[ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="11_ckt1f"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="12_5p3b3"]
+[ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="13_ssd7v"]
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="14_5k5kf"]
+[ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="16_u03j0"]
+[ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="18_f1xhx"]
+[ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="19_pla8y"]
 
 [node name="Alexander" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1, 0)
+scroll_offset = Vector2(-1.38889, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]
@@ -77,20 +80,12 @@ texture = ExtResource("3_rqnal")
 position = Vector2(592, 368)
 texture = ExtResource("3_rqnal")
 
-[node name="Chair13" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(400, 240)
-texture = ExtResource("3_rqnal")
-
 [node name="Chair5" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
 position = Vector2(624, 208)
 texture = ExtResource("3_rqnal")
 
 [node name="Chair6" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
 position = Vector2(528, 208)
-texture = ExtResource("3_rqnal")
-
-[node name="Chair9" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(688, 368)
 texture = ExtResource("3_rqnal")
 
 [node name="Chair7" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
@@ -102,6 +97,10 @@ flip_h = true
 position = Vector2(688, 464)
 texture = ExtResource("3_rqnal")
 flip_h = true
+
+[node name="Chair9" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
+position = Vector2(688, 368)
+texture = ExtResource("3_rqnal")
 
 [node name="Chair10" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
 position = Vector2(688, 304)
@@ -118,15 +117,16 @@ position = Vector2(528, 368)
 texture = ExtResource("3_rqnal")
 flip_h = true
 
+[node name="Chair13" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
+position = Vector2(400, 240)
+texture = ExtResource("3_rqnal")
+
 [node name="Surfaces" type="Node2D" parent="."]
 
 [node name="Tables" type="Node2D" parent="Surfaces"]
 
 [node name="Table" parent="Surfaces/Tables" instance=ExtResource("3_gejkp")]
 position = Vector2(624, 368)
-
-[node name="Table9" parent="Surfaces/Tables" instance=ExtResource("3_gejkp")]
-position = Vector2(432, 240)
 
 [node name="Table2" parent="Surfaces/Tables" instance=ExtResource("3_gejkp")]
 position = Vector2(432, 432)
@@ -157,119 +157,169 @@ position = Vector2(528, 256)
 height = 2
 texture = ExtResource("6_cg0ue")
 
+[node name="Table9" parent="Surfaces/Tables" instance=ExtResource("3_gejkp")]
+position = Vector2(432, 240)
+
 [node name="Counters" type="Node2D" parent="Surfaces"]
 
 [node name="Counter" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(208, 208)
+texture = ExtResource("6_8fd4r")
+
+[node name="Counter2" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
 position = Vector2(240, 208)
 texture = ExtResource("6_8fd4r")
 
-[node name="TestFoodForStove" parent="Surfaces/Counters/Counter" instance=ExtResource("7_twrhn")]
-position = Vector2(0, -8)
-
-[node name="Counter2" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(272, 208)
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFoodForStove" parent="Surfaces/Counters/Counter2" instance=ExtResource("7_twrhn")]
-position = Vector2(0, -8)
-
 [node name="Counter3" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(144, 432)
-direction = 2
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFood" parent="Surfaces/Counters/Counter3" instance=ExtResource("8_c7tx8")]
-position = Vector2(0, 8)
-
-[node name="Counter16" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 368)
-direction = 3
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFood" parent="Surfaces/Counters/Counter16" instance=ExtResource("8_c7tx8")]
-position = Vector2(-8, 0)
-
-[node name="Counter17" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 400)
-direction = 3
-texture = ExtResource("6_8fd4r")
-
-[node name="TestFood" parent="Surfaces/Counters/Counter17" instance=ExtResource("8_c7tx8")]
-position = Vector2(-8, 0)
+position = Vector2(272, 208)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_nnadb")
 
 [node name="Counter4" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(176, 432)
+position = Vector2(112, 304)
 direction = 2
 texture = ExtResource("6_8fd4r")
 
-[node name="TestFood" parent="Surfaces/Counters/Counter4" instance=ExtResource("8_c7tx8")]
-position = Vector2(0, 8)
-
-[node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 304)
-direction = 3
+[node name="Counter5" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(144, 304)
+direction = 2
 texture = ExtResource("6_8fd4r")
 
-[node name="Counter15" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(112, 336)
-direction = 3
+[node name="Counter6" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(176, 304)
+direction = 2
+texture = ExtResource("6_8fd4r")
+
+[node name="Counter7" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(208, 304)
+direction = 2
 texture = ExtResource("6_8fd4r")
 
 [node name="Counter8" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(208, 432)
+position = Vector2(240, 304)
 direction = 2
-texture = ExtResource("6_8fd4r")
-
-[node name="TestWeapon" parent="Surfaces/Counters/Counter8" instance=ExtResource("9_kjlkh")]
-position = Vector2(0, 8)
+texture = ExtResource("8_nnadb")
 
 [node name="Counter9" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(240, 432)
-direction = 2
-texture = ExtResource("6_8fd4r")
-
-[node name="TestWeapon" parent="Surfaces/Counters/Counter9" instance=ExtResource("9_kjlkh")]
-position = Vector2(0, 8)
+position = Vector2(240, 336)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_nnadb")
 
 [node name="Counter10" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(272, 432)
+position = Vector2(112, 432)
 direction = 2
 texture = ExtResource("6_8fd4r")
 
 [node name="Counter11" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 400)
+position = Vector2(208, 432)
+direction = 2
+texture = ExtResource("6_8fd4r")
+
+[node name="Counter12" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(240, 432)
+direction = 2
+texture = ExtResource("6_8fd4r")
+
+[node name="Counter13" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(336, 400)
 direction = 1
 texture = ExtResource("6_8fd4r")
 
 [node name="Counter14" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
-position = Vector2(304, 368)
+position = Vector2(336, 368)
 direction = 1
-texture = ExtResource("6_8fd4r")
+texture = ExtResource("8_nnadb")
+
+[node name="Counter15" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(80, 336)
+texture = ExtResource("9_najlw")
+
+[node name="Counter18" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(80, 432)
+texture = ExtResource("9_najlw")
+
+[node name="Counter19" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(336, 432)
+texture = ExtResource("9_najlw")
+
+[node name="Counter16" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(80, 304)
+texture = ExtResource("9_najlw")
+
+[node name="Counter17" parent="Surfaces/Counters" instance=ExtResource("3_gejkp")]
+position = Vector2(80, 208)
+texture = ExtResource("9_najlw")
 
 [node name="Stoves" type="Node2D" parent="Surfaces"]
 
 [node name="Stove" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
-position = Vector2(112, 272)
+position = Vector2(208, 336)
+texture = ExtResource("6_8fd4r")
+
+[node name="Stove2" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
+position = Vector2(80, 400)
 direction = 3
 texture = ExtResource("6_8fd4r")
 
 [node name="Stove3" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
-position = Vector2(144, 208)
+position = Vector2(272, 432)
+direction = 2
+texture = ExtResource("6_8fd4r")
 
-[node name="Stove5" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
-position = Vector2(176, 208)
-
-[node name="Stove6" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
-position = Vector2(112, 240)
-direction = 3
+[node name="Stove4" parent="Surfaces/Stoves" instance=ExtResource("10_tc5h4")]
+position = Vector2(304, 432)
+direction = 2
+texture = ExtResource("6_8fd4r")
 
 [node name="Interactables" type="Node2D" parent="."]
+
+[node name="SpawnBoxes" type="Node2D" parent="Interactables"]
+
+[node name="PlateRack" parent="Interactables/SpawnBoxes" instance=ExtResource("12_5p3b3")]
+position = Vector2(112, 208)
+
+[node name="PlateRack2" parent="Interactables/SpawnBoxes" instance=ExtResource("12_5p3b3")]
+position = Vector2(112, 336)
+
+[node name="CuttableRack" parent="Interactables/SpawnBoxes" instance=ExtResource("19_pla8y")]
+position = Vector2(144, 208)
+
+[node name="CookableRack" parent="Interactables/SpawnBoxes" instance=ExtResource("11_ckt1f")]
+position = Vector2(144, 336)
+
+[node name="CuttingBoards" type="Node2D" parent="Interactables"]
+
+[node name="CuttingBoard" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(176, 208)
+
+[node name="CuttingBoard2" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(80, 240)
+direction = 3
+
+[node name="CuttingBoard3" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(80, 272)
+direction = 3
+
+[node name="CuttingBoard4" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(176, 336)
+
+[node name="CuttingBoard5" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(80, 368)
+direction = 3
+
+[node name="CuttingBoard6" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(144, 432)
+direction = 2
+
+[node name="CuttingBoard7" parent="Interactables/CuttingBoards" instance=ExtResource("16_u03j0")]
+position = Vector2(176, 432)
+direction = 2
 
 [node name="TrashCan" parent="Interactables" instance=ExtResource("13_ssd7v")]
 position = Vector2(304, 208)
 
-[node name="PlateRack" parent="Interactables" instance=ExtResource("12_5p3b3")]
-position = Vector2(208, 208)
+[node name="Jukebox" parent="Interactables" instance=ExtResource("18_f1xhx")]
+position = Vector2(304, 144)
 
 [node name="Players" type="Node2D" parent="."]
 

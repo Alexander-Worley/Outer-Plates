@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
 const SPEED: float = 120.0
+# If true, the Player will not stop their animation
+var isAnimationLock: bool = false
+# If true, the Player will not be able to interact
+var isInteractLock: bool = false
 var isHolding: bool = false
 var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
-var jukeboxInRange: Array[Area2D] = []
+var interactablesInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var teleporterInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
@@ -24,6 +28,7 @@ var sprites = {
 }
 @export_range (1, 4) var playerNum: int = 1
 @onready var interactRange: Area2D = $interactRange
+@onready var holdablePosition: Area2D = $holdablePosition
 @onready var playerSprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
@@ -35,14 +40,19 @@ func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
 	holdableInHand = holdable.duplicate()
 	
-	interactRange.add_child(holdableInHand)
-	holdableInHand.position = Vector2(0,0)
+	holdablePosition.add_child(holdableInHand)
+	set_holdable_position()
 	# Interupt cooking if needed
 	if holdableParent.is_in_group("CookingStation"):
 		holdableParent.stop_cooking()
-		holdableParent.reset_progress_bar()
 	if holdableParent.is_in_group("Surfaces"):
 		holdableParent.remove_holdable_from_surface(holdable)
+	# Transfer cuttable properties if needed
+	if holdableInHand.is_in_group("Cuttable"):
+		holdableInHand.isCut = holdable.isCut
+		holdableInHand.isOnPlate = holdable.isOnPlate
+		holdableInHand.isEaten = holdable.isEaten
+	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
 	#copy ammo if needed
@@ -53,12 +63,25 @@ func pickup_holdable(holdable: Area2D):
 		#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
 		#ammoCount.text = str(holdableInHand.ammo)
 	# Do not delete original holdable if it is coming from a PlateRack
-	if !holdableParent.is_in_group("PlateRack"): holdable.queue_free()
+	if !holdableParent.is_in_group("SpawnBox"): holdable.queue_free()
 	isHolding = true
+
+# Set holdableInHand's position and z-index
+func set_holdable_position():
+	holdableInHand.position = Vector2(0,0)
+	for i in 2:
+		if playerSprite.animation == sprites[playerNum][0][i]:
+			holdableInHand.z_index = 0
+			return
+	holdableInHand.z_index = 1
 
 # Places "holdableInHand" on a surface
 func place_holdable():
 	for surface: Area2D in surfacesInRange:
+		if surface.is_in_group("PlateRack"):
+			if holdableInHand.is_in_group("Cuttable") and holdableInHand.isCut and !holdableInHand.isOnPlate:
+				holdableInHand.set_isOnPlate(true)
+				break
 		if surface.is_in_group("TrashCan"):
 			holdableInHand.queue_free()
 			isHolding = false
@@ -69,12 +92,26 @@ func place_holdable():
 			break
 
 # Given whether the player is moving up, down, left, right, or diagonal,
-# set the position of their pickup range
+# set the position of their pickup range and any holdables in their hand
 func set_interact_range_position(horizontal: float, vertical: float):
-	const DISTANCE = Global.PIXEL_DIMENSION / 4.0 * 3.0
-	horizontal *= DISTANCE
-	vertical *= DISTANCE
+	horizontal *= Global.PIXEL_DIMENSION
+	vertical *= Global.PIXEL_DIMENSION
 	interactRange.position = Vector2(horizontal, vertical)
+	horizontal /= 4
+	vertical /= 4
+	holdablePosition.position = Vector2(horizontal, vertical)
+
+# Set isAnimationLock
+func set_is_animation_lock(isLock: bool):
+	isAnimationLock = isLock
+
+# Set isInteractLock
+func set_is_interact_lock(isLock: bool):
+	isInteractLock = isLock
+
+# Play current Player Sprite Animation
+func play_animation():
+	playerSprite.play()
 
 # Animates the player
 func animate_player(horizontal: float, vertical: float):
@@ -88,6 +125,8 @@ func animate_player(horizontal: float, vertical: float):
 		var verticalDirection = (vertical + 1) / 2 # 0 if up, 1 if down
 		var horizontalDirection = abs(horizontal) # 0 if only vertical, 1 if horizontal
 		playerSprite.play(sprites[playerNum][verticalDirection][horizontalDirection])
+		# Move holdableInHand sprite above or below the player as needed
+		if isHolding: holdableInHand.z_index = 1 if verticalDirection else 0
 
 func tilt_weapon(horizontal: float, vertical: float):
 	if !isHolding: return
@@ -153,10 +192,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if verticalMovement:
 		velocity.y = verticalMovement * SPEED
+		# If both directions, adjust speed
+		if horizontalMovement: velocity = velocity / 4 * 3
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		# if no movement at all
-		if !horizontalMovement: playerSprite.stop()
+		if !horizontalMovement and !isAnimationLock: playerSprite.stop()
 	
 	move_and_slide()
 
@@ -167,27 +208,26 @@ func _input(event):
 			# TODO: Replace "pick_random()" with static decisions.
 				# Perhaps the item most inside of "pickup_range"?
 			pickup_holdable(holdablesInRange.pick_random())
-	if event.is_action_pressed("interact"):
-		if jukeboxInRange and not isHolding:
-			jukeboxInRange[0].playMusic()
+	if event.is_action_pressed("interact") and !isInteractLock:
+		for interactable in interactablesInRange:
+			if !isHolding and interactable.begin_interaction(self): break
 		if teleporterInRange:
 			teleporterInRange[0].teleport_in()
 		if isHolding && holdableInHand.is_in_group("Weapons"):
-			if not ammoDepotsInRange:
-				
-				holdableInHand.shoot()
-			else:
-				if ammoDepotsInRange[0].ammoCount > 0:
-					var ammoNeeded
-					if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
-						ammoNeeded = ammoDepotsInRange[0].ammoCount
-					else: 
-						ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+			weapon_logic()
 
-					holdableInHand.ammo += ammoNeeded
-					ammoDepotsInRange[0].ammoCount -= ammoNeeded
-					holdableInHand.updateAmmoCounter()
-	
+func weapon_logic():
+	if not ammoDepotsInRange:holdableInHand.shoot()
+	elif ammoDepotsInRange[0].ammoCount > 0:
+		var ammoNeeded
+		if ammoDepotsInRange[0].ammoCount < holdableInHand.maxAmmo:
+			ammoNeeded = ammoDepotsInRange[0].ammoCount
+		else: 
+			ammoNeeded = holdableInHand.maxAmmo - holdableInHand.ammo
+		holdableInHand.ammo += ammoNeeded
+		ammoDepotsInRange[0].ammoCount -= ammoNeeded
+		holdableInHand.updateAmmoCounter()
+
 # Handles inRange lists
 func _on_interact_range_area_entered(area):
 	check_interact_range(area, "append")
@@ -196,9 +236,11 @@ func _on_interact_range_area_exited(area):
 func check_interact_range(area, operation):
 	if area.is_in_group("Holdables"):
 		update_in_range(holdablesInRange, area, operation)
-	elif area.is_in_group("Surfaces"):
+	if area.is_in_group("Surfaces"):
 		update_in_range(surfacesInRange, area, operation)
-	elif area.is_in_group("ammoDepots"):
+	if area.is_in_group("Interactable"):
+		update_in_range(interactablesInRange, area, operation)
+	if area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
 	elif area.is_in_group("Jukebox"):
 		update_in_range(jukeboxInRange, area, operation)
