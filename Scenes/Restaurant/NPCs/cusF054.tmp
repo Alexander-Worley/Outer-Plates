@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://CustomerIdle.gd" id="7_5in56"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkTo.gd" id="8_nfvdj"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportIn.gd" id="9_4h2ck"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportOut.gd" id="11_0n5tr"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkDownStairs.gd" id="10_otxjh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4lw5"]
 atlas = ExtResource("1_7uk4y")
@@ -60,23 +60,17 @@ script = ExtResource("4_8uy8w")
 one_shot = true
 script = ExtResource("5_ko7ip")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [node name="PathTimer" type="Timer" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_1fdtg")
 initial_state = NodePath("TeleportIn")
 
-[node name="WaitForTableTimer" type="Timer" parent="StateMachine"]
-wait_time = 5.0
-
-[node name="TeleportTimer" type="Timer" parent="StateMachine"]
-one_shot = true
-
-[node name="TweakOutTimer" type="Timer" parent="StateMachine"]
-wait_time = 3.0
-
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_5in56")
+enemy = NodePath("../..")
 
 [node name="WalkTo" type="Node" parent="StateMachine"]
 script = ExtResource("8_nfvdj")
@@ -84,11 +78,11 @@ script = ExtResource("8_nfvdj")
 [node name="TeleportIn" type="Node" parent="StateMachine"]
 script = ExtResource("9_4h2ck")
 
-[node name="TeleportOut" type="Node" parent="StateMachine"]
-script = ExtResource("11_0n5tr")
+[node name="WalkDownStairs" type="Node" parent="StateMachine"]
+script = ExtResource("10_otxjh")
+
+[node name="TeleportTimer" type="Timer" parent="StateMachine"]
+wait_time = 2.0
 
 [connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
-[connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportOut" method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_tweak_out_timer_timeout"]

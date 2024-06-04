@@ -1,0 +1,163 @@
+[gd_scene load_steps=22 format=3 uid="uid://blxn4sm30k3lc"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/teleporter.gd" id="1_0p2h0"]
+[ext_resource type="Texture2D" uid="uid://bh483spkcuybs" path="res://Assets/Environment/Furniture/teleporter.png" id="2_tq88k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f0xc"]
+size = Vector2(118, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oxgl"]
+size = Vector2(118, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq8w"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytrow"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(0, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1es83"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(0, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuqx7"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(0, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg3n3"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kue20"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(144, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhmut"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(144, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnnvx"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(144, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52mo8"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybpkx"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(288, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1sin"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(288, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwncu"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(288, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1drx"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(432, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaaqo"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(432, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4k4j"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(432, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14peh"]
+atlas = ExtResource("2_tq88k")
+region = Rect2(432, 432, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhff7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtq8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytrow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1es83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuqx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eg3n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kue20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhmut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnnvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52mo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybpkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1sin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwncu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1drx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaaqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4k4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14peh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Teleporter" type="Area2D"]
+script = ExtResource("1_0p2h0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_5f0xc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_8oxgl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Teleporter"]]
+sprite_frames = SubResource("SpriteFrames_jhff7")
+
+[node name="TeleportInTimer" type="Timer" parent="." groups=["Teleporter"]]
+one_shot = true
+
+[node name="TeleportSpot" type="Marker2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="BottomOfStairs" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 70)
+
+[node name="WalkOffTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="TeleportInTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WalkOffTimer" to="." method="_on_walk_off_timer_timeout"]

@@ -14,18 +14,12 @@ enum tableState {
 @onready var available = true # Determines if this table is open for seating.
 @onready var needed_food = null
 @onready var status = tableState.AVAILABLE
-@onready var interaction_area: InteractionArea = $InteractionArea
 
 
 
 
 func _ready():
-	interaction_area.interact = Callable(self, "_on_interact")
 	initialize()
-	
-
-func _on_interact():
-	print("why me")
 
 
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):

@@ -91,4 +91,4 @@ script = ExtResource("11_0n5tr")
 [connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportOut" method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_tweak_out_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_bullshit_timer_timeout"]
