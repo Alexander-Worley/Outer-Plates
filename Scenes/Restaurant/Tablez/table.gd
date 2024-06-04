@@ -7,41 +7,45 @@ enum tableState {
 	CLEANUP = 3
 }
 
+
 @onready var tableSize = 1
-@onready var order = null  # Will need to extend to an array when considering multiple tables
-@onready var customer = null # The child customer, probably will need to be an array
-@onready var test_tag = "Original tag"
-@onready var available = true # Determines if this table is open for seating.
-@onready var needed_food = null
+@onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
+@onready var needed_order_phase = null
+@onready var customer = null # The child customer, probably will need to be an array# Determines if this table is open for seating.
 @onready var status = tableState.AVAILABLE
-@onready var interaction_area: InteractionArea = $InteractionArea
-
-
+@onready var tableCode = null
 
 
 func _ready():
-	interaction_area.interact = Callable(self, "_on_interact")
 	initialize()
-	
 
-func _on_interact():
-	print("why me")
+
+func _process(delta):
+	pass
 
 
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 	var result = set_holdable_on_surface(holdableInHand)
-	print(test_tag)
 	return result
 
 
 func get_status():
-	print(status)
+	return status
+
+func set_order(food):
+	pass
 
 
 func is_served():
-	# Checks if a table has been properly served. 
-	# Right now, it will only check that a holdable is on it, will make more sophisticated
-	return holdablesOnSurface.size() > 0 and holdablesOnSurface[0] != null
+	""" 
+	Returns a bool indicating whether table has been properly served. 
+	If the table isn't awaiting an order, will return false by default.
+	""" 
+	if status != tableState.AWAITING_ORDER:
+		return false
+	if !holdablesOnSurface.is_empty():
+		return false
+	return true
 
 
 func display_order(order):
