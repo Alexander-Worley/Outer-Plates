@@ -25,11 +25,11 @@ offset_bottom = 98.0
 text = "Choose a day:"
 
 [node name="Day2" type="Button" parent="Background"]
+visible = false
 offset_left = 360.0
 offset_top = 193.0
 offset_right = 481.0
 offset_bottom = 257.0
-text = "Day 2
-"
+text = "Day 2"
 
 [connection signal="pressed" from="Background/Day1" to="." method="_on_day_1_pressed"]
