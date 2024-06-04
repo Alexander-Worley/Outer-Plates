@@ -15,7 +15,7 @@
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-13.0607, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
