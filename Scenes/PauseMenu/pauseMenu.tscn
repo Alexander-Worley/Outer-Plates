@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci4ebcdwu4rl5"]
 
 [ext_resource type="Script" path="res://Scenes/PauseMenu/pauseMenu.gd" id="1_rs14q"]
-[ext_resource type="Texture2D" uid="uid://bfyd0ak5niwhf" path="res://Assets/UI/controllers-pause-screen.png" id="2_3n3v8"]
+[ext_resource type="Texture2D" uid="uid://bylwh6qot2u5n" path="res://Assets/UI/outer-plates-pause-full.png" id="2_6k8jj"]
 
 [node name="PauseMenu" type="Node2D"]
 process_mode = 3
@@ -16,4 +16,4 @@ color = Color(0, 0, 0, 0.498039)
 
 [node name="InputMap" type="Sprite2D" parent="Background"]
 position = Vector2(384, 288)
-texture = ExtResource("2_3n3v8")
+texture = ExtResource("2_6k8jj")
