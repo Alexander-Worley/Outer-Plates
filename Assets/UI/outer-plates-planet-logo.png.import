@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kdqlfexd6k26"
-path="res://.godot/imported/mainMenuBG.png-12e3f2bb4322b18486eb6a5152416c1e.ctex"
+uid="uid://dthnh6bmonk2a"
+path="res://.godot/imported/outer-plates-planet-logo.png-1fb8e193424412043a16c51f18903c85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BGs/mainMenuBG.png"
-dest_files=["res://.godot/imported/mainMenuBG.png-12e3f2bb4322b18486eb6a5152416c1e.ctex"]
+source_file="res://Assets/UI/outer-plates-planet-logo.png"
+dest_files=["res://.godot/imported/outer-plates-planet-logo.png-1fb8e193424412043a16c51f18903c85.ctex"]
 
 [params]
 
