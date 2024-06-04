@@ -21,7 +21,7 @@ size = Vector2(10, 312)
 size = Vector2(704, 4)
 
 [node name="Background" type="ParallaxBackground"]
-scroll_offset = Vector2(-3.3482, 0)
+scroll_offset = Vector2(-1.66667, 0)
 script = ExtResource("1_sqvij")
 
 [node name="BG" type="ParallaxLayer" parent="."]
@@ -38,6 +38,7 @@ motion_mirroring = Vector2(2304, 2.08165e-12)
 
 [node name="Slug1" type="Sprite2D" parent="RotateLeft"]
 position = Vector2(896, 64)
+rotation = -301.867
 scale = Vector2(3, 3)
 texture = SubResource("AtlasTexture_sdyu7")
 
@@ -118,7 +119,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_rfdc0")
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(384, 140.907)
+position = Vector2(384, 165.413)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_o71y2")
 
