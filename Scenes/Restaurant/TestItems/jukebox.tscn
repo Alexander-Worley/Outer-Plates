@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/jukebox.gd" id="1_35l6p"]
 [ext_resource type="Texture2D" uid="uid://dd1ffodefikrs" path="res://Assets/Interactables/External/jukebox-spritesheet.png" id="2_uf763"]
-[ext_resource type="AudioStream" uid="uid://cnonlu3a2hnma" path="res://Assets/Music/messages from the stars.mp3" id="3_7u6am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
 size = Vector2(32, 32)
@@ -64,7 +63,7 @@ sprite_frames = SubResource("SpriteFrames_i50tv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 13.5)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_h00bf")

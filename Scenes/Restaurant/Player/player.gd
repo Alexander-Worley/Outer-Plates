@@ -242,8 +242,6 @@ func check_interact_range(area, operation):
 		update_in_range(interactablesInRange, area, operation)
 	if area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
-	elif area.is_in_group("Jukebox"):
-		update_in_range(jukeboxInRange, area, operation)
 	elif area.is_in_group("Teleporter"):
 		update_in_range(teleporterInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
