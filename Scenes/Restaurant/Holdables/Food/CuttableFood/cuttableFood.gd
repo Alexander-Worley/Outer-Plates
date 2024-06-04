@@ -4,7 +4,7 @@ extends "res://Scenes/Restaurant/Holdables/Food/food.gd"
 func isReady():
 	if isCut:
 		if isOnPlate:
-			if doneness == 1: # This food should be cooked and not burnt
+			if doneness == 0: # This food should not be cooked
 				if !isEaten:
 					return true
 	return false
