@@ -13,8 +13,8 @@ const BG_TEXTURES = {
 	"Blue Planet": preload("res://Assets/BGs/bluePlanetBG.png")
 }
 const LOGO_SPRITES = {
-	"Main Menu": preload("res://Assets/UI/outer-plates-logo.png"),
 	"Level Select": null,
+	"Main Menu": preload("res://Assets/UI/outer-plates-planet-logo.png"),
 	"Green Planet": null,
 	"Blue Planet": null
 }

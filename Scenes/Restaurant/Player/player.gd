@@ -10,6 +10,7 @@ var holdablesInRange: Array[Area2D] = []
 var surfacesInRange: Array[Area2D] = []
 var interactablesInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
+var teleporterInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
 # All of the player sprites divided up by player number.
 # If the player is moving up, the first array is selected.
@@ -210,6 +211,8 @@ func _input(event):
 	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(self): break
+		if teleporterInRange:
+			teleporterInRange[0].teleport_in()
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			weapon_logic()
 
@@ -239,6 +242,8 @@ func check_interact_range(area, operation):
 		update_in_range(interactablesInRange, area, operation)
 	if area.is_in_group("ammoDepots"):
 		update_in_range(ammoDepotsInRange, area, operation)
+	elif area.is_in_group("Teleporter"):
+		update_in_range(teleporterInRange, area, operation)
 func update_in_range(listToUpdate, areaToUpdate, operation):
 	if operation == "append":
 		listToUpdate.append(areaToUpdate)

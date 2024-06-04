@@ -1,19 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://82nfelbi5c41"]
+[gd_scene load_steps=4 format=3 uid="uid://82nfelbi5c41"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table.gd" id="1_xkb1e"]
-[ext_resource type="Texture2D" uid="uid://dn4wbfsub024w" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_3qdqv"]
-[ext_resource type="PackedScene" uid="uid://dh40xdep23ji3" path="res://Interactions/interaction_area/interaction_area.tscn" id="3_00cse"]
+[ext_resource type="Texture2D" uid="uid://d1b4hokfhh1qd" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_3qdqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ckp"]
 size = Vector2(32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ynhk3"]
-radius = 39.3192
-
 [node name="Table" type="Area2D" groups=["Surfaces"]]
+z_index = -1
 script = ExtResource("1_xkb1e")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_q2ckp")
@@ -23,8 +21,3 @@ shape = SubResource("RectangleShape2D_q2ckp")
 
 [node name="Surface" type="Sprite2D" parent="."]
 texture = ExtResource("2_3qdqv")
-
-[node name="InteractionArea" parent="." instance=ExtResource("3_00cse")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("CircleShape2D_ynhk3")
