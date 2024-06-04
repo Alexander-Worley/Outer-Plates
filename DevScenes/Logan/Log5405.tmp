@@ -1,21 +1,24 @@
-[gd_scene load_steps=12 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=15 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_kl7jo"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="3_cchrc"]
-[ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="3_gxp8f"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_dqmr5"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_kt0um"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="5_vq300"]
+[ext_resource type="PackedScene" uid="uid://c1ni5cnvcbqc8" path="res://Scenes/Restaurant/Tablez/table_manager.tscn" id="6_pge5k"]
+[ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_tykoo"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="8_gpd82"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="9_edn42"]
 [ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
-[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_au6up"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Stove/stove.tscn" id="11_au6up"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="12_fxna3"]
 [ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="13_oncru"]
 
 [node name="Logan" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-13.0607, 0)
+scroll_offset = Vector2(-1.66043, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -23,43 +26,63 @@ Planet = "Green Planet"
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_kt0um")]
 position = Vector2(394, 169)
 
-[node name="HostingStand" parent="Furniture" instance=ExtResource("3_gxp8f")]
-position = Vector2(243, 474)
-rotation = 1.55858
+[node name="Tables" type="Node2D" parent="."]
+
+[node name="Table" parent="Tables" instance=ExtResource("2_kl7jo")]
+position = Vector2(640, 320)
+
+[node name="Table2" parent="Tables" instance=ExtResource("2_kl7jo")]
+position = Vector2(482, 353)
+
+[node name="Table3" parent="Tables" instance=ExtResource("2_kl7jo")]
+position = Vector2(482, 321)
+
+[node name="Table4" parent="Tables" instance=ExtResource("2_kl7jo")]
+position = Vector2(481, 286)
+
+[node name="Table5" parent="Tables" instance=ExtResource("7_tykoo")]
+position = Vector2(482, 388)
 
 [node name="Foods" type="Node2D" parent="."]
 
 [node name="TestFood" parent="Foods" instance=ExtResource("3_cchrc")]
-position = Vector2(563, 421)
+position = Vector2(639, 307)
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("4_dqmr5")]
-position = Vector2(510, 255)
+position = Vector2(574, 323)
+
+[node name="TableManager" parent="." instance=ExtResource("6_pge5k")]
+
+[node name="Table" parent="TableManager" instance=ExtResource("7_tykoo")]
+position = Vector2(122, 231)
 
 [node name="Jukebox" parent="." instance=ExtResource("8_gpd82")]
 position = Vector2(646, 212)
 
 [node name="Weapons" type="Node2D" parent="."]
 
+[node name="Plasmagun" parent="Weapons" instance=ExtResource("10_7flq7")]
+position = Vector2(482, 317)
+
+[node name="Lasergun" parent="Weapons" instance=ExtResource("9_edn42")]
+position = Vector2(482, 348)
+
 [node name="ammoCount" type="Label" parent="Weapons"]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Plasmagun" parent="Weapons" instance=ExtResource("10_7flq7")]
-position = Vector2(209, 368)
-
-[node name="Lasergun" parent="Weapons" instance=ExtResource("9_edn42")]
-position = Vector2(379, 367)
-
-[node name="Catgun" parent="Weapons" instance=ExtResource("13_oncru")]
-z_index = 1
-position = Vector2(298, 369)
-
 [node name="Stove" parent="." instance=ExtResource("11_au6up")]
-position = Vector2(566, 358)
+position = Vector2(571, 218)
 
 [node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
-position = Vector2(456, 370)
+position = Vector2(483, 280)
+
+[node name="Catgun" parent="." instance=ExtResource("13_oncru")]
+position = Vector2(482, 382)
 
 [node name="Customers" type="Node2D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource("5_vq300")]
+position = Vector2(200, 400)

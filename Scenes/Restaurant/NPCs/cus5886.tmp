@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_a3f1r"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_ko7ip"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/State Machine.gd" id="6_1fdtg"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerIdle.gd" id="7_s7dxk"]
+[ext_resource type="Script" path="res://CustomerIdle.gd" id="7_5in56"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkTo.gd" id="8_nfvdj"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportIn.gd" id="9_4h2ck"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportOut.gd" id="11_0n5tr"]
@@ -76,7 +76,7 @@ one_shot = true
 wait_time = 3.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("7_s7dxk")
+script = ExtResource("7_5in56")
 
 [node name="WalkTo" type="Node" parent="StateMachine"]
 script = ExtResource("8_nfvdj")
@@ -91,4 +91,4 @@ script = ExtResource("11_0n5tr")
 [connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportOut" method="_on_teleport_timer_timeout"]
-[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_tweak_out_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_bullshit_timer_timeout"]
