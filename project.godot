@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Global="*res://Global/Global.gd"
 Utils="*res://Global/Utils.gd"
-InteractionManager="*res://Interactions/InteractionManager.tscn"
 
 [display]
 
