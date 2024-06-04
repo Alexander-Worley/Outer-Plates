@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo1fe5sid5ckt"]
+
+[ext_resource type="Script" path="res://Scenes/PauseMenu/controls.gd" id="1_66yxh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w17ls"]
+load_path = "res://.godot/imported/controllers-pause-screen.png-55894c2b4e2a1878f7915bb0b273a2d4.ctex"
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_66yxh")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 768.0
+offset_bottom = 576.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="InputMap" type="Sprite2D" parent="Background"]
+position = Vector2(384, 288)
+texture = SubResource("CompressedTexture2D_w17ls")
