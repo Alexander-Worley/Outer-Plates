@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://s20e0rutdegi"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/levelSelect.gd" id="1_4nhuc"]
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_gvoxs"]
+
+[node name="LevelSelect" type="Node2D"]
+script = ExtResource("1_4nhuc")
+
+[node name="Background" parent="." instance=ExtResource("1_gvoxs")]
+scroll_offset = Vector2(-3.502, 0)
+Planet = "Level Select"
+
+[node name="Day1" type="Button" parent="Background"]
+offset_left = 354.0
+offset_top = 106.0
+offset_right = 481.0
+offset_bottom = 164.0
+text = "Day 1"
+
+[node name="Choose a day" type="Label" parent="Background"]
+offset_left = 371.0
+offset_top = 75.0
+offset_right = 478.0
+offset_bottom = 98.0
+text = "Choose a day:"
+
+[node name="Day2" type="Button" parent="Background"]
+offset_left = 360.0
+offset_top = 193.0
+offset_right = 481.0
+offset_bottom = 257.0
+text = "Day 2
+"
+
+[connection signal="pressed" from="Background/Day1" to="." method="_on_day_1_pressed"]

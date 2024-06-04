@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://yag64isjnwu3"]
+[gd_scene load_steps=12 format=3 uid="uid://yag64isjnwu3"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_3v4wo"]
-[ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="4_p3wgr"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_6e77c"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="5_7g1q4"]
+[ext_resource type="Texture2D" uid="uid://ogr8t5lqaf8t" path="res://Assets/Interactables/PlainSurfaces/corner-square-counter.png" id="6_mvq0h"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="6_rjo0c"]
 [ext_resource type="PackedScene" uid="uid://c1ni5cnvcbqc8" path="res://Scenes/Restaurant/Tablez/table_manager.tscn" id="6_sv765"]
+[ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="7_er5d8"]
+[ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="8_2pa4c"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="9_4iwcm"]
+[ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="10_mfgdn"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_hbchu"]
 
 [node name="Matthew" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_3v4wo")]
-scroll_offset = Vector2(-3.9812, 0)
+
+scroll_offset = Vector2(-1.6516, 0)
 Planet = "Green Planet"
 
 [node name="Matthew" type="Label" parent="Background"]
@@ -35,9 +42,6 @@ text = "Instructions: 1. \"Arrow keys\" to move.
 
 [node name="Foods" type="Node2D" parent="."]
 
-[node name="TestFood" parent="Foods" instance=ExtResource("4_p3wgr")]
-position = Vector2(639, 307)
-
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("5_7g1q4")]
@@ -49,3 +53,47 @@ position = Vector2(574, 323)
 
 [node name="Table" parent="TableManager" instance=ExtResource("6_rjo0c")]
 position = Vector2(122, 231)
+
+[node name="Table2" parent="TableManager" instance=ExtResource("6_rjo0c")]
+position = Vector2(126, 306)
+
+[node name="Counters" type="Node" parent="."]
+
+[node name="Counter" parent="Counters" instance=ExtResource("3_6e77c")]
+position = Vector2(215, 408)
+texture = ExtResource("6_mvq0h")
+
+[node name="Counter4" parent="Counters" instance=ExtResource("3_6e77c")]
+position = Vector2(346, 408)
+texture = ExtResource("6_mvq0h")
+
+[node name="Counter5" parent="Counters" instance=ExtResource("3_6e77c")]
+position = Vector2(313, 408)
+texture = ExtResource("6_mvq0h")
+
+[node name="Counter2" parent="Counters" instance=ExtResource("3_6e77c")]
+position = Vector2(280, 408)
+texture = ExtResource("6_mvq0h")
+
+[node name="Counter3" parent="Counters" instance=ExtResource("3_6e77c")]
+position = Vector2(248, 408)
+texture = ExtResource("6_mvq0h")
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="SpawnBoxes" type="Node" parent="Interactables"]
+
+[node name="CookableRack" parent="." instance=ExtResource("7_er5d8")]
+position = Vector2(182, 408)
+
+[node name="CuttableRack" parent="." instance=ExtResource("8_2pa4c")]
+position = Vector2(150, 408)
+
+[node name="PlateRack" parent="." instance=ExtResource("9_4iwcm")]
+position = Vector2(118, 408)
+
+[node name="CuttingBoard" parent="." instance=ExtResource("10_mfgdn")]
+position = Vector2(379, 408)
+
+[node name="Stove" parent="." instance=ExtResource("11_hbchu")]
+position = Vector2(411, 407)

@@ -26,6 +26,9 @@ func _on_logan_pressed():
 
 func _on_matthew_pressed():
 	get_tree().change_scene_to_file(\"res://DevScenes/Matthew/Matthew.tscn\")
+
+func _on_level_select_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/Levels/levelSelect.tscn\")
 "
 
 [node name="DevMenu" type="Node2D"]
@@ -99,6 +102,14 @@ offset_bottom = 363.0
 theme_override_font_sizes/font_size = 25
 text = "Matthew"
 
+[node name="Level Select" type="Button" parent="BG"]
+offset_left = 65.0
+offset_top = 194.0
+offset_right = 233.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 25
+text = "Level Select"
+
 [connection signal="pressed" from="BG/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="BG/Main Restaurant" to="." method="_on_main_restaurant_pressed"]
 [connection signal="pressed" from="BG/Alexander" to="." method="_on_alexander_pressed"]
@@ -106,3 +117,4 @@ text = "Matthew"
 [connection signal="pressed" from="BG/Caitlin" to="." method="_on_caitlin_pressed"]
 [connection signal="pressed" from="BG/Logan" to="." method="_on_logan_pressed"]
 [connection signal="pressed" from="BG/Matthew" to="." method="_on_matthew_pressed"]
+[connection signal="pressed" from="BG/Level Select" to="." method="_on_level_select_pressed"]

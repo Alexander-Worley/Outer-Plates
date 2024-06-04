@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://brqbm2p6scxj4"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_3xx8h"]
+
+[node name="Day1" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Background" parent="Environment" instance=ExtResource("1_3xx8h")]
+scroll_offset = Vector2(-2.86917, 0)
+Planet = "Green Planet"
+
+[node name="Day 1" type="Label" parent="Environment/Background"]
+offset_left = 8.0
+offset_right = 62.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 25
+text = "Day 1"
+
+[node name="Instructions" type="Label" parent="Environment/Background"]
+offset_left = 8.0
+offset_top = 536.0
+offset_right = 624.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 25
+text = "Press \"Esc\" or your controller's equivalent to pause."
