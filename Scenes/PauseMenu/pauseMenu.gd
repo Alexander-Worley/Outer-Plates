@@ -1,6 +1,9 @@
 extends Node2D
 
 # Number of colors in each layout array
+#func _on_controls_button_pressed():
+	#get_tree().change_scene_to_file("res://Scenes/Conto/pauseMenu.tscn"DevMenu.tscn")
+
 
 func _ready():
 	hide()
