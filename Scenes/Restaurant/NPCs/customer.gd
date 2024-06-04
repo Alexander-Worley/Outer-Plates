@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-
-@onready var interaction_area: InteractionArea = $InteractionArea
 @onready var sprite = $AnimatedSprite2D
 
 var hit_points = 10
@@ -10,9 +8,6 @@ var label_move_duration = 4
 
 func _ready():
 	pass
-	
-func _on_interact():
-	sprite.frame = 1 if sprite.frame == 0 else 0
 
 func _process(delta):
 	time_elapsed += delta
