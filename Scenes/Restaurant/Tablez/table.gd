@@ -10,7 +10,6 @@ enum tableState {
 
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
-@onready var needed_order_phase = null
 @onready var customer = null # The child customer, probably will need to be an array# Determines if this table is open for seating.
 @onready var status = tableState.AVAILABLE
 @onready var tableCode = null
@@ -21,7 +20,25 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	if get_status() == tableState.AVAILABLE:
+		set_order("meat")
+		print("Table with the following code wants plated cooked orange food: ", tableCode)
+		set_status(tableState.AWAITING_ORDER)
+	elif get_status() == tableState.AWAITING_ORDER and is_served():
+		set_status(tableState.DINING)
+		# Need to restrict the holdable from being picked up.
+		# Probably can be done with a variable
+	elif get_status() == tableState.DINING:
+		set_status(tableState.CLEANUP)
+		holdablesOnSurface[0].set_isEaten(true)
+	elif get_status() == tableState.CLEANUP and !holdablesOnSurface[0]:
+		set_status(tableState.AVAILABLE)
+		set_order(null)
+		var manager = get_parent()
+		manager.push_new_table_code(tableCode)
+		print("Table successfully cleaned!")
+	
+	
 
 
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
@@ -29,11 +46,22 @@ func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
 	return result
 
 
+func set_status(new_status):
+	status = new_status
+
+
 func get_status():
 	return status
 
-func set_order(food):
-	pass
+func set_code(code):
+	tableCode = code
+
+func get_code():
+	return tableCode
+
+
+func set_order(type):
+	needed_order_type = type
 
 
 func is_served():
@@ -43,7 +71,11 @@ func is_served():
 	""" 
 	if status != tableState.AWAITING_ORDER:
 		return false
-	if !holdablesOnSurface.is_empty():
+	if !holdablesOnSurface[0]:
+		return false
+	if !holdablesOnSurface[0].isReady():
+		return false
+	if holdablesOnSurface[0].type != needed_order_type:
 		return false
 	return true
 
