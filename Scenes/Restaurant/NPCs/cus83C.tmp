@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://df7g7vvs80ot1"]
+[gd_scene load_steps=16 format=3 uid="uid://df7g7vvs80ot1"]
 
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_h7uo1"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkTo.gd" id="8_nfvdj"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportIn.gd" id="9_4h2ck"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportOut.gd" id="11_0n5tr"]
-[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWaitingForFood.gd" id="11_5jdna"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerEating.gd" id="11_qehpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4lw5"]
@@ -91,9 +90,6 @@ script = ExtResource("9_4h2ck")
 
 [node name="TeleportOut" type="Node" parent="StateMachine"]
 script = ExtResource("11_0n5tr")
-
-[node name="WaitingForFood" type="Node" parent="StateMachine"]
-script = ExtResource("11_5jdna")
 
 [node name="Eating" type="Node" parent="StateMachine"]
 script = ExtResource("11_qehpb")
