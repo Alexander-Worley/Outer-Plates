@@ -1,23 +1,18 @@
 extends Node
 var num_tables = 0
-@onready var table_statuses = []
-@onready var available_tables = []
 
-enum tableState {
-	AVAILABLE = 0,
-	AWAITING_ORDER = 1,
-	DINING = 2,
-	CLEANUP = 3
-}
-
+var tables = [] # We need an array of the tables, so we can inquire about the position of the table
+@onready var available_table_codes = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	num_tables = self.get_children().size()
 	for i in range(num_tables):
 		var table = self.get_child(i)
-		table.tableCode = i
-		table_statuses.append(tableState.AVAILABLE)
+		table.set_code(i)
+		tables.push_back(table)
+		available_table_codes.push_back(i)
+		print("Set code: ", i)
 		
 
 
@@ -26,22 +21,24 @@ func _process(delta):
 	pass
 
 
-# This should only be call by the tables. They will provide their code to tell the parent
-# of their current status
-func set_table_status(code, status):
-	table_statuses[code] = status
-	if status == tableState.AVAILABLE:
-		available_tables.push_back(code)
+func get_table(code):
+	return tables[code]
 
 
-func get_table_status(code):
-	return table_statuses[code]
-
-
-# Retrieve the code of an available table
+# Retrieve the code of an available table and removes it from
+# available_table_codes array. Returns the code.
 # If none are available, returns -1
 # DOES NOT CHANGE THE AVAILABILITY STATUS OF THAT TABLE
-func get_available_table():
-	if available_tables.is_empty():
+func get_available_table_code():
+	if available_table_codes.is_empty():
 		return -1
-	return available_tables[-1]
+	
+	var code = available_table_codes[-1]
+	available_table_codes.pop_back()
+	return code
+
+
+func push_new_table_code(code):
+	available_table_codes.push_back(code)
+
+

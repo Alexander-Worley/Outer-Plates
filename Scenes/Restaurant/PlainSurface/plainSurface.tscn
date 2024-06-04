@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btugtq4bxfaeh"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/PlainSurface/plainSurface.gd" id="1_yt7qm"]
-[ext_resource type="Texture2D" uid="uid://dn4wbfsub024w" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_kkcge"]
+[ext_resource type="Texture2D" uid="uid://d1b4hokfhh1qd" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_kkcge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
 size = Vector2(32, 32)
