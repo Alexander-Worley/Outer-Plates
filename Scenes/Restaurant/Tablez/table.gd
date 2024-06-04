@@ -37,8 +37,6 @@ func _process(delta):
 		var manager = get_parent()
 		manager.push_new_table_code(tableCode)
 		print("Table successfully cleaned!")
-	
-	
 
 
 func set_holdable_on_surface_wrapper(holdableInHand: Area2D):
@@ -53,8 +51,10 @@ func set_status(new_status):
 func get_status():
 	return status
 
+
 func set_code(code):
 	tableCode = code
+
 
 func get_code():
 	return tableCode
