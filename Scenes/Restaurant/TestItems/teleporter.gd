@@ -36,6 +36,7 @@ func _on_walk_off_timer_timeout():
 	#move parent to customers node
 	var parent = get_node("../../Customers")
 	curCustomer.reparent(parent)
+	curCustomer.customersNode = parent
 	
 	#clean up customer reference
 	curCustomer = null
