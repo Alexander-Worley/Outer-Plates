@@ -7,7 +7,7 @@
 script = ExtResource("1_4nhuc")
 
 [node name="Background" parent="." instance=ExtResource("1_gvoxs")]
-scroll_offset = Vector2(-3.502, 0)
+scroll_offset = Vector2(-0.694444, 0)
 Planet = "Level Select"
 
 [node name="Day1" type="Button" parent="Background"]
