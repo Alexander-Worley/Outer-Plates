@@ -13,6 +13,7 @@ var reachedHosting = true
 var reachedSeat = false
 var isLeaving = false
 var ate = false
+var foundTable = false
 
 #context based steering shenanigans
 @export var steer_force = 0.2
@@ -31,10 +32,7 @@ var acceleration = Vector2.ZERO
 var curTable
 var customersNode
 
-@onready var MoneyLabel = get_node("../../../MoneyLabel")
-
 func _ready():
-	print(MoneyLabel)
 	#prepare steering rays
 	interest.resize(num_rays)
 	danger.resize(num_rays)
@@ -48,8 +46,7 @@ func _on_interact():
 	#sprite.frame = 1 if sprite.frame == 0 else 0
 
 func _process(delta):
-	if hit_points <= 0:
-		die()
+	pass
 	
 func _physics_process(_delta:float) -> void:	
 	if navigate:
@@ -104,17 +101,14 @@ func doLocalizedDamage():
 
 #kills
 func die():
-	print("ded")
-	MoneyLabel.money -= 100
-	self.queue_free()
+	if (foundTable):
+		curTable.hasPirate = false
+	queue_free()
 
 func walkTo(location, time):
 	var tween = self.create_tween()
 	$AnimatedSprite2D.play("default")
 	tween.tween_property(self, "position", location, time)
-	
-func _on_path_timer_timeout():
-	pass
 
 func startNavigating():
 	navigate = true
