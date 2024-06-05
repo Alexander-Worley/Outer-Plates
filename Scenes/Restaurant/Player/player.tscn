@@ -7,9 +7,10 @@
 size = Vector2(21.3333, 21.3333)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5x6jq"]
-radius = 8.0
+radius = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c8pm"]
+radius = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjlov"]
 atlas = ExtResource("2_yefjo")
