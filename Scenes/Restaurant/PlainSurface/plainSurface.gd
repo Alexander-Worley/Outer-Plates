@@ -52,8 +52,9 @@ func initialize_holdables_on_surface():
 	# Set starting holdablesOnSurface[0] if needed
 	var originalHoldables: Array[Node] = find_children("*", "Area2D", false)
 	for i: int in originalHoldables.size():
-		if originalHoldables[0].has_method("is_interaction_area"):
+		if !originalHoldables[i].is_in_group("Holdables"):
 			continue
+
 		# If this errors, you spawned too many holdables on one surface!
 		originalHoldables[i].position = centersOfSurface[i][0]
 		originalHoldables[i].rotation = 0

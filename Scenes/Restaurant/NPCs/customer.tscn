@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://df7g7vvs80ot1"]
+[gd_scene load_steps=17 format=3 uid="uid://df7g7vvs80ot1"]
 
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_h7uo1"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkTo.gd" id="8_nfvdj"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportIn.gd" id="9_4h2ck"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportOut.gd" id="11_0n5tr"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWaitingForFood.gd" id="11_5jdna"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerEating.gd" id="11_qehpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4lw5"]
 atlas = ExtResource("1_7uk4y")
@@ -75,6 +77,9 @@ one_shot = true
 [node name="TweakOutTimer" type="Timer" parent="StateMachine"]
 wait_time = 3.0
 
+[node name="EatingTimer" type="Timer" parent="StateMachine"]
+wait_time = 3.0
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_s7dxk")
 
@@ -87,8 +92,15 @@ script = ExtResource("9_4h2ck")
 [node name="TeleportOut" type="Node" parent="StateMachine"]
 script = ExtResource("11_0n5tr")
 
+[node name="WaitingForFood" type="Node" parent="StateMachine"]
+script = ExtResource("11_5jdna")
+
+[node name="Eating" type="Node" parent="StateMachine"]
+script = ExtResource("11_qehpb")
+
 [connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportOut" method="_on_teleport_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_tweak_out_timer_timeout"]
+[connection signal="timeout" from="StateMachine/EatingTimer" to="StateMachine/Eating" method="_on_eating_timer_timeout"]
