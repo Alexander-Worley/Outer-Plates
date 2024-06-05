@@ -46,7 +46,6 @@ func shootHelper():
 	updateAmmoCounter()
 	
 
-	
 func updateAmmoCounter():
 	var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
 	ammoCount.text = str(ammo)

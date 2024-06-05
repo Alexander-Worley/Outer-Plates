@@ -1,7 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci4ebcdwu4rl5"]
+[gd_scene load_steps=10 format=3 uid="uid://ci4ebcdwu4rl5"]
 
 [ext_resource type="Script" path="res://Scenes/PauseMenu/pauseMenu.gd" id="1_rs14q"]
-[ext_resource type="Texture2D" uid="uid://bfyd0ak5niwhf" path="res://Assets/UI/controllers-pause-screen.png" id="2_3n3v8"]
+[ext_resource type="Texture2D" uid="uid://bylwh6qot2u5n" path="res://Assets/UI/outer-plates-pause-full.png" id="2_6k8jj"]
+[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="3_eeyt6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yd8b"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(4, 81, 46, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i74l7"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(4, 232, 46, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xufk1"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(101, 57, 46, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loxx5"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(101, 208, 46, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt1bi"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(4, 129, 46, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0dfu"]
+atlas = ExtResource("3_eeyt6")
+region = Rect2(4, 279, 46, 20)
 
 [node name="PauseMenu" type="Node2D"]
 process_mode = 3
@@ -16,4 +41,32 @@ color = Color(0, 0, 0, 0.498039)
 
 [node name="InputMap" type="Sprite2D" parent="Background"]
 position = Vector2(384, 288)
-texture = ExtResource("2_3n3v8")
+texture = ExtResource("2_6k8jj")
+
+[node name="QuitButton" type="TextureButton" parent="Background/InputMap"]
+offset_left = -20.0
+offset_top = 80.0
+offset_right = 26.0
+offset_bottom = 120.0
+texture_normal = SubResource("AtlasTexture_6yd8b")
+texture_pressed = SubResource("AtlasTexture_i74l7")
+
+[node name="ContinueButton" type="TextureButton" parent="Background/InputMap"]
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 86.0
+offset_bottom = 120.0
+texture_normal = SubResource("AtlasTexture_xufk1")
+texture_pressed = SubResource("AtlasTexture_loxx5")
+
+[node name="ControlsButton" type="TextureButton" parent="Background/InputMap"]
+offset_left = -80.0
+offset_top = 80.0
+offset_right = -34.0
+offset_bottom = 120.0
+texture_normal = SubResource("AtlasTexture_bt1bi")
+texture_pressed = SubResource("AtlasTexture_k0dfu")
+
+[connection signal="pressed" from="Background/InputMap/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Background/InputMap/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Background/InputMap/ControlsButton" to="." method="_on_controls_button_pressed"]

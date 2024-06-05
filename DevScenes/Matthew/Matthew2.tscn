@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_ijpwe"]
 [ext_resource type="PackedScene" uid="uid://b1tqrv16m7ras" path="res://Scenes/Restaurant/TestItems/testFood.tscn" id="3_4dtbo"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_svm2s"]
-[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/Customer/customer.tscn" id="5_gu0ng"]
+[ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="5_gu0ng"]
 
 [node name="Matthew" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_mpqwr")]
-scroll_offset = Vector2(-782379, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="Matthew" type="Label" parent="Background"]

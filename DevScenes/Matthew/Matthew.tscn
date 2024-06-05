@@ -15,6 +15,7 @@
 [node name="Matthew" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_3v4wo")]
+
 scroll_offset = Vector2(-1.6516, 0)
 Planet = "Green Planet"
 
