@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://thygj4fuuxqk"]
+[gd_scene load_steps=9 format=3 uid="uid://thygj4fuuxqk"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/jukebox.gd" id="1_35l6p"]
 [ext_resource type="Texture2D" uid="uid://dd1ffodefikrs" path="res://Assets/Interactables/External/jukebox-spritesheet.png" id="2_uf763"]
@@ -42,9 +42,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h00bf"]
-size = Vector2(18, 23.3333)
-
 [node name="Jukebox" type="Area2D" groups=["Interactable"]]
 script = ExtResource("1_35l6p")
 
@@ -62,8 +59,3 @@ scale = Vector2(0.978, 1)
 sprite_frames = SubResource("SpriteFrames_i50tv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 13.5)
-scale = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_h00bf")
