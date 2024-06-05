@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brqbm2p6scxj4"]
+[gd_scene load_steps=15 format=3 uid="uid://brqbm2p6scxj4"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_3xx8h"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_qc46l"]
@@ -13,13 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="11_x25b4"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="12_o4j6m"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="13_m4fu2"]
+[ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="14_8efx6"]
 
 [node name="Day1" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_3xx8h")]
-scroll_offset = Vector2(-3.6288, 0)
+scroll_offset = Vector2(-2.55203, 0)
 Planet = "Green Planet"
 
 [node name="Day 1" type="Label" parent="Environment/Background"]
@@ -89,13 +90,16 @@ position = Vector2(340, 229)
 [node name="Customer entrance" type="Node" parent="."]
 
 [node name="Teleporter" parent="Customer entrance" groups=["Teleporter"] instance=ExtResource("11_x25b4")]
-position = Vector2(659, 256)
+position = Vector2(500, 170)
 
 [node name="HostingStand" parent="Customer entrance" instance=ExtResource("12_o4j6m")]
-position = Vector2(486, 440)
+position = Vector2(197, 441)
 rotation = 1.55858
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("13_m4fu2")]
 position = Vector2(542, 335)
+
+[node name="Jukebox" parent="." instance=ExtResource("14_8efx6")]
+position = Vector2(634, 219)
