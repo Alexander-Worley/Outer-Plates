@@ -32,6 +32,8 @@ var acceleration = Vector2.ZERO
 var curTable
 var customersNode
 
+@onready var canBeShot = false
+
 func _ready():
 	#prepare steering rays
 	interest.resize(num_rays)
@@ -65,6 +67,8 @@ func _physics_process(_delta:float) -> void:
 			sprite.flip_h = true
 
 func hit(type):
+	if not canBeShot:
+		return false
 	if type == "laser":
 		hit_points -= 5
 	elif type == "plasma":

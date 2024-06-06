@@ -31,6 +31,8 @@ var acceleration = Vector2.ZERO
 var curTable
 var customersNode
 
+var canBeShot = false
+
 @onready var MoneyLabel = get_node("../../../MoneyLabel")
 
 func _ready():
@@ -68,6 +70,8 @@ func _physics_process(_delta:float) -> void:
 			sprite.flip_h = true
 
 func hit(type):
+	if not canBeShot:
+		return
 	if type == "laser":
 		hit_points -= 5
 	elif type == "plasma":

@@ -54,6 +54,7 @@ func _on_walk_off_timer_timeout():
 	var parent = get_node("../../Customers")
 	curChild.reparent(parent)
 	curChild.customersNode = parent
+	curChild.canBeShot = true
 	
 	#clean up customer reference
 	curChild = null
