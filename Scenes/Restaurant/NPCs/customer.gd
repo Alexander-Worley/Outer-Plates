@@ -111,6 +111,7 @@ func die():
 	print("ded")
 	MoneyLabel.money -= 100
 	self.queue_free()
+	curTable.status = 0
 
 func walkTo(location, time):
 	var tween = self.create_tween()
