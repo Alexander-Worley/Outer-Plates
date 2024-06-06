@@ -5,10 +5,6 @@ var numPlayers: int
 var players: Array = []
 var inputMaps: Array = []
 
-func _ready():
-	for playerNum in numPlayers:
-		add_player(playerNum)
-
 func add_player(playerNum: int):
 	# Create a new player
 	var player = PLAYER_SCENE.instantiate()
