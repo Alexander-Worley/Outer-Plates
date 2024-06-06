@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfkadx5dgayj1"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_hvmwk"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="2_l4vu2"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_mmvbl"]
+[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="4_jc3hn"]
+[ext_resource type="PackedScene" uid="uid://bkymy7rnc3gfw" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.tscn" id="5_2xnql"]
+[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="6_c1qef"]
+[ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_bbrid"]
+[ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="8_whvoq"]
+
+[node name="Andreea2" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_hvmwk")]
+scroll_offset = Vector2(-1.61563, 0)
+Planet = "Green Planet"
+
+[node name="Andreea" type="Label" parent="Background"]
+offset_top = 576.0
+offset_right = 284.0
+offset_bottom = 648.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Andreea"
+
+[node name="Instructions" type="Label" parent="Background"]
+offset_left = 48.0
+offset_top = 504.0
+offset_right = 1150.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 50
+text = "Instructions: 1. \"Arrow keys\" to move.
+                        2. \"Space\" to pickup/place items."
+
+[node name="Bar" parent="." instance=ExtResource("2_l4vu2")]
+z_index = -1
+position = Vector2(211, 307)
+
+[node name="Counter1" parent="." instance=ExtResource("3_mmvbl")]
+position = Vector2(389, 312)
+texture = ExtResource("4_jc3hn")
+
+[node name="Glass" parent="Counter1" instance=ExtResource("5_2xnql")]
+
+[node name="Player" parent="." instance=ExtResource("6_c1qef")]
+position = Vector2(576, 320)
+
+[node name="Table" parent="." instance=ExtResource("7_bbrid")]
+position = Vector2(332, 211)
+
+[node name="Bar2" parent="." instance=ExtResource("2_l4vu2")]
+z_index = -1
+position = Vector2(243, 307)
+side = 1
+
+[node name="Bar3" parent="." instance=ExtResource("2_l4vu2")]
+z_index = -1
+position = Vector2(275, 307)
+side = 2
+
+[node name="DrinkTube" parent="." instance=ExtResource("8_whvoq")]
+position = Vector2(155, 211)

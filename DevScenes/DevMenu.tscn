@@ -16,7 +16,7 @@ func _on_alexander_pressed():
 	get_tree().change_scene_to_file(\"res://DevScenes/Alexander/Alexander.tscn\")
 
 func _on_andreea_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Andreea/Andreea.tscn\")
+	get_tree().change_scene_to_file(\"res://DevScenes/Andreea/Andreea2.tscn\")
 
 func _on_caitlin_pressed():
 	get_tree().change_scene_to_file(\"res://DevScenes/Caitlin/Caitlin.tscn\")

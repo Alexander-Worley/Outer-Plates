@@ -1,5 +1,5 @@
 extends State
-class_name CustomerWalkTo
+class_name PirateWalkTo
 
 var target
 

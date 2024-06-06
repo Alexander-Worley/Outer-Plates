@@ -31,7 +31,12 @@ var acceleration = Vector2.ZERO
 var curTable
 var customersNode
 
+var canBeShot = false
+
+@onready var MoneyLabel = get_node("../../../MoneyLabel")
+
 func _ready():
+	print(MoneyLabel)
 	#prepare steering rays
 	interest.resize(num_rays)
 	danger.resize(num_rays)
@@ -45,7 +50,8 @@ func _on_interact():
 	#sprite.frame = 1 if sprite.frame == 0 else 0
 
 func _process(delta):
-	pass
+	if hit_points <= 0:
+		die()
 	
 func _physics_process(_delta:float) -> void:	
 	if navigate:
@@ -64,6 +70,8 @@ func _physics_process(_delta:float) -> void:
 			sprite.flip_h = true
 
 func hit(type):
+	if not canBeShot:
+		return
 	if type == "laser":
 		hit_points -= 5
 	elif type == "plasma":
@@ -100,7 +108,10 @@ func doLocalizedDamage():
 
 #kills
 func die():
-	sprite.frame = 1
+	print("ded")
+	MoneyLabel.money -= 100
+	self.queue_free()
+	curTable.status = 0
 
 func walkTo(location, time):
 	var tween = self.create_tween()
@@ -112,7 +123,6 @@ func _on_path_timer_timeout():
 
 func startNavigating():
 	navigate = true
-	$PathTimer.start()
 
 	$AnimatedSprite2D.play("default")
 

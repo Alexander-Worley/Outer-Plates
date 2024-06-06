@@ -9,6 +9,7 @@ signal Transitioned
 @onready var BottomOfStairs = teleporter.find_child("BottomOfStairs")
 @onready var WaitSpot = get_node("../../../../HostingStand/WaitSpot")
 @onready var TableManager = get_node("../../../../TableManager")
+@onready var MoneyLabel = get_node("../../../../../MoneyLabel")
 
 #establish customer vars
 @onready var customer = get_node("../../")
@@ -20,6 +21,8 @@ signal Transitioned
 @onready var WaitForTableTimer = get_node("../WaitForTableTimer")
 @onready var TweakOutTimer = get_node("../TweakOutTimer")
 @onready var EatingTimer = get_node("../EatingTimer")
+
+
 
 func Enter():
 	pass

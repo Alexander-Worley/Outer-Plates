@@ -1,38 +1,50 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyvh4dg0jpgib"]
+[gd_scene load_steps=14 format=3 uid="uid://dyvh4dg0jpgib"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_sbph8"]
-[ext_resource type="Texture2D" uid="uid://byoe616mk35j8" path="res://Assets/Characters/Enemies/testpirate-alive.png" id="2_eiy6t"]
-[ext_resource type="Texture2D" uid="uid://b038ki761yum8" path="res://Assets/Characters/Enemies/testpirate-dead.png" id="3_gk2bh"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/pirate.gd" id="1_ivagu"]
+[ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="2_1c8hy"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/HitLabel.gd" id="4_joejb"]
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_rcfyf"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_5uoxo"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/State Machine.gd" id="6_ds3oy"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/PirateTeleportIn.gd" id="7_thf8p"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/PirateWalkTo.gd" id="8_5yatv"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/PirateIdle.gd" id="9_ypaf6"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7teyf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiqsr"]
+atlas = ExtResource("2_1c8hy")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85wf1"]
+atlas = ExtResource("2_1c8hy")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rapoo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_eiy6t")
+"texture": SubResource("AtlasTexture_uiqsr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gk2bh")
+"texture": SubResource("AtlasTexture_85wf1")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuq1p"]
+size = Vector2(10, 26)
 
-[node name="Customer" type="CharacterBody2D"]
-script = ExtResource("1_sbph8")
+[node name="Pirate" type="CharacterBody2D"]
+z_index = 4
+script = ExtResource("1_ivagu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.17233e-07, -1.19209e-07)
-scale = Vector2(0.103627, 0.100503)
-sprite_frames = SubResource("SpriteFrames_7teyf")
-frame_progress = 0.0123209
+sprite_frames = SubResource("SpriteFrames_rapoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_uuq1p")
 
 [node name="HitLabel" type="Label" parent="."]
@@ -45,3 +57,24 @@ script = ExtResource("4_joejb")
 
 [node name="Timer" type="Timer" parent="HitLabel"]
 script = ExtResource("5_5uoxo")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_ds3oy")
+initial_state = NodePath("TeleportIn")
+
+[node name="TeleportTimer" type="Timer" parent="StateMachine"]
+one_shot = true
+
+[node name="TweakOutTimer" type="Timer" parent="StateMachine"]
+wait_time = 3.0
+
+[node name="TeleportIn" type="Node" parent="StateMachine"]
+script = ExtResource("7_thf8p")
+
+[node name="WalkTo" type="Node" parent="StateMachine"]
+script = ExtResource("8_5yatv")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_ypaf6")
+
+[connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]

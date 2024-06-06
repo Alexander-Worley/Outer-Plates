@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyvh4dg0jpgib"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_sbph8"]
+[ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="2_1c8hy"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/HitLabel.gd" id="4_joejb"]
+[ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_rcfyf"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_5uoxo"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/State Machine.gd" id="6_ds3oy"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/PirateTeleportIn.gd" id="7_thf8p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wo2c"]
+atlas = ExtResource("2_1c8hy")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgigg"]
+atlas = ExtResource("2_1c8hy")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8r0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wo2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgigg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuq1p"]
+size = Vector2(2, 4)
+
+[node name="Pirate" type="CharacterBody2D"]
+z_index = 3
+script = ExtResource("1_sbph8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.17233e-07, -1.19209e-07)
+scale = Vector2(0.103627, 0.100503)
+sprite_frames = SubResource("SpriteFrames_d8r0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uuq1p")
+
+[node name="HitLabel" type="Label" parent="."]
+offset_left = -76.0
+offset_top = -34.0
+offset_right = -50.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_rcfyf")
+script = ExtResource("4_joejb")
+
+[node name="Timer" type="Timer" parent="HitLabel"]
+script = ExtResource("5_5uoxo")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_ds3oy")
+
+[node name="TeleportIn" type="Node" parent="StateMachine"]
+script = ExtResource("7_thf8p")

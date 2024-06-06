@@ -211,6 +211,9 @@ func _input(event):
 	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(self): break
+			# I know these following lines ugly sorry - Andreea :(
+			if isHolding and interactable.is_in_group("DrinkTube"):
+				if interactable.begin_interaction(self): break
 		if teleporterInRange:
 			teleporterInRange[0].teleport_in()
 		if isHolding && holdableInHand.is_in_group("Weapons"):
