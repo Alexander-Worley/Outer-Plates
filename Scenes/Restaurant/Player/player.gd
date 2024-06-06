@@ -173,9 +173,12 @@ func get_continuous_input(input: String):
 # (such as pickup) are read here
 func get_frame_one_input(input: String):
 	var pickup = "pickup{n}".format({"n":playerNum})
+	var interact = "interact{n}".format({"n":playerNum})
 	match input:
 		pickup:
 			return "pickup"
+		interact:
+			return "interact"
 	return null
 
 # Given an input, return an array of move and aim values:
@@ -214,6 +217,8 @@ func read_pickup_and_interact_values(action: String):
 	match input:
 		"pickup":
 			pickup()
+		"interact":
+			interact()
 
 func _process(_delta):
 	var horizontalMovement: int = 0
@@ -277,6 +282,7 @@ func _process(_delta):
 	
 	move_and_slide()
 
+# On pickup input
 func pickup():
 	if isHolding: place_holdable()
 	else: if holdablesInRange:
@@ -284,24 +290,18 @@ func pickup():
 			# Perhaps the item most inside of "pickup_range"?
 		pickup_holdable(holdablesInRange.pick_random())
 
-func _input(event):
-	#for action in inputMap:
-		#if !Input.is_action_just_pressed(action): continue
-		#var input = return_button_pressed(action)
-		#if !input: continue
-		#match input:
-			#"pickup":
-				#pickup()
-	if event.is_action_pressed("interact") and !isInteractLock:
-		for interactable in interactablesInRange:
-			if !isHolding and interactable.begin_interaction(self): break
-			# I know these following lines ugly sorry - Andreea :(
-			if isHolding and interactable.is_in_group("DrinkTube"):
-				if interactable.begin_interaction(self): break
-		if teleporterInRange:
-			teleporterInRange[0].teleport_in()
-		if isHolding && holdableInHand.is_in_group("Weapons"):
-			weapon_logic()
+# On interact input
+func interact():
+	if isInteractLock: return
+	for interactable in interactablesInRange:
+		if !isHolding and interactable.begin_interaction(self): break
+		# I know these following lines ugly sorry - Andreea :(
+		if isHolding and interactable.is_in_group("DrinkTube"):
+			if interactable.begin_interaction(self): break
+	if teleporterInRange:
+		teleporterInRange[0].teleport_in()
+	if isHolding && holdableInHand.is_in_group("Weapons"):
+		weapon_logic()
 
 func weapon_logic():
 	if not ammoDepotsInRange:holdableInHand.shoot()

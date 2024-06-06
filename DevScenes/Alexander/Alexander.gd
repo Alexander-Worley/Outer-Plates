@@ -19,6 +19,7 @@ func add_player(playerNum: int):
 	assign_move_controls(playerNum)
 	assign_aim_controls(playerNum)
 	assign_pickup_controls(playerNum)
+	assign_interact_controls(playerNum)
 	
 	# Give the player its unique atributes
 	assign_player_properties(player, playerNum)
@@ -37,7 +38,8 @@ func build_input_map(playerNum: int):
 		"aimLeft{n}".format({"n":playerNum}): null,
 		"aimUp{n}".format({"n":playerNum}): null,
 		"aimDown{n}".format({"n":playerNum}): null,
-		"pickup{n}".format({"n":playerNum}): null
+		"pickup{n}".format({"n":playerNum}): null,
+		"interact{n}".format({"n":playerNum}): null
 		})
 
 # Assigns Move Controls for the inputted player
@@ -183,11 +185,54 @@ func assign_pickup_controls(playerNum: int):
 	pickupEvent.button_index = JOY_BUTTON_PADDLE4
 	InputMap.action_add_event(pickup, pickupEvent)
 
+# Assigns Pickup Controls for the inputted player
+func assign_interact_controls(playerNum: int):
+	var interact: String = "interact{n}".format({"n":playerNum})
+	var interactEvent = InputEventJoypadButton.new()
+	
+	# Controller - Sony Square, Xbox X, Nintendo Y
+	InputMap.add_action(interact)
+	interactEvent.device = playerNum
+	interactEvent.button_index = JOY_BUTTON_X
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Controller - Sony Triangle, Xbox Y, Nintendo X
+	interactEvent = InputEventJoypadButton.new()
+	interactEvent.device = playerNum
+	interactEvent.button_index = JOY_BUTTON_Y
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Controller - Right Shoulder Button
+	interactEvent = InputEventJoypadButton.new()
+	interactEvent.device = playerNum
+	interactEvent.button_index = JOY_BUTTON_RIGHT_SHOULDER
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Controller - Right Trigger Button
+	interactEvent = InputEventJoypadMotion.new()
+	interactEvent.device = playerNum
+	interactEvent.axis = JOY_AXIS_TRIGGER_RIGHT
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Controller - Paddle 1 Button
+	interactEvent = InputEventJoypadButton.new()
+	interactEvent.device = playerNum
+	interactEvent.button_index = JOY_BUTTON_PADDLE1
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Controller - Paddle 2 Button
+	interactEvent = InputEventJoypadButton.new()
+	interactEvent.device = playerNum
+	interactEvent.button_index = JOY_BUTTON_PADDLE2
+	InputMap.action_add_event(interact, interactEvent)
+
+# Assigns variables specific to this player
 func assign_player_properties(player: CharacterBody2D, playerNum: int):
 	set_player_starting_position(player, playerNum)
 	player.playerNum = playerNum
 	player.inputMap = inputMaps[playerNum]
 
+# Sets the location where the player first spawns
 func set_player_starting_position(player: CharacterBody2D, offset: int):
 	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
 	var xOffset = Global.PIXEL_DIMENSION * offset
