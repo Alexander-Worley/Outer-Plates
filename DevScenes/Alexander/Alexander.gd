@@ -18,6 +18,7 @@ func add_player(playerNum: int):
 	build_input_map(playerNum)
 	assign_move_controls(playerNum)
 	assign_aim_controls(playerNum)
+	assign_test_controls(playerNum) # TESTING
 	
 	# Give the player its unique atributes
 	assign_player_properties(player, playerNum)
@@ -25,17 +26,29 @@ func add_player(playerNum: int):
 	# Spawn the player
 	add_child(player)
 
+func assign_test_controls(playerNum: int):
+	var pickup: String = "pickup{n}".format({"n":playerNum})
+	var pickupEvent = InputEventJoypadButton.new()
+	
+	InputMap.add_action(pickup)
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_A
+	print(pickup)
+	InputMap.action_add_event(pickup, pickupEvent)
+	print(pickup)
+
 # Builds the input map for the inputted player
 func build_input_map(playerNum: int):
 	inputMaps.append({
-		"moveRight{n}".format({"n":playerNum}): Vector2.RIGHT,
-		"moveLeft{n}".format({"n":playerNum}): Vector2.LEFT,
-		"moveUp{n}".format({"n":playerNum}): Vector2.UP,
-		"moveDown{n}".format({"n":playerNum}): Vector2.DOWN,
-		"aimRight{n}".format({"n":playerNum}): Vector2.RIGHT,
-		"aimLeft{n}".format({"n":playerNum}): Vector2.LEFT,
-		"aimUp{n}".format({"n":playerNum}): Vector2.UP,
-		"aimDown{n}".format({"n":playerNum}): Vector2.DOWN
+		"moveRight{n}".format({"n":playerNum}): null,
+		"moveLeft{n}".format({"n":playerNum}): null,
+		"moveUp{n}".format({"n":playerNum}): null,
+		"moveDown{n}".format({"n":playerNum}): null,
+		"aimRight{n}".format({"n":playerNum}): null,
+		"aimLeft{n}".format({"n":playerNum}): null,
+		"aimUp{n}".format({"n":playerNum}): null,
+		"aimDown{n}".format({"n":playerNum}): null,
+		"pickup{n}".format({"n":playerNum}): null
 		})
 
 # Assigns Move Controls for the inputted player

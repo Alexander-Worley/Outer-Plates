@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var inputMap = {} 
+var inputMap = {}
 
 const SPEED: float = 120.0
 # If true, the Player will not stop their animation
@@ -139,7 +139,7 @@ func tilt_weapon(horizontal: int, vertical: int):
 		rotationDegrees = -2 * DIAGONAL_ANGLE
 	holdableInHand.rotation_degrees = rotationDegrees
 
-func return_input_pressed(input: String):
+func return_joystick_movement(input: String):
 	var moveRight = "moveRight{n}".format({"n":playerNum})
 	var moveLeft = "moveLeft{n}".format({"n":playerNum})
 	var moveUp = "moveUp{n}".format({"n":playerNum})
@@ -167,6 +167,13 @@ func return_input_pressed(input: String):
 			return "aimDown"
 	return null
 
+func return_button_pressed(input: String):
+	var pickup = "pickup{n}".format({"n":playerNum})
+	match input:
+		pickup:
+			return "pickup"
+	return null
+
 func _process(_delta):
 	var horizontalMovement: int = 0
 	var verticalMovement: int = 0
@@ -175,7 +182,7 @@ func _process(_delta):
 	
 	for action in inputMap:
 		if !Input.is_action_pressed(action): continue
-		var input = return_input_pressed(action)
+		var input = return_joystick_movement(action)
 		if !input: continue
 		match input:
 			"moveRight":
@@ -238,13 +245,21 @@ func _process(_delta):
 	
 	move_and_slide()
 
+func pickup():
+	if isHolding: place_holdable()
+	else: if holdablesInRange:
+		# TODO: Replace "pick_random()" with static decisions.
+			# Perhaps the item most inside of "pickup_range"?
+		pickup_holdable(holdablesInRange.pick_random())
+
 func _input(event):
-	if event.is_action_pressed("pickup"):
-		if isHolding: place_holdable()
-		else: if holdablesInRange:
-			# TODO: Replace "pick_random()" with static decisions.
-				# Perhaps the item most inside of "pickup_range"?
-			pickup_holdable(holdablesInRange.pick_random())
+	for action in inputMap:
+		if !Input.is_action_just_pressed(action): continue
+		var input = return_button_pressed(action)
+		if !input: continue
+		match input:
+			"pickup":
+				pickup()
 	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(self): break
