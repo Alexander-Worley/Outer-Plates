@@ -31,6 +31,8 @@ var acceleration = Vector2.ZERO
 var curTable
 var customersNode
 
+var canBeShot = false
+
 @onready var MoneyLabel = get_node("../../../MoneyLabel")
 
 func _ready():
@@ -68,6 +70,8 @@ func _physics_process(_delta:float) -> void:
 			sprite.flip_h = true
 
 func hit(type):
+	if not canBeShot:
+		return
 	if type == "laser":
 		hit_points -= 5
 	elif type == "plasma":
@@ -107,6 +111,7 @@ func die():
 	print("ded")
 	MoneyLabel.money -= 100
 	self.queue_free()
+	curTable.status = 0
 
 func walkTo(location, time):
 	var tween = self.create_tween()

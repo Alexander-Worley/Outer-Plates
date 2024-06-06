@@ -1,13 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://behneg0nnc0bq"]
+[gd_scene load_steps=20 format=3 uid="uid://behneg0nnc0bq"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_t7iru"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_srumu"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="4_jgfwf"]
-[ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="4_uo0mj"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="4_x3u6a"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="5_rtq4x"]
-[ext_resource type="Texture2D" uid="uid://ddyrqc8ufdbi6" path="res://Assets/Interactables/PlainSurfaces/vertical-oval-table.png" id="6_ajke4"]
-[ext_resource type="Texture2D" uid="uid://hpf0xrwul11c" path="res://Assets/Interactables/PlainSurfaces/oval-table.png" id="7_4r5b2"]
 [ext_resource type="Texture2D" uid="uid://ogr8t5lqaf8t" path="res://Assets/Interactables/PlainSurfaces/corner-square-counter.png" id="8_oyxcj"]
 [ext_resource type="Texture2D" uid="uid://b80prp3vl4ogb" path="res://Assets/Interactables/PlainSurfaces/left-right-square-counter.png" id="10_dpk6j"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="10_f2two"]
@@ -18,23 +15,27 @@
 [ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="13_ybtij"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="15_5jryl"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="16_bsx6g"]
+[ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="16_ed3ut"]
+[ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="17_26nk0"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="18_og6fn"]
+[ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="19_tixo8"]
 
 [node name="Restaurant" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_t7iru")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.909091, 0)
 Planet = "Green Planet"
 
-[node name="MVP" type="Label" parent="Environment/Background"]
+[node name="Prototype3" type="Label" parent="Environment/Background"]
 offset_left = 8.0
 offset_right = 62.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
 theme_override_font_sizes/font_size = 25
-text = "MVP"
+text = "Prototype 3"
 
 [node name="Instructions" type="Label" parent="Environment/Background"]
 offset_left = 8.0
@@ -62,103 +63,31 @@ position = Vector2(336, 144)
 [node name="LavaLamp4" parent="Environment/Ambiance/Decor" instance=ExtResource("10_f2two")]
 position = Vector2(720, 240)
 
-[node name="Chairs" type="Node2D" parent="Environment/Ambiance"]
+[node name="Furniture" type="Node" parent="."]
 
-[node name="Chair" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(432, 368)
-texture = ExtResource("4_uo0mj")
+[node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("16_ed3ut")]
+position = Vector2(408, 160)
 
-[node name="Chair2" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(496, 432)
-texture = ExtResource("4_uo0mj")
+[node name="HostingStand" parent="Furniture" instance=ExtResource("17_26nk0")]
+visible = false
+position = Vector2(408, 120)
 
-[node name="Chair3" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(400, 432)
-texture = ExtResource("4_uo0mj")
+[node name="TableManager" type="Node" parent="Furniture"]
+script = ExtResource("18_og6fn")
 
-[node name="Chair4" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(592, 368)
-texture = ExtResource("4_uo0mj")
+[node name="Table" parent="Furniture/TableManager" instance=ExtResource("19_tixo8")]
+position = Vector2(464, 304)
 
-[node name="Chair13" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(400, 240)
-texture = ExtResource("4_uo0mj")
+[node name="Table2" parent="Furniture/TableManager" instance=ExtResource("19_tixo8")]
+position = Vector2(464, 368)
 
-[node name="Chair5" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(624, 208)
-texture = ExtResource("4_uo0mj")
+[node name="Table3" parent="Furniture/TableManager" instance=ExtResource("19_tixo8")]
+position = Vector2(464, 432)
 
-[node name="Chair6" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(528, 208)
-texture = ExtResource("4_uo0mj")
-
-[node name="Chair9" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(688, 368)
-texture = ExtResource("4_uo0mj")
-
-[node name="Chair7" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(528, 304)
-texture = ExtResource("4_uo0mj")
-flip_h = true
-
-[node name="Chair8" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(688, 464)
-texture = ExtResource("4_uo0mj")
-flip_h = true
-
-[node name="Chair10" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(688, 304)
-texture = ExtResource("4_uo0mj")
-flip_h = true
-
-[node name="Chair11" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(592, 432)
-texture = ExtResource("4_uo0mj")
-flip_h = true
-
-[node name="Chair12" type="Sprite2D" parent="Environment/Ambiance/Chairs"]
-position = Vector2(528, 368)
-texture = ExtResource("4_uo0mj")
-flip_h = true
+[node name="Table4" parent="Furniture/TableManager" instance=ExtResource("19_tixo8")]
+position = Vector2(464, 496)
 
 [node name="Surfaces" type="Node2D" parent="."]
-
-[node name="Tables" type="Node2D" parent="Surfaces"]
-
-[node name="Table" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(624, 368)
-
-[node name="Table2" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(432, 432)
-
-[node name="Table3" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(624, 240)
-
-[node name="Table4" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(656, 304)
-
-[node name="Table5" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(480, 368)
-width = 2
-texture = ExtResource("7_4r5b2")
-
-[node name="Table6" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(544, 432)
-width = 2
-texture = ExtResource("7_4r5b2")
-
-[node name="Table7" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(688, 416)
-height = 2
-texture = ExtResource("6_ajke4")
-
-[node name="Table8" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(528, 256)
-height = 2
-texture = ExtResource("6_ajke4")
-
-[node name="Table9" parent="Surfaces/Tables" instance=ExtResource("4_jgfwf")]
-position = Vector2(432, 240)
 
 [node name="Counters" type="Node2D" parent="Surfaces"]
 
@@ -327,4 +256,30 @@ position = Vector2(304, 144)
 position = Vector2(400, 328)
 playerNum = 3
 
+[node name="Customers" type="Node2D" parent="."]
+
 [node name="PauseMenu" parent="." instance=ExtResource("13_ybtij")]
+
+[node name="Rules" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 32.0
+offset_right = 711.0
+offset_bottom = 409.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.862745, 0.94902, 1)
+theme_override_font_sizes/font_size = 20
+text = "Welcome! Interact
+with the teleporter
+to bring customers
+in. They only like
+ORANGE food.
+Grab orange food,
+chop it, cook it,
+plate it, and serve
+it! Do not let the
+food burn! Throw
+dirty/bad plates
+in the trash. Do not
+spawn in too many
+customers, or it will
+crash :("
