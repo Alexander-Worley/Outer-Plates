@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkymy7rnc3gfw"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.gd" id="1_ydmcv"]
+[ext_resource type="Texture2D" uid="uid://bq646nj8npi6k" path="res://Assets/Holdables/Food/drink-spritesheet.png" id="2_jmpvc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hwcd"]
+size = Vector2(30, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spx7c"]
+atlas = ExtResource("2_jmpvc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f408u"]
+atlas = ExtResource("2_jmpvc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd0t8"]
+atlas = ExtResource("2_jmpvc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfbn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spx7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f408u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd0t8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Glass" type="Area2D" groups=["Glass", "Holdables"]]
+script = ExtResource("1_ydmcv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2hwcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Glass"]]
+sprite_frames = SubResource("SpriteFrames_yfbn6")
