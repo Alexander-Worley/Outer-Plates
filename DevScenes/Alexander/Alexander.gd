@@ -20,8 +20,15 @@ func add_player(playerNum: int):
 	# Give the player its unique atributes
 	assign_player_properties(player, playerNum)
 	
+	# Create a parent node to hold players if needed
+	var playerNode = find_child("Players", false, false)
+	if !playerNode:
+		playerNode = Node2D.new()
+		playerNode.name = "Players"
+		add_child(playerNode)
+	playerNode.z_index = 5 # Arbitrary value
 	# Spawn the player
-	add_child(player)
+	playerNode.add_child(player)
 
 # Builds the input map for the inputted player
 func build_input_map(playerNum: int):
@@ -226,8 +233,10 @@ func assign_interact_controls(playerNum: int):
 func assign_player_properties(player: CharacterBody2D, playerNum: int):
 	assign_input_map(player, playerNum)
 	set_player_starting_position(player, playerNum)
+	player.name = "player{n}".format({"n":playerNum})
 	player.playerNum = playerNum
 
+# Assigns the appropriate input map to the player
 func assign_input_map(player: CharacterBody2D, playerNum: int):
 	var index = inputMaps.find({
 		"moveRight{n}".format({"n":playerNum}): null,
@@ -251,18 +260,16 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 	var positionOffset = Vector2(xOffset, yOffset)
 	player.position = DEFAULT_STARTING_POSITION + positionOffset
 
+# Remove the player from the world
 func remove_player(playerNum: int):
 	for player in players:
+		# Find the player and erase them
 		if player.playerNum == playerNum:
 			erase_input_map(playerNum)
 			remove_child(player)
 			players.erase(player)
-	#var index = players.find(playerNum)
-	#var player = players[index]
-	#erase_input_map(playerNum)
-	#remove_child(player)
-	#players.erase(player)
 
+# Erases the input map associated with this player
 func erase_input_map(playerNum: int):
 	var moveRight: String = "moveRight{n}".format({"n":playerNum})
 	var moveLeft: String = "moveLeft{n}".format({"n":playerNum})

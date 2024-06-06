@@ -228,7 +228,6 @@ func _process(_delta):
 	for action in inputMap:
 		# Read move and aim values every frame
 		if !Input.is_action_pressed(action): continue
-		print("TESTING INPUT OF PLAYER: ", playerNum)
 		var moveAndAimValues: Array = read_move_and_aim_values(action)
 		if moveAndAimValues[0]: horizontalMovement = moveAndAimValues[0]
 		if moveAndAimValues[1]: verticalMovement = moveAndAimValues[1]
