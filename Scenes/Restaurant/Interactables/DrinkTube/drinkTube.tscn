@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://txto47x1ji8o"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.gd" id="1_bivrm"]
+[ext_resource type="Texture2D" uid="uid://bw7kdyubgw725" path="res://Assets/Interactables/CookingStations/drink-tube-green.png" id="2_y76a5"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/DrinkTube/DispensingBarControl.gd" id="3_3tbfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6do5o"]
+size = Vector2(32, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_us6hb"]
+size = Vector2(32, 56)
+
+[node name="DrinkTube" type="Area2D" groups=["DrinkTube", "Interactable"]]
+script = ExtResource("1_bivrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6do5o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_us6hb")
+
+[node name="Surface" type="Sprite2D" parent="."]
+texture = ExtResource("2_y76a5")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 64)
+
+[node name="DispensingBarControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_3tbfv")
+
+[node name="DispensingBarTimer" type="Timer" parent="DispensingBarControl"]
+wait_time = 0.1
+
+[node name="ProgressBar" type="ProgressBar" parent="DispensingBarControl"]
+z_index = 101
+layout_mode = 0
+offset_left = -15.0
+offset_top = -27.0
+offset_right = 17.0
+offset_bottom = -15.0
+show_percentage = false
+
+[node name="DispensingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="DispensingBarControl/DispensingBarTimer" to="DispensingBarControl" method="_on_dispensing_bar_timer_timeout"]
