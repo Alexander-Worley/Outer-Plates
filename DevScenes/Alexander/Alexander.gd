@@ -18,7 +18,7 @@ func add_player(playerNum: int):
 	build_input_map(playerNum)
 	assign_move_controls(playerNum)
 	assign_aim_controls(playerNum)
-	assign_test_controls(playerNum) # TESTING
+	assign_pickup_controls(playerNum)
 	
 	# Give the player its unique atributes
 	assign_player_properties(player, playerNum)
@@ -26,16 +26,46 @@ func add_player(playerNum: int):
 	# Spawn the player
 	add_child(player)
 
-func assign_test_controls(playerNum: int):
+# Assigns Pickup Controls for the inputted player
+func assign_pickup_controls(playerNum: int):
 	var pickup: String = "pickup{n}".format({"n":playerNum})
 	var pickupEvent = InputEventJoypadButton.new()
 	
+	# Controller - Sony Cross, Xbox A, Nintendo B
 	InputMap.add_action(pickup)
 	pickupEvent.device = playerNum
 	pickupEvent.button_index = JOY_BUTTON_A
-	print(pickup)
 	InputMap.action_add_event(pickup, pickupEvent)
-	print(pickup)
+	
+	# Controller - Sony Circle, Xbox B, Nintendo A
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_B
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Left Shoulder Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_LEFT_SHOULDER
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Left Trigger Button
+	pickupEvent = InputEventJoypadMotion.new()
+	pickupEvent.device = playerNum
+	pickupEvent.axis = JOY_AXIS_TRIGGER_LEFT
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Paddle 3 Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_PADDLE3
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Paddle 4 Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_PADDLE4
+	InputMap.action_add_event(pickup, pickupEvent)
 
 # Builds the input map for the inputted player
 func build_input_map(playerNum: int):

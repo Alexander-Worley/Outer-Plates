@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var inputMap = {}
+var playerNum: int
 
 const SPEED: float = 120.0
 # If true, the Player will not stop their animation
@@ -28,7 +29,6 @@ var sprites = {
 	2: [["P3_Back", "P3_B_Diagonal"], ["P3_Front", "P3_F_Diagonal"], "P3_Side"],
 	3: [["P4_Back", "P4_B_Diagonal"], ["P4_Front", "P4_F_Diagonal"], "P4_Side"],
 }
-@export_range (1, 4) var playerNum: int = 0
 @onready var interactRange: Area2D = $interactRange
 @onready var holdablePosition: Area2D = $holdablePosition
 @onready var playerSprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -139,7 +139,9 @@ func tilt_weapon(horizontal: int, vertical: int):
 		rotationDegrees = -2 * DIAGONAL_ANGLE
 	holdableInHand.rotation_degrees = rotationDegrees
 
-func return_joystick_movement(input: String):
+# Inputs that are read every frame they are inputted
+# (such as movement) are read here
+func get_continuous_input(input: String):
 	var moveRight = "moveRight{n}".format({"n":playerNum})
 	var moveLeft = "moveLeft{n}".format({"n":playerNum})
 	var moveUp = "moveUp{n}".format({"n":playerNum})
@@ -167,12 +169,51 @@ func return_joystick_movement(input: String):
 			return "aimDown"
 	return null
 
-func return_button_pressed(input: String):
+# Inputs that are only read on the first frame they are inputted
+# (such as pickup) are read here
+func get_frame_one_input(input: String):
 	var pickup = "pickup{n}".format({"n":playerNum})
 	match input:
 		pickup:
 			return "pickup"
 	return null
+
+# Given an input, return an array of move and aim values:
+# [0] = horizontalMovement
+# [1] = verticalMovement
+# [2] = horizontalFacing
+# [3] = verticalFacing
+func read_move_and_aim_values(action: String) -> Array:
+	var input = get_continuous_input(action)
+	var horizontalMovement: int
+	var verticalMovement: int
+	var horizontalFacing: int
+	var verticalFacing: int
+	match input:
+		"moveRight":
+			horizontalMovement = 1 # right
+		"moveLeft":
+			horizontalMovement = -1 # left
+		"moveUp":
+			verticalMovement = -1 # up
+		"moveDown":
+			verticalMovement = 1 # down
+		"aimRight":
+			horizontalFacing = 1 # right
+		"aimLeft":
+			horizontalFacing = -1 # left
+		"aimUp":
+			verticalFacing = -1 # up
+		"aimDown":
+			verticalFacing = 1 # down
+	return [horizontalMovement, verticalMovement, horizontalFacing, verticalFacing]
+
+# Read actions on the first frame they are inputted
+func read_pickup_and_interact_values(action: String):
+	var input = get_frame_one_input(action)
+	match input:
+		"pickup":
+			pickup()
 
 func _process(_delta):
 	var horizontalMovement: int = 0
@@ -181,26 +222,17 @@ func _process(_delta):
 	var verticalFacing: int = 0
 	
 	for action in inputMap:
+		# Read move and aim values every frame
 		if !Input.is_action_pressed(action): continue
-		var input = return_joystick_movement(action)
-		if !input: continue
-		match input:
-			"moveRight":
-				horizontalMovement = 1
-			"moveLeft":
-				horizontalMovement = -1
-			"moveUp":
-				verticalMovement = -1
-			"moveDown":
-				verticalMovement = 1
-			"aimRight":
-				horizontalFacing = 1
-			"aimLeft":
-				horizontalFacing = -1
-			"aimUp":
-				verticalFacing = -1
-			"aimDown":
-				verticalFacing = 1
+		var moveAndAimValues: Array = read_move_and_aim_values(action)
+		if moveAndAimValues[0]: horizontalMovement = moveAndAimValues[0]
+		if moveAndAimValues[1]: verticalMovement = moveAndAimValues[1]
+		if moveAndAimValues[2]: horizontalFacing = moveAndAimValues[2]
+		if moveAndAimValues[3]: verticalFacing = moveAndAimValues[3]
+		
+		# Read pickup and interact values only on the first frame of a new input
+		if !Input.is_action_just_pressed(action): continue
+		read_pickup_and_interact_values(action)
 	
 	# Move interactRange
 	var interactRange_x: int = 0
@@ -253,13 +285,13 @@ func pickup():
 		pickup_holdable(holdablesInRange.pick_random())
 
 func _input(event):
-	for action in inputMap:
-		if !Input.is_action_just_pressed(action): continue
-		var input = return_button_pressed(action)
-		if !input: continue
-		match input:
-			"pickup":
-				pickup()
+	#for action in inputMap:
+		#if !Input.is_action_just_pressed(action): continue
+		#var input = return_button_pressed(action)
+		#if !input: continue
+		#match input:
+			#"pickup":
+				#pickup()
 	if event.is_action_pressed("interact") and !isInteractLock:
 		for interactable in interactablesInRange:
 			if !isHolding and interactable.begin_interaction(self): break
