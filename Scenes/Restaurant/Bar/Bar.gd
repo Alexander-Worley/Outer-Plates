@@ -7,27 +7,32 @@ enum tableState {
 	CLEANUP = 3
 }
 
+@export_category("Developer Tools :0")
+@export_enum("Left", "Middle", "Right") var side: int = 0
+
 
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
 @onready var customer = null # The child customer, probably will need to be an array# Determines if this table is open for seating.
 @onready var status = tableState.AVAILABLE
 @onready var tableCode = null
-@onready var isBar = false
+@onready var isBar = true
 @onready var chair = get_child(3)
 
-@onready var hasPirate = false
-@onready var pirateMarker = $PirateMarker
 
 func _ready():
+	initialize_wrapper()
+
+
+func initialize_wrapper():
+	$Surface.region_rect = Rect2(side*32, 24, 32, 40)
 	initialize()
-
-
+	
 func _process(delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 		#set_order("meat")
-		#print("Table with the following code wants plated cooked orange food: ", tableCode)
+		#print("The bar with this code is available", tableCode)
 		#set_status(tableState.AWAITING_ORDER)
 	elif get_status() == tableState.AWAITING_ORDER and is_served():
 		set_status(tableState.DINING)
@@ -74,14 +79,9 @@ func is_served():
 	Returns a bool indicating whether table has been properly served. 
 	If the table isn't awaiting an order, will return false by default.
 	""" 
-	#you can't serve to customers who're hounded by pirates
-	if hasPirate:
-		return false
 	if status != tableState.AWAITING_ORDER:
 		return false
 	if !holdablesOnSurface[0]:
-		return false
-	if holdablesOnSurface[0].is_in_group("Weapons"):
 		return false
 	if !holdablesOnSurface[0].isReady():
 		return false
@@ -96,6 +96,3 @@ func display_order(order):
 	"""
 	# To be implemented, will be called by the Table Manager
 	pass
-
-
-
