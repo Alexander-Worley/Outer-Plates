@@ -13,6 +13,7 @@ enum tableState {
 @onready var customer = null # The child customer, probably will need to be an array# Determines if this table is open for seating.
 @onready var status = tableState.AVAILABLE
 @onready var tableCode = null
+@onready var chair = get_child(3)
 
 
 func _ready():
@@ -21,9 +22,10 @@ func _ready():
 
 func _process(delta):
 	if get_status() == tableState.AVAILABLE:
-		set_order("meat")
-		print("Table with the following code wants plated cooked orange food: ", tableCode)
-		set_status(tableState.AWAITING_ORDER)
+		pass
+		#set_order("meat")
+		#print("Table with the following code wants plated cooked orange food: ", tableCode)
+		#set_status(tableState.AWAITING_ORDER)
 	elif get_status() == tableState.AWAITING_ORDER and is_served():
 		set_status(tableState.DINING)
 		# Need to restrict the holdable from being picked up.

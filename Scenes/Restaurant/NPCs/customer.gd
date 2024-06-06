@@ -9,9 +9,10 @@ var label_move_duration = 4
 var navigate = false
 var speed = 100
 
-var reachedHosting = false
+var reachedHosting = true
 var reachedSeat = false
 var isLeaving = false
+var ate = false
 
 #context based steering shenanigans
 @export var steer_force = 0.2
@@ -26,6 +27,9 @@ var danger = []
 
 var chosen_dir = Vector2.ZERO
 var acceleration = Vector2.ZERO
+
+var curTable
+var customersNode
 
 func _ready():
 	#prepare steering rays

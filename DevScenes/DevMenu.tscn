@@ -103,6 +103,7 @@ theme_override_font_sizes/font_size = 25
 text = "Matthew"
 
 [node name="Level Select" type="Button" parent="BG"]
+layout_mode = 0
 offset_left = 65.0
 offset_top = 194.0
 offset_right = 233.0
