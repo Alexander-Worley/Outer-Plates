@@ -1,9 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb88fxeflcnnk"]
 
-[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_wuudv"]
+[ext_resource type="Script" path="res://DevScenes/Alexander/MultiplayerTesting.gd" id="1_ys46c"]
 
 [node name="MultiplayerTesting" type="Node2D"]
-
-[node name="Background" parent="." instance=ExtResource("1_wuudv")]
-scroll_offset = Vector2(-1.33333, 0)
-Planet = "Blue Planet"
+script = ExtResource("1_ys46c")

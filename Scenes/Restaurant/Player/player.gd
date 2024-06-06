@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var inputMap = {} 
+
 const SPEED: float = 120.0
 # If true, the Player will not stop their animation
 var isAnimationLock: bool = false
@@ -21,12 +23,12 @@ var holdableInHand: Area2D = null
 # If the player is only moving horizontally, the third value is selected.
 # This is less than ideal, I know, but I'm forgoing redoing this due to time crunch.
 var sprites = {
-	1: [["P1_Back", "P1_B_Diagonal"], ["P1_Front", "P1_F_Diagonal"], "P1_Side"],
-	2: [["P2_Back", "P2_B_Diagonal"], ["P2_Front", "P2_F_Diagonal"], "P2_Side"],
-	3: [["P3_Back", "P3_B_Diagonal"], ["P3_Front", "P3_F_Diagonal"], "P3_Side"],
-	4: [["P4_Back", "P4_B_Diagonal"], ["P4_Front", "P4_F_Diagonal"], "P4_Side"],
+	0: [["P1_Back", "P1_B_Diagonal"], ["P1_Front", "P1_F_Diagonal"], "P1_Side"],
+	1: [["P2_Back", "P2_B_Diagonal"], ["P2_Front", "P2_F_Diagonal"], "P2_Side"],
+	2: [["P3_Back", "P3_B_Diagonal"], ["P3_Front", "P3_F_Diagonal"], "P3_Side"],
+	3: [["P4_Back", "P4_B_Diagonal"], ["P4_Front", "P4_F_Diagonal"], "P4_Side"],
 }
-@export_range (1, 4) var playerNum: int = 1
+@export_range (1, 4) var playerNum: int = 0
 @onready var interactRange: Area2D = $interactRange
 @onready var holdablePosition: Area2D = $holdablePosition
 @onready var playerSprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -93,7 +95,7 @@ func place_holdable():
 
 # Given whether the player is moving up, down, left, right, or diagonal,
 # set the position of their pickup range and any holdables in their hand
-func set_interact_range_position(horizontal: float, vertical: float):
+func set_interact_range_position(horizontal: int, vertical: int):
 	horizontal *= Global.PIXEL_DIMENSION
 	vertical *= Global.PIXEL_DIMENSION
 	interactRange.position = Vector2(horizontal, vertical)
@@ -114,7 +116,7 @@ func play_animation():
 	playerSprite.play()
 
 # Animates the player
-func animate_player(horizontal: float, vertical: float):
+func animate_player(horizontal: int, vertical: int):
 	if horizontal:
 		# Flip Player sprite if facing opposite direction of the spirte's default direction
 		playerSprite.flip_h = true if horizontal == 1 else false
@@ -122,13 +124,13 @@ func animate_player(horizontal: float, vertical: float):
 			# If moving sideways, set Side Sprite
 			playerSprite.play(sprites[playerNum][2])
 	if vertical:
-		var verticalDirection = (vertical + 1) / 2 # 0 if up, 1 if down
+		var verticalDirection = (vertical + 1) / 2.0 # 0 if up, 1 if down
 		var horizontalDirection = abs(horizontal) # 0 if only vertical, 1 if horizontal
 		playerSprite.play(sprites[playerNum][verticalDirection][horizontalDirection])
 		# Move holdableInHand sprite above or below the player as needed
 		if isHolding: holdableInHand.z_index = 1 if verticalDirection else 0
 
-func tilt_weapon(horizontal: float, vertical: float):
+func tilt_weapon(horizontal: int, vertical: int):
 	if !isHolding: return
 	const DIAGONAL_ANGLE = 45
 	var rotationDegrees = DIAGONAL_ANGLE * horizontal * vertical
@@ -137,30 +139,65 @@ func tilt_weapon(horizontal: float, vertical: float):
 		rotationDegrees = -2 * DIAGONAL_ANGLE
 	holdableInHand.rotation_degrees = rotationDegrees
 
-func _physics_process(delta):
-	# Fetch movement input
-	var horizontalMovement: float = Input.get_axis("left", "right")
-	var verticalMovement: float = Input.get_axis("up", "down")
+func return_input_pressed(input: String):
+	var moveRight = "moveRight{n}".format({"n":playerNum})
+	var moveLeft = "moveLeft{n}".format({"n":playerNum})
+	var moveUp = "moveUp{n}".format({"n":playerNum})
+	var moveDown = "moveDown{n}".format({"n":playerNum})
+	var aimRight = "aimRight{n}".format({"n":playerNum})
+	var aimLeft = "aimLeft{n}".format({"n":playerNum})
+	var aimUp = "aimUp{n}".format({"n":playerNum})
+	var aimDown = "aimDown{n}".format({"n":playerNum})
+	match input:
+		moveRight:
+			return "moveRight"
+		moveLeft:
+			return "moveLeft"
+		moveUp:
+			return "moveUp"
+		moveDown:
+			return "moveDown"
+		aimRight:
+			return "aimRight"
+		aimLeft:
+			return "aimLeft"
+		aimUp:
+			return "aimUp"
+		aimDown:
+			return "aimDown"
+	return null
+
+func _process(_delta):
+	var horizontalMovement: int = 0
+	var verticalMovement: int = 0
+	var horizontalFacing: int = 0
+	var verticalFacing: int = 0
 	
-	# Fetch aiming input
-	var horizontalFacing: float = Input.get_axis("face_left", "face_right")
-	var verticalFacing: float = Input.get_axis("face_up", "face_down")
-	
-	# Sanitize movement input
-	if horizontalMovement > 0: horizontalMovement = 1
-	elif horizontalMovement < 0: horizontalMovement = -1
-	if verticalMovement > 0: verticalMovement = 1
-	elif verticalMovement < 0: verticalMovement = -1
-	
-	# Sanitize aiming input
-	if horizontalFacing > 0: horizontalFacing = 1
-	elif horizontalFacing < 0: horizontalFacing = -1
-	if verticalFacing > 0: verticalFacing = 1
-	elif verticalFacing < 0: verticalFacing = -1
+	for action in inputMap:
+		if !Input.is_action_pressed(action): continue
+		var input = return_input_pressed(action)
+		if !input: continue
+		match input:
+			"moveRight":
+				horizontalMovement = 1
+			"moveLeft":
+				horizontalMovement = -1
+			"moveUp":
+				verticalMovement = -1
+			"moveDown":
+				verticalMovement = 1
+			"aimRight":
+				horizontalFacing = 1
+			"aimLeft":
+				horizontalFacing = -1
+			"aimUp":
+				verticalFacing = -1
+			"aimDown":
+				verticalFacing = 1
 	
 	# Move interactRange
-	var interactRange_x: float = 0
-	var interactRange_y: float = 0
+	var interactRange_x: int = 0
+	var interactRange_y: int = 0
 	# If aiming input, use aiming input
 	if horizontalFacing or verticalFacing:
 		interactRange_x = horizontalFacing
