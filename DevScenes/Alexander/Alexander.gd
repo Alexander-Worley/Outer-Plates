@@ -26,47 +26,6 @@ func add_player(playerNum: int):
 	# Spawn the player
 	add_child(player)
 
-# Assigns Pickup Controls for the inputted player
-func assign_pickup_controls(playerNum: int):
-	var pickup: String = "pickup{n}".format({"n":playerNum})
-	var pickupEvent = InputEventJoypadButton.new()
-	
-	# Controller - Sony Cross, Xbox A, Nintendo B
-	InputMap.add_action(pickup)
-	pickupEvent.device = playerNum
-	pickupEvent.button_index = JOY_BUTTON_A
-	InputMap.action_add_event(pickup, pickupEvent)
-	
-	# Controller - Sony Circle, Xbox B, Nintendo A
-	pickupEvent = InputEventJoypadButton.new()
-	pickupEvent.device = playerNum
-	pickupEvent.button_index = JOY_BUTTON_B
-	InputMap.action_add_event(pickup, pickupEvent)
-	
-	# Controller - Left Shoulder Button
-	pickupEvent = InputEventJoypadButton.new()
-	pickupEvent.device = playerNum
-	pickupEvent.button_index = JOY_BUTTON_LEFT_SHOULDER
-	InputMap.action_add_event(pickup, pickupEvent)
-	
-	# Controller - Left Trigger Button
-	pickupEvent = InputEventJoypadMotion.new()
-	pickupEvent.device = playerNum
-	pickupEvent.axis = JOY_AXIS_TRIGGER_LEFT
-	InputMap.action_add_event(pickup, pickupEvent)
-	
-	# Controller - Paddle 3 Button
-	pickupEvent = InputEventJoypadButton.new()
-	pickupEvent.device = playerNum
-	pickupEvent.button_index = JOY_BUTTON_PADDLE3
-	InputMap.action_add_event(pickup, pickupEvent)
-	
-	# Controller - Paddle 4 Button
-	pickupEvent = InputEventJoypadButton.new()
-	pickupEvent.device = playerNum
-	pickupEvent.button_index = JOY_BUTTON_PADDLE4
-	InputMap.action_add_event(pickup, pickupEvent)
-
 # Builds the input map for the inputted player
 func build_input_map(playerNum: int):
 	inputMaps.append({
@@ -99,11 +58,23 @@ func assign_move_controls(playerNum: int):
 	moveRightEvent.axis_value =  1.0 # right
 	InputMap.action_add_event(moveRight, moveRightEvent)
 	
+	# Controller - D-pad - Right
+	moveRightEvent = InputEventJoypadButton.new()
+	moveRightEvent.device = playerNum
+	moveRightEvent.button_index = JOY_BUTTON_DPAD_RIGHT
+	InputMap.action_add_event(moveRight, moveRightEvent)
+	
 	# Controller - Left Joystick - Left
 	InputMap.add_action(moveLeft)
 	moveLeftEvent.device = playerNum
 	moveLeftEvent.axis = JOY_AXIS_LEFT_X # horizontal axis
 	moveLeftEvent.axis_value = -1.0 # left
+	InputMap.action_add_event(moveLeft, moveLeftEvent)
+	
+	# Controller - D-pad - Left
+	moveLeftEvent = InputEventJoypadButton.new()
+	moveLeftEvent.device = playerNum
+	moveLeftEvent.button_index = JOY_BUTTON_DPAD_LEFT
 	InputMap.action_add_event(moveLeft, moveLeftEvent)
 	
 	# Controller - Left Joystick - Up
@@ -113,11 +84,23 @@ func assign_move_controls(playerNum: int):
 	moveUpEvent.axis_value = -1.0 # up
 	InputMap.action_add_event(moveUp, moveUpEvent)
 	
+	# Controller - D-pad - Up
+	moveUpEvent = InputEventJoypadButton.new()
+	moveUpEvent.device = playerNum
+	moveUpEvent.button_index = JOY_BUTTON_DPAD_UP
+	InputMap.action_add_event(moveUp, moveUpEvent)
+	
 	# Controller - Left Joystick - Down
 	InputMap.add_action(moveDown)
 	moveDownEvent.device = playerNum
 	moveDownEvent.axis = JOY_AXIS_LEFT_Y # vertical axis
 	moveDownEvent.axis_value =  1.0 # down
+	InputMap.action_add_event(moveDown, moveDownEvent)
+	
+	# Controller - D-pad - Down
+	moveDownEvent = InputEventJoypadButton.new()
+	moveDownEvent.device = playerNum
+	moveDownEvent.button_index = JOY_BUTTON_DPAD_DOWN
 	InputMap.action_add_event(moveDown, moveDownEvent)
 
 # Assigns Aim Controls for the inputted player
@@ -158,6 +141,47 @@ func assign_aim_controls(playerNum: int):
 	aimDownEvent.axis = JOY_AXIS_RIGHT_Y # vertical axis
 	aimDownEvent.axis_value =  1.0 # down
 	InputMap.action_add_event(aimDown, aimDownEvent)
+
+# Assigns Pickup Controls for the inputted player
+func assign_pickup_controls(playerNum: int):
+	var pickup: String = "pickup{n}".format({"n":playerNum})
+	var pickupEvent = InputEventJoypadButton.new()
+	
+	# Controller - Sony Cross, Xbox A, Nintendo B
+	InputMap.add_action(pickup)
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_A
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Sony Circle, Xbox B, Nintendo A
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_B
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Left Shoulder Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_LEFT_SHOULDER
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Left Trigger Button
+	pickupEvent = InputEventJoypadMotion.new()
+	pickupEvent.device = playerNum
+	pickupEvent.axis = JOY_AXIS_TRIGGER_LEFT
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Paddle 3 Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_PADDLE3
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Controller - Paddle 4 Button
+	pickupEvent = InputEventJoypadButton.new()
+	pickupEvent.device = playerNum
+	pickupEvent.button_index = JOY_BUTTON_PADDLE4
+	InputMap.action_add_event(pickup, pickupEvent)
 
 func assign_player_properties(player: CharacterBody2D, playerNum: int):
 	set_player_starting_position(player, playerNum)
