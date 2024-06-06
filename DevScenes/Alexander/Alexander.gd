@@ -224,9 +224,24 @@ func assign_interact_controls(playerNum: int):
 
 # Assigns variables specific to this player
 func assign_player_properties(player: CharacterBody2D, playerNum: int):
+	assign_input_map(player, playerNum)
 	set_player_starting_position(player, playerNum)
 	player.playerNum = playerNum
-	player.inputMap = inputMaps[playerNum]
+
+func assign_input_map(player: CharacterBody2D, playerNum: int):
+	var index = inputMaps.find({
+		"moveRight{n}".format({"n":playerNum}): null,
+		"moveLeft{n}".format({"n":playerNum}): null,
+		"moveUp{n}".format({"n":playerNum}): null,
+		"moveDown{n}".format({"n":playerNum}): null,
+		"aimRight{n}".format({"n":playerNum}): null,
+		"aimLeft{n}".format({"n":playerNum}): null,
+		"aimUp{n}".format({"n":playerNum}): null,
+		"aimDown{n}".format({"n":playerNum}): null,
+		"pickup{n}".format({"n":playerNum}): null,
+		"interact{n}".format({"n":playerNum}): null
+		})
+	player.inputMap = inputMaps[index]
 
 # Sets the location where the player first spawns
 func set_player_starting_position(player: CharacterBody2D, offset: int):
@@ -237,7 +252,50 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 	player.position = DEFAULT_STARTING_POSITION + positionOffset
 
 func remove_player(playerNum: int):
-	pass
+	for player in players:
+		if player.playerNum == playerNum:
+			erase_input_map(playerNum)
+			remove_child(player)
+			players.erase(player)
+	#var index = players.find(playerNum)
+	#var player = players[index]
+	#erase_input_map(playerNum)
+	#remove_child(player)
+	#players.erase(player)
+
+func erase_input_map(playerNum: int):
+	var moveRight: String = "moveRight{n}".format({"n":playerNum})
+	var moveLeft: String = "moveLeft{n}".format({"n":playerNum})
+	var moveUp: String = "moveUp{n}".format({"n":playerNum})
+	var moveDown: String = "moveDown{n}".format({"n":playerNum})
+	var aimRight: String = "aimRight{n}".format({"n":playerNum})
+	var aimLeft: String = "aimLeft{n}".format({"n":playerNum})
+	var aimUp: String = "aimUp{n}".format({"n":playerNum})
+	var aimDown: String = "aimDown{n}".format({"n":playerNum})
+	var pickup: String = "pickup{n}".format({"n":playerNum})
+	var interact: String = "interact{n}".format({"n":playerNum})
+	inputMaps.erase({
+		moveRight: null,
+		moveLeft: null,
+		moveUp: null,
+		moveDown: null,
+		aimRight: null,
+		aimLeft: null,
+		aimUp: null,
+		aimDown: null,
+		pickup: null,
+		interact: null
+		})
+	InputMap.erase_action(moveRight)
+	InputMap.erase_action(moveLeft)
+	InputMap.erase_action(moveUp)
+	InputMap.erase_action(moveDown)
+	InputMap.erase_action(aimRight)
+	InputMap.erase_action(aimLeft)
+	InputMap.erase_action(aimUp)
+	InputMap.erase_action(aimDown)
+	InputMap.erase_action(pickup)
+	InputMap.erase_action(interact)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
