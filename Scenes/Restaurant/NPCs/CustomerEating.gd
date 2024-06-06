@@ -20,6 +20,9 @@ func Physics_Update(_delta: float):
 func _on_eating_timer_timeout():
 	customer.ate = true
 	customer.isLeaving = true
+	
+	MoneyLabel.money += 100
+	
 	customer.changeTarget(BottomOfStairs)
 	
 	customer.reparent(customer.customersNode)
