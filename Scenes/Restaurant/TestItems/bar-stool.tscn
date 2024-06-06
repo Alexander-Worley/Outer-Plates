@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do8sx6vc1ghb1"]
+
+[ext_resource type="Texture2D" uid="uid://d3p25sj3n3qi0" path="res://Assets/Environment/Ambiance/bar-stool.png" id="1_ol5w5"]
+
+[node name="Bar stool" type="Area2D" groups=["Chair"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ol5w5")
