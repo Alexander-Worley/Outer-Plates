@@ -390,7 +390,9 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 # Remove the player from the world
 func remove_player(playerNum: int):
 	var playerNode = find_child("Players", false, false)
+	print("Trying to erase")
 	if !playerNode: return
+	print("Success!")
 	for player in players:
 		# Find the player and erase them
 		if player.playerNum == playerNum:

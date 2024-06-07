@@ -43,10 +43,9 @@ func _on_joy_connection_changed(deviceNum: int, isConnected: bool):
 	
 	scene.numPlayers = numDevices + int(Global.isP1UsingKeyboard)
 	
-	# If there are already enough players, return
-	if deviceNum >= numDevices: return
-	
 	if isConnected:
+		# If there are already enough players, return
+		if deviceNum >= numDevices: return
 		scene.add_player(deviceNum)
 	else:
 		scene.remove_player(deviceNum)

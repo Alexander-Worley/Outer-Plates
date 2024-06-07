@@ -11,7 +11,13 @@ var playerSpawnStatus = {
 	0: false,
 	1: false,
 	2: false,
-	3: false,
+	3: false
+}
+var playerPositionIDs = {
+	0: -99,
+	1: -99,
+	2: -99,
+	3: -99
 }
 @onready var spawnPositions: Array = [
 	$PlayerSpawnPoints/Player1.position,
@@ -27,14 +33,42 @@ func _ready():
 
 # Sets the location where the player first spawns
 func set_player_starting_position(player: CharacterBody2D, _offset: int):
+	playerPositionIDs = check_for_removed_players()
+	playerSpawnStatus = update_spawn_status()
 	for i in range(MAX_PLAYERS):
 		if playerSpawnStatus[i] == false:
-			print(i, \" player at \", player.position, \" to \", spawnPositions[i])
-			player.global_position = spawnPositions[i]
-			print(player.position)
+			player.position = spawnPositions[i]
 			playerSpawnStatus[i] = true
+			playerPositionIDs[i] = player.playerNum
+			break
 
-func _physics_process(delta):
+func check_for_removed_players() -> Dictionary:
+	var newPositionIDs = {
+		0: -99,
+		1: -99,
+		2: -99,
+		3: -99
+	}
+	for player in players:
+		for i in range(MAX_PLAYERS):
+			if player.playerNum == playerPositionIDs[i]:
+				newPositionIDs[i] = player.playerNum
+	return newPositionIDs
+
+func update_spawn_status() -> Dictionary:
+	var newSpawnStatus = {
+		0: false,
+		1: false,
+		2: false,
+		3: false
+	}
+	for player in players:
+		for i in range(MAX_PLAYERS):
+			if player.playerNum == playerPositionIDs[i]:
+				newSpawnStatus[i] = true
+	return newSpawnStatus
+
+func _process(delta):
 	background.scroll_offset.y -= SCROLL_SPEED * delta
 "
 
@@ -42,7 +76,7 @@ func _physics_process(delta):
 script = SubResource("GDScript_6l2ow")
 
 [node name="Background" parent="." instance=ExtResource("1_fp6xx")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-1.35963, 0)
 Planet = "Green Planet"
 
 [node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]

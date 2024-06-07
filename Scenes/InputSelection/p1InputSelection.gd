@@ -16,5 +16,7 @@ func _on_controller_input_zone_body_entered(body):
 
 # This timer is necessary to safely unload everything from the scene
 func _on_timer_timeout():
-	const playerSelection = preload("res://Scenes/InputSelection/playerSelection.tscn")
-	Utils.setScene(playerSelection)
+	#const playerSelection = preload("res://Scenes/InputSelection/playerSelection.tscn")
+	# TEMP
+	const playerSelection = preload("res://DevScenes/DevMenu.tscn")
+	Utils.setScene(playerSelection, false) # Will be true when fixed
