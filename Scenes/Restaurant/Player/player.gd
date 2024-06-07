@@ -224,8 +224,8 @@ func read_pickup_and_interact_values(action: String):
 		"interact":
 			interact()
 
-# Only called when in Debug Mode
-func debug_mode_move_and_aim() -> Array:
+# Only called when accepting all input
+func all_input_mode_move_and_aim() -> Array:
 	# Fetch movement input
 	var horizontalMovement: float = Input.get_axis("left", "right")
 	var verticalMovement: float = Input.get_axis("up", "down")
@@ -266,9 +266,9 @@ func _process(_delta):
 		if !Input.is_action_just_pressed(action): continue
 		read_pickup_and_interact_values(action)
 	
-	# If in debug mode, get move and aim input
-	if Global.isDebugMode:
-		var moveAndAimValues: Array = debug_mode_move_and_aim()
+	# If accepting all inputs
+	if Global.isAcceptAllInput:
+		var moveAndAimValues: Array = all_input_mode_move_and_aim()
 		if moveAndAimValues[0]: horizontalMovement = moveAndAimValues[0]
 		if moveAndAimValues[1]: verticalMovement = moveAndAimValues[1]
 		if moveAndAimValues[2]: horizontalFacing = moveAndAimValues[2]
@@ -317,9 +317,9 @@ func _process(_delta):
 	
 	move_and_slide()
 
-# Only used in Debug Mode
+# Only used when accepting all inputs
 func _input(event):
-	if !Global.isDebugMode: return
+	if !Global.isAcceptAllInput: return
 	if event.is_action_pressed("pickup"):
 		pickup()
 	if event.is_action_pressed("interact"):

@@ -11,4 +11,4 @@ const PIXEL_DIMENSION: int = 32 # Deimension of pixel art assets
 var currentScene: Node2D = preload("res://Scenes/MainMenu/mainMenu.tscn").instantiate()
 var isPlayersInScene: bool = false # Does currentScene spawn players?
 var isP1UsingKeyboard: bool = true # Is P1 using a keyboard?
-var isDebugMode: bool = true # Is Debug Mode on?
+var isAcceptAllInput: bool = true # Accept all input sources?

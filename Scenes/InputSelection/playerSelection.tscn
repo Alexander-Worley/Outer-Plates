@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://mttq35ogufqx"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_fp6xx"]
+
+[sub_resource type="GDScript" id="GDScript_6l2ow"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+const SPAWN_POSITIONS: Array = [
+	
+]
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset"
+
+[node name="PlayerSelection" type="Node2D"]
+script = SubResource("GDScript_6l2ow")
+
+[node name="Background" parent="." instance=ExtResource("1_fp6xx")]
+scroll_offset = Vector2(-1.43891, 0)
+Planet = "Green Planet"
