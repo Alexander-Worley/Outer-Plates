@@ -40,8 +40,10 @@ func _ready():
 # Picks up a holdable
 func pickup_holdable(holdable: Area2D):
 	var holdableParent = holdable.get_parent()
-	holdableInHand = holdable.duplicate()
+	# Anti-theft mechanisms
+	if holdableParent.is_in_group("player"): return
 	
+	holdableInHand = holdable.duplicate()
 	holdablePosition.add_child(holdableInHand)
 	set_holdable_position()
 	# Interupt cooking if needed
