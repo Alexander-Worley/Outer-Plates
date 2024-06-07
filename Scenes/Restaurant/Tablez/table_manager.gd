@@ -15,15 +15,8 @@ func _ready():
 		print("Set code: ", i)
 		
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func get_table(code):
 	return tables[code]
-
 
 # Retrieve the code of an available table and removes it from
 # available_table_codes array. Returns the code.

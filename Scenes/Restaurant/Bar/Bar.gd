@@ -29,7 +29,7 @@ func initialize_wrapper():
 	$Surface.region_rect = Rect2(barSide*32, 24, 32, 40)
 	initialize()
 	
-func _process(delta):
+func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 		#set_order("meat")

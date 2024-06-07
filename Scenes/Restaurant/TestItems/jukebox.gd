@@ -11,11 +11,6 @@ func begin_interaction(_player: CharacterBody2D):
 func _ready():
 	print("Matthew is a nerd") # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func playMusic():
 	if not playing:
 		$AnimatedSprite2D.play("default")

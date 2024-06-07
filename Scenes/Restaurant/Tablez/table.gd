@@ -23,7 +23,7 @@ func _ready():
 	initialize()
 
 
-func _process(delta):
+func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 		#set_order("meat")
