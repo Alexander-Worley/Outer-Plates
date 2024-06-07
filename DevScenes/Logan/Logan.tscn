@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=20 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="1_i5lgj"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
@@ -19,7 +19,20 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="15_ihipr"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_tkfx0"]
 
+[sub_resource type="GDScript" id="GDScript_tyb3y"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+"
+
 [node name="Logan" type="Node2D"]
+script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
 offset_left = 31.0
@@ -30,7 +43,7 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]

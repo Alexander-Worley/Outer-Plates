@@ -95,7 +95,7 @@ func update_sprite():
 	if !isGreen:
 		frame = 5
 	if ammoCount == 0: sprite.set_frame(frame + 4)
-	elif ammoCount <= full/4: sprite.set_frame(frame + 3)
-	elif ammoCount <= full/2: sprite.set_frame(frame+2)
-	elif ammoCount <= full*3/4: sprite.set_frame(frame + 1)
+	elif ammoCount <= full/4.0: sprite.set_frame(frame + 3)
+	elif ammoCount <= full/2.0: sprite.set_frame(frame+2)
+	elif ammoCount <= full*3/4.0: sprite.set_frame(frame + 1)
 	else: sprite.set_frame(frame)

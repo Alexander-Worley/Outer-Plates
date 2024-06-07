@@ -174,12 +174,12 @@ func get_continuous_input(input: String):
 # Inputs that are only read on the first frame they are inputted
 # (such as pickup) are read here
 func get_frame_one_input(input: String):
-	var pickup = "pickup{n}".format({"n":playerNum})
-	var interact = "interact{n}".format({"n":playerNum})
+	var pickupInput = "pickup{n}".format({"n":playerNum})
+	var interactInput = "interact{n}".format({"n":playerNum})
 	match input:
-		pickup:
+		pickupInput:
 			return "pickup"
-		interact:
+		interactInput:
 			return "interact"
 	return null
 

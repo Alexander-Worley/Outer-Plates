@@ -4,31 +4,52 @@
 script/source = "extends Node2D
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file(\"res://Scenes/MainMenu/mainMenu.tscn\")
+	const mainMenuScene = preload(\"res://Scenes/MainMenu/mainMenu.tscn\")
+	Utils.setScene(mainMenuScene, false)
 
 func _on_main_restaurant_pressed():
-	get_tree().change_scene_to_file(\"res://Scenes/Restaurant/restaurant.tscn\")
-
-func _on_prototype_1_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Prototype1/Prototype1.tscn\")
+	const mainRestaurantScene = preload(\"res://Scenes/Restaurant/restaurant.tscn\")
+	Utils.setScene(mainRestaurantScene)
 
 func _on_alexander_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Alexander/Alexander.tscn\")
+	const alexanderScene = preload(\"res://DevScenes/Alexander/Alexander.tscn\")
+	Utils.setScene(alexanderScene)
 
 func _on_andreea_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Andreea/Andreea2.tscn\")
+	const andreeaScene = preload(\"res://DevScenes/Andreea/Andreea2.tscn\")
+	Utils.setScene(andreeaScene)
+
+func _on_andreea_2_pressed():
+	const andreeaScene = preload(\"res://DevScenes/Andreea/Andreea2.tscn\")
+	Utils.setScene(andreeaScene)
 
 func _on_caitlin_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Caitlin/Caitlin.tscn\")
+	const caitlinScene = preload(\"res://DevScenes/Caitlin/Caitlin.tscn\")
+	Utils.setScene(caitlinScene)
 
 func _on_logan_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Logan/Logan.tscn\")
+	const loganScene = preload(\"res://DevScenes/Logan/Logan.tscn\")
+	Utils.setScene(loganScene)
 
 func _on_matthew_pressed():
-	get_tree().change_scene_to_file(\"res://DevScenes/Matthew/Matthew.tscn\")
+	const matthewScene = preload(\"res://DevScenes/Matthew/Matthew.tscn\")
+	Utils.setScene(matthewScene)
+
+func _on_matthew_2_pressed():
+	const matthewScene = preload(\"res://DevScenes/Matthew/Matthew.tscn\")
+	Utils.setScene(matthewScene)
 
 func _on_level_select_pressed():
-	get_tree().change_scene_to_file(\"res://Scenes/Levels/levelSelect.tscn\")
+	const levelSelectScene = preload(\"res://Scenes/Levels/levelSelect.tscn\")
+	Utils.setScene(levelSelectScene, false)
+
+func _on_tutorial_pressed():
+	const tutorialScene = preload(\"res://Scenes/Levels/Tutorial.tscn\")
+	Utils.setScene(tutorialScene)
+
+func _on_day_1_pressed():
+	const day1Scene = preload(\"res://Scenes/Levels/Tutorial.tscn\")
+	Utils.setScene(day1Scene)
 "
 
 [node name="DevMenu" type="Node2D"]
@@ -75,32 +96,50 @@ offset_bottom = 171.0
 theme_override_font_sizes/font_size = 25
 text = "Andreea"
 
-[node name="Caitlin" type="Button" parent="BG"]
+[node name="Andreea2" type="Button" parent="BG"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 192.0
 offset_right = 649.0
 offset_bottom = 235.0
 theme_override_font_sizes/font_size = 25
-text = "Caitlin"
+text = "Andreea2"
 
-[node name="Logan" type="Button" parent="BG"]
+[node name="Caitlin" type="Button" parent="BG"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 256.0
 offset_right = 649.0
 offset_bottom = 299.0
 theme_override_font_sizes/font_size = 25
-text = "Logan"
+text = "Caitlin"
 
-[node name="Matthew" type="Button" parent="BG"]
+[node name="Logan" type="Button" parent="BG"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 320.0
 offset_right = 649.0
 offset_bottom = 363.0
 theme_override_font_sizes/font_size = 25
+text = "Logan"
+
+[node name="Matthew" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 649.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 25
 text = "Matthew"
+
+[node name="Matthew2" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 649.0
+offset_bottom = 491.0
+theme_override_font_sizes/font_size = 25
+text = "Matthew2"
 
 [node name="Level Select" type="Button" parent="BG"]
 layout_mode = 0
@@ -111,11 +150,33 @@ offset_bottom = 237.0
 theme_override_font_sizes/font_size = 25
 text = "Level Select"
 
+[node name="Tutorial" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 232.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 25
+text = "Tutorial"
+
+[node name="Day1" type="Button" parent="BG"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 232.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 25
+text = "Day1"
+
 [connection signal="pressed" from="BG/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="BG/Main Restaurant" to="." method="_on_main_restaurant_pressed"]
 [connection signal="pressed" from="BG/Alexander" to="." method="_on_alexander_pressed"]
 [connection signal="pressed" from="BG/Andreea" to="." method="_on_andreea_pressed"]
+[connection signal="pressed" from="BG/Andreea2" to="." method="_on_andreea_2_pressed"]
 [connection signal="pressed" from="BG/Caitlin" to="." method="_on_caitlin_pressed"]
 [connection signal="pressed" from="BG/Logan" to="." method="_on_logan_pressed"]
 [connection signal="pressed" from="BG/Matthew" to="." method="_on_matthew_pressed"]
+[connection signal="pressed" from="BG/Matthew2" to="." method="_on_matthew_2_pressed"]
 [connection signal="pressed" from="BG/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="BG/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="BG/Day1" to="." method="_on_day_1_pressed"]

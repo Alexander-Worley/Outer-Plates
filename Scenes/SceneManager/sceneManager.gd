@@ -7,7 +7,16 @@ func _ready():
 	scene = Global.currentScene
 	add_child(scene)
 	
+	# Return if there are no players in this scene
+	if !Global.isPlayersInScene: return
+	
+	# Add Pause Menu
+	const pauseMenu = preload("res://Scenes/PauseMenu/pauseMenu.tscn")
+	add_child(pauseMenu.instantiate())
+	
 	var numDevices: int = Input.get_connected_joypads().size()
+	# If this crashes, you are attempting to laod a scene with players
+	# and forgot to attach the playerManager.gd script to the scene node!
 	scene.numPlayers = numDevices
 	
 	for deviceNum in range(numDevices):

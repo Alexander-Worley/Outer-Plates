@@ -5,9 +5,7 @@ extends Node2D
 # Changes to the Restaurant Scene
 func _on_start_button_pressed():
 	const devMenuScene = preload("res://DevScenes/DevMenu.tscn")
-	const AlexanderTest = preload("res://DevScenes/Alexander/Alexander.tscn")
-	Global.currentScene = AlexanderTest.instantiate()
-	get_tree().change_scene_to_file("res://Scenes/SceneManager/sceneManager.tscn")
+	Utils.setScene(devMenuScene, false)
 
 func _input(event):
 	if event.is_action_pressed("pickup") or event.is_action_pressed("interact"):

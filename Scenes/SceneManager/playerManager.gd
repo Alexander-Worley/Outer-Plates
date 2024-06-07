@@ -312,7 +312,7 @@ func erase_input_map(playerNum: int):
 	InputMap.erase_action(pickup)
 	InputMap.erase_action(interact)
 
-func _process(delta):
+func _process(_delta):
 	set_player_z_index()
 
 # Update players' z indexes

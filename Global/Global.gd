@@ -8,4 +8,5 @@ extends Node
 # example: var health = 10
 
 const PIXEL_DIMENSION: int = 32 # Deimension of pixel art assets
-var currentScene: Node2D
+var currentScene: Node2D = preload("res://Scenes/MainMenu/mainMenu.tscn").instantiate()
+var isPlayersInScene: bool = false

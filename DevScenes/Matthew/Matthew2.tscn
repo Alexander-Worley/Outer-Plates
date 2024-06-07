@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3obw6rerecq8"]
+[gd_scene load_steps=7 format=3 uid="uid://c3obw6rerecq8"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_mpqwr"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_ijpwe"]
@@ -6,10 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_svm2s"]
 [ext_resource type="PackedScene" uid="uid://df7g7vvs80ot1" path="res://Scenes/Restaurant/NPCs/customer.tscn" id="5_gu0ng"]
 
+[sub_resource type="GDScript" id="GDScript_ajdq8"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+"
+
 [node name="Matthew" type="Node2D"]
+script = SubResource("GDScript_ajdq8")
 
 [node name="Background" parent="." instance=ExtResource("1_mpqwr")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-2.18377, 0)
 Planet = "Green Planet"
 
 [node name="Matthew" type="Label" parent="Background"]
