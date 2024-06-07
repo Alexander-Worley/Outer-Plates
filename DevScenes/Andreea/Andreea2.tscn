@@ -26,6 +26,7 @@ script = SubResource("GDScript_i3ub0")
 
 [node name="Background" parent="." instance=ExtResource("1_hvmwk")]
 scroll_offset = Vector2(-1.66667, 0)
+Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
 offset_top = 576.0
@@ -53,6 +54,8 @@ position = Vector2(211, 307)
 
 [node name="Counter1" parent="." instance=ExtResource("3_mmvbl")]
 position = Vector2(389, 312)
+isCounter = false
+side = 0
 texture = ExtResource("4_jc3hn")
 
 [node name="Glass" parent="Counter1" instance=ExtResource("5_2xnql")]
@@ -67,12 +70,16 @@ position = Vector2(332, 211)
 [node name="Bar2" parent="." instance=ExtResource("2_l4vu2")]
 z_index = -1
 position = Vector2(243, 307)
+barSide = 1
 side = 1
 
 [node name="Bar3" parent="." instance=ExtResource("2_l4vu2")]
 z_index = -1
 position = Vector2(275, 307)
+barSide = 2
 side = 2
 
 [node name="DrinkTube" parent="." instance=ExtResource("8_whvoq")]
 position = Vector2(155, 211)
+isCounter = false
+side = 0

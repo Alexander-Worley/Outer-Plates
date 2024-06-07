@@ -7,6 +7,8 @@ extends Area2D
 var centersOfSurface: Array = []
 var holdablesOnSurface: Array[Area2D] = []
 @export_category("Developer Tools :0")
+@export var isCounter: bool = false
+@export_enum("Corner Left", "Corner Right", "Front", "Front weird?", "Side Right", "Side Left", "Endside Left", "Endside Right") var side: int = 0
 @export_enum("Up", "Right", "Down", "Left") var direction: int = 0
 @export var width: int = 1
 @export var height: int = 1
@@ -16,10 +18,12 @@ func _ready():
 	initialize()
 
 func initialize():
-	if texture: $Surface.texture = texture
+	#if texture: $Surface.texture = texture
 	var collision: StaticBody2D = get_node("StaticBody2D")
 	if collision: collision.scale = Vector2(width, height)
-	$Surface.rotation_degrees = 90 * direction
+	if isCounter:
+		$Surface.set_frame(side)
+	#$Surface.rotation_degrees = 90 * direction
 	initialize_surface_points()
 	initialize_holdables_on_surface()
 

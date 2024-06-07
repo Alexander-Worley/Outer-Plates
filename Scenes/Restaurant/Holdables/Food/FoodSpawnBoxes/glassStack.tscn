@@ -1,45 +1,49 @@
-[gd_scene load_steps=14 format=3 uid="uid://btugtq4bxfaeh"]
+[gd_scene load_steps=16 format=3 uid="uid://pboyl84wmi8l"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/PlainSurface/plainSurface.gd" id="1_yt7qm"]
-[ext_resource type="Texture2D" uid="uid://d1b4hokfhh1qd" path="res://Assets/Interactables/PlainSurfaces/table.png" id="2_kkcge"]
-[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="3_kqnhv"]
+[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="1_6tyyw"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.gd" id="1_7j6qr"]
+[ext_resource type="Texture2D" uid="uid://dcv6la488bfqs" path="res://Assets/Holdables/Food/glass-stack.png" id="2_rpieb"]
+[ext_resource type="PackedScene" uid="uid://bkymy7rnc3gfw" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.tscn" id="3_246u5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcddw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhwmo"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl6ri"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocpsw"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm70y"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcton"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrxeo"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cupu3"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qg5kj"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjkbt"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56y8x"]
-atlas = ExtResource("3_kqnhv")
+atlas = ExtResource("1_6tyyw")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ai18p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yuyj4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -71,21 +75,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlainSurface" type="Area2D" groups=["Surfaces"]]
-script = ExtResource("1_yt7qm")
-isCounter = null
-side = null
+[node name="GlassStack" type="Area2D" groups=["SpawnBox", "Surfaces"]]
+script = ExtResource("1_7j6qr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_tcddw")
+shape = SubResource("RectangleShape2D_fhwmo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tcddw")
+visible = false
+shape = SubResource("RectangleShape2D_dl6ri")
 
-[node name="Surface1" type="Sprite2D" parent="."]
-texture = ExtResource("2_kkcge")
+[node name="Glass" parent="." instance=ExtResource("3_246u5")]
+position = Vector2(0, -9)
 
 [node name="Surface" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ai18p")
+sprite_frames = SubResource("SpriteFrames_yuyj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Surface"]
+position = Vector2(0, -10)
+texture = ExtResource("2_rpieb")
