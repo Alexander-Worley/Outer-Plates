@@ -7,6 +7,7 @@ enum tableState {
 	CLEANUP = 3
 }
 
+var THRESHOLD = 0.5
 
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
@@ -15,6 +16,7 @@ enum tableState {
 @onready var tableCode = null
 @onready var isBar = false
 @onready var chair = get_child(3)
+var rng = RandomNumberGenerator.new()
 
 @onready var hasPirate = false
 @onready var pirateMarker = $PirateMarker
@@ -26,9 +28,6 @@ func _ready():
 func _process(delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
-		#set_order("meat")
-		#print("Table with the following code wants plated cooked orange food: ", tableCode)
-		#set_status(tableState.AWAITING_ORDER)
 	elif get_status() == tableState.AWAITING_ORDER and is_served():
 		set_status(tableState.DINING)
 		# Need to restrict the holdable from being picked up.
@@ -66,8 +65,17 @@ func get_code():
 
 
 func set_order(type):
-	needed_order_type = type
+	if type != 'generate':
+		needed_order_type = type
+	
+	var choiceNum = rng.randf_range(0, 1)
+	if isBar:
+		needed_order_type = 'red' if choiceNum < THRESHOLD else  'green'
+	else:
+		needed_order_type = 'meat' if choiceNum < THRESHOLD else 'salad'
 
+func get_order():
+	return needed_order_type 
 
 func is_served():
 	""" 
