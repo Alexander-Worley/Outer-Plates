@@ -235,6 +235,7 @@ func assign_player_properties(player: CharacterBody2D, playerNum: int):
 	set_player_starting_position(player, playerNum)
 	player.name = "player{n}".format({"n":playerNum})
 	player.playerNum = playerNum
+	player.z_index = playerNum
 
 # Assigns the appropriate input map to the player
 func assign_input_map(player: CharacterBody2D, playerNum: int):
@@ -262,11 +263,13 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 
 # Remove the player from the world
 func remove_player(playerNum: int):
+	var playerNode = find_child("Players", false, false)
+	if !playerNode: return
 	for player in players:
 		# Find the player and erase them
 		if player.playerNum == playerNum:
 			erase_input_map(playerNum)
-			remove_child(player)
+			playerNode.remove_child(player)
 			players.erase(player)
 
 # Erases the input map associated with this player
@@ -304,6 +307,17 @@ func erase_input_map(playerNum: int):
 	InputMap.erase_action(pickup)
 	InputMap.erase_action(interact)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	set_player_z_index()
+
+# Update players' z indexes
+func set_player_z_index():
+	players.sort_custom(Callable(self, "sort_by_y_position"))
+	for i in range(numPlayers):
+		players[i].z_index = i
+
+# Given two players, sort them by their position.y values
+func sort_by_y_position(a, b):
+	if a.position.y < b.position.y:
+		return true
+	return false

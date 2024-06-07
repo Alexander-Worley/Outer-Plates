@@ -9,8 +9,8 @@ func _ready():
 	var _input: int = Input.connect("joy_connection_changed", Callable(self, "_on_joy_connection_changed"))
 
 func _on_joy_connection_changed(deviceNum: int, isConnected: bool):
+	restaurant.numPlayers = Input.get_connected_joypads().size()
 	if isConnected:
-		restaurant.numPlayers = Input.get_connected_joypads().size()
 		restaurant.add_player(deviceNum)
 	else:
 		restaurant.remove_player(deviceNum)
