@@ -98,12 +98,17 @@ func is_served():
 	return true
 
 
-func display_order(order):
+func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""
 	# To be implemented, will be called by the Table Manager
-	pass
+	if status != tableState.AWAITING_ORDER:
+		return
+	if customer == null:
+		print("Well, this shouldn't have been called. Error with customer not being assigned to table awaiting order.")
+		return
+	customer.showOrder()
 
 
 
