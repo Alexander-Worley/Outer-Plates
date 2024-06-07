@@ -5,21 +5,60 @@
 [sub_resource type="GDScript" id="GDScript_6l2ow"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
 
-const SPAWN_POSITIONS: Array = [
-	
+const SCROLL_SPEED: int = 100
+const MAX_PLAYERS: int = 4
+var playerSpawnStatus = {
+	0: false,
+	1: false,
+	2: false,
+	3: false,
+}
+@onready var spawnPositions: Array = [
+	$PlayerSpawnPoints/Player1.position,
+	$PlayerSpawnPoints/Player2.position,
+	$PlayerSpawnPoints/Player3.position,
+	$PlayerSpawnPoints/Player4.position
 ]
+@onready var background = $Background/TeleporterLayer
+@onready var teleporter = $Background/TeleporterLayer/Teleporter
+
+func _ready():
+	background.scroll_offset.y -= 1
 
 # Sets the location where the player first spawns
-func set_player_starting_position(player: CharacterBody2D, offset: int):
-	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
-	var xOffset = Global.PIXEL_DIMENSION * offset
-	var yOffset = Global.PIXEL_DIMENSION * offset
-	var positionOffset = Vector2(xOffset, yOffset)
-	player.position = DEFAULT_STARTING_POSITION + positionOffset"
+func set_player_starting_position(player: CharacterBody2D, _offset: int):
+	for i in range(MAX_PLAYERS):
+		if playerSpawnStatus[i] == false:
+			print(i, \" player at \", player.position, \" to \", spawnPositions[i])
+			player.global_position = spawnPositions[i]
+			print(player.position)
+			playerSpawnStatus[i] = true
+
+func _physics_process(delta):
+	background.scroll_offset.y -= SCROLL_SPEED * delta
+"
 
 [node name="PlayerSelection" type="Node2D"]
 script = SubResource("GDScript_6l2ow")
 
 [node name="Background" parent="." instance=ExtResource("1_fp6xx")]
-scroll_offset = Vector2(-1.43891, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
+
+[node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]
+
+[node name="Teleporter" type="ParallaxLayer" parent="Background/TeleporterLayer"]
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Player1" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(192, 256)
+
+[node name="Player2" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(576, 256)
+
+[node name="Player3" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(192, 448)
+
+[node name="Player4" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(576, 448)
