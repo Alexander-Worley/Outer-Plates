@@ -1,5 +1,5 @@
 extends State
-class_name PirateWalkTo
+class_name CustomerWalkTo
 
 var target
 
@@ -8,7 +8,6 @@ var oldPos
 func Enter():
 	customer.startNavigating()
 	target = customer.target
-	print(target)
 	
 	TweakOutTimer.start()
 	oldPos = customer.position
@@ -20,19 +19,9 @@ func Update(_delta: float):
 	pass
 	
 func Physics_Update(_delta: float):
-	if not customer.reachedSeat:
-		if customer.position.distance_to(target.global_position) < 5:
-			customer.reachedSeat = true
-			Transitioned.emit(self, "WaitingForFood")
-		
-	if not customer.reachedHosting:
-		if customer.position.distance_to(target.global_position) < 5:
-			customer.reachedHosting = true
-			Transitioned.emit(self, "Idle")
-	if customer.isLeaving:
-		if customer.position.distance_to(target.global_position) < 40:
-			Transitioned.emit(self, "TeleportOut")
-	
+	if customer.position.distance_to(target.global_position) < 30:
+		print("pirate arrived")
+		Transitioned.emit(self, "Idle")
 
 
 func _on_tweak_out_timer_timeout():
