@@ -12,7 +12,7 @@
 [node name="Andreea2" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_hvmwk")]
-scroll_offset = Vector2(-1.61563, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
@@ -44,6 +44,7 @@ position = Vector2(389, 312)
 texture = ExtResource("4_jc3hn")
 
 [node name="Glass" parent="Counter1" instance=ExtResource("5_2xnql")]
+position = Vector2(0, -8)
 
 [node name="Player" parent="." instance=ExtResource("6_c1qef")]
 position = Vector2(576, 320)
@@ -63,3 +64,4 @@ side = 2
 
 [node name="DrinkTube" parent="." instance=ExtResource("8_whvoq")]
 position = Vector2(155, 211)
+color = null
