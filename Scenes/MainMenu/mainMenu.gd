@@ -4,8 +4,8 @@ extends Node2D
 
 # Changes to the Restaurant Scene
 func _on_start_button_pressed():
-	const devMenuScene = preload("res://DevScenes/DevMenu.tscn")
-	Utils.setScene(devMenuScene, false)
+	const p1InputSelectionScene = preload("res://Scenes/InputSelection/p1InputSelection.tscn")
+	Utils.setScene(p1InputSelectionScene, false)
 
 func _input(event):
 	if event.is_action_pressed("pickup") or event.is_action_pressed("interact"):
