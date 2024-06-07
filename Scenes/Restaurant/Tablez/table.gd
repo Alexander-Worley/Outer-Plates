@@ -16,6 +16,8 @@ enum tableState {
 @onready var isBar = false
 @onready var chair = get_child(3)
 
+@onready var hasPirate = false
+@onready var pirateMarker = $PirateMarker
 
 func _ready():
 	initialize()
@@ -72,9 +74,14 @@ func is_served():
 	Returns a bool indicating whether table has been properly served. 
 	If the table isn't awaiting an order, will return false by default.
 	""" 
+	#you can't serve to customers who're hounded by pirates
+	if hasPirate:
+		return false
 	if status != tableState.AWAITING_ORDER:
 		return false
 	if !holdablesOnSurface[0]:
+		return false
+	if holdablesOnSurface[0].is_in_group("Weapons"):
 		return false
 	if !holdablesOnSurface[0].isReady():
 		return false
