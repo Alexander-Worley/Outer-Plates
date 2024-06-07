@@ -1,14 +1,136 @@
-[gd_scene load_steps=13 format=3 uid="uid://ede2frngbs0e"]
+[gd_scene load_steps=30 format=3 uid="uid://ede2frngbs0e"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/Stove/stove.gd" id="1_il2kw"]
-[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_8c1y3"]
-[ext_resource type="Texture2D" uid="uid://lkhdgm05a8t0" path="res://Assets/Interactables/CookingStations/stove-square-off.png" id="3_2s8pw"]
-[ext_resource type="Texture2D" uid="uid://dipmyoc0j3ijx" path="res://Assets/Environment/Effects/pan.png" id="5_v1gc7"]
+[ext_resource type="Texture2D" uid="uid://j1tbru2vvg5y" path="res://Assets/Interactables/CookingStations/stove-spritesheet.png" id="3_1jkfd"]
+[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="3_6uvie"]
+[ext_resource type="Texture2D" uid="uid://dnhr5nifrx4mf" path="res://Assets/Interactables/CookingStations/pan-spritesheet.png" id="4_bis14"]
 [ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="6_h2776"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/Stove/CookingBarControl.gd" id="6_hdr2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br5vu"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u22x"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jd43"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8883"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w78p"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njnlu"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwxhm"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsxw2"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7tib"]
+atlas = ExtResource("3_6uvie")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_445jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u22x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jd43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8883")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w78p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njnlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwxhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsxw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k4af"]
+atlas = ExtResource("3_1jkfd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ja7i"]
+atlas = ExtResource("3_1jkfd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujet2"]
+atlas = ExtResource("3_1jkfd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeh0k"]
+atlas = ExtResource("3_1jkfd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ew1ck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k4af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ja7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujet2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeh0k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5jpm"]
+atlas = ExtResource("4_bis14")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqnjl"]
+atlas = ExtResource("4_bis14")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5jb5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5jpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqnjl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h3rb"]
 atlas = ExtResource("6_h2776")
@@ -48,6 +170,8 @@ animations = [{
 
 [node name="Stove" type="Area2D" groups=["CookingStation", "Surfaces"]]
 script = ExtResource("1_il2kw")
+isCounter = true
+side = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -56,24 +180,6 @@ shape = SubResource("RectangleShape2D_br5vu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_br5vu")
-
-[node name="Surface" type="Sprite2D" parent="."]
-texture = ExtResource("2_8c1y3")
-
-[node name="StoveTop" type="Sprite2D" parent="Surface"]
-texture = ExtResource("3_2s8pw")
-
-[node name="Pan" type="Sprite2D" parent="Surface/StoveTop"]
-position = Vector2(0, -8)
-texture = ExtResource("5_v1gc7")
-
-[node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
-unique_name_in_owner = true
-visible = false
-z_index = 2
-position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_gva8m")
-animation = &"Smoke"
 
 [node name="CookingBarControl" type="Control" parent="."]
 visible = false
@@ -103,6 +209,25 @@ show_percentage = false
 unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
+
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_445jm")
+frame = 2
+
+[node name="StoveTop" type="AnimatedSprite2D" parent="Surface"]
+sprite_frames = SubResource("SpriteFrames_ew1ck")
+
+[node name="Pan" type="AnimatedSprite2D" parent="Surface/StoveTop"]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_x5jb5")
+
+[node name="Smoke" type="AnimatedSprite2D" parent="Surface/StoveTop/Pan"]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_gva8m")
+animation = &"Smoke"
 
 [connection signal="timeout" from="CookingBarControl/CookingBarTimer" to="CookingBarControl" method="_on_cooking_bar_timer_timeout"]
 [connection signal="timeout" from="CookingTimer" to="." method="_on_cooking_timer_timeout"]
