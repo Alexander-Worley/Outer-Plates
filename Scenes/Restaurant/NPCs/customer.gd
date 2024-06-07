@@ -29,6 +29,8 @@ var chosen_dir = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
 var curTable
+var order
+
 var customersNode
 
 var canBeShot = false
@@ -50,8 +52,7 @@ func _on_interact():
 	#sprite.frame = 1 if sprite.frame == 0 else 0
 
 func _process(delta):
-	if hit_points <= 0:
-		die()
+	pass
 	
 func _physics_process(_delta:float) -> void:	
 	if navigate:
@@ -112,6 +113,7 @@ func die():
 	MoneyLabel.money -= 100
 	self.queue_free()
 	curTable.status = 0
+	curTable.customer = null
 
 func walkTo(location, time):
 	var tween = self.create_tween()
@@ -159,3 +161,10 @@ func choose_direction():
 	for i in num_rays:
 		chosen_dir += ray_directions[i] * interest[i]
 	chosen_dir = chosen_dir.normalized()
+
+func showOrder():
+	var ThinkingTimer = $StateMachine.find_child("ThinkingTimer")
+	ThinkingTimer.start()
+	
+	$ThinkingBubble.find_child(("DialogueBox")).visible = true
+	$ThinkingBubble.play(order)
