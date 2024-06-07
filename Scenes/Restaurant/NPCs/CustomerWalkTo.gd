@@ -23,8 +23,7 @@ func Physics_Update(_delta: float):
 	if not customer.reachedSeat:
 		if customer.position.distance_to(target.global_position) < 5:
 			customer.reachedSeat = true
-			Transitioned.emit(self, "WaitingForFood")
-		
+			Transitioned.emit(self, "Pondering")
 	if not customer.reachedHosting:
 		if customer.position.distance_to(target.global_position) < 5:
 			customer.reachedHosting = true
