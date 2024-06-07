@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://txto47x1ji8o"]
+[gd_scene load_steps=18 format=3 uid="uid://txto47x1ji8o"]
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.gd" id="1_bivrm"]
 [ext_resource type="Texture2D" uid="uid://bw7kdyubgw725" path="res://Assets/Interactables/CookingStations/drink-tube-green.png" id="2_y76a5"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Interactables/DrinkTube/DispensingBarControl.gd" id="3_3tbfv"]
+[ext_resource type="Texture2D" uid="uid://bgievbkvnb57r" path="res://Assets/Interactables/CookingStations/drink-tube.png" id="4_7e8be"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6do5o"]
 size = Vector2(32, 56)
@@ -10,7 +11,85 @@ size = Vector2(32, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_us6hb"]
 size = Vector2(32, 56)
 
-[node name="DrinkTube" type="Area2D" groups=["DrinkTube", "Interactable"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_evo5h"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aitu3"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu3if"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eur4y"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmb3k"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5yrx"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c68r7"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wx8k"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvk7b"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdhdr"]
+atlas = ExtResource("4_7e8be")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ic0f4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evo5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aitu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu3if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eur4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmb3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5yrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c68r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wx8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvk7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdhdr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DrinkTube" type="Area2D" groups=["DrinkTube", "Interactable", "ammoDepots"]]
 script = ExtResource("1_bivrm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,6 +101,7 @@ shape = SubResource("RectangleShape2D_6do5o")
 shape = SubResource("RectangleShape2D_us6hb")
 
 [node name="Surface" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_y76a5")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 64)
@@ -50,5 +130,8 @@ show_percentage = false
 unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
+
+[node name="Surface2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ic0f4")
 
 [connection signal="timeout" from="DispensingBarControl/DispensingBarTimer" to="DispensingBarControl" method="_on_dispensing_bar_timer_timeout"]
