@@ -314,7 +314,7 @@ func _process(delta):
 func set_player_z_index():
 	players.sort_custom(Callable(self, "sort_by_y_position"))
 	for i in range(numPlayers):
-		players[i].z_index = i
+		players[i].z_index = i * 2
 
 # Given two players, sort them by their position.y values
 func sort_by_y_position(a, b):
