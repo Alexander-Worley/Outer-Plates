@@ -10,3 +10,4 @@ extends Node
 const PIXEL_DIMENSION: int = 32 # Deimension of pixel art assets
 var currentScene: Node2D = preload("res://Scenes/MainMenu/mainMenu.tscn").instantiate()
 var isPlayersInScene: bool = false
+var isDebugMode: bool = true

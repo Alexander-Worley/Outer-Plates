@@ -222,6 +222,30 @@ func read_pickup_and_interact_values(action: String):
 		"interact":
 			interact()
 
+# Only called when in Debug Mode
+func debug_mode_move_and_aim() -> Array:
+	# Fetch movement input
+	var horizontalMovement: float = Input.get_axis("left", "right")
+	var verticalMovement: float = Input.get_axis("up", "down")
+	
+	# Fetch aiming input
+	var horizontalFacing: float = Input.get_axis("face_left", "face_right")
+	var verticalFacing: float = Input.get_axis("face_up", "face_down")
+	
+	# Sanitize movement input
+	if horizontalMovement > 0: horizontalMovement = 1
+	elif horizontalMovement < 0: horizontalMovement = -1
+	if verticalMovement > 0: verticalMovement = 1
+	elif verticalMovement < 0: verticalMovement = -1
+	
+	# Sanitize aiming input
+	if horizontalFacing > 0: horizontalFacing = 1
+	elif horizontalFacing < 0: horizontalFacing = -1
+	if verticalFacing > 0: verticalFacing = 1
+	elif verticalFacing < 0: verticalFacing = -1
+	
+	return [horizontalMovement, verticalMovement, horizontalFacing, verticalFacing]
+
 func _process(_delta):
 	var horizontalMovement: int = 0
 	var verticalMovement: int = 0
@@ -239,6 +263,14 @@ func _process(_delta):
 		# Read pickup and interact values only on the first frame of a new input
 		if !Input.is_action_just_pressed(action): continue
 		read_pickup_and_interact_values(action)
+	
+	# If in debug mode, get move and aim input
+	if Global.isDebugMode:
+		var moveAndAimValues: Array = debug_mode_move_and_aim()
+		if moveAndAimValues[0]: horizontalMovement = moveAndAimValues[0]
+		if moveAndAimValues[1]: verticalMovement = moveAndAimValues[1]
+		if moveAndAimValues[2]: horizontalFacing = moveAndAimValues[2]
+		if moveAndAimValues[3]: verticalFacing = moveAndAimValues[3]
 	
 	# Move interactRange
 	var interactRange_x: int = 0
@@ -282,6 +314,14 @@ func _process(_delta):
 		if !horizontalMovement and !isAnimationLock: playerSprite.stop()
 	
 	move_and_slide()
+
+# Only used in Debug Mode
+func _input(event):
+	if !Global.isDebugMode: return
+	if event.is_action_pressed("pickup"):
+		pickup()
+	if event.is_action_pressed("interact"):
+		interact()
 
 # On pickup input
 func pickup():

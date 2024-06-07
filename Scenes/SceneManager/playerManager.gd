@@ -69,6 +69,12 @@ func assign_move_controls(playerNum: int):
 	moveRightEvent.button_index = JOY_BUTTON_DPAD_RIGHT
 	InputMap.action_add_event(moveRight, moveRightEvent)
 	
+	# Keyboard - D
+	moveRightEvent = InputEventKey.new()
+	moveRightEvent.device = playerNum
+	moveRightEvent.keycode = KEY_D
+	InputMap.action_add_event(moveRight, moveRightEvent)
+	
 	# Controller - Left Joystick - Left
 	InputMap.add_action(moveLeft)
 	moveLeftEvent.device = playerNum
@@ -80,6 +86,12 @@ func assign_move_controls(playerNum: int):
 	moveLeftEvent = InputEventJoypadButton.new()
 	moveLeftEvent.device = playerNum
 	moveLeftEvent.button_index = JOY_BUTTON_DPAD_LEFT
+	InputMap.action_add_event(moveLeft, moveLeftEvent)
+	
+	# Keyboard - A
+	moveLeftEvent = InputEventKey.new()
+	moveLeftEvent.device = playerNum
+	moveLeftEvent.keycode = KEY_A
 	InputMap.action_add_event(moveLeft, moveLeftEvent)
 	
 	# Controller - Left Joystick - Up
@@ -95,6 +107,12 @@ func assign_move_controls(playerNum: int):
 	moveUpEvent.button_index = JOY_BUTTON_DPAD_UP
 	InputMap.action_add_event(moveUp, moveUpEvent)
 	
+	# Keyboard - W
+	moveUpEvent = InputEventKey.new()
+	moveUpEvent.device = playerNum
+	moveUpEvent.keycode = KEY_W
+	InputMap.action_add_event(moveUp, moveUpEvent)
+	
 	# Controller - Left Joystick - Down
 	InputMap.add_action(moveDown)
 	moveDownEvent.device = playerNum
@@ -106,6 +124,12 @@ func assign_move_controls(playerNum: int):
 	moveDownEvent = InputEventJoypadButton.new()
 	moveDownEvent.device = playerNum
 	moveDownEvent.button_index = JOY_BUTTON_DPAD_DOWN
+	InputMap.action_add_event(moveDown, moveDownEvent)
+	
+	# Keyboard - S
+	moveDownEvent = InputEventKey.new()
+	moveDownEvent.device = playerNum
+	moveDownEvent.keycode = KEY_S
 	InputMap.action_add_event(moveDown, moveDownEvent)
 
 # Assigns Aim Controls for the inputted player
