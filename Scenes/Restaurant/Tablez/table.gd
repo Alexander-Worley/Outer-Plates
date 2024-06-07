@@ -76,6 +76,7 @@ func set_order(type):
 		needed_order_type = 'meat' if choiceNum < THRESHOLD else 'salad'
 
 func get_order():
+	#print(str(tableCode)+str(status) + " " + str(needed_order_type) + ":3")
 	return needed_order_type 
 
 func is_served():
@@ -103,10 +104,9 @@ func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""
-	
 	# To be implemented, will be called by the Table Manager
-	if status != tableState.NEED_SERVING:
-		return
+	#if status != tableState.AWAITING_ORDER:
+	#	return
 	if customer == null:
 		print("Well, this shouldn't have been called. Error with customer not being assigned to table awaiting order.")
 		return

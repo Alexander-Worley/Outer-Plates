@@ -199,7 +199,7 @@ script = ExtResource("11_qehpb")
 script = ExtResource("13_5c8lk")
 
 [node name="ShowOrderTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 
 [connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]

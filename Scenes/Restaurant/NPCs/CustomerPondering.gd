@@ -13,7 +13,7 @@ func Enter():
 	
 
 func Exit():
-	pass
+	ThinkingTimer.stop()
 	
 func Update(_delta: float):
 	pass
@@ -23,15 +23,12 @@ func Physics_Update(_delta: float):
 	pass
 
 func _on_thinking_timer_timeout():
-	ThinkingTimer.stop()
 	if not decided:
 		decided = true
-		thinkingBubbleSprite.stop()
 		
 		customer.curTable.set_order("generate")	
 		customer.order = customer.curTable.get_order()
 		customer.curTable.set_status(2) # This corresponds to a new table state (NEED_SERVING)
 		customer.showOrder()
 	else:
-		thinkingBubbleSprite.visible = false
 		Transitioned.emit(self, "WaitingForFood")

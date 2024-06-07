@@ -12,7 +12,7 @@ func _ready():
 		table.set_code(i)
 		tables.push_back(table)
 		available_table_codes.push_back(i)
-		print("Set code: ", i)
+		#print("Set code: ", i)
 		
 
 

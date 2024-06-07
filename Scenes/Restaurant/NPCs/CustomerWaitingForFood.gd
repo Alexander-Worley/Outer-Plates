@@ -8,7 +8,7 @@ func Exit():
 	pass
 	
 func Update(_delta: float):
-	if customer.curTable.status == 2 or customer.curTable.status == 3:
+	if customer.curTable.status == 3:
 		startEating()
 		
 		

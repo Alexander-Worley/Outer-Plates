@@ -8,7 +8,6 @@ var oldPos
 func Enter():
 	customer.startNavigating()
 	target = customer.target
-	print(target)
 	
 	TweakOutTimer.start()
 	oldPos = customer.position
@@ -36,7 +35,6 @@ func Physics_Update(_delta: float):
 
 func _on_tweak_out_timer_timeout():
 	if abs(customer.position.x - oldPos.x) < 2 and abs(customer.position.y - oldPos.y) < 2:
-		print("tweak timer engaged")
 		collisionShape.disabled = true
 		customer.position = customer.target.global_position
 		
