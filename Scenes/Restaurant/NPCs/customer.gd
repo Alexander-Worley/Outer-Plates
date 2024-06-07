@@ -163,6 +163,8 @@ func choose_direction():
 	chosen_dir = chosen_dir.normalized()
 
 func showOrder():
+	print("showOrder called")
+	print(self)
 	var ThinkingTimer = $StateMachine.find_child("ThinkingTimer")
 	ThinkingTimer.start()
 	

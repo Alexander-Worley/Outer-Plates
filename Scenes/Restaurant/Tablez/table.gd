@@ -3,8 +3,9 @@ extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 enum tableState {
 	AVAILABLE = 0,
 	AWAITING_ORDER = 1,
-	DINING = 2,
-	CLEANUP = 3
+	NEED_SERVING = 2,
+	DINING = 3,
+	CLEANUP = 4
 }
 
 var THRESHOLD = 0.5
@@ -28,10 +29,10 @@ func _ready():
 func _process(delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
-	elif get_status() == tableState.AWAITING_ORDER and is_served():
+	elif get_status() == tableState.AWAITING_ORDER:
+		pass
+	elif get_status() == tableState.NEED_SERVING and is_served():
 		set_status(tableState.DINING)
-		# Need to restrict the holdable from being picked up.
-		# Probably can be done with a variable
 	elif get_status() == tableState.DINING:
 		set_status(tableState.CLEANUP)
 		holdablesOnSurface[0].set_isEaten(true)
@@ -102,12 +103,14 @@ func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""
+	
 	# To be implemented, will be called by the Table Manager
-	if status != tableState.AWAITING_ORDER:
+	if status != tableState.NEED_SERVING:
 		return
 	if customer == null:
 		print("Well, this shouldn't have been called. Error with customer not being assigned to table awaiting order.")
 		return
+	print("display_order called from table code: ", tableCode)
 	customer.showOrder()
 
 

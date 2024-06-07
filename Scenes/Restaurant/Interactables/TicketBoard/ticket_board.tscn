@@ -22,9 +22,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k03jl"]
-size = Vector2(26, 43)
+size = Vector2(34, 50.5)
 
-[node name="TicketBoard" type="Area2D"]
+[node name="TicketBoard" type="Area2D" groups=["Interactable"]]
 script = ExtResource("1_1kwj2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -37,5 +37,5 @@ shape = SubResource("RectangleShape2D_dlyne")
 sprite_frames = SubResource("SpriteFrames_cmd0x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8.5)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_k03jl")

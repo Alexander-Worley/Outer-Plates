@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=21 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="1_i5lgj"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="15_6f7kt"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="15_ihipr"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_tkfx0"]
+[ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="20_671vo"]
 
 [node name="Logan" type="Node2D"]
 
@@ -31,7 +32,7 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.694444, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -60,6 +61,9 @@ rotation = 6.22035
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(509, 444)
 rotation = 6.22035
+
+[node name="TicketBoard" parent="Furniture" instance=ExtResource("20_671vo")]
+position = Vector2(153, 216)
 
 [node name="Foods" type="Node2D" parent="."]
 
@@ -116,3 +120,5 @@ position = Vector2(674, 466)
 
 [node name="CookableRack" parent="." instance=ExtResource("16_tkfx0")]
 position = Vector2(638, 371)
+
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

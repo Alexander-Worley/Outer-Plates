@@ -31,6 +31,12 @@ func teleport_in():
 		$TeleportInTimer.start()
 		$AnimatedSprite2D.play("default")
 		
+		###############
+		# Debugging code
+		spawn_customer()
+		return
+		################
+		
 		if pirateToggle:
 			spawn_pirate()
 			pirateToggle = false

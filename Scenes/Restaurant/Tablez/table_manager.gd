@@ -45,4 +45,5 @@ func display_orders():
 	for table in tables:
 		table.display_order()
 
-
+func _on_ticket_board_display_orders():
+	display_orders()

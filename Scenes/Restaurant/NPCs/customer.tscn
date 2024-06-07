@@ -130,7 +130,6 @@ visible = false
 position = Vector2(12, -31)
 scale = Vector2(0.59375, 0.5625)
 sprite_frames = SubResource("SpriteFrames_pijxf")
-animation = &"salad"
 
 [node name="DialogueBox" type="AnimatedSprite2D" parent="ThinkingBubble"]
 visible = false
@@ -175,7 +174,7 @@ wait_time = 3.0
 wait_time = 2.0
 
 [node name="WaitingForFoodTimer" type="Timer" parent="StateMachine"]
-wait_time = 15.0
+wait_time = 60.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_s7dxk")
