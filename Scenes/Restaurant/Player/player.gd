@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var inputMap = {}
 var playerNum: int
+var isKeyboardControl: bool = false
 
 const SPEED: float = 120.0
 # If true, the Player will not stop their animation
@@ -24,6 +25,7 @@ var holdableInHand: Area2D = null
 # If the player is only moving horizontally, the third value is selected.
 # This is less than ideal, I know, but I'm forgoing redoing this due to time crunch.
 var sprites = {
+	-1: [["P4_Back", "P4_B_Diagonal"], ["P4_Front", "P4_F_Diagonal"], "P4_Side"],
 	0: [["P1_Back", "P1_B_Diagonal"], ["P1_Front", "P1_F_Diagonal"], "P1_Side"],
 	1: [["P2_Back", "P2_B_Diagonal"], ["P2_Front", "P2_F_Diagonal"], "P2_Side"],
 	2: [["P3_Back", "P3_B_Diagonal"], ["P3_Front", "P3_F_Diagonal"], "P3_Side"],

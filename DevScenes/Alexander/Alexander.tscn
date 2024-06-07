@@ -35,7 +35,7 @@ script = SubResource("GDScript_paifd")
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-1.65973, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]

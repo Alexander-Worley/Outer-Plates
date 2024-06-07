@@ -5,17 +5,35 @@ var numPlayers: int
 var players: Array = []
 var inputMaps: Array = []
 
-func add_player(playerNum: int):
+func add_player(playerNum: int, isIgnoreKeyboard: bool = false):
+	# If player0 determine if it is a keyboard player
+	if playerNum == 0 and !isIgnoreKeyboard and Global.isP1UsingKeyboard:
+		# Check that there is not already a keyboard player
+		var isFreshKeyboardPlayer: bool = true
+		for player in players:
+			if player.playerNum == -1:
+				isFreshKeyboardPlayer = false
+				break
+		# If this is the first keyboard player, assign it player-1
+		if isFreshKeyboardPlayer: playerNum = -1
+	
+	# If there are no controller inputs and this is a controller input, return
+	if playerNum != -1 and !Input.get_connected_joypads().size(): return
+	
 	# Create a new player
 	var player = PLAYER_SCENE.instantiate()
 	players.append(player)
 	
 	# Set Controls
 	build_input_map(playerNum)
-	assign_move_controls(playerNum)
-	assign_aim_controls(playerNum)
-	assign_pickup_controls(playerNum)
-	assign_interact_controls(playerNum)
+	
+	# If this is a keyboard player
+	if playerNum == -1:
+		assign_keyboard_controls(playerNum)
+		player.isKeyboardControl = true
+	# If this is a controller player
+	else:
+		assign_controller_controls(playerNum)
 	
 	# Give the player its unique atributes
 	assign_player_properties(player, playerNum)
@@ -27,8 +45,14 @@ func add_player(playerNum: int):
 		playerNode.name = "Players"
 		add_child(playerNode)
 	playerNode.z_index = 5 # Arbitrary value
+	
 	# Spawn the player
 	playerNode.add_child(player)
+	
+	# If it was a keyboard player,
+	# establish player0 controller player
+	if playerNum == -1:
+		add_player(0, true)
 
 # Builds the input map for the inputted player
 func build_input_map(playerNum: int):
@@ -44,6 +68,108 @@ func build_input_map(playerNum: int):
 		"pickup{n}".format({"n":playerNum}): null,
 		"interact{n}".format({"n":playerNum}): null
 		})
+
+# Assigns Controls for Keyboard Input
+func assign_keyboard_controls(playerNum: int):
+	var moveRight: String = "moveRight{n}".format({"n":playerNum})
+	var moveRightEvent = InputEventKey.new()
+	var moveLeft: String = "moveLeft{n}".format({"n":playerNum})
+	var moveLeftEvent = InputEventKey.new()
+	var moveUp: String = "moveUp{n}".format({"n":playerNum})
+	var moveUpEvent = InputEventKey.new()
+	var moveDown: String = "moveDown{n}".format({"n":playerNum})
+	var moveDownEvent = InputEventKey.new()
+	var aimRight: String = "aimRight{n}".format({"n":playerNum})
+	var aimRightEvent = InputEventKey.new()
+	var aimLeft: String = "aimLeft{n}".format({"n":playerNum})
+	var aimLeftEvent = InputEventKey.new()
+	var aimUp: String = "aimUp{n}".format({"n":playerNum})
+	var aimUpEvent = InputEventKey.new()
+	var aimDown: String = "aimDown{n}".format({"n":playerNum})
+	var aimDownEvent = InputEventKey.new()
+	var pickup: String = "pickup{n}".format({"n":playerNum})
+	var pickupEvent = InputEventKey.new()
+	var interact: String = "interact{n}".format({"n":playerNum})
+	var interactEvent = InputEventKey.new()
+	
+	# Keyboard - D
+	InputMap.add_action(moveRight)
+	moveRightEvent.device = playerNum
+	moveRightEvent.keycode = KEY_D
+	InputMap.action_add_event(moveRight, moveRightEvent)
+	
+	# Keyboard - A
+	InputMap.add_action(moveLeft)
+	moveLeftEvent.device = playerNum
+	moveLeftEvent.keycode = KEY_A
+	InputMap.action_add_event(moveLeft, moveLeftEvent)
+	
+	# Keyboard - W
+	InputMap.add_action(moveUp)
+	moveUpEvent.device = playerNum
+	moveUpEvent.keycode = KEY_W
+	InputMap.action_add_event(moveUp, moveUpEvent)
+	
+	# Keyboard - S
+	InputMap.add_action(moveDown)
+	moveDownEvent.device = playerNum
+	moveDownEvent.keycode = KEY_S
+	InputMap.action_add_event(moveDown, moveDownEvent)
+	
+	# Keyboard - Right Arrow
+	InputMap.add_action(aimRight)
+	aimRightEvent.device = playerNum
+	aimRightEvent.keycode = KEY_RIGHT
+	InputMap.action_add_event(aimRight, aimRightEvent)
+	
+	# Keyboard - Left Arrow
+	InputMap.add_action(aimLeft)
+	aimLeftEvent.device = playerNum
+	aimLeftEvent.keycode = KEY_LEFT
+	InputMap.action_add_event(aimLeft, aimLeftEvent)
+	
+	# Keyboard - Up Arrow
+	InputMap.add_action(aimUp)
+	aimUpEvent.device = playerNum
+	aimUpEvent.keycode = KEY_UP
+	InputMap.action_add_event(aimUp, aimUpEvent)
+	
+	# Keyboard - Down Arrow
+	InputMap.add_action(aimDown)
+	aimDownEvent.device = playerNum
+	aimDownEvent.keycode = KEY_DOWN
+	InputMap.action_add_event(aimDown, aimDownEvent)
+	
+	# Keyboard - E
+	InputMap.add_action(pickup)
+	pickupEvent.device = playerNum
+	pickupEvent.keycode = KEY_E
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Keyboard - Space
+	pickupEvent = InputEventKey.new()
+	pickupEvent.device = playerNum
+	pickupEvent.keycode = KEY_SPACE
+	InputMap.action_add_event(pickup, pickupEvent)
+	
+	# Keyboard - Q
+	InputMap.add_action(interact)
+	interactEvent.device = playerNum
+	interactEvent.keycode = KEY_Q
+	InputMap.action_add_event(interact, interactEvent)
+	
+	# Keyboard - Shift
+	interactEvent = InputEventKey.new()
+	interactEvent.device = playerNum
+	interactEvent.keycode = KEY_SHIFT
+	InputMap.action_add_event(interact, interactEvent)
+
+# Assigns Controls for Controller Input
+func assign_controller_controls(playerNum: int):
+	assign_move_controls(playerNum)
+	assign_aim_controls(playerNum)
+	assign_pickup_controls(playerNum)
+	assign_interact_controls(playerNum)
 
 # Assigns Move Controls for the inputted player
 func assign_move_controls(playerNum: int):
@@ -69,12 +195,6 @@ func assign_move_controls(playerNum: int):
 	moveRightEvent.button_index = JOY_BUTTON_DPAD_RIGHT
 	InputMap.action_add_event(moveRight, moveRightEvent)
 	
-	# Keyboard - D
-	moveRightEvent = InputEventKey.new()
-	moveRightEvent.device = playerNum
-	moveRightEvent.keycode = KEY_D
-	InputMap.action_add_event(moveRight, moveRightEvent)
-	
 	# Controller - Left Joystick - Left
 	InputMap.add_action(moveLeft)
 	moveLeftEvent.device = playerNum
@@ -86,12 +206,6 @@ func assign_move_controls(playerNum: int):
 	moveLeftEvent = InputEventJoypadButton.new()
 	moveLeftEvent.device = playerNum
 	moveLeftEvent.button_index = JOY_BUTTON_DPAD_LEFT
-	InputMap.action_add_event(moveLeft, moveLeftEvent)
-	
-	# Keyboard - A
-	moveLeftEvent = InputEventKey.new()
-	moveLeftEvent.device = playerNum
-	moveLeftEvent.keycode = KEY_A
 	InputMap.action_add_event(moveLeft, moveLeftEvent)
 	
 	# Controller - Left Joystick - Up
@@ -107,12 +221,6 @@ func assign_move_controls(playerNum: int):
 	moveUpEvent.button_index = JOY_BUTTON_DPAD_UP
 	InputMap.action_add_event(moveUp, moveUpEvent)
 	
-	# Keyboard - W
-	moveUpEvent = InputEventKey.new()
-	moveUpEvent.device = playerNum
-	moveUpEvent.keycode = KEY_W
-	InputMap.action_add_event(moveUp, moveUpEvent)
-	
 	# Controller - Left Joystick - Down
 	InputMap.add_action(moveDown)
 	moveDownEvent.device = playerNum
@@ -124,12 +232,6 @@ func assign_move_controls(playerNum: int):
 	moveDownEvent = InputEventJoypadButton.new()
 	moveDownEvent.device = playerNum
 	moveDownEvent.button_index = JOY_BUTTON_DPAD_DOWN
-	InputMap.action_add_event(moveDown, moveDownEvent)
-	
-	# Keyboard - S
-	moveDownEvent = InputEventKey.new()
-	moveDownEvent.device = playerNum
-	moveDownEvent.keycode = KEY_S
 	InputMap.action_add_event(moveDown, moveDownEvent)
 
 # Assigns Aim Controls for the inputted player
