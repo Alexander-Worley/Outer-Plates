@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cq4rjomlqw06p"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_1fft2"]
-[ext_resource type="Script" path="res://DevScenes/Alexander/Alexander.gd" id="1_uxd5i"]
+[ext_resource type="Script" path="res://Scenes/SceneManager/playerManager.gd" id="1_xamqa"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="2_oon6e"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_gejkp"]
 [ext_resource type="Texture2D" uid="uid://g6sa6xxkg7q4" path="res://Assets/Environment/Ambiance/chair.png" id="3_rqnal"]
@@ -20,12 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="19_pla8y"]
 
 [node name="Alexander" type="Node2D"]
-script = ExtResource("1_uxd5i")
+script = ExtResource("1_xamqa")
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" parent="Environment" instance=ExtResource("1_1fft2")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-0.833333, 0)
 Planet = "Green Planet"
 
 [node name="Alexander" type="Label" parent="Environment/Background"]

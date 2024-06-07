@@ -274,6 +274,7 @@ func remove_player(playerNum: int):
 
 # Erases the input map associated with this player
 func erase_input_map(playerNum: int):
+	# Define input map for this player
 	var moveRight: String = "moveRight{n}".format({"n":playerNum})
 	var moveLeft: String = "moveLeft{n}".format({"n":playerNum})
 	var moveUp: String = "moveUp{n}".format({"n":playerNum})
@@ -284,6 +285,9 @@ func erase_input_map(playerNum: int):
 	var aimDown: String = "aimDown{n}".format({"n":playerNum})
 	var pickup: String = "pickup{n}".format({"n":playerNum})
 	var interact: String = "interact{n}".format({"n":playerNum})
+	# If that input map does not exist, return
+	if !InputMap.has_action(moveRight): return
+	# If that input map exists, erase it
 	inputMaps.erase({
 		moveRight: null,
 		moveLeft: null,
@@ -296,6 +300,7 @@ func erase_input_map(playerNum: int):
 		pickup: null,
 		interact: null
 		})
+	# Erase the associated InputMap for that player
 	InputMap.erase_action(moveRight)
 	InputMap.erase_action(moveLeft)
 	InputMap.erase_action(moveUp)

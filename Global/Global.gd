@@ -8,3 +8,4 @@ extends Node
 # example: var health = 10
 
 const PIXEL_DIMENSION: int = 32 # Deimension of pixel art assets
+var currentScene: Node2D

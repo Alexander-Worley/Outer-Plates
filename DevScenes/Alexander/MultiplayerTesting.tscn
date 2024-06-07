@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb88fxeflcnnk"]
-
-[ext_resource type="Script" path="res://DevScenes/Alexander/MultiplayerTesting.gd" id="1_ys46c"]
-
-[node name="MultiplayerTesting" type="Node2D"]
-script = ExtResource("1_ys46c")
