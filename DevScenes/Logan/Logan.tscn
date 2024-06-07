@@ -32,13 +32,14 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-5.3027, 0)
+scroll_offset = Vector2(-2.01777, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
 
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_kt0um")]
 position = Vector2(394, 169)
+spawnString = "pcpcpc"
 
 [node name="HostingStand" parent="Furniture" instance=ExtResource("3_gxp8f")]
 position = Vector2(243, 474)
@@ -52,15 +53,12 @@ position = Vector2(507, 320)
 
 [node name="Table2" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(508, 387)
-rotation = 6.22035
 
 [node name="Table3" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(509, 514)
-rotation = 6.22035
 
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(509, 444)
-rotation = 6.22035
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("20_671vo")]
 position = Vector2(153, 216)
