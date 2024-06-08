@@ -36,7 +36,16 @@ func initialize_surface_points():
 			var newX = w * Global.PIXEL_DIMENSION - w_offset
 			var newY = h * Global.PIXEL_DIMENSION - h_offset
 			var newPoint = Vector2(newX, newY)
+			
+			"""
+			############################
+			Commented out for Andrea's debugging
+			############################
 			# Adjust for surface rotation
+			if isCounter:
+				if side not in [4, 5, 6, 7]:
+					newPoint.y -= Global.PIXEL_DIMENSION / 4.0
+			"""
 			match direction:
 				0:
 					newPoint.y -= Global.PIXEL_DIMENSION / 4.0

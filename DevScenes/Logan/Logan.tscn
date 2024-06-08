@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=23 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="1_i5lgj"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_yeim4"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="3_gxp8f"]
-[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_dqmr5"]
+[ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="4_icx7d"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_kt0um"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="4_ns5cg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="4_x7xqw"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="8_gpd82"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="9_edn42"]
+[ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="10_1ls2y"]
 [ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_au6up"]
 [ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="12_fxna3"]
@@ -18,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="15_6f7kt"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="15_ihipr"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_tkfx0"]
+[ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="20_671vo"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="21_8hndd"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -34,6 +37,13 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 [node name="Logan" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
+[node name="ammoCount" type="Label" parent="."]
+offset_left = 658.0
+offset_top = 9.0
+offset_right = 698.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_yeim4")
+
 [node name="MoneyLabel" type="Label" parent="."]
 offset_left = 31.0
 offset_top = 10.0
@@ -43,10 +53,13 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.694444, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
+
+[node name="Sink" parent="Furniture" groups=["Sink"] instance=ExtResource("4_icx7d")]
+position = Vector2(594, 282)
 
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_kt0um")]
 position = Vector2(394, 169)
@@ -58,39 +71,36 @@ rotation = 1.55858
 [node name="TableManager" type="Node" parent="Furniture"]
 script = ExtResource("4_x7xqw")
 
+[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("21_8hndd")]
+position = Vector2(503, 196)
+
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(507, 320)
 
 [node name="Table2" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(508, 387)
-rotation = 6.22035
 
 [node name="Table3" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(509, 514)
-rotation = 6.22035
 
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(509, 444)
-rotation = 6.22035
+
+[node name="TicketBoard" parent="Furniture" instance=ExtResource("20_671vo")]
+position = Vector2(153, 216)
 
 [node name="Foods" type="Node2D" parent="."]
-
-[node name="Players" type="Node2D" parent="."]
-
-[node name="Player" parent="Players" instance=ExtResource("4_dqmr5")]
-position = Vector2(510, 255)
 
 [node name="Jukebox" parent="." instance=ExtResource("8_gpd82")]
 position = Vector2(646, 212)
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="ammoCount" type="Label" parent="Weapons"]
-offset_left = 658.0
-offset_top = 9.0
-offset_right = 698.0
-offset_bottom = 32.0
-theme_override_fonts/font = ExtResource("1_yeim4")
+[node name="DrinkTube" parent="Weapons" instance=ExtResource("10_1ls2y")]
+position = Vector2(283, 279)
+color = 0
+width = 0
+height = 0
 
 [node name="Plasmagun" parent="Weapons" instance=ExtResource("10_7flq7")]
 position = Vector2(209, 368)
@@ -104,6 +114,8 @@ position = Vector2(352, 369)
 
 [node name="Stove" parent="." instance=ExtResource("11_au6up")]
 position = Vector2(566, 358)
+width = 0
+height = 0
 
 [node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
 position = Vector2(279, 410)
@@ -124,3 +136,5 @@ position = Vector2(674, 466)
 
 [node name="CookableRack" parent="." instance=ExtResource("16_tkfx0")]
 position = Vector2(638, 371)
+
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

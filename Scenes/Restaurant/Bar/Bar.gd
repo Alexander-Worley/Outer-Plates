@@ -3,14 +3,16 @@ extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 enum tableState {
 	AVAILABLE = 0,
 	AWAITING_ORDER = 1,
-	DINING = 2,
-	CLEANUP = 3
+	NEED_SERVING = 2,
+	DINING = 3,
+	CLEANUP = 4
 }
+
+var threshold = 0.5
 
 
 @export_category("Developer Tools :0")
 @export_enum("Left", "Middle", "Right") var barSide: int = 0
-
 
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
@@ -19,7 +21,10 @@ enum tableState {
 @onready var tableCode = null
 @onready var isBar = true
 @onready var chair = get_child(3)
+var rng = RandomNumberGenerator.new()
 
+@onready var hasPirate = false
+@onready var pirateMarker = $PirateMarker
 
 func _ready():
 	initialize_wrapper()
@@ -32,13 +37,10 @@ func initialize_wrapper():
 func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
-		#set_order("meat")
-		#print("The bar with this code is available", tableCode)
-		#set_status(tableState.AWAITING_ORDER)
-	elif get_status() == tableState.AWAITING_ORDER and is_served():
+	elif get_status() == tableState.AWAITING_ORDER:
+		pass
+	elif get_status() == tableState.NEED_SERVING and is_served():
 		set_status(tableState.DINING)
-		# Need to restrict the holdable from being picked up.
-		# Probably can be done with a variable
 	elif get_status() == tableState.DINING:
 		set_status(tableState.CLEANUP)
 		holdablesOnSurface[0].set_isEaten(true)
@@ -72,28 +74,51 @@ func get_code():
 
 
 func set_order(type):
-	needed_order_type = type
+	if type != 'generate':
+		needed_order_type = type
+	
+	var choiceNum = rng.randf_range(0, 1)
+
+	if isBar:
+		needed_order_type = 'red' if choiceNum < threshold else  'green'
+		needed_order_type = 'red'
+	else:
+		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
 
 func is_served():
 	""" 
 	Returns a bool indicating whether table has been properly served. 
 	If the table isn't awaiting an order, will return false by default.
-	""" 
-	if status != tableState.AWAITING_ORDER:
+	"""
+	if hasPirate:
+		print("pirate check")
+		return false
+	if status != tableState.NEED_SERVING:
+		print("serving check")
 		return false
 	if !holdablesOnSurface[0]:
+		print("empty check")
 		return false
 	if !holdablesOnSurface[0].isReady():
+		print("ready check")
 		return false
 	if holdablesOnSurface[0].type != needed_order_type:
+		print("needed_order check")
 		return false
+	print("is_served succeeded")
 	return true
 
 
-func display_order(order):
+func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""
 	# To be implemented, will be called by the Table Manager
-	pass
+	if customer == null:
+		return
+	print("display_order called from table code: ", tableCode)
+	customer.showOrder()
+
+func get_order():
+	return needed_order_type 

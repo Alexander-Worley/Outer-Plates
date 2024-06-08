@@ -2,7 +2,7 @@
 extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 @export_category("Developer Tools :0")
-@export_enum("green", "pink") var color: int = 0
+@export_enum("green", "pink") var color: int = 1
 
 # change both full and ammoCount to same number to start with
 var full = 20

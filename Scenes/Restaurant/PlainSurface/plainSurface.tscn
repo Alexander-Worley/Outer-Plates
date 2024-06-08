@@ -73,8 +73,6 @@ animations = [{
 
 [node name="PlainSurface" type="Area2D" groups=["Surfaces"]]
 script = ExtResource("1_yt7qm")
-isCounter = null
-side = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

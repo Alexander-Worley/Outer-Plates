@@ -39,7 +39,7 @@ scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_5omhy")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(9, -4)
+position = Vector2(24, -6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

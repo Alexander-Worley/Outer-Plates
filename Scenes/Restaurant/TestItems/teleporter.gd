@@ -1,15 +1,13 @@
 extends Node2D
 
+@export var spawnString:String
+
 @onready var Customer = preload("res://Scenes/Restaurant/NPCs/customer.tscn")
 @onready var Pirate = preload("res://Scenes/Restaurant/NPCs/pirate.tscn")
 @onready var curChild
 
 
 @onready var isTeleporting = false
-
-@onready var pirateToggle = false
-
-@onready var numTeleports = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,19 +18,16 @@ func _on_timer_timeout():
 	
 	$WalkOffTimer.start()
 
-func teleport_in():
+func teleport_in(spawnPirate):
 	if not isTeleporting:
 		isTeleporting = true
 		$TeleportInTimer.start()
 		$AnimatedSprite2D.play("default")
-		
-		if pirateToggle:
+		spawnPirate = false
+		if spawnPirate:
 			spawn_pirate()
-			pirateToggle = false
 		else:
 			spawn_customer()
-			pirateToggle = true
-	
 
 func spawn_customer():
 	curChild = Customer.instantiate()
@@ -56,9 +51,12 @@ func _on_walk_off_timer_timeout():
 
 
 func _on_run_teleport_timer_timeout():
-	if numTeleports > 0:
-		teleport_in()
-		numTeleports -= 1
+	if len(spawnString) > 0:
+		if spawnString[0] == "p":
+			teleport_in(true)
+		elif spawnString[0] == "c":
+			teleport_in(false)
+		spawnString = spawnString.substr(1, len(spawnString))
 	else:
 		$RunTeleportTimer.stop()	
 	

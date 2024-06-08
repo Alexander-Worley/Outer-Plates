@@ -29,6 +29,8 @@ var chosen_dir = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
 var curTable
+var order
+
 var customersNode
 
 var canBeShot = false
@@ -36,7 +38,6 @@ var canBeShot = false
 @onready var MoneyLabel = get_node("../../../MoneyLabel")
 
 func _ready():
-	print(MoneyLabel)
 	#prepare steering rays
 	interest.resize(num_rays)
 	danger.resize(num_rays)
@@ -49,7 +50,7 @@ func _on_interact():
 	pass
 	#sprite.frame = 1 if sprite.frame == 0 else 0
 
-func _process(_delta):
+func _process(delta):
 	if hit_points <= 0:
 		die()
 	
@@ -108,10 +109,10 @@ func doLocalizedDamage():
 
 #kills
 func die():
-	print("ded")
 	MoneyLabel.money -= 100
 	self.queue_free()
 	curTable.status = 0
+	curTable.customer = null
 
 func walkTo(location, time):
 	var tween = self.create_tween()
@@ -159,3 +160,18 @@ func choose_direction():
 	for i in num_rays:
 		chosen_dir += ray_directions[i] * interest[i]
 	chosen_dir = chosen_dir.normalized()
+
+func showOrder():
+	$ShowOrderTimer.start()
+	
+	if order != null:
+		$ThinkingBubble.visible = true
+		$ThinkingBubble.find_child(("DialogueBox")).visible = true
+		$ThinkingBubble.play(order)
+		print(str(order) + ":3")
+
+
+
+func _on_show_order_timer_timeout():
+	$ShowOrderTimer.stop()
+	$ThinkingBubble.visible = false

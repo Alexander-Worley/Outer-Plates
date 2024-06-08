@@ -1,0 +1,211 @@
+[gd_scene load_steps=30 format=3 uid="uid://df7g7vvs80ot1"]
+
+[ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_h7uo1"]
+[ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="3_fkf5x"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/HitLabel.gd" id="4_8uy8w"]
+[ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_a3f1r"]
+[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="4_rk6q4"]
+[ext_resource type="Texture2D" uid="uid://euyx3crqpo6i" path="res://Assets/Environment/Effects/speech-bubble.png" id="5_f6bex"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_ko7ip"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/State Machine.gd" id="6_1fdtg"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerIdle.gd" id="7_s7dxk"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWalkTo.gd" id="8_nfvdj"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportIn.gd" id="9_4h2ck"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerTeleportOut.gd" id="11_0n5tr"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerWaitingForFood.gd" id="11_5jdna"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerEating.gd" id="11_qehpb"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerPondering.gd" id="13_5c8lk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4lw5"]
+atlas = ExtResource("1_7uk4y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4281k"]
+atlas = ExtResource("1_7uk4y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7teyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4lw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4281k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3mpf"]
+atlas = ExtResource("3_fkf5x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpt4r"]
+atlas = ExtResource("3_fkf5x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmmu8"]
+atlas = ExtResource("3_fkf5x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4afn"]
+atlas = ExtResource("3_fkf5x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8se8c"]
+atlas = ExtResource("4_rk6q4")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqsv0"]
+atlas = ExtResource("4_rk6q4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pijxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3mpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpt4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmmu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4afn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8se8c")
+}],
+"loop": true,
+"name": &"meat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqsv0")
+}],
+"loop": true,
+"name": &"salad",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73at6"]
+atlas = ExtResource("5_f6bex")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdnli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73at6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghqxd"]
+
+[node name="Customer" type="CharacterBody2D"]
+script = ExtResource("1_h7uo1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(1, -12)
+scale = Vector2(1, 0.953125)
+sprite_frames = SubResource("SpriteFrames_7teyf")
+
+[node name="ThinkingBubble" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(12, -31)
+scale = Vector2(0.59375, 0.5625)
+sprite_frames = SubResource("SpriteFrames_pijxf")
+animation = &"salad"
+
+[node name="DialogueBox" type="AnimatedSprite2D" parent="ThinkingBubble"]
+visible = false
+z_index = -1
+position = Vector2(-0.631578, 3.55555)
+scale = Vector2(2.25, 2.22222)
+sprite_frames = SubResource("SpriteFrames_vdnli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -10)
+scale = Vector2(1.4, 1.4)
+shape = SubResource("CircleShape2D_ghqxd")
+
+[node name="HitLabel" type="Label" parent="."]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_a3f1r")
+script = ExtResource("4_8uy8w")
+
+[node name="Timer" type="Timer" parent="HitLabel"]
+one_shot = true
+script = ExtResource("5_ko7ip")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_1fdtg")
+initial_state = NodePath("TeleportIn")
+
+[node name="WaitForTableTimer" type="Timer" parent="StateMachine"]
+wait_time = 5.0
+
+[node name="TeleportTimer" type="Timer" parent="StateMachine"]
+one_shot = true
+
+[node name="TweakOutTimer" type="Timer" parent="StateMachine"]
+wait_time = 3.0
+
+[node name="EatingTimer" type="Timer" parent="StateMachine"]
+wait_time = 3.0
+
+[node name="ThinkingTimer" type="Timer" parent="StateMachine"]
+wait_time = 2.0
+
+[node name="WaitingForFoodTimer" type="Timer" parent="StateMachine"]
+wait_time = 15.0
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_s7dxk")
+
+[node name="WalkTo" type="Node" parent="StateMachine"]
+script = ExtResource("8_nfvdj")
+
+[node name="TeleportIn" type="Node" parent="StateMachine"]
+script = ExtResource("9_4h2ck")
+
+[node name="TeleportOut" type="Node" parent="StateMachine"]
+script = ExtResource("11_0n5tr")
+
+[node name="WaitingForFood" type="Node" parent="StateMachine"]
+script = ExtResource("11_5jdna")
+
+[node name="Eating" type="Node" parent="StateMachine"]
+script = ExtResource("11_qehpb")
+
+[node name="Pondering" type="Node" parent="StateMachine"]
+script = ExtResource("13_5c8lk")
+
+[node name="ShowOrderTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportOut" method="_on_teleport_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TweakOutTimer" to="StateMachine/WalkTo" method="_on_tweak_out_timer_timeout"]
+[connection signal="timeout" from="StateMachine/EatingTimer" to="StateMachine/Eating" method="_on_eating_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ThinkingTimer" to="StateMachine/Pondering" method="_on_thinking_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WaitingForFoodTimer" to="StateMachine/WaitingForFood" method="_on_waiting_for_food_timer_timeout"]
+[connection signal="timeout" from="ShowOrderTimer" to="." method="_on_show_order_timer_timeout"]

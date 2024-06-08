@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ehxvys6abffe"]
+
+[ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="1_dnikp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umjoj"]
+atlas = ExtResource("1_dnikp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp6kh"]
+atlas = ExtResource("1_dnikp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfd7d"]
+atlas = ExtResource("1_dnikp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ty7l"]
+atlas = ExtResource("1_dnikp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a80ln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umjoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp6kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfd7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ty7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ThinkingBubble" type="AnimatedSprite2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_a80ln")

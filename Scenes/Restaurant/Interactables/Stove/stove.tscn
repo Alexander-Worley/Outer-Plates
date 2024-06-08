@@ -216,6 +216,7 @@ frame = 2
 
 [node name="StoveTop" type="AnimatedSprite2D" parent="Surface"]
 sprite_frames = SubResource("SpriteFrames_ew1ck")
+frame = 2
 
 [node name="Pan" type="AnimatedSprite2D" parent="Surface/StoveTop"]
 position = Vector2(0, -9)
