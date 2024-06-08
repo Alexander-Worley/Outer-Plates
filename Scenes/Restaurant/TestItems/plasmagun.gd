@@ -16,5 +16,7 @@ func shoot():
 
 	
 func updateAmmoCounter():
-	var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
-	ammoCount.text = "Ammo: " + str(ammo)
+	pass
+	#var ammoCount = get_node("../ammoCount
+	#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
+	#ammoCount.text = "Ammo: " + str(ammo)
