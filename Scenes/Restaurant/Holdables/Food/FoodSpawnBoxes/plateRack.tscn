@@ -14,6 +14,13 @@ var count = 20
 func remove_holdable_from_surface(_holdable: Area2D):
 	count -= 1
 	pass
+
+func begin_interaction(player: CharacterBody2D):
+	if is_instance_valid(player.holdableInHand) and player.holdableInHand.is_in_group(\"Plate\"):
+		player.holdablePosition.remove_child(player.holdableInHand)
+		player.holdableInHand.queue_free()
+		player.isHolding = false
+		
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f43v"]

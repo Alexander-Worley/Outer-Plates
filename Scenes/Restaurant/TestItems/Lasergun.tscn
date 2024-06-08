@@ -20,4 +20,4 @@ scale = Vector2(0.252604, 0.440179)
 texture = ExtResource("1_n6x4e")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(12, 0)
