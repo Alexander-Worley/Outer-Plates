@@ -6,6 +6,7 @@ const STOVE_TOP_SPRITES = {
 	true: preload("res://Assets/Interactables/CookingStations/stove-square-on.png"),
 }
 var isCooking: bool = false
+var isOnSide: bool = false
 @onready var cookingTimer = $CookingTimer
 @onready var cookingBar = $CookingBarControl
 @onready var stoveTop = $Surface/StoveTop
@@ -14,7 +15,18 @@ var isCooking: bool = false
 
 func _ready():
 	initialize()
-	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
+	if side in [4, 5, 6, 7]:
+		isOnSide = true
+		stoveTop.set_frame(0)
+		var panPos = $Surface/StoveTop/Pan.position
+		var newPos = panPos
+		newPos.y += 9
+		newPos.x += 3
+		$Surface/StoveTop/Pan.position = newPos
+	else:
+		isOnSide = false
+		stoveTop.set_frame(2)
+	#stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	if isCooking:
 		smoke.show()
 		smoke.play()
@@ -36,7 +48,9 @@ func begin_cooking():
 	if isCooking or !holdablesOnSurface[0].isCookable(): return
 	cookingTimer.start()
 	isCooking = true
-	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
+	if isOnSide: stoveTop.set_frame(1)
+	else: stoveTop.set_frame(3)
+	#stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	smoke.show()
 
 	donenessIndex = holdablesOnSurface[0].get_doneness()
@@ -52,7 +66,9 @@ func stop_cooking():
 	if !isCooking: return
 	cookingTimer.stop()
 	isCooking = false
-	stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
+	if isOnSide: stoveTop.set_frame(0)
+	else: stoveTop.set_frame(2)
+	#stoveTop.texture = STOVE_TOP_SPRITES[isCooking]
 	smoke.hide()
 	smoke.stop()
 	cookingBar.resetBar()

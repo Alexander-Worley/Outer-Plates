@@ -31,7 +31,7 @@ region = Rect2(4, 279, 46, 20)
 [node name="PauseMenu" type="Node2D"]
 process_mode = 3
 visible = false
-z_index = 10
+z_index = 200
 script = ExtResource("1_rs14q")
 
 [node name="Background" type="ColorRect" parent="."]

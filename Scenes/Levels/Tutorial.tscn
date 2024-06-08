@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://doyvqlkbjt885"]
+[gd_scene load_steps=2 format=3 uid="uid://dkyb2lbbkmr0w"]
+
+[sub_resource type="GDScript" id="GDScript_cn13m"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+"
 
 [node name="Tutorial" type="Node2D"]
+script = SubResource("GDScript_cn13m")

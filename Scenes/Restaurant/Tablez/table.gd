@@ -8,7 +8,7 @@ enum tableState {
 	CLEANUP = 4
 }
 
-var THRESHOLD = 0.5
+var threshold = 0.5
 
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
@@ -26,7 +26,7 @@ func _ready():
 	initialize()
 
 
-func _process(delta):
+func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 	elif get_status() == tableState.AWAITING_ORDER:
@@ -70,12 +70,12 @@ func set_order(type):
 		needed_order_type = type
 	
 	var choiceNum = rng.randf_range(0, 1)
-	needed_order_type = 'meat'
-	return
+
+	
 	if isBar:
-		needed_order_type = 'red' if choiceNum < THRESHOLD else  'green'
+		needed_order_type = 'red' if choiceNum < threshold else  'green'
 	else:
-		needed_order_type = 'meat' if choiceNum < THRESHOLD else 'salad'
+		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
 func get_order():
 	#print(str(tableCode)+str(status) + " " + str(needed_order_type) + ":3")
@@ -89,7 +89,7 @@ func is_served():
 	#you can't serve to customers who're hounded by pirates
 	if hasPirate:
 		return false
-	if status != tableState.AWAITING_ORDER:
+	if status != tableState.NEED_SERVING:
 		return false
 	if !holdablesOnSurface[0]:
 		return false
@@ -110,7 +110,6 @@ func display_order():
 	#if status != tableState.AWAITING_ORDER:
 	#	return
 	if customer == null:
-		print("Well, this shouldn't have been called. Error with customer not being assigned to table awaiting order.")
 		return
 	print("display_order called from table code: ", tableCode)
 	customer.showOrder()

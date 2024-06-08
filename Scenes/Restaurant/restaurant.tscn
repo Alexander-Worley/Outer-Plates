@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="13_4vmet"]
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="13_755di"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="13_dcagd"]
-[ext_resource type="PackedScene" uid="uid://ci4ebcdwu4rl5" path="res://Scenes/PauseMenu/pauseMenu.tscn" id="13_ybtij"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="15_5jryl"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="16_bsx6g"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="16_ed3ut"]
@@ -20,7 +19,20 @@
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="18_og6fn"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="19_tixo8"]
 
+[sub_resource type="GDScript" id="GDScript_g8yrs"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+"
+
 [node name="Restaurant" type="Node2D"]
+script = SubResource("GDScript_g8yrs")
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -254,11 +266,8 @@ position = Vector2(304, 144)
 
 [node name="Player" parent="Players" instance=ExtResource("2_srumu")]
 position = Vector2(400, 328)
-playerNum = 3
 
 [node name="Customers" type="Node2D" parent="."]
-
-[node name="PauseMenu" parent="." instance=ExtResource("13_ybtij")]
 
 [node name="Rules" type="Label" parent="."]
 offset_left = 528.0

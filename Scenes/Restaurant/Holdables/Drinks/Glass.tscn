@@ -42,4 +42,5 @@ script = ExtResource("1_ydmcv")
 shape = SubResource("RectangleShape2D_2hwcd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Glass"]]
+position = Vector2(1, -4)
 sprite_frames = SubResource("SpriteFrames_yfbn6")

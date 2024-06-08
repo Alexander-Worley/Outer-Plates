@@ -5,17 +5,6 @@ var Plasma = preload("res://Scenes/Restaurant/TestItems/plasma.tscn")
 var maxAmmo = 10
 var ammo: int = maxAmmo
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _input(event):
-	pass
-
 func shoot():
 	if ammo == 0:
 		return
