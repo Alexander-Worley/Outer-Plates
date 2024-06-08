@@ -37,13 +37,10 @@ func initialize_wrapper():
 func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
-		#set_order("meat")
-		#print("The bar with this code is available", tableCode)
-		#set_status(tableState.AWAITING_ORDER)
-	elif get_status() == tableState.AWAITING_ORDER and is_served():
+	elif get_status() == tableState.AWAITING_ORDER:
+		pass
+	elif get_status() == tableState.NEED_SERVING and is_served():
 		set_status(tableState.DINING)
-		# Need to restrict the holdable from being picked up.
-		# Probably can be done with a variable
 	elif get_status() == tableState.DINING:
 		set_status(tableState.CLEANUP)
 		holdablesOnSurface[0].set_isEaten(true)
@@ -84,6 +81,7 @@ func set_order(type):
 
 	if isBar:
 		needed_order_type = 'red' if choiceNum < threshold else  'green'
+		needed_order_type = 'red'
 	else:
 		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
@@ -94,15 +92,21 @@ func is_served():
 	If the table isn't awaiting an order, will return false by default.
 	"""
 	if hasPirate:
+		print("pirate check")
 		return false
 	if status != tableState.NEED_SERVING:
+		print("serving check")
 		return false
 	if !holdablesOnSurface[0]:
+		print("empty check")
 		return false
 	if !holdablesOnSurface[0].isReady():
+		print("ready check")
 		return false
 	if holdablesOnSurface[0].type != needed_order_type:
+		print("needed_order check")
 		return false
+	print("is_served succeeded")
 	return true
 
 
@@ -115,3 +119,6 @@ func display_order():
 		return
 	print("display_order called from table code: ", tableCode)
 	customer.showOrder()
+
+func get_order():
+	return needed_order_type 

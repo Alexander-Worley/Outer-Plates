@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://df7g7vvs80ot1"]
+[gd_scene load_steps=35 format=3 uid="uid://df7g7vvs80ot1"]
 
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_h7uo1"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_a3f1r"]
 [ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="4_rk6q4"]
 [ext_resource type="Texture2D" uid="uid://euyx3crqpo6i" path="res://Assets/Environment/Effects/speech-bubble.png" id="5_f6bex"]
+[ext_resource type="Texture2D" uid="uid://bq646nj8npi6k" path="res://Assets/Holdables/Food/drink-spritesheet.png" id="5_gn53l"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/Timer.gd" id="5_ko7ip"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/State Machine.gd" id="6_1fdtg"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/CustomerIdle.gd" id="7_s7dxk"]
@@ -60,9 +61,17 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("3_fkf5x")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2qpj"]
+atlas = ExtResource("5_gn53l")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mk6h"]
 atlas = ExtResource("4_rk6q4")
 region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_878co"]
+atlas = ExtResource("5_gn53l")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48lg2"]
 atlas = ExtResource("4_rk6q4")
@@ -97,10 +106,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_r2qpj")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3mk6h")
 }],
 "loop": true,
 "name": &"meat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_878co")
+}],
+"loop": true,
+"name": &"red",
 "speed": 5.0
 }, {
 "frames": [{
@@ -140,10 +165,11 @@ sprite_frames = SubResource("SpriteFrames_7teyf")
 
 [node name="ThinkingBubble" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 6
 position = Vector2(12, -31)
 scale = Vector2(0.59375, 0.5625)
 sprite_frames = SubResource("SpriteFrames_pijxf")
-animation = &"angry"
+animation = &"green"
 
 [node name="DialogueBox" type="AnimatedSprite2D" parent="ThinkingBubble"]
 visible = false
