@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var inputMap = {}
-var playerNum: int
+var playerNum: int = -1
 var isKeyboardControl: bool = false
 
 const SPEED: float = 120.0
@@ -16,6 +16,7 @@ var interactablesInRange: Array[Area2D] = []
 var ammoDepotsInRange: Array[Area2D] = []
 var teleporterInRange: Array[Area2D] = []
 var holdableInHand: Area2D = null
+var interactableBeingUsed: Area2D = null
 # All of the player sprites divided up by player number.
 # If the player is moving up, the first array is selected.
 # If the player is moving down, the second array is selected.
@@ -287,6 +288,10 @@ func _process(_delta):
 		interactRange_y = verticalMovement
 	# Move interactRange if any input
 	if interactRange_x or interactRange_y:
+		# For things like the cutting board
+		if interactableBeingUsed:
+			if interactableBeingUsed.is_in_group("Accepts Movement Signals"):
+				interactableBeingUsed.move_signal()
 		set_interact_range_position(interactRange_x, interactRange_y)
 		# Rotate any Weapon being held
 		if isHolding and holdableInHand.is_in_group("Weapons"):
