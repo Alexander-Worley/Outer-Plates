@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Restaurant/Bar/Bar.gd" id="1_tunt4"]
 [ext_resource type="Texture2D" uid="uid://lfthblp0kp4t" path="res://Assets/Interactables/PlainSurfaces/bar.png" id="2_t5wmy"]
-[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/bar-stool.tscn" id="3_mlnjo"]
+[ext_resource type="PackedScene" uid="uid://do8sx6vc1ghb1" path="res://Scenes/Restaurant/TestItems/bar-stool.tscn" id="3_mlnjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wukim"]
 size = Vector2(32, 28)
