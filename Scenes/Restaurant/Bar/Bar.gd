@@ -106,7 +106,7 @@ func is_served():
 	return true
 
 
-func display_order(order):
+func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""
@@ -115,3 +115,6 @@ func display_order(order):
 		return
 	print("display_order called from table code: ", tableCode)
 	customer.showOrder()
+
+func get_order():
+	return needed_order_type 
