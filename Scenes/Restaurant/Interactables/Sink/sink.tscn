@@ -103,5 +103,5 @@ shape = SubResource("RectangleShape2D_ed2ca")
 sprite_frames = SubResource("SpriteFrames_amp74")
 
 [node name="sinkSprite" type="AnimatedSprite2D" parent="Surface"]
-position = Vector2(0, -6)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_vcwbm")

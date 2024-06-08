@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpf02edhnefot"]
+
+[ext_resource type="Texture2D" uid="uid://djq2stcwwiwb5" path="res://Assets/UI/speech-bubble.png" id="1_3gcjl"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/speechBubbleSprite.gd" id="2_06bpi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trea1"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pabr"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck5f1"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8syl"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7q42"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpu6q"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vypeq"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbeuv"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jptqt"]
+atlas = ExtResource("1_3gcjl")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wysoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trea1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pabr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck5f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8syl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7q42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpu6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vypeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbeuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jptqt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpeechBubble" type="Area2D"]
+
+[node name="speechBubbleSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wysoa")
+script = ExtResource("2_06bpi")
+
+[node name="AnimationTimer" type="Timer" parent="speechBubbleSprite"]
+wait_time = 0.05
+autostart = true
