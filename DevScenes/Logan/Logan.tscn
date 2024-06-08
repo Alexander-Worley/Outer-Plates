@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=23 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="1_i5lgj"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
@@ -46,12 +46,12 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-12.9194, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
 
-[node name="Sink" parent="Furniture" instance=ExtResource("4_icx7d")]
+[node name="Sink" parent="Furniture" groups=["Sink"] instance=ExtResource("4_icx7d")]
 position = Vector2(594, 282)
 
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_kt0um")]
@@ -101,6 +101,11 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 [node name="DrinkTube" parent="Weapons" instance=ExtResource("10_1ls2y")]
 position = Vector2(283, 279)
 color = 0
+isCounter = null
+side = null
+width = 0
+height = 0
+texture = 1
 
 [node name="Plasmagun" parent="Weapons" instance=ExtResource("10_7flq7")]
 position = Vector2(209, 368)
@@ -114,6 +119,11 @@ position = Vector2(352, 369)
 
 [node name="Stove" parent="." instance=ExtResource("11_au6up")]
 position = Vector2(566, 358)
+isCounter = null
+side = null
+width = 0
+height = 0
+texture = 1
 
 [node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
 position = Vector2(279, 410)
