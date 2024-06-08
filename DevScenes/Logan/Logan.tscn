@@ -37,6 +37,13 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 [node name="Logan" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
+[node name="ammoCount" type="Label" parent="."]
+offset_left = 658.0
+offset_top = 9.0
+offset_right = 698.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_yeim4")
+
 [node name="MoneyLabel" type="Label" parent="."]
 offset_left = 31.0
 offset_top = 10.0
@@ -88,13 +95,6 @@ position = Vector2(153, 216)
 position = Vector2(646, 212)
 
 [node name="Weapons" type="Node2D" parent="."]
-
-[node name="ammoCount" type="Label" parent="Weapons"]
-offset_left = 658.0
-offset_top = 9.0
-offset_right = 698.0
-offset_bottom = 32.0
-theme_override_fonts/font = ExtResource("1_yeim4")
 
 [node name="DrinkTube" parent="Weapons" instance=ExtResource("10_1ls2y")]
 position = Vector2(283, 279)
