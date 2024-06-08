@@ -71,14 +71,12 @@ func set_order(type):
 	
 	var choiceNum = rng.randf_range(0, 1)
 
-	
 	if isBar:
 		needed_order_type = 'red' if choiceNum < threshold else  'green'
 	else:
 		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
 func get_order():
-	#print(str(tableCode)+str(status) + " " + str(needed_order_type) + ":3")
 	return needed_order_type 
 
 func is_served():
