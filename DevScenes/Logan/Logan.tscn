@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://c42bols7tlkcn"]
+[gd_scene load_steps=22 format=3 uid="uid://c42bols7tlkcn"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="1_i5lgj"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ncwcc"]
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_yeim4"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="3_gxp8f"]
-[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="4_dqmr5"]
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="4_icx7d"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_kt0um"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="4_ns5cg"]
@@ -46,7 +45,7 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-12.9194, 0)
+scroll_offset = Vector2(-5.1611, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -80,11 +79,6 @@ position = Vector2(509, 444)
 position = Vector2(153, 216)
 
 [node name="Foods" type="Node2D" parent="."]
-
-[node name="Players" type="Node2D" parent="."]
-
-[node name="Player" parent="Players" instance=ExtResource("4_dqmr5")]
-position = Vector2(510, 255)
 
 [node name="Jukebox" parent="." instance=ExtResource("8_gpd82")]
 position = Vector2(646, 212)

@@ -3,10 +3,12 @@ extends Area2D
 
 var isFull: bool = false
 var isGreen: bool = false
+var type = 'red'
 
 func set_isFull(newFull: bool, newGreen: bool):
 	isFull = newFull
 	isGreen = newGreen
+	type = 'green' if isGreen else 'red'
 	update_sprite()
 
 func update_sprite():
