@@ -47,9 +47,6 @@ func _on_interact():
 	pass
 	#sprite.frame = 1 if sprite.frame == 0 else 0
 
-func _process(delta):
-	pass
-	
 func _physics_process(_delta:float) -> void:	
 	if navigate:
 		#more context based steering stuff
@@ -98,8 +95,8 @@ func doLocalizedDamage():
 	elif randy > 10 and randy < 20:
 		return "critical leg injury"
 	elif randy > 20 and randy < 30:
-		return "critical head injury"
 		die()
+		return "critical head injury"
 	else:
 		return ""
 

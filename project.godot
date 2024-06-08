@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Outer Plates"
-run/main_scene="res://Scenes/MainMenu/mainMenu.tscn"
+run/main_scene="res://Scenes/SceneManager/sceneManager.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

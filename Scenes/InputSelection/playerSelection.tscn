@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://mttq35ogufqx"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_fp6xx"]
+
+[sub_resource type="GDScript" id="GDScript_6l2ow"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+const SCROLL_SPEED: int = 100
+const MAX_PLAYERS: int = 4
+var playerSpawnStatus = {
+	0: false,
+	1: false,
+	2: false,
+	3: false
+}
+var playerPositionIDs = {
+	0: -99,
+	1: -99,
+	2: -99,
+	3: -99
+}
+@onready var spawnPositions: Array = [
+	$PlayerSpawnPoints/Player1.position,
+	$PlayerSpawnPoints/Player2.position,
+	$PlayerSpawnPoints/Player3.position,
+	$PlayerSpawnPoints/Player4.position
+]
+@onready var background = $Background/TeleporterLayer
+@onready var teleporter = $Background/TeleporterLayer/Teleporter
+
+func _ready():
+	background.scroll_offset.y -= 1
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, _offset: int):
+	playerPositionIDs = check_for_removed_players()
+	playerSpawnStatus = update_spawn_status()
+	for i in range(MAX_PLAYERS):
+		if playerSpawnStatus[i] == false:
+			player.position = spawnPositions[i]
+			playerSpawnStatus[i] = true
+			playerPositionIDs[i] = player.playerNum
+			break
+
+func check_for_removed_players() -> Dictionary:
+	var newPositionIDs = {
+		0: -99,
+		1: -99,
+		2: -99,
+		3: -99
+	}
+	for player in players:
+		for i in range(MAX_PLAYERS):
+			if player.playerNum == playerPositionIDs[i]:
+				newPositionIDs[i] = player.playerNum
+	return newPositionIDs
+
+func update_spawn_status() -> Dictionary:
+	var newSpawnStatus = {
+		0: false,
+		1: false,
+		2: false,
+		3: false
+	}
+	for player in players:
+		for i in range(MAX_PLAYERS):
+			if player.playerNum == playerPositionIDs[i]:
+				newSpawnStatus[i] = true
+	return newSpawnStatus
+
+func _process(delta):
+	background.scroll_offset.y -= SCROLL_SPEED * delta
+"
+
+[node name="PlayerSelection" type="Node2D"]
+script = SubResource("GDScript_6l2ow")
+
+[node name="Background" parent="." instance=ExtResource("1_fp6xx")]
+scroll_offset = Vector2(-1.35963, 0)
+Planet = "Green Planet"
+
+[node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]
+
+[node name="Teleporter" type="ParallaxLayer" parent="Background/TeleporterLayer"]
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
+
+[node name="Player1" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(192, 256)
+
+[node name="Player2" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(576, 256)
+
+[node name="Player3" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(192, 448)
+
+[node name="Player4" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(576, 448)

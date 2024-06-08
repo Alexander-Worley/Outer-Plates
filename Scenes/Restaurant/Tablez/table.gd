@@ -26,7 +26,7 @@ func _ready():
 	initialize()
 
 
-func _process(delta):
+func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 	elif get_status() == tableState.AWAITING_ORDER:

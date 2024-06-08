@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfkadx5dgayj1"]
+[gd_scene load_steps=10 format=3 uid="uid://dfkadx5dgayj1"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_hvmwk"]
 [ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="2_l4vu2"]
@@ -9,10 +9,23 @@
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_bbrid"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="8_whvoq"]
 
+[sub_resource type="GDScript" id="GDScript_i3ub0"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+"
+
 [node name="Andreea2" type="Node2D"]
+script = SubResource("GDScript_i3ub0")
 
 [node name="Background" parent="." instance=ExtResource("1_hvmwk")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
@@ -41,6 +54,8 @@ position = Vector2(211, 307)
 
 [node name="Counter1" parent="." instance=ExtResource("3_mmvbl")]
 position = Vector2(389, 312)
+isCounter = false
+side = 0
 texture = ExtResource("4_jc3hn")
 
 [node name="Glass" parent="Counter1" instance=ExtResource("5_2xnql")]
@@ -55,13 +70,16 @@ position = Vector2(332, 211)
 [node name="Bar2" parent="." instance=ExtResource("2_l4vu2")]
 z_index = -1
 position = Vector2(243, 307)
+barSide = 1
 side = 1
 
 [node name="Bar3" parent="." instance=ExtResource("2_l4vu2")]
 z_index = -1
 position = Vector2(275, 307)
+barSide = 2
 side = 2
 
 [node name="DrinkTube" parent="." instance=ExtResource("8_whvoq")]
 position = Vector2(155, 211)
-color = null
+isCounter = false
+side = 0

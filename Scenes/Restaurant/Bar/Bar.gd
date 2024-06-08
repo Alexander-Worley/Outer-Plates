@@ -7,8 +7,9 @@ enum tableState {
 	CLEANUP = 3
 }
 
+
 @export_category("Developer Tools :0")
-@export_enum("Left", "Middle", "Right") var side: int = 0
+@export_enum("Left", "Middle", "Right") var barSide: int = 0
 
 
 @onready var tableSize = 1
@@ -25,10 +26,10 @@ func _ready():
 
 
 func initialize_wrapper():
-	$Surface.region_rect = Rect2(side*32, 24, 32, 40)
+	$Surface.region_rect = Rect2(barSide*32, 24, 32, 40)
 	initialize()
 	
-func _process(delta):
+func _process(_delta):
 	if get_status() == tableState.AVAILABLE:
 		pass
 		#set_order("meat")

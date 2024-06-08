@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmkwxcvadpr4y"]
+[gd_scene load_steps=16 format=3 uid="uid://cmkwxcvadpr4y"]
 
 [ext_resource type="PackedScene" uid="uid://cfvltjcitd8q2" path="res://Scenes/Restaurant/Holdables/Food/CuttableFood/cuttableFood.tscn" id="1_k30uo"]
-[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="2_au3vf"]
+[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="2_xmo1o"]
 [ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="3_jemo1"]
 
 [sub_resource type="GDScript" id="GDScript_qdcyg"]
@@ -14,6 +14,70 @@ func remove_holdable_from_surface(_holdable: Area2D):
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyufb"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocpsw"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm70y"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcton"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrxeo"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cupu3"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg5kj"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjkbt"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56y8x"]
+atlas = ExtResource("2_xmo1o")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6ige"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocpsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm70y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrxeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cupu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg5kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjkbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56y8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru0ly"]
 atlas = ExtResource("3_jemo1")
@@ -32,8 +96,8 @@ shape = SubResource("RectangleShape2D_uyufb")
 
 [node name="CuttableFood" parent="." instance=ExtResource("1_k30uo")]
 
-[node name="Surface" type="Sprite2D" parent="."]
-texture = ExtResource("2_au3vf")
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h6ige")
 
 [node name="CuttableBox" type="Sprite2D" parent="Surface"]
 position = Vector2(0, -8)

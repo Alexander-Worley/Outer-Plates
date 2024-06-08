@@ -7,6 +7,8 @@ extends Area2D
 var centersOfSurface: Array = []
 var holdablesOnSurface: Array[Area2D] = []
 @export_category("Developer Tools :0")
+@export var isCounter: bool = false
+@export_enum("Corner Left", "Corner Right", "Front", "Front weird?", "Side Right", "Side Left", "Endside Left", "Endside Right") var side: int = 0
 @export_enum("Up", "Right", "Down", "Left") var direction: int = 0
 @export var width: int = 1
 @export var height: int = 1
@@ -16,10 +18,12 @@ func _ready():
 	initialize()
 
 func initialize():
-	if texture: $Surface.texture = texture
+	#if texture: $Surface.texture = texture
 	var collision: StaticBody2D = get_node("StaticBody2D")
 	if collision: collision.scale = Vector2(width, height)
-	$Surface.rotation_degrees = 90 * direction
+	if isCounter:
+		$Surface.set_frame(side)
+	#$Surface.rotation_degrees = 90 * direction
 	initialize_surface_points()
 	initialize_holdables_on_surface()
 
@@ -33,15 +37,18 @@ func initialize_surface_points():
 			var newY = h * Global.PIXEL_DIMENSION - h_offset
 			var newPoint = Vector2(newX, newY)
 			# Adjust for surface rotation
-			match direction:
-				0:
+			if isCounter:
+				if side not in [4, 5, 6, 7]:
 					newPoint.y -= Global.PIXEL_DIMENSION / 4.0
-				1:
-					newPoint.x += Global.PIXEL_DIMENSION / 4.0
-				2:
-					newPoint.y += Global.PIXEL_DIMENSION / 4.0
-				3:
-					newPoint.x -= Global.PIXEL_DIMENSION / 4.0
+			#match direction:
+			#	0:
+			#		newPoint.y -= Global.PIXEL_DIMENSION / 4.0
+			#	1:
+			#		newPoint.x += Global.PIXEL_DIMENSION / 4.0
+			#	2:
+			#		newPoint.y += Global.PIXEL_DIMENSION / 4.0
+			#	3:
+			#		newPoint.x -= Global.PIXEL_DIMENSION / 4.0
 			centersOfSurface.append([newPoint, false])
 
 # Initializes holdablesOnSurface[Area2D]
