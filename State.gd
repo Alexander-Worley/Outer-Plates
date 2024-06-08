@@ -14,6 +14,7 @@ signal Transitioned
 #establish customer vars
 @onready var customer = get_node("../../")
 @onready var sprite = customer.find_child("AnimatedSprite2D")
+@onready var thinkingBubbleSprite = customer.find_child("ThinkingBubble")
 @onready var collisionShape = customer.find_child("CollisionShape2D")
 
 #establish state machine timer vars
@@ -21,6 +22,9 @@ signal Transitioned
 @onready var WaitForTableTimer = get_node("../WaitForTableTimer")
 @onready var TweakOutTimer = get_node("../TweakOutTimer")
 @onready var EatingTimer = get_node("../EatingTimer")
+@onready var ThinkingTimer = get_node("../ThinkingTimer")
+@onready var WaitingForFoodTimer = get_node("../WaitingForFoodTimer")
+@onready var AngryTimer = get_node("../AngryTimer")
 
 
 

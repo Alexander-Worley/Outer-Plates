@@ -35,6 +35,6 @@ func findFreeTable():
 	for table in TableManager.tables:
 		if table.status == table.tableState.AVAILABLE:
 			table.status = table.tableState.AWAITING_ORDER
-			table.set_order("meat")
+			table.customer = customer
 			return table
 	return -1

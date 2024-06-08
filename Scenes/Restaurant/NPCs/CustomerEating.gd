@@ -26,6 +26,8 @@ func _on_eating_timer_timeout():
 	customer.changeTarget(BottomOfStairs)
 	
 	customer.reparent(customer.customersNode)
-	print(customer.get_parent())
+	
+	customer.curTable.status = customer.curTable.tableState.AVAILABLE
+	customer.curTable.customer = null
 	
 	Transitioned.emit(self, "WalkTo")

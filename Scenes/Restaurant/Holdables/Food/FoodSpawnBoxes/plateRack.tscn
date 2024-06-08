@@ -14,15 +14,6 @@ var count = 20
 func remove_holdable_from_surface(_holdable: Area2D):
 	count -= 1
 	pass
-
-
-func update_sprite():
-	if count == 0: 
-		$Surface/Stack.set_frame(6)
-	elif count <= full/4: $Surface/Stack.set_frame(4)
-	elif count <= full/2: $Surface/Stack.set_frame(3)
-	elif count <= full*3/4: $Surface/Stack.set_frame(2)
-	else: $Surface/Stack.set_frame(0)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f43v"]
@@ -149,7 +140,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlateRack" type="Area2D" groups=["PlateRack", "SpawnBox", "Surfaces"]]
+[node name="PlateRack" type="Area2D" groups=["Interactable", "PlateRack", "SpawnBox", "Surfaces"]]
 script = SubResource("GDScript_q7el6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
