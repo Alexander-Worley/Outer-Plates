@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjuumf0g03s12"]
+
+[ext_resource type="Script" path="res://Scenes/Restaurant/TestItems/sink.gd" id="1_s1x0w"]
+[ext_resource type="Texture2D" uid="uid://b6qlm32pclym6" path="res://Assets/Interactables/CookingStations/counter-with-sink.png" id="2_ya24n"]
+[ext_resource type="Texture2D" uid="uid://tsq0exe3ry7j" path="res://Assets/Interactables/CookingStations/counter-with-sink-on.png" id="3_f4s4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ckp"]
+size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unl66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ya24n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f4s4m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sink" type="Area2D" groups=["Interactable"]]
+z_index = -1
+script = ExtResource("1_s1x0w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_unl66")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

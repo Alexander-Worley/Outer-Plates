@@ -1,8 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://df7g7vvs80ot1"]
+[gd_scene load_steps=30 format=3 uid="uid://df7g7vvs80ot1"]
 
 [ext_resource type="Texture2D" uid="uid://cfky5qwj6umiq" path="res://Assets/Characters/Customers/alien-customer-spritesheets.png" id="1_7uk4y"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/customer.gd" id="1_h7uo1"]
-[ext_resource type="Texture2D" uid="uid://b1c3ten77tby3" path="res://Assets/Characters/Customers/angry.png" id="3_e2mon"]
 [ext_resource type="Texture2D" uid="uid://c5o51jdq1ssxi" path="res://Assets/Environment/Effects/cooking-cloud.png" id="3_fkf5x"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/NPCs/HitLabel.gd" id="4_8uy8w"]
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="4_a3f1r"]
@@ -40,10 +39,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfxv1"]
-atlas = ExtResource("3_e2mon")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3mpf"]
 atlas = ExtResource("3_fkf5x")
 region = Rect2(0, 0, 32, 32)
@@ -60,24 +55,16 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("3_fkf5x")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mk6h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8se8c"]
 atlas = ExtResource("4_rk6q4")
-region = Rect2(160, 64, 32, 32)
+region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_48lg2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqsv0"]
 atlas = ExtResource("4_rk6q4")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pijxf"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bfxv1")
-}],
-"loop": true,
-"name": &"angry",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e3mpf")
@@ -97,7 +84,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3mk6h")
+"texture": SubResource("AtlasTexture_8se8c")
 }],
 "loop": true,
 "name": &"meat",
@@ -105,7 +92,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_48lg2")
+"texture": SubResource("AtlasTexture_fqsv0")
 }],
 "loop": true,
 "name": &"salad",
@@ -143,7 +130,7 @@ visible = false
 position = Vector2(12, -31)
 scale = Vector2(0.59375, 0.5625)
 sprite_frames = SubResource("SpriteFrames_pijxf")
-animation = &"angry"
+animation = &"salad"
 
 [node name="DialogueBox" type="AnimatedSprite2D" parent="ThinkingBubble"]
 visible = false
@@ -188,10 +175,7 @@ wait_time = 3.0
 wait_time = 2.0
 
 [node name="WaitingForFoodTimer" type="Timer" parent="StateMachine"]
-wait_time = 5.0
-
-[node name="AngryTimer" type="Timer" parent="StateMachine"]
-wait_time = 2.0
+wait_time = 15.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_s7dxk")
@@ -215,7 +199,7 @@ script = ExtResource("11_qehpb")
 script = ExtResource("13_5c8lk")
 
 [node name="ShowOrderTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 
 [connection signal="timeout" from="StateMachine/WaitForTableTimer" to="StateMachine/Idle" method="_on_wait_for_table_timer_timeout"]
 [connection signal="timeout" from="StateMachine/TeleportTimer" to="StateMachine/TeleportIn" method="_on_teleport_timer_timeout"]
@@ -224,5 +208,4 @@ wait_time = 2.0
 [connection signal="timeout" from="StateMachine/EatingTimer" to="StateMachine/Eating" method="_on_eating_timer_timeout"]
 [connection signal="timeout" from="StateMachine/ThinkingTimer" to="StateMachine/Pondering" method="_on_thinking_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WaitingForFoodTimer" to="StateMachine/WaitingForFood" method="_on_waiting_for_food_timer_timeout"]
-[connection signal="timeout" from="StateMachine/AngryTimer" to="StateMachine/WalkTo" method="_on_angry_timer_timeout"]
 [connection signal="timeout" from="ShowOrderTimer" to="." method="_on_show_order_timer_timeout"]

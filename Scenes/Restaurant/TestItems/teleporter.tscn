@@ -160,7 +160,6 @@ position = Vector2(0, 70)
 
 [node name="RunTeleportTimer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [connection signal="timeout" from="TeleportInTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WalkOffTimer" to="." method="_on_walk_off_timer_timeout"]

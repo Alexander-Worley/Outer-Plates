@@ -12,7 +12,7 @@ func _ready():
 		table.set_code(i)
 		tables.push_back(table)
 		available_table_codes.push_back(i)
-		print("Set code: ", i)
+		#print("Set code: ", i)
 		
 
 
@@ -41,4 +41,9 @@ func get_available_table_code():
 func push_new_table_code(code):
 	available_table_codes.push_back(code)
 
+func display_orders():
+	for table in tables:
+		table.display_order()
 
+func _on_ticket_board_display_orders():
+	display_orders()
