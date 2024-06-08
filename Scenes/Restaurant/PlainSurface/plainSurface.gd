@@ -37,15 +37,18 @@ func initialize_surface_points():
 			var newY = h * Global.PIXEL_DIMENSION - h_offset
 			var newPoint = Vector2(newX, newY)
 			# Adjust for surface rotation
-			match direction:
-				0:
+			if isCounter:
+				if side not in [4, 5, 6, 7]:
 					newPoint.y -= Global.PIXEL_DIMENSION / 4.0
-				1:
-					newPoint.x += Global.PIXEL_DIMENSION / 4.0
-				2:
-					newPoint.y += Global.PIXEL_DIMENSION / 4.0
-				3:
-					newPoint.x -= Global.PIXEL_DIMENSION / 4.0
+			#match direction:
+			#	0:
+			#		newPoint.y -= Global.PIXEL_DIMENSION / 4.0
+			#	1:
+			#		newPoint.x += Global.PIXEL_DIMENSION / 4.0
+			#	2:
+			#		newPoint.y += Global.PIXEL_DIMENSION / 4.0
+			#	3:
+			#		newPoint.x -= Global.PIXEL_DIMENSION / 4.0
 			centersOfSurface.append([newPoint, false])
 
 # Initializes holdablesOnSurface[Area2D]
