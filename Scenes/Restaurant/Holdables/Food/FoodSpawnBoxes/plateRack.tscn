@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct4bob2krtxcc"]
+[gd_scene load_steps=23 format=3 uid="uid://ct4bob2krtxcc"]
 
 [ext_resource type="PackedScene" uid="uid://dag7q7vtvt3lk" path="res://Scenes/Restaurant/Holdables/Food/Plate/plate.tscn" id="1_ihhyy"]
-[ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="1_q7xk2"]
-[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="2_7pvuh"]
+[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="2_vo8yt"]
+[ext_resource type="Texture2D" uid="uid://dxkc5cbi6hr4c" path="res://Assets/Holdables/Food/plate-rack.png" id="3_jliyf"]
 
 [sub_resource type="GDScript" id="GDScript_q7el6"]
 script/source = "extends \"res://Scenes/Restaurant/PlainSurface/plainSurface.gd\"
 
+var full = 20
+var count = 20
+
 # Function override
 func remove_holdable_from_surface(_holdable: Area2D):
+	count -= 1
 	pass
 
 func begin_interaction(player: CharacterBody2D):
@@ -16,14 +20,130 @@ func begin_interaction(player: CharacterBody2D):
 			player.holdablePosition.remove_child(player.holdableInHand)
 			player.isHolding = false
 			player.holdableInHand.queue_free()
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f43v"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65iqj"]
-atlas = ExtResource("2_7pvuh")
-region = Rect2(0, 1, 32, 30)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocpsw"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm70y"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcton"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrxeo"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cupu3"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg5kj"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjkbt"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56y8x"]
+atlas = ExtResource("2_vo8yt")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwkym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocpsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm70y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrxeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cupu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg5kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjkbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56y8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj3mo"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdppj"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50sf"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr8ik"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exbcn"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2lvb"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kh5u"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u08hj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj3mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdppj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr8ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exbcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2lvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kh5u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PlateRack" type="Area2D" groups=["Interactable", "PlateRack", "SpawnBox", "Surfaces"]]
 script = SubResource("GDScript_q7el6")
@@ -39,10 +159,9 @@ shape = SubResource("RectangleShape2D_7f43v")
 [node name="Plate" parent="." instance=ExtResource("1_ihhyy")]
 position = Vector2(0, -8)
 
-[node name="Surface" type="Sprite2D" parent="."]
-texture = ExtResource("1_q7xk2")
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vwkym")
 
-[node name="PlateRack" type="Sprite2D" parent="Surface"]
-position = Vector2(0, -8)
-scale = Vector2(0.8, 0.8)
-texture = SubResource("AtlasTexture_65iqj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Surface"]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_u08hj")

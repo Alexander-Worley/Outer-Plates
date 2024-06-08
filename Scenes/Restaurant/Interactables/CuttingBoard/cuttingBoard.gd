@@ -9,6 +9,9 @@ var currentPlayer: CharacterBody2D = null
 
 func _ready():
 	initialize()
+	if side in [4, 5, 6, 7]:
+		$Surface/CuttingBoard.set_frame(1)
+	else: $Surface/CuttingBoard.set_frame(0)
 	smoke.hide()
 	smoke.stop()
 	cuttingTimer.start()

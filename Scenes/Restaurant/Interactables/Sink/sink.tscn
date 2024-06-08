@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://85mxvlt2d6jh"]
+
+[ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="1_cijif"]
+[ext_resource type="Texture2D" uid="uid://c72pdopbvmexa" path="res://Assets/Interactables/CookingStations/sink-on-off-sheet.png" id="2_mvy1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed2ca"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u22x"]
+atlas = ExtResource("1_cijif")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jd43"]
+atlas = ExtResource("1_cijif")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8883"]
+atlas = ExtResource("1_cijif")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w78p"]
+atlas = ExtResource("1_cijif")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njnlu"]
+atlas = ExtResource("1_cijif")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwxhm"]
+atlas = ExtResource("1_cijif")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsxw2"]
+atlas = ExtResource("1_cijif")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7tib"]
+atlas = ExtResource("1_cijif")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amp74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u22x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jd43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8883")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w78p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njnlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwxhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsxw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktbbg"]
+atlas = ExtResource("2_mvy1f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkre8"]
+atlas = ExtResource("2_mvy1f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vcwbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktbbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkre8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sink" type="Area2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ed2ca")
+
+[node name="Surface" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_amp74")
+
+[node name="sinkSprite" type="AnimatedSprite2D" parent="Surface"]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_vcwbm")
