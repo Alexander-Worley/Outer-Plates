@@ -133,5 +133,6 @@ autostart = true
 
 [node name="Surface2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ic0f4")
+frame = 5
 
 [connection signal="timeout" from="DispensingBarControl/DispensingBarTimer" to="DispensingBarControl" method="_on_dispensing_bar_timer_timeout"]
