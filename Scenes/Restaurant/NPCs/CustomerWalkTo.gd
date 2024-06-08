@@ -30,8 +30,11 @@ func Physics_Update(_delta: float):
 	if customer.isLeaving:
 		if customer.position.distance_to(target.global_position) < 40:
 			Transitioned.emit(self, "TeleportOut")
-	
-
+		if not customer.ate:
+			AngryTimer.start()
+			customer.find_child("ThinkingBubble").visible = true
+			customer.find_child("DialogueBox").visible = false
+			customer.find_child("ThinkingBubble").play("angry")
 
 func _on_tweak_out_timer_timeout():
 	if abs(customer.position.x - oldPos.x) < 2 and abs(customer.position.y - oldPos.y) < 2:
@@ -40,3 +43,7 @@ func _on_tweak_out_timer_timeout():
 		
 	oldPos = customer.position
 
+
+
+func _on_angry_timer_timeout():
+	customer.find_child("ThinkingBubble").visible = false

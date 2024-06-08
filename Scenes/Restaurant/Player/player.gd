@@ -215,7 +215,7 @@ func _input(event):
 			if isHolding and interactable.is_in_group("DrinkTube"):
 				if interactable.begin_interaction(self): break
 		if teleporterInRange:
-			teleporterInRange[0].teleport_in()
+			teleporterInRange[0].teleport_in(false)
 		if isHolding && holdableInHand.is_in_group("Weapons"):
 			weapon_logic()
 
