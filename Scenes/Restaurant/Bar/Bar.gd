@@ -106,7 +106,7 @@ func is_served():
 	return true
 
 
-func display_order(order):
+func display_order():
 	""" 
 	Display a visual indicator of the order that is needed.
 	"""

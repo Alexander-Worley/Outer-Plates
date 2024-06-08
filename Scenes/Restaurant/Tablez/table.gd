@@ -78,7 +78,6 @@ func set_order(type):
 		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
 func get_order():
-	#print(str(tableCode)+str(status) + " " + str(needed_order_type) + ":3")
 	return needed_order_type 
 
 func is_served():
