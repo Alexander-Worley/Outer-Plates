@@ -24,6 +24,7 @@ signal Transitioned
 @onready var EatingTimer = get_node("../EatingTimer")
 @onready var ThinkingTimer = get_node("../ThinkingTimer")
 @onready var WaitingForFoodTimer = get_node("../WaitingForFoodTimer")
+@onready var AngryTimer = get_node("../AngryTimer")
 
 
 
