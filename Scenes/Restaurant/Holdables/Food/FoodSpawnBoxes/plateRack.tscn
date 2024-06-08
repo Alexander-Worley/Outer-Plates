@@ -1,15 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://ct4bob2krtxcc"]
+[gd_scene load_steps=23 format=3 uid="uid://ct4bob2krtxcc"]
 
 [ext_resource type="PackedScene" uid="uid://dag7q7vtvt3lk" path="res://Scenes/Restaurant/Holdables/Food/Plate/plate.tscn" id="1_ihhyy"]
-[ext_resource type="Texture2D" uid="uid://do325i3yhwmxu" path="res://Assets/Holdables/Food/alien-food-spritesheet.png" id="2_7pvuh"]
 [ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="2_vo8yt"]
+[ext_resource type="Texture2D" uid="uid://dxkc5cbi6hr4c" path="res://Assets/Holdables/Food/plate-rack.png" id="3_jliyf"]
 
 [sub_resource type="GDScript" id="GDScript_q7el6"]
 script/source = "extends \"res://Scenes/Restaurant/PlainSurface/plainSurface.gd\"
 
+var full = 20
+var count = 20
+
 # Function override
 func remove_holdable_from_surface(_holdable: Area2D):
+	count -= 1
 	pass
+
+
+func update_sprite():
+	if count == 0: 
+		$Surface/Stack.set_frame(6)
+	elif count <= full/4: $Surface/Stack.set_frame(4)
+	elif count <= full/2: $Surface/Stack.set_frame(3)
+	elif count <= full*3/4: $Surface/Stack.set_frame(2)
+	else: $Surface/Stack.set_frame(0)
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f43v"]
@@ -79,9 +92,62 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_65iqj"]
-atlas = ExtResource("2_7pvuh")
-region = Rect2(0, 1, 32, 30)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj3mo"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdppj"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50sf"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr8ik"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exbcn"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2lvb"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kh5u"]
+atlas = ExtResource("3_jliyf")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u08hj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj3mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdppj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr8ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exbcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2lvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kh5u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PlateRack" type="Area2D" groups=["PlateRack", "SpawnBox", "Surfaces"]]
 script = SubResource("GDScript_q7el6")
@@ -100,7 +166,6 @@ position = Vector2(0, -8)
 [node name="Surface" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vwkym")
 
-[node name="PlateRack" type="Sprite2D" parent="Surface"]
-position = Vector2(0, -8)
-scale = Vector2(0.8, 0.8)
-texture = SubResource("AtlasTexture_65iqj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Surface"]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_u08hj")
