@@ -27,7 +27,7 @@ func teleport_in(spawnPirate):
 		isTeleporting = true
 		$TeleportInTimer.start()
 		$AnimatedSprite2D.play("default")
-		
+		spawnPirate = false
 		if spawnPirate:
 			spawn_pirate()
 		else:

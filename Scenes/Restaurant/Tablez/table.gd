@@ -70,6 +70,8 @@ func set_order(type):
 		needed_order_type = type
 	
 	var choiceNum = rng.randf_range(0, 1)
+	needed_order_type = 'meat'
+	return
 	if isBar:
 		needed_order_type = 'red' if choiceNum < THRESHOLD else  'green'
 	else:
