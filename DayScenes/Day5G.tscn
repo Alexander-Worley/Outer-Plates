@@ -59,7 +59,7 @@ theme_override_fonts/font = ExtResource("1_vsj2k")
 script = ExtResource("2_g2n6n")
 
 [node name="Background" parent="." instance=ExtResource("3_agnsc")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.833333, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -199,3 +199,5 @@ side = 2
 
 [node name="Catgun" parent="PlainSurface4" instance=ExtResource("25_fsq3y")]
 position = Vector2(0, -8)
+
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

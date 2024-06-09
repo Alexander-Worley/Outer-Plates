@@ -53,7 +53,7 @@ theme_override_fonts/font = ExtResource("1_ig1tw")
 script = ExtResource("2_fn0cs")
 
 [node name="Background" parent="." instance=ExtResource("3_a6fk7")]
-scroll_offset = Vector2(-2.76382, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -162,3 +162,5 @@ position = Vector2(710, 231)
 [node name="OrderRack hint" parent="." instance=ExtResource("19_0ymur")]
 position = Vector2(590, 156)
 control = 3
+
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

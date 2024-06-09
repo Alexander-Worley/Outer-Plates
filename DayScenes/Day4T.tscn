@@ -64,7 +64,7 @@ offset_bottom = 29.0
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(-1.11111, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -220,4 +220,5 @@ position = Vector2(147, 290)
 isCounter = true
 side = 2
 
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

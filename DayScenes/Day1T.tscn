@@ -63,7 +63,7 @@ theme_override_fonts/font = ExtResource("1_vjj22")
 script = ExtResource("2_0jflb")
 
 [node name="Background" parent="." instance=ExtResource("1_oqifv")]
-scroll_offset = Vector2(-0.833333, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -241,4 +241,5 @@ texture_normal = SubResource("AtlasTexture_h2o1b")
 texture_pressed = SubResource("AtlasTexture_cpm4t")
 stretch_mode = 5
 
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

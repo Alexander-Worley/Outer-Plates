@@ -207,4 +207,5 @@ position = Vector2(147, 290)
 isCounter = true
 side = 2
 
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

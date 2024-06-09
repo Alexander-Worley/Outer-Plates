@@ -198,4 +198,5 @@ texture_normal = SubResource("AtlasTexture_5xt8o")
 texture_pressed = SubResource("AtlasTexture_vgfx1")
 stretch_mode = 5
 
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
