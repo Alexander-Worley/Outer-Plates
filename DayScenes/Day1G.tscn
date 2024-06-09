@@ -68,6 +68,7 @@ rotation = 1.55858
 
 [node name="TableManager" type="Node" parent="Furniture"]
 script = ExtResource("6_tycc3")
+threshold = 1.0
 
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
 position = Vector2(565, 317)

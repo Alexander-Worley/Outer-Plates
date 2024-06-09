@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_m1v12"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_t4lye"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_onxoe"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="8_ir0wm"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="8_d502v"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="8_quy6a"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="9_3hwl6"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="10_wdk2w"]
@@ -67,7 +67,7 @@ theme_override_fonts/font = ExtResource("1_davyu")
 script = ExtResource("2_4ff61")
 
 [node name="Background" parent="." instance=ExtResource("3_306gv")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-3.33333, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -95,16 +95,14 @@ position = Vector2(444, 466)
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_onxoe")]
 position = Vector2(666, 453)
 
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_ir0wm")]
+[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_d502v")]
 position = Vector2(442, 301)
 
-[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_ir0wm")]
+[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_d502v")]
 position = Vector2(474, 301)
-barSide = 1
 
-[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_ir0wm")]
+[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_d502v")]
 position = Vector2(506, 301)
-barSide = 2
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("8_quy6a")]
 position = Vector2(590, 197)

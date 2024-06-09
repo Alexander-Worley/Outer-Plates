@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdb3jkuwncr8m"]
+[gd_scene load_steps=24 format=3 uid="uid://cdb3jkuwncr8m"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_uc8a0"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_gaqw6"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_r20ob"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_7w16m"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_p11v3"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="8_toy4b"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_jj70k"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_wguih"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_lidkb"]
@@ -64,7 +63,7 @@ Planet = "Green Planet"
 
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_atmys")]
 position = Vector2(394, 169)
-spawnString = "cpccp"
+spawnString = "ccccc"
 
 [node name="HostingStand" parent="Furniture" instance=ExtResource("5_r20ob")]
 position = Vector2(19, 563)
@@ -76,25 +75,17 @@ script = ExtResource("6_7w16m")
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
 position = Vector2(639, 318)
 
+[node name="Table7" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
+position = Vector2(524, 334)
+
 [node name="Table2" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(548, 407)
+position = Vector2(641, 363)
 
 [node name="Table3" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(444, 466)
+position = Vector2(523, 370)
 
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(666, 453)
-
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_toy4b")]
-position = Vector2(442, 301)
-
-[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_toy4b")]
-position = Vector2(474, 301)
-barSide = 1
-
-[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_toy4b")]
-position = Vector2(506, 301)
-barSide = 2
+position = Vector2(645, 400)
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("9_jj70k")]
 position = Vector2(590, 197)

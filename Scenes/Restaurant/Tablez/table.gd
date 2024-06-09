@@ -87,12 +87,10 @@ func is_served():
 	if hasPirate:
 		return false
 	if !holdablesOnSurface[0]:
-		print("no holdable detected u jagoff")
 		return false
 	if holdablesOnSurface[0].is_in_group("Weapons"):
 		return false
 	if !holdablesOnSurface[0].isReady():
-		print("it aint reddy")
 		return false
 	if holdablesOnSurface[0].type != needed_order_type:
 		return false

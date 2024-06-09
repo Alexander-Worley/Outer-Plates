@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="9_iejkd"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="9_k5763"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="10_bd1n3"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="12_xcrrg"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="12_xcrrg"]
+
 
 [sub_resource type="GDScript" id="GDScript_l6i3d"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
