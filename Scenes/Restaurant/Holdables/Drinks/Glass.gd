@@ -10,7 +10,6 @@ func set_isFull(newFull: bool, newGreen: bool):
 	isFull = newFull
 	isGreen = newGreen
 	type = 'green' if isGreen else 'red'
-	if (isFull): print("we're full fuckers")
 	update_sprite()
 
 func update_sprite():

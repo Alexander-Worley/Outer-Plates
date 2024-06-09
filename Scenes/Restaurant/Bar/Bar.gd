@@ -10,10 +10,6 @@ enum tableState {
 
 var threshold = 0.5
 
-
-@export_category("Developer Tools :0")
-@export_enum("Left", "Middle", "Right") var barSide: int = 0
-
 @onready var tableSize = 1
 @onready var needed_order_type = null # Will need to extend to an array when considering multiple tables
 @onready var customer = null # The child customer, probably will need to be an array# Determines if this table is open for seating.
@@ -26,6 +22,9 @@ var rng = RandomNumberGenerator.new()
 @onready var hasPirate = false
 @onready var pirateMarker = $PirateMarker
 
+@export_category("Developer Tools :0")
+@export_enum("Left", "Middle", "Right") var barSide: int = 0
+
 func _ready():
 	initialize_wrapper()
 
@@ -35,22 +34,20 @@ func initialize_wrapper():
 	initialize()
 	
 func _process(_delta):
-	if get_status() == tableState.AVAILABLE:
-		pass
-	elif get_status() == tableState.AWAITING_ORDER:
+	if get_status() == tableState.AVAILABLE or get_status() == tableState.AWAITING_ORDER:
 		pass
 	elif get_status() == tableState.NEED_SERVING and is_served():
 		set_status(tableState.DINING)
 	elif get_status() == tableState.DINING:
-		set_status(tableState.CLEANUP)
 		holdablesOnSurface[0].set_isEaten(true)
+		set_status(tableState.CLEANUP)
 	elif get_status() == tableState.CLEANUP and !holdablesOnSurface[0]:
 		set_status(tableState.AVAILABLE)
 		set_order(null)
 		var manager = get_parent()
 		manager.push_new_table_code(tableCode)
 		print("Table successfully cleaned!")
-	
+
 	
 
 
@@ -92,21 +89,15 @@ func is_served():
 	If the table isn't awaiting an order, will return false by default.
 	"""
 	if hasPirate:
-		print("pirate check")
 		return false
 	if status != tableState.NEED_SERVING:
-		print("serving check")
 		return false
 	if !holdablesOnSurface[0]:
-		print("empty check")
 		return false
 	if !holdablesOnSurface[0].isReady():
-		print("ready check")
 		return false
 	if holdablesOnSurface[0].type != needed_order_type:
-		print("needed_order check")
 		return false
-	print("is_served succeeded")
 	return true
 
 

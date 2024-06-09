@@ -25,7 +25,7 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 script = SubResource("GDScript_i3ub0")
 
 [node name="Background" parent="." instance=ExtResource("1_hvmwk")]
-scroll_offset = Vector2(-0.714286, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Andreea" type="Label" parent="Background"]
