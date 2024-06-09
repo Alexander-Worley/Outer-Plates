@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhrg2nhb0leuy"]
+[gd_scene load_steps=25 format=3 uid="uid://dhrg2nhb0leuy"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_meoy7"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_5wuyo"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="21_dhjfp"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="22_eytij"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="23_2fqkd"]
+[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="23_yy1d7"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="24_bax71"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
@@ -48,7 +49,7 @@ theme_override_fonts/font = ExtResource("1_meoy7")
 script = ExtResource("2_5wuyo")
 
 [node name="Background" parent="." instance=ExtResource("3_go0tx")]
-scroll_offset = Vector2(-6.73053, 0)
+scroll_offset = Vector2(-3.4854, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -119,11 +120,6 @@ position = Vector2(115, 290)
 isCounter = true
 side = 2
 
-[node name="PlainSurface" parent="." instance=ExtResource("14_o1t12")]
-position = Vector2(147, 290)
-isCounter = true
-side = 2
-
 [node name="CookableRack" parent="." instance=ExtResource("15_6vd4e")]
 position = Vector2(156, 477)
 isCounter = true
@@ -170,5 +166,10 @@ side = 2
 
 [node name="DrinkTube" parent="." instance=ExtResource("24_bax71")]
 position = Vector2(251, 278)
+
+[node name="GlassStack" parent="." instance=ExtResource("23_yy1d7")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
