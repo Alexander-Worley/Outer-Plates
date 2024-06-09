@@ -15,7 +15,7 @@ size = Vector2(128, 256)
 script = ExtResource("1_t7ts5")
 
 [node name="Background" parent="." instance=ExtResource("1_ddpmq")]
-scroll_offset = Vector2(-1.3241, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Blue Planet"
 
 [node name="Player" parent="." instance=ExtResource("2_td5us")]

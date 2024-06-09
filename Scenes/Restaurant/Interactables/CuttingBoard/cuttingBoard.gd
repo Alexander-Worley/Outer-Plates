@@ -21,6 +21,7 @@ func begin_interaction(player: CharacterBody2D):
 	currentPlayer = player
 	if begin_cutting():
 		set_player_locks(true)
+		currentPlayer.interactableBeingUsed = self
 		return true
 	currentPlayer = null
 	return false
@@ -49,8 +50,6 @@ func stop_cooking():
 	cuttingTimer.stop()
 	cuttingTimer.start()
 	cuttingBar.resetBar()
-	set_player_locks(false)
-	currentPlayer = null
 
 func pause_cutting():
 	cuttingTimer.paused = true
@@ -58,12 +57,15 @@ func pause_cutting():
 	smoke.hide()
 	smoke.stop()
 	cuttingBar.pauseBar()
+	set_player_locks(false)
+	if currentPlayer:
+		currentPlayer.interactableBeingUsed = null
+		currentPlayer = null
 
 # Finished cutting timer
 func _on_cuttingTimer_timeout():
 	stop_cooking()
 	holdablesOnSurface[0].set_isCut(true)
-	begin_cutting()
 
 # Set player locks
 func set_player_locks(isLock: bool):
@@ -71,8 +73,6 @@ func set_player_locks(isLock: bool):
 		currentPlayer.set_is_animation_lock(isLock)
 		currentPlayer.set_is_interact_lock(isLock)
 
-func _input(event):
-	# This will need to be updated in the multiplayer update. As of now, any movement from anyone will stop cutting
-	if event.is_action_pressed("left") or event.is_action_pressed("right") or event.is_action_pressed("up") or event.is_action_pressed("down") or event.is_action_pressed("face_left") or event.is_action_pressed("face_right") or event.is_action_pressed("face_up") or event.is_action_pressed("face_down"):
-		set_player_locks(false)
-		pause_cutting()
+# Triggered when the player using this cutting board moves
+func move_signal():
+	pause_cutting()
