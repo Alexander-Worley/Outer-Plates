@@ -44,6 +44,7 @@ func add_player(playerNum: int, isIgnoreKeyboard: bool = false):
 		playerNode = Node2D.new()
 		playerNode.name = "Players"
 		add_child(playerNode)
+	playerNode.visible = true
 	playerNode.z_index = 5 # Arbitrary value
 	
 	# Spawn the player
@@ -390,9 +391,7 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 # Remove the player from the world
 func remove_player(playerNum: int):
 	var playerNode = find_child("Players", false, false)
-	print("Trying to erase")
 	if !playerNode: return
-	print("Success!")
 	for player in players:
 		# Find the player and erase them
 		if player.playerNum == playerNum:

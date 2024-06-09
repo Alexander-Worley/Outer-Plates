@@ -20,7 +20,6 @@ var threshold = 0.5
 var rng = RandomNumberGenerator.new()
 
 @onready var hasPirate = false
-@onready var pirateMarker = $PirateMarker
 
 @export_category("Developer Tools :0")
 @export_enum("Left", "Middle", "Right") var barSide: int = 0
