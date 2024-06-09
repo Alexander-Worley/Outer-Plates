@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="22_plewd"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="24_qwlsl"]
 [ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="25_tegf0"]
+[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="26_uqhy6"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -66,7 +67,7 @@ theme_override_fonts/font = ExtResource("1_davyu")
 script = ExtResource("2_4ff61")
 
 [node name="Background" parent="." instance=ExtResource("3_306gv")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -137,11 +138,6 @@ position = Vector2(115, 290)
 isCounter = true
 side = 2
 
-[node name="PlainSurface" parent="." instance=ExtResource("13_o52dx")]
-position = Vector2(147, 290)
-isCounter = true
-side = 2
-
 [node name="CookableRack" parent="." instance=ExtResource("14_5vcof")]
 position = Vector2(156, 477)
 isCounter = true
@@ -205,6 +201,11 @@ offset_bottom = 537.0
 texture_normal = SubResource("AtlasTexture_6nbmx")
 texture_pressed = SubResource("AtlasTexture_ujoro")
 stretch_mode = 5
+
+[node name="GlassStack" parent="." instance=ExtResource("26_uqhy6")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
