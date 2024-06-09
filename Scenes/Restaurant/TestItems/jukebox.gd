@@ -10,6 +10,7 @@ func begin_interaction(_player: CharacterBody2D):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Matthew is a nerd") # Replace with function body.
+	playMusic()
 
 func playMusic():
 	if not playing:

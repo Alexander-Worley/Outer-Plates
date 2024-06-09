@@ -100,7 +100,7 @@ region = Rect2(96, 208, 54, 24)
 script = SubResource("GDScript_6l2ow")
 
 [node name="Background" parent="." instance=ExtResource("1_fp6xx")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]

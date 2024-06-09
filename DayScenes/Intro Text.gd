@@ -2,16 +2,6 @@ extends Label
 
 @onready var line = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_texture_button_pressed():
 	line += 1
 	if line == 0:
@@ -23,7 +13,6 @@ func _on_texture_button_pressed():
 	elif line == 3:
 		text = "Adventure awaits you in the Outer Plates….\nGood luck humans."
 	else:
-		#move to Day1T
 		const nextScene = preload("res://Scenes/InputSelection/p1InputSelection.tscn")
 		Utils.setScene(nextScene, false)
 

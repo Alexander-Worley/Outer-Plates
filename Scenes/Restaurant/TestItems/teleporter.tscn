@@ -160,8 +160,13 @@ unique_name_in_owner = true
 position = Vector2(0, 70)
 
 [node name="RunTeleportTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
+
+[node name="ChangeSceneTimer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
 
 [connection signal="timeout" from="TeleportInTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WalkOffTimer" to="." method="_on_walk_off_timer_timeout"]
 [connection signal="timeout" from="RunTeleportTimer" to="." method="_on_run_teleport_timer_timeout"]
+[connection signal="timeout" from="ChangeSceneTimer" to="." method="_on_change_scene_timer_timeout"]

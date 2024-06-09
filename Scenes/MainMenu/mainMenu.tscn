@@ -18,7 +18,7 @@ region = Rect2(372, 18, 282, 120)
 script = ExtResource("1_7cu48")
 
 [node name="Background" parent="." instance=ExtResource("1_0v6ry")]
-scroll_offset = Vector2(-1.54513, 0)
+scroll_offset = Vector2(-1.66667, 0)
 
 [node name="startButton" type="TextureButton" parent="."]
 offset_left = 240.0

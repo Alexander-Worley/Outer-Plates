@@ -52,7 +52,7 @@ theme_override_fonts/font = ExtResource("1_ig1tw")
 script = ExtResource("2_fn0cs")
 
 [node name="Background" parent="." instance=ExtResource("3_a6fk7")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -65,24 +65,30 @@ spawnString = "ccccc"
 position = Vector2(19, 563)
 rotation = 1.55858
 
+[node name="TicketBoard" parent="Furniture" instance=ExtResource("9_qffde")]
+position = Vector2(590, 197)
+
 [node name="TableManager" type="Node" parent="Furniture"]
 script = ExtResource("6_tycc3")
 threshold = 1.0
 
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
-position = Vector2(565, 317)
+position = Vector2(632, 360)
 
 [node name="Table2" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
-position = Vector2(464, 384)
+position = Vector2(536, 456)
+
+[node name="Table7" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
+position = Vector2(528, 360)
 
 [node name="Table3" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
-position = Vector2(560, 459)
+position = Vector2(432, 456)
+
+[node name="Table5" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
+position = Vector2(440, 360)
 
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
-position = Vector2(653, 405)
-
-[node name="TicketBoard" parent="Furniture" instance=ExtResource("9_qffde")]
-position = Vector2(590, 197)
+position = Vector2(640, 456)
 
 [node name="Foods" type="Node2D" parent="."]
 
