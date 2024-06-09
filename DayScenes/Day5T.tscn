@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_iplj5"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_5bfeb"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_udxm8"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="7_f71rg"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_s1t1m"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="8_tx71b"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_iet1g"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_a5hrc"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_g5heq"]
@@ -59,7 +59,7 @@ offset_bottom = 29.0
 script = ExtResource("2_qk84v")
 
 [node name="Background" parent="." instance=ExtResource("3_ownmq")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.694444, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -87,16 +87,14 @@ position = Vector2(444, 466)
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_s1t1m")]
 position = Vector2(666, 453)
 
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(442, 301)
 
-[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(474, 301)
-barSide = 1
 
-[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(506, 301)
-barSide = 2
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("9_iet1g")]
 position = Vector2(590, 197)

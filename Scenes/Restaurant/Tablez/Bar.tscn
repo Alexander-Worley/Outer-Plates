@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://7w6hlbstmayh"]
 
-[ext_resource type="Script" path="res://Scenes/Restaurant/Bar/Bar.gd" id="1_tunt4"]
-[ext_resource type="Texture2D" uid="uid://lfthblp0kp4t" path="res://Assets/Interactables/PlainSurfaces/bar.png" id="2_t5wmy"]
-[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/bar-stool.tscn" id="3_mlnjo"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table.gd" id="1_faws6"]
+[ext_resource type="Texture2D" uid="uid://lfthblp0kp4t" path="res://Assets/Interactables/PlainSurfaces/bar.png" id="2_8q34k"]
+[ext_resource type="PackedScene" uid="uid://do8sx6vc1ghb1" path="res://Scenes/Restaurant/TestItems/bar-stool.tscn" id="3_g525j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wukim"]
 size = Vector2(32, 28)
@@ -11,7 +11,7 @@ size = Vector2(32, 28)
 size = Vector2(32, 46.5)
 
 [node name="Bar" type="Area2D" groups=["Surfaces"]]
-script = ExtResource("1_tunt4")
+script = ExtResource("1_faws6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = -1
@@ -26,9 +26,9 @@ shape = SubResource("RectangleShape2D_ultwv")
 
 [node name="Surface" type="Sprite2D" parent="."]
 scale = Vector2(1, 1.25)
-texture = ExtResource("2_t5wmy")
+texture = ExtResource("2_8q34k")
 region_enabled = true
 region_rect = Rect2(0, 24, 32, 40)
 
-[node name="Chair" parent="." instance=ExtResource("3_mlnjo")]
+[node name="Chair" parent="." instance=ExtResource("3_g525j")]
 position = Vector2(0, 35)
