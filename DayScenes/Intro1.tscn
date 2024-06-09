@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn8sis24s1xoa"]
+
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_jd8qx"]
+[ext_resource type="Texture2D" uid="uid://cmxeq0pokntc4" path="res://Assets/UI/console-screen.png" id="2_lh0jy"]
+[ext_resource type="FontFile" uid="uid://cwcbpekts5rdm" path="res://Assets/UI/Silver.ttf" id="3_kyq4s"]
+[ext_resource type="Script" path="res://DayScenes/Intro Text.gd" id="4_1hvu2"]
+[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="5_wa5nd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i74wn"]
+atlas = ExtResource("5_wa5nd")
+region = Rect2(96, 56, 54, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ily4f"]
+atlas = ExtResource("5_wa5nd")
+region = Rect2(96, 208, 54, 24)
+
+[node name="Intro1" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_jd8qx")]
+scroll_offset = Vector2(-3.2868, 0)
+Planet = "Level Select"
+
+[node name="Console" type="Sprite2D" parent="."]
+position = Vector2(390, 273)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_lh0jy")
+
+[node name="Intro Text" type="Label" parent="."]
+offset_left = 118.0
+offset_top = 147.0
+offset_right = 662.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("3_kyq4s")
+theme_override_font_sizes/font_size = 34
+text = "You and your Earthling friends have always been the adventurous bunch, roaming all that space has to offer. Upon traveling to the Outer Plates galaxy, you are lured in by the vibrant, oceanic planet of Azurea…"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("4_1hvu2")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(128, 0)
+offset_left = 294.0
+offset_top = 374.0
+offset_right = 470.0
+offset_bottom = 439.0
+texture_normal = SubResource("AtlasTexture_i74wn")
+texture_pressed = SubResource("AtlasTexture_ily4f")
+stretch_mode = 5
+
+[connection signal="pressed" from="TextureButton" to="Intro Text" method="_on_texture_button_pressed"]
