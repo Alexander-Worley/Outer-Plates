@@ -14,7 +14,6 @@ func _ready():
 		available_table_codes.push_back(i)
 		if i > 3:
 			table.isBar = true
-		
 
 func get_table(code):
 	return tables[code]

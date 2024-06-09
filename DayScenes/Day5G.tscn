@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqqokemo4n8mx"]
+[gd_scene load_steps=26 format=3 uid="uid://bqqokemo4n8mx"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vsj2k"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_g2n6n"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="23_1k0hm"]
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_qfmgg"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_irekx"]
+[ext_resource type="PackedScene" uid="uid://i45lk6yxg0oy" path="res://Scenes/SceneTransition/level_progressor.tscn" id="24_ljrxi"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_fcjbc"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
@@ -57,7 +58,7 @@ theme_override_fonts/font = ExtResource("1_vsj2k")
 script = ExtResource("2_g2n6n")
 
 [node name="Background" parent="." instance=ExtResource("3_agnsc")]
-scroll_offset = Vector2(-1.3324, 0)
+scroll_offset = Vector2(-5, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -86,13 +87,13 @@ position = Vector2(444, 466)
 position = Vector2(659, 463)
 
 [node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(475, 291)
+position = Vector2(508, 283)
 
 [node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(536, 286)
+position = Vector2(557, 283)
 
 [node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(593, 287)
+position = Vector2(609, 283)
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("9_n6cao")]
 position = Vector2(590, 197)
@@ -179,5 +180,7 @@ position = Vector2(251, 278)
 [node name="OrderRack hint" parent="." instance=ExtResource("23_qfmgg")]
 position = Vector2(590, 156)
 control = 3
+
+[node name="LevelProgressor" parent="." instance=ExtResource("24_ljrxi")]
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
