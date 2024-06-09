@@ -15,5 +15,5 @@ func _on_controller_input_zone_body_entered(body):
 		timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
 func _on_timer_timeout():
-	const nextScene = preload("res://DayScenes/Day1T.tscn")
-	Utils.setScene(nextScene)
+	const playerSelect = preload("res://Scenes/InputSelection/playerSelection.tscn")
+	Utils.setScene(playerSelect)
