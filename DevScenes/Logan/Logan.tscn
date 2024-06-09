@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="10_1ls2y"]
 [ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="10_7flq7"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_au6up"]
-[ext_resource type="PackedScene" uid="uid://dtdmt8ydsnyci" path="res://Scenes/Restaurant/Holdables/Food/CookableFood/cookableFood.tscn" id="12_fxna3"]
 [ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="13_oncru"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="14_js5ln"]
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="15_6f7kt"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_tkfx0"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="20_671vo"]
 [ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="21_8hndd"]
+[ext_resource type="PackedScene" uid="uid://bkymy7rnc3gfw" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.tscn" id="21_p16ie"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -53,10 +53,13 @@ theme_override_fonts/font = ExtResource("1_yeim4")
 script = ExtResource("1_i5lgj")
 
 [node name="Background" parent="." instance=ExtResource("1_ncwcc")]
-scroll_offset = Vector2(-0.694444, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
+
+[node name="PlainSurface" parent="Furniture" instance=ExtResource("15_ihipr")]
+position = Vector2(281, 365)
 
 [node name="Sink" parent="Furniture" groups=["Sink"] instance=ExtResource("4_icx7d")]
 position = Vector2(594, 282)
@@ -70,9 +73,6 @@ rotation = 1.55858
 
 [node name="TableManager" type="Node" parent="Furniture"]
 script = ExtResource("4_x7xqw")
-
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("21_8hndd")]
-position = Vector2(503, 196)
 
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("4_ns5cg")]
 position = Vector2(507, 320)
@@ -98,7 +98,6 @@ position = Vector2(646, 212)
 
 [node name="DrinkTube" parent="Weapons" instance=ExtResource("10_1ls2y")]
 position = Vector2(283, 279)
-color = 0
 width = 0
 height = 0
 
@@ -112,14 +111,6 @@ position = Vector2(343, 412)
 z_index = 1
 position = Vector2(352, 369)
 
-[node name="Stove" parent="." instance=ExtResource("11_au6up")]
-position = Vector2(566, 358)
-width = 0
-height = 0
-
-[node name="TestFoodForStove" parent="." instance=ExtResource("12_fxna3")]
-position = Vector2(279, 410)
-
 [node name="Customers" type="Node2D" parent="."]
 
 [node name="CuttingBoard" parent="." instance=ExtResource("14_js5ln")]
@@ -131,10 +122,21 @@ position = Vector2(594, 472)
 [node name="PlainSurface" parent="." instance=ExtResource("15_ihipr")]
 position = Vector2(636, 471)
 
-[node name="CookableFood" parent="." instance=ExtResource("12_fxna3")]
-position = Vector2(674, 466)
-
 [node name="CookableRack" parent="." instance=ExtResource("16_tkfx0")]
 position = Vector2(638, 371)
+
+[node name="Glass" parent="." instance=ExtResource("21_p16ie")]
+z_index = 1
+position = Vector2(281, 357)
+
+[node name="Surfaces" type="Node" parent="."]
+
+[node name="Stoves" type="Node" parent="Surfaces"]
+
+[node name="Stove" parent="." instance=ExtResource("11_au6up")]
+position = Vector2(606, 371)
+
+[node name="Bar" parent="." instance=ExtResource("21_8hndd")]
+position = Vector2(503, 196)
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

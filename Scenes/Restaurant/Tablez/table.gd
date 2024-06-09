@@ -27,9 +27,7 @@ func _ready():
 
 
 func _process(_delta):
-	if get_status() == tableState.AVAILABLE:
-		pass
-	elif get_status() == tableState.AWAITING_ORDER:
+	if get_status() == tableState.AVAILABLE or get_status() == tableState.AWAITING_ORDER:
 		pass
 	elif get_status() == tableState.NEED_SERVING and is_served():
 		set_status(tableState.DINING)
@@ -73,6 +71,7 @@ func set_order(type):
 
 	if isBar:
 		needed_order_type = 'red' if choiceNum < threshold else  'green'
+		needed_order_type = 'red'
 	else:
 		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
@@ -87,13 +86,13 @@ func is_served():
 	#you can't serve to customers who're hounded by pirates
 	if hasPirate:
 		return false
-	if status != tableState.NEED_SERVING:
-		return false
 	if !holdablesOnSurface[0]:
+		print("no holdable detected u jagoff")
 		return false
 	if holdablesOnSurface[0].is_in_group("Weapons"):
 		return false
 	if !holdablesOnSurface[0].isReady():
+		print("it aint reddy")
 		return false
 	if holdablesOnSurface[0].type != needed_order_type:
 		return false
