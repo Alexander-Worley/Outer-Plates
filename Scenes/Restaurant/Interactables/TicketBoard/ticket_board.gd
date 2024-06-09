@@ -14,4 +14,3 @@ func _process(delta):
 
 func begin_interaction(player: CharacterBody2D):
 	display_orders.emit()
-	print("Signal emitted")
