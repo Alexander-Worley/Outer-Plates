@@ -58,5 +58,11 @@ func _on_run_teleport_timer_timeout():
 			teleport_in(false)
 		spawnString = spawnString.substr(1, len(spawnString))
 	else:
-		$RunTeleportTimer.stop()	
+		$RunTeleportTimer.stop()
+		$ChangeSceneTimer.start()	
 	
+
+
+func _on_change_scene_timer_timeout():
+	var nextScene = preload("res://Scenes/Levels/levelSelect.tscn")
+	Utils.setScene(nextScene, false)
