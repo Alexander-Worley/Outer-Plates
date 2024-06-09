@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://mttq35ogufqx"]
+[gd_scene load_steps=7 format=3 uid="uid://mttq35ogufqx"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_fp6xx"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_tj6yx"]
+[ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="3_bcs4s"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="4_5xadc"]
+[ext_resource type="PackedScene" uid="uid://85mxvlt2d6jh" path="res://Scenes/Restaurant/Interactables/Sink/sink.tscn" id="5_uap6s"]
 
 [sub_resource type="GDScript" id="GDScript_6l2ow"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -76,7 +80,7 @@ func _process(delta):
 script = SubResource("GDScript_6l2ow")
 
 [node name="Background" parent="." instance=ExtResource("1_fp6xx")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.1348, 0)
 Planet = "Green Planet"
 
 [node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]
@@ -96,3 +100,21 @@ position = Vector2(192, 448)
 
 [node name="Player4" type="Marker2D" parent="PlayerSpawnPoints"]
 position = Vector2(576, 448)
+
+[node name="Player1" type="Node2D" parent="."]
+
+[node name="PlainSurface" parent="Player1" instance=ExtResource("2_tj6yx")]
+position = Vector2(176, 336)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard" parent="." instance=ExtResource("3_bcs4s")]
+position = Vector2(208, 336)
+isCounter = true
+side = 2
+
+[node name="Stove" parent="." instance=ExtResource("4_5xadc")]
+position = Vector2(240, 336)
+
+[node name="Sink" parent="." instance=ExtResource("5_uap6s")]
+position = Vector2(144, 336)

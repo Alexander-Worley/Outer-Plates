@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dhm2vo8qm61r6"]
+[gd_scene load_steps=29 format=3 uid="uid://dqselsxp5oyhu"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_lombx"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_8qujc"]
@@ -15,8 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="13_ys7bd"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="14_6y6q5"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="15_jkj7u"]
-[ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="16_xg567"]
-[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_67n5q"]
+[ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_67n5q"]
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="18_tgofm"]
 [ext_resource type="Texture2D" uid="uid://bc1jwae1pev23" path="res://Assets/Interactables/External/updated-ticket-spritesheet.png" id="19_01lay"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="20_qajb3"]
@@ -39,6 +38,14 @@ func set_player_starting_position(player: CharacterBody2D, offset: int):
 	var positionOffset = Vector2(xOffset, yOffset)
 	player.position = DEFAULT_STARTING_POSITION + positionOffset
 
+func _on_texture_button_pressed():
+	var timer = get_tree().create_timer(0.1)
+	if not timer.is_connected(\"timeout\", Callable(self, \"_on_timer_timeout\")):
+		timer.connect(\"timeout\", Callable(self, \"_on_timer_timeout\"))
+
+func _on_timer_timeout():
+	const nextScene = preload(\"res://DayScenes/Day4G.tscn\")
+	Utils.setScene(nextScene)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nbmx"]
@@ -61,7 +68,7 @@ theme_override_fonts/font = ExtResource("1_lombx")
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(-3.8149, 0)
+scroll_offset = Vector2(0, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -136,11 +143,6 @@ side = 2
 position = Vector2(156, 477)
 isCounter = true
 side = 2
-
-[node name="Players" type="Node" parent="."]
-
-[node name="Player" parent="Players" instance=ExtResource("16_xg567")]
-position = Vector2(299, 490)
 
 [node name="Sink" parent="." groups=["Sink"] instance=ExtResource("17_67n5q")]
 position = Vector2(83, 290)
@@ -221,3 +223,4 @@ isCounter = true
 side = 2
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
