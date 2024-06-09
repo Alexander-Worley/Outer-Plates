@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://defms0c3jgbwh"]
+[gd_scene load_steps=9 format=3 uid="uid://defms0c3jgbwh"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_ddpmq"]
 [ext_resource type="Script" path="res://Scenes/InputSelection/p1InputSelection.gd" id="1_t7ts5"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="2_td5us"]
 [ext_resource type="LabelSettings" uid="uid://s0sx8xhp2m43" path="res://devTools/devLables.tres" id="3_brqur"]
+[ext_resource type="Texture2D" uid="uid://bf8fkh467k7uc" path="res://Assets/UI/WASD.png" id="5_810hs"]
+[ext_resource type="Texture2D" uid="uid://djr8r7cbqrbf8" path="res://Assets/UI/RF.png" id="6_ggn72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsjgy"]
 size = Vector2(128, 256)
@@ -15,7 +17,7 @@ size = Vector2(128, 256)
 script = ExtResource("1_t7ts5")
 
 [node name="Background" parent="." instance=ExtResource("1_ddpmq")]
-scroll_offset = Vector2(-1.2962, 0)
+scroll_offset = Vector2(-5.4687, 0)
 Planet = "Blue Planet"
 
 [node name="Player" parent="." instance=ExtResource("2_td5us")]
@@ -108,20 +110,30 @@ custom_minimum_size = Vector2(32, 32)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 120.0
-offset_right = 784.0
-offset_bottom = 269.0
+offset_left = 136.0
+offset_top = 124.0
+offset_right = 636.0
+offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "What input is Player 1 using?
-Walk to your answer! (WASD or Left Joystick)
+Walk to your answer!
 A mouse is required for menus, sorry :("
 label_settings = ExtResource("3_brqur")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="WASD" type="Sprite2D" parent="."]
+position = Vector2(129, 300)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_810hs")
+
+[node name="LS" type="Sprite2D" parent="."]
+position = Vector2(642, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("6_ggn72")
 
 [connection signal="body_entered" from="KeyboardInputZone" to="." method="_on_keyboard_input_zone_body_entered"]
 [connection signal="body_entered" from="ControllerInputZone" to="." method="_on_controller_input_zone_body_entered"]
