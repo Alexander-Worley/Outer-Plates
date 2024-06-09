@@ -168,7 +168,6 @@ func showOrder():
 		$ThinkingBubble.visible = true
 		$ThinkingBubble.find_child(("DialogueBox")).visible = true
 		$ThinkingBubble.play(order)
-		print(str(order) + ":3")
 
 
 

@@ -28,7 +28,6 @@ func _on_thinking_timer_timeout():
 		
 		customer.curTable.set_order("generate")	
 		customer.order = customer.curTable.get_order()
-		customer.curTable.set_status(2) # This corresponds to a new table state (NEED_SERVING)
 		customer.showOrder()
 	else:
 		Transitioned.emit(self, "WaitingForFood")

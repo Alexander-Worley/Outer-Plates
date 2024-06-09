@@ -84,6 +84,8 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		newHoldable.doneness = holdableInHand.doneness
+	if holdableInHand.is_in_group("Glass"):
+		newHoldable.isFull = holdableInHand.isFull
 	# Transfer "isCut" if needed
 	if holdableInHand.is_in_group("Cuttable"):
 		newHoldable.isCut = holdableInHand.isCut
