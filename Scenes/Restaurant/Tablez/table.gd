@@ -1,3 +1,4 @@
+@tool
 extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 enum tableState {

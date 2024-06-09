@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://mttq35ogufqx"]
+[gd_scene load_steps=16 format=3 uid="uid://mttq35ogufqx"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_fp6xx"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="2_tj6yx"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="3_bcs4s"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="4_5xadc"]
 [ext_resource type="PackedScene" uid="uid://85mxvlt2d6jh" path="res://Scenes/Restaurant/Interactables/Sink/sink.tscn" id="5_uap6s"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="6_1os2b"]
+[ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="7_45d4r"]
+[ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="8_kpqsk"]
+[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="9_g276o"]
+[ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="10_p4e05"]
+[ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="11_5cwf8"]
+[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="12_wg4fx"]
 
 [sub_resource type="GDScript" id="GDScript_6l2ow"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -74,13 +81,26 @@ func update_spawn_status() -> Dictionary:
 
 func _process(delta):
 	background.scroll_offset.y -= SCROLL_SPEED * delta
+
+
+func _on_texture_button_pressed():
+	const levelSelect = preload(\"res://Scenes/Levels/levelSelect.tscn\")
+	Utils.setScene(levelSelect, false)
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lo5r"]
+atlas = ExtResource("12_wg4fx")
+region = Rect2(96, 56, 54, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pq7o"]
+atlas = ExtResource("12_wg4fx")
+region = Rect2(96, 208, 54, 24)
 
 [node name="PlayerSelection" type="Node2D"]
 script = SubResource("GDScript_6l2ow")
 
 [node name="Background" parent="." instance=ExtResource("1_fp6xx")]
-scroll_offset = Vector2(-1.1348, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="TeleporterLayer" type="ParallaxBackground" parent="Background"]
@@ -104,17 +124,279 @@ position = Vector2(576, 448)
 [node name="Player1" type="Node2D" parent="."]
 
 [node name="PlainSurface" parent="Player1" instance=ExtResource("2_tj6yx")]
-position = Vector2(176, 336)
+position = Vector2(208, 304)
 isCounter = true
 side = 2
 
-[node name="CuttingBoard" parent="." instance=ExtResource("3_bcs4s")]
-position = Vector2(208, 336)
+[node name="PlainSurface2" parent="Player1" instance=ExtResource("2_tj6yx")]
+position = Vector2(336, 304)
+isCounter = true
+side = 1
+
+[node name="PlainSurface3" parent="Player1" instance=ExtResource("2_tj6yx")]
+position = Vector2(208, 208)
 isCounter = true
 side = 2
 
-[node name="Stove" parent="." instance=ExtResource("4_5xadc")]
-position = Vector2(240, 336)
+[node name="PlainSurface4" parent="Player1" instance=ExtResource("2_tj6yx")]
+position = Vector2(304, 208)
+isCounter = true
+side = 2
 
-[node name="Sink" parent="." instance=ExtResource("5_uap6s")]
-position = Vector2(144, 336)
+[node name="CuttingBoard" parent="Player1" instance=ExtResource("3_bcs4s")]
+position = Vector2(176, 304)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard2" parent="Player1" instance=ExtResource("3_bcs4s")]
+position = Vector2(272, 304)
+isCounter = true
+side = 2
+
+[node name="Stove" parent="Player1" instance=ExtResource("4_5xadc")]
+position = Vector2(304, 304)
+
+[node name="Sink" parent="Player1" instance=ExtResource("5_uap6s")]
+position = Vector2(144, 208)
+
+[node name="PlateRack" parent="Player1" instance=ExtResource("6_1os2b")]
+position = Vector2(176, 208)
+isCounter = true
+side = 2
+
+[node name="CookableRack" parent="Player1" instance=ExtResource("7_45d4r")]
+position = Vector2(240, 304)
+isCounter = true
+side = 2
+
+[node name="CuttableRack" parent="Player1" instance=ExtResource("8_kpqsk")]
+position = Vector2(144, 304)
+
+[node name="GlassStack" parent="Player1" instance=ExtResource("9_g276o")]
+position = Vector2(240, 208)
+isCounter = true
+side = 1
+
+[node name="DrinkTube" parent="Player1" instance=ExtResource("10_p4e05")]
+position = Vector2(272, 200)
+
+[node name="TrashCan" parent="Player1" instance=ExtResource("11_5cwf8")]
+position = Vector2(336, 208)
+
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2(216, 56)
+
+[node name="PlainSurface" parent="Player2" instance=ExtResource("2_tj6yx")]
+position = Vector2(280, 248)
+isCounter = true
+side = 2
+
+[node name="PlainSurface2" parent="Player2" instance=ExtResource("2_tj6yx")]
+position = Vector2(408, 248)
+isCounter = true
+side = 1
+
+[node name="PlainSurface3" parent="Player2" instance=ExtResource("2_tj6yx")]
+position = Vector2(280, 152)
+isCounter = true
+side = 2
+
+[node name="PlainSurface4" parent="Player2" instance=ExtResource("2_tj6yx")]
+position = Vector2(376, 152)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard" parent="Player2" instance=ExtResource("3_bcs4s")]
+position = Vector2(248, 248)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard2" parent="Player2" instance=ExtResource("3_bcs4s")]
+position = Vector2(344, 248)
+isCounter = true
+side = 2
+
+[node name="Stove" parent="Player2" instance=ExtResource("4_5xadc")]
+position = Vector2(376, 248)
+
+[node name="Sink" parent="Player2" instance=ExtResource("5_uap6s")]
+position = Vector2(216, 152)
+
+[node name="PlateRack" parent="Player2" instance=ExtResource("6_1os2b")]
+position = Vector2(248, 152)
+isCounter = true
+side = 2
+
+[node name="CookableRack" parent="Player2" instance=ExtResource("7_45d4r")]
+position = Vector2(312, 248)
+isCounter = true
+side = 2
+
+[node name="CuttableRack" parent="Player2" instance=ExtResource("8_kpqsk")]
+position = Vector2(216, 248)
+
+[node name="GlassStack" parent="Player2" instance=ExtResource("9_g276o")]
+position = Vector2(312, 152)
+isCounter = true
+side = 1
+
+[node name="DrinkTube" parent="Player2" instance=ExtResource("10_p4e05")]
+position = Vector2(344, 144)
+
+[node name="TrashCan" parent="Player2" instance=ExtResource("11_5cwf8")]
+position = Vector2(408, 152)
+
+[node name="Player3" type="Node2D" parent="."]
+position = Vector2(64, 208)
+
+[node name="PlainSurface" parent="Player3" instance=ExtResource("2_tj6yx")]
+position = Vector2(144, 288)
+isCounter = true
+side = 2
+
+[node name="PlainSurface2" parent="Player3" instance=ExtResource("2_tj6yx")]
+position = Vector2(272, 288)
+isCounter = true
+side = 1
+
+[node name="PlainSurface3" parent="Player3" instance=ExtResource("2_tj6yx")]
+position = Vector2(144, 192)
+isCounter = true
+side = 2
+
+[node name="PlainSurface4" parent="Player3" instance=ExtResource("2_tj6yx")]
+position = Vector2(240, 192)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard" parent="Player3" instance=ExtResource("3_bcs4s")]
+position = Vector2(112, 288)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard2" parent="Player3" instance=ExtResource("3_bcs4s")]
+position = Vector2(208, 288)
+isCounter = true
+side = 2
+
+[node name="Stove" parent="Player3" instance=ExtResource("4_5xadc")]
+position = Vector2(240, 288)
+
+[node name="Sink" parent="Player3" instance=ExtResource("5_uap6s")]
+position = Vector2(80, 192)
+
+[node name="PlateRack" parent="Player3" instance=ExtResource("6_1os2b")]
+position = Vector2(112, 192)
+isCounter = true
+side = 2
+
+[node name="CookableRack" parent="Player3" instance=ExtResource("7_45d4r")]
+position = Vector2(176, 288)
+isCounter = true
+side = 2
+
+[node name="CuttableRack" parent="Player3" instance=ExtResource("8_kpqsk")]
+position = Vector2(80, 288)
+
+[node name="GlassStack" parent="Player3" instance=ExtResource("9_g276o")]
+position = Vector2(176, 192)
+isCounter = true
+side = 1
+
+[node name="DrinkTube" parent="Player3" instance=ExtResource("10_p4e05")]
+position = Vector2(208, 184)
+
+[node name="TrashCan" parent="Player3" instance=ExtResource("11_5cwf8")]
+position = Vector2(272, 192)
+
+[node name="Player4" type="Node2D" parent="."]
+position = Vector2(416, 248)
+
+[node name="PlainSurface" parent="Player4" instance=ExtResource("2_tj6yx")]
+position = Vector2(80, 248)
+isCounter = true
+side = 2
+
+[node name="PlainSurface2" parent="Player4" instance=ExtResource("2_tj6yx")]
+position = Vector2(208, 248)
+isCounter = true
+side = 1
+
+[node name="PlainSurface3" parent="Player4" instance=ExtResource("2_tj6yx")]
+position = Vector2(80, 152)
+isCounter = true
+side = 2
+
+[node name="PlainSurface4" parent="Player4" instance=ExtResource("2_tj6yx")]
+position = Vector2(176, 152)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard" parent="Player4" instance=ExtResource("3_bcs4s")]
+position = Vector2(48, 248)
+isCounter = true
+side = 2
+
+[node name="CuttingBoard2" parent="Player4" instance=ExtResource("3_bcs4s")]
+position = Vector2(144, 248)
+isCounter = true
+side = 2
+
+[node name="Stove" parent="Player4" instance=ExtResource("4_5xadc")]
+position = Vector2(176, 248)
+
+[node name="Sink" parent="Player4" instance=ExtResource("5_uap6s")]
+position = Vector2(16, 152)
+
+[node name="PlateRack" parent="Player4" instance=ExtResource("6_1os2b")]
+position = Vector2(48, 152)
+isCounter = true
+side = 2
+
+[node name="CookableRack" parent="Player4" instance=ExtResource("7_45d4r")]
+position = Vector2(112, 248)
+isCounter = true
+side = 2
+
+[node name="CuttableRack" parent="Player4" instance=ExtResource("8_kpqsk")]
+position = Vector2(16, 248)
+
+[node name="GlassStack" parent="Player4" instance=ExtResource("9_g276o")]
+position = Vector2(112, 152)
+isCounter = true
+side = 1
+
+[node name="DrinkTube" parent="Player4" instance=ExtResource("10_p4e05")]
+position = Vector2(144, 144)
+
+[node name="TrashCan" parent="Player4" instance=ExtResource("11_5cwf8")]
+position = Vector2(208, 152)
+
+[node name="Controls" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 37.0
+offset_right = 389.0
+offset_bottom = 112.0
+text = "View Controls: \"Esc\" or \"Menu\"
+Level-specific tutorials will be provided later
+Connect additional controllers now! (Or later)"
+
+[node name="Continue" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 475.0
+offset_right = 601.0
+offset_bottom = 498.0
+text = "Press \"Continue\" to start:"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(128, 0)
+offset_left = 624.0
+offset_top = 504.0
+offset_right = 752.0
+offset_bottom = 544.0
+texture_normal = SubResource("AtlasTexture_0lo5r")
+texture_pressed = SubResource("AtlasTexture_6pq7o")
+stretch_mode = 5
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
