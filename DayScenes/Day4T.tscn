@@ -55,7 +55,7 @@ region = Rect2(96, 56, 54, 24)
 atlas = ExtResource("25_x0qsq")
 region = Rect2(96, 208, 54, 24)
 
-[node name="Day2T" type="Node2D"]
+[node name="Day4T" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -67,7 +67,7 @@ theme_override_fonts/font = ExtResource("1_lombx")
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-1.0293, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]

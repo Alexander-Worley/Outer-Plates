@@ -54,7 +54,7 @@ region = Rect2(96, 56, 54, 24)
 atlas = ExtResource("25_tegf0")
 region = Rect2(96, 208, 54, 24)
 
-[node name="Day2T" type="Node2D"]
+[node name="Day3T" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
