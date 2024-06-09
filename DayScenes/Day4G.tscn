@@ -1,12 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdb3jkuwncr8m"]
+[gd_scene load_steps=30 format=3 uid="uid://cdb3jkuwncr8m"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_gaqw6"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_4le4m"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_atmys"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_r20ob"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_7w16m"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table.gd" id="7_2s3o5"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_p11v3"]
+[ext_resource type="Texture2D" uid="uid://d1b4hokfhh1qd" path="res://Assets/Interactables/PlainSurfaces/table.png" id="8_dmm5n"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_jj70k"]
+[ext_resource type="PackedScene" uid="uid://jecoiu4ygk5f" path="res://Scenes/Restaurant/TestItems/chair.tscn" id="9_seohw"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_wguih"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_lidkb"]
 [ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="12_nxdg7"]
@@ -22,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_d4s46"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_q0ko8"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_lff3r"]
+[ext_resource type="Texture2D" uid="uid://lfthblp0kp4t" path="res://Assets/Interactables/PlainSurfaces/bar.png" id="26_yvbhj"]
+[ext_resource type="Texture2D" uid="uid://d3p25sj3n3qi0" path="res://Assets/Environment/Ambiance/bar-stool.png" id="27_of0ng"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -43,6 +48,9 @@ func _on_timer_timeout():
 	const nextScene = preload(\"res://DayScenes/Day5T.tscn\")
 	Utils.setScene(nextScene)
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ckp"]
+size = Vector2(32, 32)
 
 [node name="Day4G" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
@@ -76,20 +84,77 @@ script = ExtResource("6_7w16m")
 threshold = 1.0
 day = 4
 
-[node name="Table" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(632, 360)
+[node name="Table" type="Area2D" parent="Furniture/TableManager" groups=["Surfaces"]]
+z_index = -1
+position = Vector2(528, 336)
+script = ExtResource("7_2s3o5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Furniture/TableManager/Table"]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table/StaticBody2D"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="Surface" type="Sprite2D" parent="Furniture/TableManager/Table"]
+visible = false
+texture = ExtResource("8_dmm5n")
+
+[node name="Chair" parent="Furniture/TableManager/Table" instance=ExtResource("9_seohw")]
+visible = false
+position = Vector2(-32, -1)
 
 [node name="Table2" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
 position = Vector2(536, 456)
 
-[node name="Table7" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(528, 360)
+[node name="Table7" type="Area2D" parent="Furniture/TableManager" groups=["Surfaces"]]
+z_index = -1
+position = Vector2(528, 368)
+script = ExtResource("7_2s3o5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Furniture/TableManager/Table7"]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table7/StaticBody2D"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table7"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="Surface" type="Sprite2D" parent="Furniture/TableManager/Table7"]
+visible = false
+texture = ExtResource("8_dmm5n")
+
+[node name="Chair" parent="Furniture/TableManager/Table7" instance=ExtResource("9_seohw")]
+visible = false
+position = Vector2(-32, -1)
 
 [node name="Table3" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
 position = Vector2(432, 456)
 
-[node name="Table5" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
-position = Vector2(440, 360)
+[node name="Table5" type="Area2D" parent="Furniture/TableManager" groups=["Surfaces"]]
+z_index = -1
+position = Vector2(528, 304)
+script = ExtResource("7_2s3o5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Furniture/TableManager/Table5"]
+z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table5/StaticBody2D"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/TableManager/Table5"]
+shape = SubResource("RectangleShape2D_q2ckp")
+
+[node name="Surface" type="Sprite2D" parent="Furniture/TableManager/Table5"]
+visible = false
+texture = ExtResource("8_dmm5n")
+
+[node name="Chair" parent="Furniture/TableManager/Table5" instance=ExtResource("9_seohw")]
+visible = false
+position = Vector2(-32, -1)
 
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_p11v3")]
 position = Vector2(640, 456)
@@ -206,5 +271,22 @@ color = 0
 position = Vector2(147, 290)
 isCounter = true
 side = 2
+
+[node name="Bar" type="Sprite2D" parent="."]
+position = Vector2(544, 336)
+rotation = 1.5708
+texture = ExtResource("26_yvbhj")
+
+[node name="Bar-stool" type="Sprite2D" parent="."]
+position = Vector2(496, 368)
+texture = ExtResource("27_of0ng")
+
+[node name="Bar-stool2" type="Sprite2D" parent="."]
+position = Vector2(496, 336)
+texture = ExtResource("27_of0ng")
+
+[node name="Bar-stool3" type="Sprite2D" parent="."]
+position = Vector2(496, 304)
+texture = ExtResource("27_of0ng")
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
