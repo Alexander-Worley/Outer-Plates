@@ -1,13 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkf5ldsvui8ab"]
+[gd_scene load_steps=24 format=3 uid="uid://bkf5ldsvui8ab"]
 
-[ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_lcekw"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_qk84v"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_ownmq"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_iplj5"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_5bfeb"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_udxm8"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="7_f71rg"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_s1t1m"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="8_tx71b"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_iet1g"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_a5hrc"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_g5heq"]
@@ -18,10 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_tvgd1"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="18_yyxop"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="19_mqblp"]
-[ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="20_td254"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="21_4v2g8"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="22_bptdv"]
-[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="23_mlhw7"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="23_xvjny"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
@@ -46,11 +43,9 @@ func _on_timer_timeout():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbthv"]
-atlas = ExtResource("23_mlhw7")
 region = Rect2(96, 56, 54, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov6ev"]
-atlas = ExtResource("23_mlhw7")
 region = Rect2(96, 208, 54, 24)
 
 [node name="Day2T" type="Node2D"]
@@ -61,11 +56,10 @@ offset_left = 74.0
 offset_top = 6.0
 offset_right = 114.0
 offset_bottom = 29.0
-theme_override_fonts/font = ExtResource("1_lcekw")
 script = ExtResource("2_qk84v")
 
 [node name="Background" parent="." instance=ExtResource("3_ownmq")]
-scroll_offset = Vector2(-1.66667, 0)
+scroll_offset = Vector2(-0.694444, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -93,16 +87,14 @@ position = Vector2(444, 466)
 [node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_s1t1m")]
 position = Vector2(666, 453)
 
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(442, 301)
 
-[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(474, 301)
-barSide = 1
 
-[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_tx71b")]
+[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("7_f71rg")]
 position = Vector2(506, 301)
-barSide = 2
 
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("9_iet1g")]
 position = Vector2(590, 197)
@@ -119,7 +111,6 @@ offset_left = 658.0
 offset_top = 9.0
 offset_right = 698.0
 offset_bottom = 32.0
-theme_override_fonts/font = ExtResource("1_lcekw")
 
 [node name="Stove" parent="." instance=ExtResource("11_g5heq")]
 position = Vector2(92, 477)
@@ -167,7 +158,6 @@ position = Vector2(239, 148)
 
 [node name="Pulsar" type="Sprite2D" parent="."]
 position = Vector2(54, 16)
-texture = ExtResource("20_td254")
 
 [node name="LavaLamp2" parent="." instance=ExtResource("19_mqblp")]
 position = Vector2(147, 162)

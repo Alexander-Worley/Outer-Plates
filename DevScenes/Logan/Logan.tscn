@@ -19,8 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="15_ihipr"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_tkfx0"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="20_671vo"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="21_8hndd"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="21_8hndd"]
 [ext_resource type="PackedScene" uid="uid://bkymy7rnc3gfw" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.tscn" id="21_p16ie"]
+
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
