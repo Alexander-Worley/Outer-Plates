@@ -53,7 +53,7 @@ theme_override_fonts/font = ExtResource("1_ig1tw")
 script = ExtResource("2_fn0cs")
 
 [node name="Background" parent="." instance=ExtResource("3_a6fk7")]
-scroll_offset = Vector2(-3.9491, 0)
+scroll_offset = Vector2(-3.85673, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -68,6 +68,7 @@ rotation = 1.55858
 
 [node name="TableManager" type="Node" parent="Furniture"]
 script = ExtResource("6_tycc3")
+threshold = 1.0
 
 [node name="Table" parent="Furniture/TableManager" instance=ExtResource("8_4cj5b")]
 position = Vector2(565, 317)

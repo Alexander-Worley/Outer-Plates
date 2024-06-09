@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://i45lk6yxg0oy"]
+
+[ext_resource type="Script" path="res://Scenes/SceneTransition/level_progressor.gd" id="1_y2ett"]
+
+[node name="LevelProgressor" type="Node"]
+script = ExtResource("1_y2ett")

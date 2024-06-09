@@ -60,7 +60,7 @@ offset_bottom = 29.0
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(-3.49123, 0)
+scroll_offset = Vector2(-5.511, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
