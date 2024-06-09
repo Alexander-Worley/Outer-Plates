@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://pboyl84wmi8l"]
+[gd_scene load_steps=18 format=3 uid="uid://pboyl84wmi8l"]
 
 [ext_resource type="Texture2D" uid="uid://2pgvvtu50ye4" path="res://Assets/Interactables/PlainSurfaces/counter-spritesheet.png" id="1_6tyyw"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.gd" id="1_7j6qr"]
@@ -79,39 +79,11 @@ animations = [{
 atlas = ExtResource("4_sph5y")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlmes"]
-atlas = ExtResource("4_sph5y")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikrlb"]
-atlas = ExtResource("4_sph5y")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g8tq0"]
-atlas = ExtResource("4_sph5y")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kp1t7"]
-atlas = ExtResource("4_sph5y")
-region = Rect2(0, 64, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_5q5xs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sodhq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jlmes")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikrlb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g8tq0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kp1t7")
 }],
 "loop": true,
 "name": &"default",

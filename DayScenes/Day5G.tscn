@@ -1,0 +1,185 @@
+[gd_scene load_steps=25 format=3 uid="uid://bqqokemo4n8mx"]
+
+[ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vsj2k"]
+[ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_g2n6n"]
+[ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_agnsc"]
+[ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="4_prxcb"]
+[ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_8u7s5"]
+[ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_v5wh4"]
+[ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_50tpv"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="8_afc7a"]
+[ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_n6cao"]
+[ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_fpbsb"]
+[ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_vcyk2"]
+[ext_resource type="PackedScene" uid="uid://oi2debxs4xwk" path="res://Scenes/Restaurant/Interactables/CuttingBoard/cuttingBoard.tscn" id="12_2l5i6"]
+[ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="13_b3m65"]
+[ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="14_smcvt"]
+[ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="15_43swk"]
+[ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_y6t40"]
+[ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="20_1mtm3"]
+[ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="21_sytyy"]
+[ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="22_2dj81"]
+[ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="23_1k0hm"]
+[ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_qfmgg"]
+[ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_irekx"]
+[ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_fcjbc"]
+
+[sub_resource type="GDScript" id="GDScript_tyb3y"]
+script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
+
+# Sets the location where the player first spawns
+func set_player_starting_position(player: CharacterBody2D, offset: int):
+	const DEFAULT_STARTING_POSITION = Vector2(336, 304)
+	var xOffset = Global.PIXEL_DIMENSION * offset
+	var yOffset = Global.PIXEL_DIMENSION * offset
+	var positionOffset = Vector2(xOffset, yOffset)
+	player.position = DEFAULT_STARTING_POSITION + positionOffset
+
+func change_scene():
+	var timer = get_tree().create_timer(0.1)
+	if not timer.is_connected(\"timeout\", Callable(self, \"_on_timer_timeout\")):
+		timer.connect(\"timeout\", Callable(self, \"_on_timer_timeout\"))
+
+func _on_timer_timeout():
+	const nextScene = preload(\"res://Scenes/MainMenu/mainMenu.tscn\")
+	Utils.setScene(nextScene, false)
+"
+
+[node name="Day5G" type="Node2D"]
+script = SubResource("GDScript_tyb3y")
+
+[node name="MoneyLabel" type="Label" parent="."]
+offset_left = 74.0
+offset_top = 6.0
+offset_right = 114.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("1_vsj2k")
+script = ExtResource("2_g2n6n")
+
+[node name="Background" parent="." instance=ExtResource("3_agnsc")]
+scroll_offset = Vector2(-1.0018, 0)
+Planet = "Green Planet"
+
+[node name="Furniture" type="Node" parent="."]
+
+[node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_prxcb")]
+position = Vector2(394, 169)
+spawnString = "cppccccppc"
+
+[node name="HostingStand" parent="Furniture" instance=ExtResource("5_8u7s5")]
+position = Vector2(19, 563)
+rotation = 1.55858
+
+[node name="TableManager" type="Node" parent="Furniture"]
+script = ExtResource("6_v5wh4")
+
+[node name="Table" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(639, 318)
+
+[node name="Table2" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(548, 407)
+
+[node name="Table3" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(444, 466)
+
+[node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(666, 453)
+
+[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_afc7a")]
+position = Vector2(442, 301)
+
+[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_afc7a")]
+position = Vector2(474, 301)
+barSide = 1
+
+[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_afc7a")]
+position = Vector2(506, 301)
+barSide = 2
+
+[node name="TicketBoard" parent="Furniture" instance=ExtResource("9_n6cao")]
+position = Vector2(590, 197)
+
+[node name="Foods" type="Node2D" parent="."]
+
+[node name="Jukebox" parent="." instance=ExtResource("10_fpbsb")]
+position = Vector2(646, 212)
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="ammoCount" type="Label" parent="Weapons"]
+offset_left = 658.0
+offset_top = 9.0
+offset_right = 698.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_vsj2k")
+
+[node name="Stove" parent="." instance=ExtResource("11_vcyk2")]
+position = Vector2(92, 477)
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="CuttingBoard" parent="." instance=ExtResource("12_2l5i6")]
+position = Vector2(124, 477)
+isCounter = true
+side = 2
+
+[node name="PlateRack" parent="." instance=ExtResource("13_b3m65")]
+position = Vector2(115, 290)
+isCounter = true
+side = 2
+
+[node name="PlainSurface" parent="." instance=ExtResource("14_smcvt")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
+
+[node name="CookableRack" parent="." instance=ExtResource("15_43swk")]
+position = Vector2(156, 477)
+isCounter = true
+side = 2
+
+[node name="Sink" parent="." groups=["Sink"] instance=ExtResource("17_y6t40")]
+position = Vector2(83, 290)
+
+[node name="PlainSurface2" parent="." instance=ExtResource("14_smcvt")]
+position = Vector2(179, 290)
+isCounter = true
+side = 2
+
+[node name="Lasergun" parent="PlainSurface2" instance=ExtResource("20_1mtm3")]
+position = Vector2(0, -8)
+
+[node name="PlainSurface3" parent="." instance=ExtResource("14_smcvt")]
+position = Vector2(220, 477)
+isCounter = true
+side = 2
+
+[node name="LavaLamp" parent="." instance=ExtResource("21_sytyy")]
+position = Vector2(239, 148)
+
+[node name="Pulsar" type="Sprite2D" parent="."]
+position = Vector2(54, 16)
+texture = ExtResource("22_2dj81")
+
+[node name="LavaLamp2" parent="." instance=ExtResource("21_sytyy")]
+position = Vector2(147, 162)
+
+[node name="TrashCan" parent="." instance=ExtResource("23_1k0hm")]
+position = Vector2(211, 290)
+
+[node name="LavaLamp3" parent="." instance=ExtResource("21_sytyy")]
+position = Vector2(710, 231)
+
+[node name="CuttableRack" parent="." instance=ExtResource("24_irekx")]
+position = Vector2(188, 477)
+isCounter = true
+side = 2
+
+[node name="DrinkTube" parent="." instance=ExtResource("25_fcjbc")]
+position = Vector2(251, 278)
+
+[node name="OrderRack hint" parent="." instance=ExtResource("23_qfmgg")]
+position = Vector2(590, 156)
+control = 3
+
+[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

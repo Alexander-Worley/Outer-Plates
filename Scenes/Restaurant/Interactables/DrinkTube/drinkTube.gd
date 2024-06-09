@@ -6,7 +6,7 @@ extends "res://Scenes/Restaurant/PlainSurface/plainSurface.gd"
 
 # change both full and ammoCount to same number to start with
 var full = 20
-var ammoCount = 20
+var ammoCount = 50
 var isGreen: bool = false
 var isDispensing: bool = false
 var finished: bool = false

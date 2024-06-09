@@ -22,7 +22,7 @@ func _ready():
 	scene.numPlayers = numDevices + int(Global.isP1UsingKeyboard)
 	
 	# Remove Depricated Inputs
-	for deviceNum in range(numDevices):
+	for deviceNum in range(-1, MAX_PLAYERS):
 		scene.erase_input_map(deviceNum)
 	
 	# Add Current Players

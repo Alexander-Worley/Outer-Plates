@@ -3,12 +3,14 @@ class_name CustomerWaitingForFood
 
 func Enter():
 	WaitingForFoodTimer.start()	
+	customer.curTable.set_status(2) # This corresponds to a new table state (NEED_SERVING)
 
 func Exit():
 	pass
 	
 func Update(_delta: float):
-	if customer.curTable.status == 3:
+	if customer.curTable.status == customer.curTable.tableState.DINING:
+		print("we finna eat")
 		startEating()
 		
 		

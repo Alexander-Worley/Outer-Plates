@@ -14,9 +14,6 @@ func _on_controller_input_zone_body_entered(body):
 	if not timer.is_connected("timeout", Callable(self, "_on_timer_timeout")):
 		timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
-# This timer is necessary to safely unload everything from the scene
 func _on_timer_timeout():
-	#const playerSelection = preload("res://Scenes/InputSelection/playerSelection.tscn")
-	# TEMP
-	const playerSelection = preload("res://DevScenes/DevMenu.tscn")
-	Utils.setScene(playerSelection, false) # Will be true when fixed
+	const nextScene = preload("res://DayScenes/Day1T.tscn")
+	Utils.setScene(nextScene)
