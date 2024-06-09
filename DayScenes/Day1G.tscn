@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bm4l7abigihqs"]
+[gd_scene load_steps=21 format=3 uid="uid://bm4l7abigihqs"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_ig1tw"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_fn0cs"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="15_7xror"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="16_0a4st"]
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="18_7u52s"]
+[ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="19_0ymur"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="19_tra5n"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="20_qyp11"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="21_dqay7"]
@@ -40,7 +41,7 @@ func _on_timer_timeout():
 	Utils.setScene(nextScene)
 "
 
-[node name="Day1T" type="Node2D"]
+[node name="Day1G" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -150,5 +151,9 @@ position = Vector2(211, 290)
 
 [node name="LavaLamp3" parent="." instance=ExtResource("19_tra5n")]
 position = Vector2(710, 231)
+
+[node name="OrderRack hint" parent="." instance=ExtResource("19_0ymur")]
+position = Vector2(590, 156)
+control = 3
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

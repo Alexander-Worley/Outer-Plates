@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cdb3jkuwncr8m"]
+[gd_scene load_steps=25 format=3 uid="uid://cdb3jkuwncr8m"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_uc8a0"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_gaqw6"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="21_3i0ws"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="22_2wjiw"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="23_8giyr"]
-[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="24_6uql3"]
+[ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_d4s46"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_q0ko8"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_lff3r"]
 
@@ -45,7 +45,7 @@ func _on_timer_timeout():
 	Utils.setScene(nextScene)
 "
 
-[node name="Day2T" type="Node2D"]
+[node name="Day4G" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -57,7 +57,7 @@ theme_override_fonts/font = ExtResource("1_uc8a0")
 script = ExtResource("2_gaqw6")
 
 [node name="Background" parent="." instance=ExtResource("3_4le4m")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-3.15197, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -128,6 +128,11 @@ position = Vector2(115, 290)
 isCounter = true
 side = 2
 
+[node name="PlainSurface" parent="." instance=ExtResource("14_g7fhv")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
+
 [node name="CookableRack" parent="." instance=ExtResource("15_ngrbl")]
 position = Vector2(156, 477)
 isCounter = true
@@ -173,9 +178,8 @@ side = 2
 [node name="DrinkTube" parent="." instance=ExtResource("25_lff3r")]
 position = Vector2(251, 278)
 
-[node name="GlassStack" parent="." instance=ExtResource("24_6uql3")]
-position = Vector2(147, 290)
-isCounter = true
-side = 2
+[node name="OrderRack hint" parent="." instance=ExtResource("23_d4s46")]
+position = Vector2(590, 156)
+control = 3
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
