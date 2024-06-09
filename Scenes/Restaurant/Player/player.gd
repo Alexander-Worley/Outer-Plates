@@ -61,6 +61,8 @@ func pickup_holdable(holdable: Area2D):
 	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
+	if holdableInHand.is_in_group("Weapons"):
+		holdableInHand.ammo = holdable.ammo
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene
 	# AW - May 25, 2024 - TODO: Fix this
