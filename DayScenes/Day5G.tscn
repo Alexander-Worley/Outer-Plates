@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bqqokemo4n8mx"]
+[gd_scene load_steps=27 format=3 uid="uid://bqqokemo4n8mx"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vsj2k"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_g2n6n"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="5_8u7s5"]
 [ext_resource type="Script" path="res://Scenes/Restaurant/Tablez/table_manager.gd" id="6_v5wh4"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_50tpv"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="8_nv05p"]
 [ext_resource type="PackedScene" uid="uid://wcr6e8ubq8aj" path="res://Scenes/Restaurant/Interactables/TicketBoard/ticket_board.tscn" id="9_n6cao"]
 [ext_resource type="PackedScene" uid="uid://thygj4fuuxqk" path="res://Scenes/Restaurant/TestItems/jukebox.tscn" id="10_fpbsb"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="11_vcyk2"]
@@ -15,15 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://ct4bob2krtxcc" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/plateRack.tscn" id="13_b3m65"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="14_smcvt"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="15_43swk"]
+[ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="16_ibcnr"]
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_y6t40"]
-[ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="20_1mtm3"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="21_sytyy"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="22_2dj81"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="23_1k0hm"]
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_qfmgg"]
+[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="24_iacp5"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_irekx"]
 [ext_resource type="PackedScene" uid="uid://i45lk6yxg0oy" path="res://Scenes/SceneTransition/level_progressor.tscn" id="24_ljrxi"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_fcjbc"]
+[ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="25_fsq3y"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -58,7 +59,7 @@ theme_override_fonts/font = ExtResource("1_vsj2k")
 script = ExtResource("2_g2n6n")
 
 [node name="Background" parent="." instance=ExtResource("3_agnsc")]
-scroll_offset = Vector2(-0.833333, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -71,32 +72,31 @@ spawnString = "cppccccppc"
 position = Vector2(19, 563)
 rotation = 1.55858
 
-[node name="TableManager" type="Node" parent="Furniture"]
-script = ExtResource("6_v5wh4")
-
-[node name="Table" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
-position = Vector2(661, 375)
-
-[node name="Table2" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
-position = Vector2(551, 462)
-
-[node name="Table3" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
-position = Vector2(444, 466)
-
-[node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
-position = Vector2(659, 463)
-
-[node name="Bar" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(508, 283)
-
-[node name="Bar2" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(557, 283)
-
-[node name="Bar3" parent="Furniture/TableManager" instance=ExtResource("8_nv05p")]
-position = Vector2(609, 283)
-
 [node name="TicketBoard" parent="Furniture" instance=ExtResource("9_n6cao")]
 position = Vector2(590, 197)
+
+[node name="TableManager" type="Node" parent="Furniture"]
+script = ExtResource("6_v5wh4")
+threshold = 1.0
+day = 5
+
+[node name="Table" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(632, 360)
+
+[node name="Table2" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(536, 456)
+
+[node name="Table7" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(528, 360)
+
+[node name="Table3" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(432, 456)
+
+[node name="Table5" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(440, 360)
+
+[node name="Table4" parent="Furniture/TableManager" instance=ExtResource("7_50tpv")]
+position = Vector2(640, 456)
 
 [node name="Foods" type="Node2D" parent="."]
 
@@ -145,7 +145,7 @@ position = Vector2(179, 290)
 isCounter = true
 side = 2
 
-[node name="Lasergun" parent="PlainSurface2" instance=ExtResource("20_1mtm3")]
+[node name="Plasmagun" parent="PlainSurface2" instance=ExtResource("16_ibcnr")]
 position = Vector2(0, -8)
 
 [node name="PlainSurface3" parent="." instance=ExtResource("14_smcvt")]
@@ -183,4 +183,19 @@ control = 3
 
 [node name="LevelProgressor" parent="." instance=ExtResource("24_ljrxi")]
 
-[connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
+[node name="DrinkTube2" parent="." instance=ExtResource("25_fcjbc")]
+position = Vector2(296, 280)
+color = 0
+
+[node name="GlassStack" parent="." instance=ExtResource("24_iacp5")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
+
+[node name="PlainSurface4" parent="." instance=ExtResource("14_smcvt")]
+position = Vector2(252, 477)
+isCounter = true
+side = 2
+
+[node name="Catgun" parent="PlainSurface4" instance=ExtResource("25_fsq3y")]
+position = Vector2(0, -8)

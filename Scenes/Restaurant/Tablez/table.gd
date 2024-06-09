@@ -71,7 +71,6 @@ func set_order(type):
 
 	if isBar:
 		needed_order_type = 'red' if choiceNum < threshold else  'green'
-		needed_order_type = 'red'
 	else:
 		needed_order_type = 'meat' if choiceNum < threshold else 'salad'
 
