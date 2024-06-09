@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqselsxp5oyhu"]
+[gd_scene load_steps=27 format=3 uid="uid://dqselsxp5oyhu"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_8qujc"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_vpvqv"]
@@ -18,8 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="18_tgofm"]
 [ext_resource type="PackedScene" uid="uid://b3a7yosa03u8h" path="res://Scenes/Restaurant/TestItems/Lasergun.tscn" id="20_qajb3"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="20_sm3t2"]
+[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="22_0jtdf"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="22_603ui"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="23_1iiqj"]
+[ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="23_vbomk"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="24_cylh8"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
@@ -44,9 +46,11 @@ func _on_timer_timeout():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nbmx"]
+atlas = ExtResource("22_0jtdf")
 region = Rect2(96, 56, 54, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujoro"]
+atlas = ExtResource("22_0jtdf")
 region = Rect2(96, 208, 54, 24)
 
 [node name="Day4T" type="Node2D"]
@@ -60,7 +64,7 @@ offset_bottom = 29.0
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(-4.6745, 0)
+scroll_offset = Vector2(-1.63024, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -179,9 +183,6 @@ side = 2
 [node name="LavaLamp" parent="." instance=ExtResource("20_sm3t2")]
 position = Vector2(239, 148)
 
-[node name="Pulsar" type="Sprite2D" parent="."]
-position = Vector2(54, 16)
-
 [node name="LavaLamp2" parent="." instance=ExtResource("20_sm3t2")]
 position = Vector2(147, 162)
 
@@ -208,6 +209,10 @@ offset_bottom = 537.0
 texture_normal = SubResource("AtlasTexture_6nbmx")
 texture_pressed = SubResource("AtlasTexture_ujoro")
 stretch_mode = 5
+
+[node name="Pulsar" type="Sprite2D" parent="."]
+position = Vector2(54, 16)
+texture = ExtResource("23_vbomk")
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
