@@ -3,6 +3,7 @@ var num_tables = 0
 
 var tables = [] # We need an array of the tables, so we can inquire about the position of the table
 @onready var available_table_codes = []
+@export var threshold = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 		table.set_code(i)
 		tables.push_back(table)
 		available_table_codes.push_back(i)
+		table.threshold = threshold
 		if i > 3:
 			table.isBar = true
 
