@@ -1,7 +1,7 @@
 extends Area2D
 
 @export_category("Tutorial tools")
-@export_enum("keyboard", "controller") var inputType: int = 0
+@export_enum("controller", "keyboard") var inputType: int = 0
 @export_enum("move", "aim", "pick up", "interact", "esc") var control: int = 0
 
 var endFrame = 6
@@ -14,25 +14,27 @@ var is_animating: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speechBubble.visible = false
-	if !inputType:
-		endFrame = 7
+	#speechBubble.visible = false
+	inputType = Global.isP1UsingKeyboard
+	if inputType:
+		endFrame = 0
 	else:
-		endFrame = 12
+		endFrame = 5
 	endFrame += control
-	currentFrame = 0
+	speechBubble.set_frame(endFrame)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_animating:
-		frame_timer += delta
-		if frame_timer >= frame_duration:
-			frame_timer = 0.0
-			currentFrame += 1
-			if currentFrame > endFrame:
-				is_animating = false
-			else:
-				speechBubble.frame = currentFrame
+	pass
+	#if is_animating:
+	#	frame_timer += delta
+	#	if frame_timer >= frame_duration:
+	#		frame_timer = 0.0
+	#		currentFrame += 1
+	#		if currentFrame > endFrame:
+	#			is_animating = false
+	#		else:
+	#			speechBubble.frame = currentFrame
 
 func become_visible():
 	speechBubble.visible = true
