@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="23_1iiqj"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="24_cylh8"]
 [ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="25_x0qsq"]
-[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="27_23x1v"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -56,7 +55,7 @@ region = Rect2(96, 56, 54, 24)
 atlas = ExtResource("25_x0qsq")
 region = Rect2(96, 208, 54, 24)
 
-[node name="Day2T" type="Node2D"]
+[node name="Day4T" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -68,7 +67,7 @@ theme_override_fonts/font = ExtResource("1_lombx")
 script = ExtResource("2_8qujc")
 
 [node name="Background" parent="." instance=ExtResource("3_vpvqv")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.0293, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -136,6 +135,11 @@ side = 2
 
 [node name="PlateRack" parent="." instance=ExtResource("13_ys7bd")]
 position = Vector2(115, 290)
+isCounter = true
+side = 2
+
+[node name="PlainSurface" parent="." instance=ExtResource("14_6y6q5")]
+position = Vector2(147, 290)
 isCounter = true
 side = 2
 
@@ -216,11 +220,6 @@ offset_bottom = 537.0
 texture_normal = SubResource("AtlasTexture_6nbmx")
 texture_pressed = SubResource("AtlasTexture_ujoro")
 stretch_mode = 5
-
-[node name="GlassStack" parent="." instance=ExtResource("27_23x1v")]
-position = Vector2(147, 290)
-isCounter = true
-side = 2
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

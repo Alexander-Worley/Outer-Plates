@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqqokemo4n8mx"]
+[gd_scene load_steps=25 format=3 uid="uid://bqqokemo4n8mx"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vsj2k"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_g2n6n"]
@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="21_sytyy"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="22_2dj81"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="23_1k0hm"]
+[ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_qfmgg"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_irekx"]
-[ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="24_jf1k2"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_fcjbc"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
@@ -45,7 +45,7 @@ func _on_timer_timeout():
 	Utils.setScene(nextScene, false)
 "
 
-[node name="Day2T" type="Node2D"]
+[node name="Day5G" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -57,14 +57,14 @@ theme_override_fonts/font = ExtResource("1_vsj2k")
 script = ExtResource("2_g2n6n")
 
 [node name="Background" parent="." instance=ExtResource("3_agnsc")]
-scroll_offset = Vector2(0, 0)
+scroll_offset = Vector2(-1.0018, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
 
 [node name="Teleporter" parent="Furniture" groups=["Teleporter"] instance=ExtResource("4_prxcb")]
 position = Vector2(394, 169)
-spawnString = "cppccpc"
+spawnString = "cppccccppc"
 
 [node name="HostingStand" parent="Furniture" instance=ExtResource("5_8u7s5")]
 position = Vector2(19, 563)
@@ -128,6 +128,11 @@ position = Vector2(115, 290)
 isCounter = true
 side = 2
 
+[node name="PlainSurface" parent="." instance=ExtResource("14_smcvt")]
+position = Vector2(147, 290)
+isCounter = true
+side = 2
+
 [node name="CookableRack" parent="." instance=ExtResource("15_43swk")]
 position = Vector2(156, 477)
 isCounter = true
@@ -173,9 +178,8 @@ side = 2
 [node name="DrinkTube" parent="." instance=ExtResource("25_fcjbc")]
 position = Vector2(251, 278)
 
-[node name="GlassStack" parent="." instance=ExtResource("24_jf1k2")]
-position = Vector2(147, 290)
-isCounter = true
-side = 2
+[node name="OrderRack hint" parent="." instance=ExtResource("23_qfmgg")]
+position = Vector2(590, 156)
+control = 3
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]

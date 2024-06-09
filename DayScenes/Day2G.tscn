@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b46f72exa7rr"]
+[gd_scene load_steps=22 format=3 uid="uid://b46f72exa7rr"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_bpt3p"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_nq6fq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="16_mic68"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="19_l7mvs"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="20_5o80p"]
+[ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="20_f7kgv"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="21_rgi0y"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="22_0ldca"]
 
@@ -41,7 +42,7 @@ func _on_timer_timeout():
 	Utils.setScene(nextScene)
 "
 
-[node name="Day2T" type="Node2D"]
+[node name="Day2G" type="Node2D"]
 script = SubResource("GDScript_tyb3y")
 
 [node name="MoneyLabel" type="Label" parent="."]
@@ -53,7 +54,7 @@ theme_override_fonts/font = ExtResource("1_bpt3p")
 script = ExtResource("2_nq6fq")
 
 [node name="Background" parent="." instance=ExtResource("3_cagvx")]
-scroll_offset = Vector2(-0.833333, 0)
+scroll_offset = Vector2(-1.11111, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -156,5 +157,9 @@ position = Vector2(710, 231)
 position = Vector2(188, 477)
 isCounter = true
 side = 2
+
+[node name="OrderRack hint" parent="." instance=ExtResource("20_f7kgv")]
+position = Vector2(590, 156)
+control = 3
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
