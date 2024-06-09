@@ -5,6 +5,8 @@ var controls_instance = null
 
 func _on_quit_button_pressed():
 	toggle_pause()
+	Global.isAcceptAllInput = true
+	Global.isP1UsingKeyboard = true
 	const mainMenuScene = preload("res://Scenes/MainMenu/mainMenu.tscn")
 	Utils.setScene(mainMenuScene, false)
 

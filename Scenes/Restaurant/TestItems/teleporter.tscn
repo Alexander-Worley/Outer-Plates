@@ -146,6 +146,7 @@ shape = SubResource("RectangleShape2D_8oxgl")
 sprite_frames = SubResource("SpriteFrames_jhff7")
 
 [node name="TeleportInTimer" type="Timer" parent="." groups=["Teleporter"]]
+wait_time = 2.0
 one_shot = true
 
 [node name="WalkOffTimer" type="Timer" parent="."]
@@ -159,7 +160,7 @@ unique_name_in_owner = true
 position = Vector2(0, 70)
 
 [node name="RunTeleportTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [connection signal="timeout" from="TeleportInTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WalkOffTimer" to="." method="_on_walk_off_timer_timeout"]

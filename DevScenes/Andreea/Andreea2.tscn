@@ -1,13 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfkadx5dgayj1"]
 
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="1_hvmwk"]
-[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Bar/Bar.tscn" id="2_l4vu2"]
+[ext_resource type="PackedScene" uid="uid://7w6hlbstmayh" path="res://Scenes/Restaurant/Tablez/Bar.tscn" id="2_l4vu2"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="3_mmvbl"]
 [ext_resource type="Texture2D" uid="uid://w6mky47wi66h" path="res://Assets/Interactables/PlainSurfaces/square-counter.png" id="4_jc3hn"]
 [ext_resource type="PackedScene" uid="uid://bkymy7rnc3gfw" path="res://Scenes/Restaurant/Holdables/Drinks/Glass.tscn" id="5_2xnql"]
 [ext_resource type="PackedScene" uid="uid://d1ahdwi2ft7k0" path="res://Scenes/Restaurant/Player/player.tscn" id="6_c1qef"]
 [ext_resource type="PackedScene" uid="uid://82nfelbi5c41" path="res://Scenes/Restaurant/Tablez/table.tscn" id="7_bbrid"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="8_whvoq"]
+
 
 [sub_resource type="GDScript" id="GDScript_i3ub0"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
