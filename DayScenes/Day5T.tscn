@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkf5ldsvui8ab"]
+[gd_scene load_steps=28 format=3 uid="uid://bkf5ldsvui8ab"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_qk84v"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_ownmq"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="21_4rmg5"]
 [ext_resource type="PackedScene" uid="uid://dgjrwni0x7oo8" path="res://Scenes/Restaurant/Interactables/TrashCan/trashCan.tscn" id="21_4v2g8"]
 [ext_resource type="Texture2D" uid="uid://l1vy4hqh6sri" path="res://Assets/UI/pulsar.png" id="21_edggl"]
+[ext_resource type="Texture2D" uid="uid://dkuj4g0x7bb1l" path="res://Assets/UI/button-controls-spritesheet.png" id="21_epchl"]
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="22_bptdv"]
 [ext_resource type="PackedScene" uid="uid://b37amv1v2ky1c" path="res://Scenes/Tutorial/tutorialUI.tscn" id="23_eyu7p"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="23_xvjny"]
@@ -46,9 +47,11 @@ func _on_timer_timeout():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbthv"]
+atlas = ExtResource("21_epchl")
 region = Rect2(96, 56, 54, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov6ev"]
+atlas = ExtResource("21_epchl")
 region = Rect2(96, 208, 54, 24)
 
 [node name="Day5T" type="Node2D"]
@@ -62,7 +65,7 @@ offset_bottom = 29.0
 script = ExtResource("2_qk84v")
 
 [node name="Background" parent="." instance=ExtResource("3_ownmq")]
-scroll_offset = Vector2(-1.6018, 0)
+scroll_offset = Vector2(-1.31127, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
