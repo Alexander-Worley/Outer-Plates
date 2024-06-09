@@ -92,7 +92,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sink" type="Area2D"]
+[node name="Sink" type="Area2D" groups=["Interactable"]]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

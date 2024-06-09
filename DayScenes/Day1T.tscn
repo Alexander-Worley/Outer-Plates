@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vjj22"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_0jflb"]
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="4_qxyow"]
-[ext_resource type="PackedScene" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="8_m2yvp"]
+[ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="8_m2yvp"]
 [ext_resource type="PackedScene" uid="uid://blxn4sm30k3lc" path="res://Scenes/Restaurant/TestItems/teleporter.tscn" id="9_2malg"]
 [ext_resource type="PackedScene" uid="uid://bbui5hao4bmbp" path="res://Scenes/Restaurant/TestItems/HostingStand.tscn" id="10_q7m2x"]
 [ext_resource type="PackedScene" uid="uid://ede2frngbs0e" path="res://Scenes/Restaurant/Interactables/Stove/stove.tscn" id="10_ss3tn"]
@@ -56,7 +56,7 @@ theme_override_fonts/font = ExtResource("1_vjj22")
 script = ExtResource("2_0jflb")
 
 [node name="Background" parent="." instance=ExtResource("1_oqifv")]
-scroll_offset = Vector2(-6.66667, 0)
+scroll_offset = Vector2(-1.5274, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]

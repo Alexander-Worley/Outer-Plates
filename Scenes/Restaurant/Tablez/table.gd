@@ -20,7 +20,6 @@ var threshold = 0.5
 var rng = RandomNumberGenerator.new()
 
 @onready var hasPirate = false
-@onready var pirateMarker = $PirateMarker
 
 func _ready():
 	initialize()

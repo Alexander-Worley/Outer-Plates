@@ -14,6 +14,7 @@ func _process(delta):
 
 func begin_interaction(player: CharacterBody2D):
 	if is_instance_valid(player.holdableInHand) and (player.holdableInHand.is_in_group("Cookable") or player.holdableInHand.is_in_group("Cuttable")):
+		if !player.holdableInHand.isOnPlate: return
 		$Timer.start()
 		$Surface.play()
 		
