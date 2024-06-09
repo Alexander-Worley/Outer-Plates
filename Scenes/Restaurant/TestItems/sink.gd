@@ -13,7 +13,6 @@ func _process(delta):
 	pass
 
 func begin_interaction(player: CharacterBody2D):
-	print("hi")
 	if is_instance_valid(player.holdableInHand) and (player.holdableInHand.is_in_group("Cookable") or player.holdableInHand.is_in_group("Cuttable")):
 		$Timer.start()
 		$Surface.play()
