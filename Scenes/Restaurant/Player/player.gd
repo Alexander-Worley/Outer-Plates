@@ -62,8 +62,8 @@ func pickup_holdable(holdable: Area2D):
 	# Transfer "doneness" if needed
 	if holdableInHand.is_in_group("Cookable"):
 		holdableInHand.doneness = holdable.doneness
-	if holdableInHand.is_in_group("Weapons"):
-		holdableInHand.ammo = holdable.ammo
+	#if holdableInHand.is_in_group("Weapons"):
+		#holdableInHand.ammo = holdable.ammo
 	#copy ammo if needed
 	# Commented out this as it causes crashes in Main Restaurant Scene
 	# AW - May 25, 2024 - TODO: Fix this
@@ -343,6 +343,9 @@ func pickup():
 # On interact input
 func interact():
 	if isInteractLock: return
+	if isHolding && holdableInHand.is_in_group("Weapons"):
+		print("AAAAAAAAAAAAAAAAAA")
+		weapon_logic()
 	for interactable in interactablesInRange:
 		if !isHolding and interactable.begin_interaction(self): break
 		# I know these following lines ugly sorry - Andreea :(
@@ -352,8 +355,6 @@ func interact():
 			if interactable.begin_interaction(self): break
 	if teleporterInRange:
 		teleporterInRange[0].teleport_in(false)
-	if isHolding && holdableInHand.is_in_group("Weapons"):
-		weapon_logic()
 
 func weapon_logic():
 	if not ammoDepotsInRange:holdableInHand.shoot()
