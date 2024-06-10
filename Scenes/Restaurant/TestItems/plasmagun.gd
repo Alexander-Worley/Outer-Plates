@@ -12,11 +12,3 @@ func shoot():
 	b.start($Muzzle.global_position, $Muzzle.global_rotation)
 	get_tree().root.add_child(b)
 	ammo = ammo - 1
-	#updateAmmoCounter()
-
-	
-func updateAmmoCounter():
-	pass
-	#var ammoCount = get_node("../ammoCount
-	#var ammoCount = get_node("/root/Logan/Weapons/ammoCount")
-	#ammoCount.text = "Ammo: " + str(ammo)

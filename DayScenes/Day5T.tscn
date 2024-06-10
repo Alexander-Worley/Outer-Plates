@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bkf5ldsvui8ab"]
+[gd_scene load_steps=27 format=3 uid="uid://bkf5ldsvui8ab"]
 
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_qk84v"]
 [ext_resource type="PackedScene" uid="uid://c25l7bpom1gm4" path="res://Scenes/Background/background.tscn" id="3_ownmq"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://btugtq4bxfaeh" path="res://Scenes/Restaurant/PlainSurface/plainSurface.tscn" id="14_jay5e"]
 [ext_resource type="PackedScene" uid="uid://1yhk4y28a236" path="res://Scenes/Restaurant/TestItems/Plasmagun.tscn" id="15_ah0xc"]
 [ext_resource type="PackedScene" uid="uid://dvdmgcuv7anep" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cookableRack.tscn" id="15_pnp0h"]
-[ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="16_letiv"]
 [ext_resource type="PackedScene" uid="uid://bjuumf0g03s12" path="res://Scenes/Restaurant/TestItems/sink.tscn" id="17_tvgd1"]
 [ext_resource type="PackedScene" uid="uid://cuek2wfflpv5k" path="res://Scenes/Restaurant/Environment/lavaLamp.tscn" id="19_mqblp"]
 [ext_resource type="PackedScene" uid="uid://pboyl84wmi8l" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/glassStack.tscn" id="21_4rmg5"]
@@ -65,7 +64,7 @@ offset_bottom = 29.0
 script = ExtResource("2_qk84v")
 
 [node name="Background" parent="." instance=ExtResource("3_ownmq")]
-scroll_offset = Vector2(-1.31127, 0)
+scroll_offset = Vector2(-1.66667, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -162,9 +161,6 @@ side = 2
 position = Vector2(252, 477)
 isCounter = true
 side = 2
-
-[node name="Catgun" parent="PlainSurface4" instance=ExtResource("16_letiv")]
-position = Vector2(0, -8)
 
 [node name="LavaLamp" parent="." instance=ExtResource("19_mqblp")]
 position = Vector2(239, 148)

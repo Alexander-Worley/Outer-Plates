@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqqokemo4n8mx"]
+[gd_scene load_steps=26 format=3 uid="uid://bqqokemo4n8mx"]
 
 [ext_resource type="FontFile" uid="uid://df7lvaaeis5to" path="res://Assets/Fonts/VeniteAdoremusStraight-Yzo6v.ttf" id="1_vsj2k"]
 [ext_resource type="Script" path="res://DevScenes/Logan/MoneyLabel.gd" id="2_g2n6n"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://cmkwxcvadpr4y" path="res://Scenes/Restaurant/Holdables/Food/FoodSpawnBoxes/cuttableRack.tscn" id="24_irekx"]
 [ext_resource type="PackedScene" uid="uid://i45lk6yxg0oy" path="res://Scenes/SceneTransition/level_progressor.tscn" id="24_ljrxi"]
 [ext_resource type="PackedScene" uid="uid://txto47x1ji8o" path="res://Scenes/Restaurant/Interactables/DrinkTube/drinkTube.tscn" id="25_fcjbc"]
-[ext_resource type="PackedScene" uid="uid://bgc3musmo8bkh" path="res://Scenes/Restaurant/TestItems/Catgun.tscn" id="25_fsq3y"]
 
 [sub_resource type="GDScript" id="GDScript_tyb3y"]
 script/source = "extends \"res://Scenes/SceneManager/playerManager.gd\"
@@ -59,7 +58,7 @@ theme_override_fonts/font = ExtResource("1_vsj2k")
 script = ExtResource("2_g2n6n")
 
 [node name="Background" parent="." instance=ExtResource("3_agnsc")]
-scroll_offset = Vector2(-0.833333, 0)
+scroll_offset = Vector2(-12.6527, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
@@ -196,8 +195,5 @@ side = 2
 position = Vector2(252, 477)
 isCounter = true
 side = 2
-
-[node name="Catgun" parent="PlainSurface4" instance=ExtResource("25_fsq3y")]
-position = Vector2(0, -8)
 
 [connection signal="display_orders" from="Furniture/TicketBoard" to="Furniture/TableManager" method="_on_ticket_board_display_orders"]
