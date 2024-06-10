@@ -86,8 +86,8 @@ func set_holdable_on_surface(holdableInHand: Area2D):
 		newHoldable.doneness = holdableInHand.doneness
 	if holdableInHand.is_in_group("Glass"):
 		newHoldable.isFull = holdableInHand.isFull
-	if holdableInHand.is_in_group("Weapons"):
-		newHoldable.ammo = holdableInHand.ammo
+	#if holdableInHand.is_in_group("Weapons"):
+		#newHoldable.ammo = holdableInHand.ammo
 	# Transfer "isCut" if needed
 	if holdableInHand.is_in_group("Cuttable"):
 		newHoldable.isCut = holdableInHand.isCut
