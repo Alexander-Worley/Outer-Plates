@@ -54,7 +54,7 @@ theme_override_fonts/font = ExtResource("1_bpt3p")
 script = ExtResource("2_nq6fq")
 
 [node name="Background" parent="." instance=ExtResource("3_cagvx")]
-scroll_offset = Vector2(-1.11111, 0)
+scroll_offset = Vector2(-1.70277, 0)
 Planet = "Green Planet"
 
 [node name="Furniture" type="Node" parent="."]
